@@ -1,9 +1,24 @@
 import React from 'react'
+import Link from 'next/link'
 import { CustomFontSize } from '../components'
 import theme from '../styles/theme'
+import gql from 'graphql-tag';
+import { withApollo } from '../lib/apolloClient';
+// import { useQuery } from '@apollo/client';
+
+// const ALL_CHARACTERS = gql`
+//     {
+//         helloWorld
+//     }
+// `;
 const Home: React.FC = () => {
+    // const { loading, error, data } = useQuery(ALL_CHARACTERS);
+    // if (error) return <h1>Error</h1>;
+    // if (loading) return <h1>Loading...</h1>;
+    // console.log(data);
+
     return (
-            <CustomFontSize>
+        <CustomFontSize>
             <style jsx>{`
             .main{
                 grid-column: 1/-1;
@@ -272,143 +287,149 @@ const Home: React.FC = () => {
                 }
             }
         `}</style>
-                <div className="main">
-                    <nav className="navbar">
-                        <img className="navbar-logo" src="/images/logo.png" alt="logo" />
-                        <ul className="navbar-list">
-                            <li className="navbar-list__item">Who we are</li>
-                            <li className="navbar-list__item">Creating value</li>
-                            <li className="navbar-list__item">Making a difference</li>
-                            <li className="navbar-list__item">Partnering with us</li>
-                            <li className="navbar-list__item">Investors</li>
-                        </ul>
-                        <ul className="navbar-list">
-                            <li className="navbar-list__item"><a href="/login">Login</a></li>
-                            {/* <li className="navbar-list__item">Login</li> */}
-                        </ul>
 
-                    </nav>
+            <div className="main">
+                <nav className="navbar">
 
-                    <div className="main-content">
-                        <h1 className="main-content-bigText">
-                            Diversity and
+                    <img className="navbar-logo" src="/images/logo.png" alt="logo" />
+                    <ul className="navbar-list">
+                        <li className="navbar-list__item">Who we are</li>
+                        <li className="navbar-list__item">Creating value</li>
+                        <li className="navbar-list__item">Making a difference</li>
+                        <li className="navbar-list__item">Partnering with us</li>
+                        <li className="navbar-list__item">Investors</li>
+                    </ul>
+                    <ul className="navbar-list">
+                        <li className="navbar-list__item">
+                            {/* <Link href="/login"> */}
+                                <a>Login</a>
+                            {/* </Link> */}
+                        </li>
+                        {/* <li className="navbar-list__item">Login</li> */}
+                    </ul>
+
+                </nav>
+
+                <div className="main-content">
+                    <h1 className="main-content-bigText">
+                        Diversity and
                     <br /> inclusion
                 </h1>
-                        <p className="main-content-text">
-                            <br /> Learn how D&I is integral to the way we operate.
+                    <p className="main-content-text">
+                        <br /> Learn how D&I is integral to the way we operate.
                 </p>
-                        <a className="main-content-link" href="/"> LEARN MORE </a>
-                    </div>
-
-                </div>
-                <div className="topInfo">
-                    <h2 className="topInfo-title">Technology development</h2>
-                    <div className="topInfo-img" />
-                    <div className="topInfo-container">
-                        <h3 className="topInfo-container__subHead">IN-HOUSE TECHNOLOGIES</h3>
-                        <h2 className="topInfo-container__title">Nonmetallic Solutions</h2>
-                        <p className="topInfo-container__text">At Aramco, we are a catalyst for developing technology solutions to address some of the
-                        world’s most pressing energy and materials challenges.
-                    </p>
-                        <button className="topInfo-container__button">Learn More</button>
-                    </div>
+                    <a className="main-content-link" href="/"> LEARN MORE </a>
                 </div>
 
-                <div className="glance">
-                    <h2 className="glance-title">ARAMCO AT A GLANCE</h2>
-                    <div className="glance-container">
-                        <h3 className="glance-container__subHead">IN-HOUSE TECHNOLOGIES</h3>
-                        <h2 className="glance-container__title">Nonmetallic Solutions</h2>
-                        <p className="glance-container__text">At Aramco, we are a catalyst for developing technology 
+            </div>
+            <div className="topInfo">
+                <h2 className="topInfo-title">Technology development</h2>
+                <div className="topInfo-img" />
+                <div className="topInfo-container">
+                    <h3 className="topInfo-container__subHead">IN-HOUSE TECHNOLOGIES</h3>
+                    <h2 className="topInfo-container__title">Nonmetallic Solutions</h2>
+                    <p className="topInfo-container__text">At Aramco, we are a catalyst for developing technology solutions to address some of the
+                    world’s most pressing energy and materials challenges.
                     </p>
-                        <button className="glance-container__button">Learn More</button>
-                    </div>
-                    <div className="glance-container">
-                        <h3 className="glance-container__subHead">IN-HOUSE TECHNOLOGIES</h3>
-                        <h2 className="glance-container__title">Nonmetallic Solutions</h2>
-                        <p className="glance-container__text">At Aramco, we are a catalyst technology solutions to
+                    <button className="topInfo-container__button">Learn More</button>
+                </div>
+            </div>
+
+            <div className="glance">
+                <h2 className="glance-title">ARAMCO AT A GLANCE</h2>
+                <div className="glance-container">
+                    <h3 className="glance-container__subHead">IN-HOUSE TECHNOLOGIES</h3>
+                    <h2 className="glance-container__title">Nonmetallic Solutions</h2>
+                    <p className="glance-container__text">At Aramco, we are a catalyst for developing technology
                     </p>
-                        <button className="glance-container__button">Learn More</button>
-                    </div>
-                    <div className="glance-container">
-                        <h3 className="glance-container__subHead">IN-HOUSE TECHNOLOGIES</h3>
-                        <h2 className="glance-container__title">Nonmetallic Solutions</h2>
-                        <p className="glance-container__text">At Aramco, we are a catalyst for technology .
+                    <button className="glance-container__button">Learn More</button>
+                </div>
+                <div className="glance-container">
+                    <h3 className="glance-container__subHead">IN-HOUSE TECHNOLOGIES</h3>
+                    <h2 className="glance-container__title">Nonmetallic Solutions</h2>
+                    <p className="glance-container__text">At Aramco, we are a catalyst technology solutions to
                     </p>
-                        <button className="glance-container__button">Learn More</button>
-                    </div>
+                    <button className="glance-container__button">Learn More</button>
+                </div>
+                <div className="glance-container">
+                    <h3 className="glance-container__subHead">IN-HOUSE TECHNOLOGIES</h3>
+                    <h2 className="glance-container__title">Nonmetallic Solutions</h2>
+                    <p className="glance-container__text">At Aramco, we are a catalyst for technology .
+                    </p>
+                    <button className="glance-container__button">Learn More</button>
+                </div>
+            </div>
+
+            <div className="imageInfo">
+                <div className="imageInfo-container">
+                    <h3 className="imageInfo-container__subHead">October 07, 2020</h3>
+                    <h2 className="imageInfo-container__title">The Arabian Sun</h2>
+                    <p className="imageInfo-container__text">In this week's issue: Aramco’s circular economy in action
+                    </p>
+                    <button className="imageInfo-container__button btn-light">DOWNLOAD ISSUE (PDF, 7 MB)</button>
+                    <button className="imageInfo-container__button">VIEW ALL PUBLICATIONS</button>
+                </div>
+            </div>
+            <div className="imageInfo jusLeft">
+                <div className="imageInfo-container jusLeft-container">
+                    <h2 className="imageInfo-container__title">Our response to COVID-19</h2>
+                    <p className="imageInfo-container__text">
+                        People are our priority. We are securing the health and safety of our workforce and communities and ensuring
+                        the continuity of an energy supply upon which the world relies.
+                    </p>
+                    <button className="imageInfo-container__button btn-light">FIND OUT MORE</button>
+                </div>
+            </div>
+
+            <footer className="footer">
+                <div className="footer-column">
+                    <h3 className="footer-column__title">Site information</h3>
+                    <ul className="footer-column-list">
+                        <li className="footer-column-list__item">COOKIE NOTICES</li>
+                        <li className="footer-column-list__item">PRIVACY STATEMENT</li>
+                        <li className="footer-column-list__item">TERMS AND CONDITIONS</li>
+                        <li className="footer-column-list__item">SCAM AND FRAUD ALERT</li>
+                        <li className="footer-column-list__item">SITEMAP</li>
+                    </ul>
+                </div>
+                <div className="footer-column">
+                    <h3 className="footer-column__title">Other websites</h3>
+                    <ul className="footer-column-list">
+                        <li className="footer-column-list__item">SEARCH ALL NEWS</li>
+                        <li className="footer-column-list__item">LATEST NEWS</li>
+                        <li className="footer-column-list__item">PUBLICATIONS</li>
+                        <li className="footer-column-list__item">SPEECHES</li>
+                        <li className="footer-column-list__item">MEDIA GALLERY</li>
+                        <li className="footer-column-list__item">CONTACTS AND RESOURCES</li>
+                    </ul>
+                </div>
+                <div className="footer-column">
+                    <h3 className="footer-column__title">News & Media</h3>
+                    <ul className="footer-column-list">
+                        <li className="footer-column-list__item"> ARAMCO ENTREPRENEURSHIP CENTER</li>
+                        <li className="footer-column-list__item">ARAMCO TRADING COMPANY</li>
+                        <li className="footer-column-list__item">KING ABDULAZIZ CENTER FOR WORLD CULTURE (ITHRA)</li>
+                        <li className="footer-column-list__item">IKTVA</li>
+                        <li className="footer-column-list__item">SAUDI ARAMCO ENERGY VENTURES</li>
+                        <li className="footer-column-list__item">GLOBAL DIRECTORY</li>
+                    </ul>
                 </div>
 
-                <div className="imageInfo">
-                    <div className="imageInfo-container">
-                        <h3 className="imageInfo-container__subHead">October 07, 2020</h3>
-                        <h2 className="imageInfo-container__title">The Arabian Sun</h2>
-                        <p className="imageInfo-container__text">In this week's issue: Aramco’s circular economy in action
-                    </p>
-                        <button className="imageInfo-container__button btn-light">DOWNLOAD ISSUE (PDF, 7 MB)</button>
-                        <button className="imageInfo-container__button">VIEW ALL PUBLICATIONS</button>
-                    </div>
+                <div className="footer-column">
+                    <h3 className="footer-column__title">Social media</h3>
+                    <ul className="footer-column-list">
+                        <li className="footer-column-list__item">SEARCH ALL NEWS</li>
+                        <li className="footer-column-list__item">LATEST NEWS</li>
+                        <li className="footer-column-list__item">PUBLICATIONS</li>
+                        <li className="footer-column-list__item">SPEECHES</li>
+                        <li className="footer-column-list__item">MEDIA GALLERY</li>
+                        <li className="footer-column-list__item">CONTACTS AND RESOURCES</li>
+                    </ul>
                 </div>
-                <div className="imageInfo jusLeft">
-                    <div className="imageInfo-container jusLeft-container">
-                        <h2 className="imageInfo-container__title">Our response to COVID-19</h2>
-                        <p className="imageInfo-container__text">
-                            People are our priority. We are securing the health and safety of our workforce and communities and ensuring
-                            the continuity of an energy supply upon which the world relies.
-                    </p>
-                        <button className="imageInfo-container__button btn-light">FIND OUT MORE</button>
-                    </div>
-                </div>
-
-                <footer className="footer">
-                    <div className="footer-column">
-                        <h3 className="footer-column__title">Site information</h3>
-                        <ul className="footer-column-list">
-                            <li className="footer-column-list__item">COOKIE NOTICES</li>
-                            <li className="footer-column-list__item">PRIVACY STATEMENT</li>
-                            <li className="footer-column-list__item">TERMS AND CONDITIONS</li>
-                            <li className="footer-column-list__item">SCAM AND FRAUD ALERT</li>
-                            <li className="footer-column-list__item">SITEMAP</li>
-                        </ul>
-                    </div>
-                    <div className="footer-column">
-                        <h3 className="footer-column__title">Other websites</h3>
-                        <ul className="footer-column-list">
-                            <li className="footer-column-list__item">SEARCH ALL NEWS</li>
-                            <li className="footer-column-list__item">LATEST NEWS</li>
-                            <li className="footer-column-list__item">PUBLICATIONS</li>
-                            <li className="footer-column-list__item">SPEECHES</li>
-                            <li className="footer-column-list__item">MEDIA GALLERY</li>
-                            <li className="footer-column-list__item">CONTACTS AND RESOURCES</li>
-                        </ul>
-                    </div>
-                    <div className="footer-column">
-                        <h3 className="footer-column__title">News & Media</h3>
-                        <ul className="footer-column-list">
-                            <li className="footer-column-list__item"> ARAMCO ENTREPRENEURSHIP CENTER</li>
-                            <li className="footer-column-list__item">ARAMCO TRADING COMPANY</li>
-                            <li className="footer-column-list__item">KING ABDULAZIZ CENTER FOR WORLD CULTURE (ITHRA)</li>
-                            <li className="footer-column-list__item">IKTVA</li>
-                            <li className="footer-column-list__item">SAUDI ARAMCO ENERGY VENTURES</li>
-                            <li className="footer-column-list__item">GLOBAL DIRECTORY</li>
-                        </ul>
-                    </div>
-
-                    <div className="footer-column">
-                        <h3 className="footer-column__title">Social media</h3>
-                        <ul className="footer-column-list">
-                            <li className="footer-column-list__item">SEARCH ALL NEWS</li>
-                            <li className="footer-column-list__item">LATEST NEWS</li>
-                            <li className="footer-column-list__item">PUBLICATIONS</li>
-                            <li className="footer-column-list__item">SPEECHES</li>
-                            <li className="footer-column-list__item">MEDIA GALLERY</li>
-                            <li className="footer-column-list__item">CONTACTS AND RESOURCES</li>
-                        </ul>
-                    </div>
-                    <p>© 2020 Saudi Arabian Oil Co.</p>
-                </footer>
-            </CustomFontSize>
+                <p>© 2020 Saudi Arabian Oil Co.</p>
+            </footer>
+        </CustomFontSize>
     )
 }
 
-export default Home
+export default withApollo({ ssr: true })(Home)

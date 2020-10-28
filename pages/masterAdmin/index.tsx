@@ -3,8 +3,7 @@ import { Helmet } from "react-helmet"
 
 const Index = () => {
 	return (
-		<div>
-
+		<>
 			<Head>
 
 				<meta charSet="utf-8" />
@@ -41,7 +40,11 @@ const Index = () => {
 				<script src="adminAssets/js/demo/datatables-demo.js"></script>
 
 			</Head>
-
+			<style jsx>{`
+				#page-top{  
+					grid-column: 1/-1;
+				} 
+			`}</style>
 			<body id="page-top">
 
 				{/* <!-- Page Wrapper --> */}
@@ -55,7 +58,7 @@ const Index = () => {
 							<div className="sidebar-brand-icon rotate-n-15">
 								{/* <i className="fas fa-laugh-wink"></i> */}
 							</div>
-							<div className="sidebar-brand-text mx-3"> Executive Ride Investo’</div>
+							<div className="sidebar-brand-text mx-3"> Aramco</div>
 						</a>
 
 						{/* <!-- Divider --> */}
@@ -387,7 +390,7 @@ const Index = () => {
 					
 				</Helmet> */}
 			</body>
-		</div>
+		</>
 	)
 }
 

@@ -1,8 +1,36 @@
+import { Field, Formik } from 'formik'
+import * as Yup from 'yup';
 import Head from 'next/head'
-import React from 'react'
-import theme from '../styles/theme'
+import { withApollo } from '../lib/apolloClient';
 
-const Login = () => {
+import React, { useState } from 'react'
+import { Login, useLoginMutation } from '../generated/apolloComponent'
+import theme from '../styles/theme'
+import { InputErrorMessage } from '../components';
+
+const SignupSchema = Yup.object().shape({
+    password: Yup.string()
+        .min(6, 'Too Short!')
+        .max(30, 'Too Long!')
+        .required('Required'),
+    email: Yup.string().email('Invalid email').required('Required'),
+});
+
+const LoginPage = () => {
+    const [message, setMessage] = useState('')
+    const [loginMutation, { data, loading, error }] = useLoginMutation()
+
+    const submit = async (inputs: Login) => {
+        await setMessage('')
+        let response = await loginMutation({
+            variables: {
+                input: inputs
+            },
+        })
+        if (error) return setMessage('Something went wrong, please try again or contact admin')
+        console.log(inputs, data, response);
+        setMessage('login successful.')
+    }
     return (
         <div className="logInMain">
             <Head>
@@ -25,6 +53,7 @@ const Login = () => {
                 {/* <!-- icons */}
                 {/* ================================================== --> */}
                 <link rel="stylesheet" href="/assets/css/icons.css" />
+                <script src="/assets/js/main.js"></script>
             </Head>
 
             {/* <body> */}
@@ -37,7 +66,7 @@ const Login = () => {
                     color: currentColor;
                 }
                 `}</style>
-            {/* <!-- Content */} 
+            {/* <!-- Content */}
             {/* ================================================== --> */}
             <div id="mainReg" uk-height-viewport="expand: true" className="uk-flex uk-flex-middle">
                 <div className="uk-width-1-3@m uk-width-1-2@s m-auto">
@@ -45,61 +74,63 @@ const Login = () => {
                         <div className="my-4 uk-text-center">
                             <h2 className="mb-0">Welcome Back</h2>
                             <p className="bigFont my-2">Login to manage your account.</p>
+                            <p className="text-success small">{error ? "Email or password incorrect." : ""}</p>
+                            <p className="text-success small">{message}</p>
                         </div>
-                        <form className="uk-child-width-1-1 uk-grid-small" uk-grid="true">
-                            <div>
-                                <div className="uk-form-group">
-                                    <label className="uk-form-label"> Email</label>
+                        <Formik onSubmit={submit}
+                            initialValues={{
+                                email: "",
+                                password: "",
+                            }}
+                            validationSchema={SignupSchema}>
+                            {({ handleSubmit, errors, touched }) => (
+                                <form onSubmit={handleSubmit} className="uk-child-width-1-1 uk-grid-small" uk-grid="true">
+                                    <div>
+                                        <div className="uk-form-group">
+                                            <label className="uk-form-label"> Email</label>
 
-                                    <div className="uk-position-relative w-100">
-                                        <span className="uk-form-icon">
-                                            <i className="icon-feather-mail"></i>
-                                        </span>
-                                        <input className="bigFont uk-input" type="email" placeholder="name@example.com" />
+                                            <div className="uk-position-relative w-100">
+                                                <span className="uk-form-icon">
+                                                    <i className="icon-feather-mail"></i>
+                                                </span>
+                                                <Field name="email" className="uk-input" type="email" placeholder="name@example.com" />
+                                            </div>
+                                            <InputErrorMessage message={errors.email} field={errors.email} touched={touched.email} />
+                                        </div>
                                     </div>
 
-                                </div>
-                            </div>
+                                    <div className="uk-child-width-1-1">
+                                        <div className="uk-form-group">
+                                            <label className="uk-form-label"> Password</label>
 
-                            <div className="uk-child-width-1-1">
-                                <div className="uk-form-group">
-                                    <label className="uk-form-label"> Password</label>
+                                            <div className="uk-position-relative w-100">
+                                                <span className="uk-form-icon">
+                                                    <i className="icon-feather-lock"></i>
+                                                </span>
+                                                <Field name="password" className="uk-input" type="password" placeholder="********" />
+                                            </div>
+                                            <InputErrorMessage message={errors.password} field={errors.password} touched={touched.password} />
 
-                                    <div className="uk-position-relative w-100">
-                                        <span className="uk-form-icon">
-                                            <i className="icon-feather-lock"></i>
-                                        </span>
-                                        <input className="bigFont uk-input" type="password" placeholder="********" />
+                                        </div>
                                     </div>
 
-                                </div>
-                            </div>
-                            {/* <div className="uk-child-width-1-1">
-                                <div className="uk-form-group">
-                                    <label className="uk-form-label"> Confirm password</label>
-
-                                    <div className="uk-position-relative w-100">
-                                        <span className="uk-form-icon">
-                                            <i className="icon-feather-lock"></i>
-                                        </span>
-                                        <input className="bigFont uk-input" type="password" placeholder="********" />
+                                    <div>
+                                        <div className="mt-4 uk-flex-middle uk-grid-small" uk-grid="true">
+                                            <div className="uk-width-expand@s">
+                                                <p className=""> Don't have account <a href="/signup">Sign up</a></p>
+                                            </div>
+                                            <div className="uk-width-auto@s">
+                                                <button className="button grey" type="submit">
+                                                    {loading ? "Loading" : "Login"}
+                                                </button>
+                                                {/* <input type="submit" className="button grey" value="LogIn" /> */}
+                                            </div>
+                                        </div>
                                     </div>
 
-                                </div>
-                            </div> */}
-
-                            <div>
-                                <div className="mt-4 uk-flex-middle uk-grid-small" uk-grid="true">
-                                    <div className="uk-width-expand@s">
-                                        <p className="bigFont"> Don't have account <a href="/signup">Sign up</a></p>
-                                    </div>
-                                    <div className="uk-width-auto@s">
-                                        <input type="submit" className="button grey" value="LogIn" />
-                                    </div>
-                                </div>
-                            </div>
-
-                        </form>
+                                </form>
+                            )}
+                        </Formik>
                     </div>
                 </div>
             </div>
@@ -109,11 +140,10 @@ const Login = () => {
                 <script src="/assets/js/jquery-3.3.1.min.js"></script>
                 <script src="/assets/js/framework.js"></script>
                 <script src="/assets/js/simplebar.js"></script>
-                <script src="/assets/js/main.js"></script>
             </Head>
             {/* </body>  */}
         </div>
     )
 }
 
-export default Login
+export default withApollo({ ssr: true })(LoginPage)
