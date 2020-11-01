@@ -1,9 +1,11 @@
+import React, { useState } from 'react'
 import { Field, Formik } from 'formik'
 import * as Yup from 'yup';
 import Head from 'next/head'
-import { withApollo } from '../lib/apolloClient';
+import Link from 'next/link';
+import { useRouter } from 'next/dist/client/router';
 
-import React, { useState } from 'react'
+import { withApollo } from '../lib/apolloClient';
 import { Login, useLoginMutation } from '../generated/apolloComponent'
 import theme from '../styles/theme'
 import { InputErrorMessage } from '../components';
@@ -19,6 +21,7 @@ const SignupSchema = Yup.object().shape({
 const LoginPage = () => {
     const [message, setMessage] = useState('')
     const [loginMutation, { data, loading, error }] = useLoginMutation()
+    const router = useRouter()
 
     const submit = async (inputs: Login) => {
         await setMessage('')
@@ -30,6 +33,8 @@ const LoginPage = () => {
         if (error) return setMessage('Something went wrong, please try again or contact admin')
         console.log(inputs, data, response);
         setMessage('login successful.')
+        router.push("/admin")
+
     }
     return (
         <div className="logInMain">
@@ -53,7 +58,7 @@ const LoginPage = () => {
                 {/* <!-- icons */}
                 {/* ================================================== --> */}
                 <link rel="stylesheet" href="/assets/css/icons.css" />
-                <script src="/assets/js/main.js"></script>
+                {/* <script src="/assets/js/main.js"></script> */}
             </Head>
 
             {/* <body> */}
@@ -117,7 +122,11 @@ const LoginPage = () => {
                                     <div>
                                         <div className="mt-4 uk-flex-middle uk-grid-small" uk-grid="true">
                                             <div className="uk-width-expand@s">
-                                                <p className=""> Don't have account <a href="/signup">Sign up</a></p>
+                                                <p className=""> Don't have account
+                                                    <Link href="/signup">
+                                                        <a> Sign up</a>
+                                                    </Link>
+                                                </p>
                                             </div>
                                             <div className="uk-width-auto@s">
                                                 <button className="button grey" type="submit">

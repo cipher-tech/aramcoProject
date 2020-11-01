@@ -1,12 +1,12 @@
 {
-  "name": "aramcoProject",
+  "name": "aramco_project",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "genetateGrapgql": "graphql-codegen --config codegen.yml"
+    "generateGrapgql": "graphql-codegen --config codegen.yml"
   },
   "dependencies": {
     "@apollo/client": "^3.2.5",

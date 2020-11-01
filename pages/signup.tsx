@@ -2,6 +2,8 @@ import { Field, Formik } from 'formik'
 import * as Yup from 'yup';
 import Head from 'next/head'
 import React, { useState } from 'react'
+import { useRouter } from 'next/dist/client/router';
+import Link from 'next/link';
 
 import { withApollo } from '../lib/apolloClient';
 import { Plans, Register, useRegisterMutation } from '../generated/apolloComponent'
@@ -37,7 +39,7 @@ const SignupSchema = Yup.object().shape({
 const SignUp = () => {
     const [message, setMessage] = useState('')
     const [registerMutation, { data, loading, error }] = useRegisterMutation()
-
+    const router = useRouter()
     const submit = async (inputs: Register) => {
         await setMessage('')
         let response = await registerMutation({
@@ -48,6 +50,8 @@ const SignUp = () => {
         if (error) return setMessage('Something went wrong, please try again or contact admin')
         console.log(data, response);
         setMessage('registration successful.')
+        router.push("/login")
+
     }
     return (
         <div className="logInMain">
@@ -71,7 +75,7 @@ const SignUp = () => {
                 {/* <!-- icons */}
                 {/* ================================================== --> */}
                 <link rel="stylesheet" href="/assets/css/icons.css" />
-                <script src="/assets/js/main.js"></script>
+                {/* <script src="/assets/js/main.js"></script> */}
             </Head>
 
             {/* <body> */}
@@ -198,7 +202,11 @@ const SignUp = () => {
                                     <div>
                                         <div className="mt-4 uk-flex-middle uk-grid-small" uk-grid="true">
                                             <div className="uk-width-expand@s">
-                                                <p className=""> Already have an account? <a href="/login">Login</a></p>
+                                                <p className=""> Already have an account?
+                                                    <Link href="/login">
+                                                        <a>Login</a>
+                                                    </Link>
+                                                </p>
                                             </div>
                                             <div className="uk-width-auto@s">
                                                 {
@@ -210,7 +218,7 @@ const SignUp = () => {
                                                         <button className="button grey" type="submit">
                                                             {loading ? "Loading" : "Get Started"}
                                                         </button>
-                                                        }
+                                                }
                                                 {/* <input type="submit" className="button grey" value="Get Started" /> */}
                                             </div>
                                         </div>

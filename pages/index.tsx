@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import { CustomFontSize } from '../components'
 import theme from '../styles/theme'
-import gql from 'graphql-tag';
+// import gql from 'graphql-tag';
 import { withApollo } from '../lib/apolloClient';
 // import { useQuery } from '@apollo/client';
 
@@ -33,6 +33,9 @@ const Home: React.FC = () => {
                     padding: 1.5rem 2.5rem;
                     box-shadow:  0.3rem 0.3rem .7rem #00000073,
                         -0.3rem -0.3rem .7rem rgba(230, 230, 230, 29%);
+                    @media only screen and (max-width: ${theme.breakPoints.bpLarge}) {
+                        display: none; 
+                    } 
                     &-logo{
                         border-radius: 50%;
                     }
@@ -83,9 +86,12 @@ const Home: React.FC = () => {
                 max-height: 39rem;
                 max-width: 100%;
                 display: grid;
-                grid-template-columns: 2fr 1fr;
+                grid-template-columns: 3fr 2fr;
                 justify-content: space-between;
                 margin: 2rem 0;
+                @media only screen and (max-width: ${theme.breakPoints.bpLarge}) {
+                    grid-column: 1/-1;
+                } 
                 &-title{
                     grid-column: 1/-1;
                     justify-self: flex-start;
@@ -102,7 +108,6 @@ const Home: React.FC = () => {
                 }
                 &-container{
                     padding: 2rem;
-                    max-width: 40rem;
                     background: ${theme.colorPrimary};
                     color: ${theme.colorWhite};
                     display: flex;
@@ -301,9 +306,9 @@ const Home: React.FC = () => {
                     </ul>
                     <ul className="navbar-list">
                         <li className="navbar-list__item">
-                            {/* <Link href="/login"> */}
+                            <Link href="/login">
                                 <a>Login</a>
-                            {/* </Link> */}
+                            </Link>
                         </li>
                         {/* <li className="navbar-list__item">Login</li> */}
                     </ul>
