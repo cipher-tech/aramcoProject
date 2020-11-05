@@ -11,7 +11,8 @@ import { IPlan } from './plans'
 // import routes from '../../navigation/routes'
 
 const Container = styled.div`
-    box-shadow: 1rem 1rem rgba(0, 0, 0, .1);
+    box-shadow: .1rem .2rem 1.3rem rgba(0,0,0,.1),
+    -.2rem -.1rem 1.3rem rgba(150,150,150,.1);
     .pricing-plan{
         padding-left: .364583333in;
         padding-top: .364583333in;

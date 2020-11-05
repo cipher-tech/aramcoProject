@@ -8,7 +8,7 @@ function FlowText({text}) {
                 .main-Text{
                     grid-column: 2/10;
                     text-align: center;
-                    width: 70%;
+                    width: 90%;
                     align-self: center;
                     justify-self: center;
                     font-size: ${theme.font.medium};

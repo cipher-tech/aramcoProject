@@ -1,5 +1,5 @@
 import React from 'react'
-import { CustomFontSize, Foot, Head, Plan, Text } from '../../components'
+import { CustomFontSize, Foot, Head, Plan, StockPlan, Text } from '../../components'
 import Nav from '../../components/navbar/nav'
 import theme from '../../styles/theme'
 
@@ -10,7 +10,7 @@ const Chemicals = () => {
                 .main{
                     grid-column: 1/-1;
                     width: 100%;
-                    font-size: ${theme.font.xxsmall};
+                    font-size: ${theme.font.xsmall};
                     color: ${theme.colorPrimary};   
                 }
             `}</style>
@@ -30,6 +30,7 @@ const Chemicals = () => {
                 `} />
 
                 <Plan />
+                <StockPlan />
                 <Foot />
             </CustomFontSize>
         </>

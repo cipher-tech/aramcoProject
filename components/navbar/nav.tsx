@@ -23,11 +23,14 @@ const Nav = () => {
                     &-list{
                         display: flex;
                         &__item{
+                            color: ${theme.colorPrimary};
                             padding: 1.5rem 2rem;
                             list-style-type: none;
+                            font-size: ${theme.font.xxsmall};
+                            cursor: pointer;
                         }
-                    }   
-                } 
+                    }
+                }  
             `}</style>
             <nav className="navbar">
                 <img className="navbar-logo" src="/images/logo.png" alt="logo" />

@@ -49,40 +49,40 @@ export interface IPlan {
     duration: number
     recommended?: boolean
 }
-const Plans = (props) => {
-    const planInfo: Array<IPlan> = [
-        {
-            name: "gas",
-            range: [100_000, 2_000_000],
-            rate: 35,
-            duration: 30
-        },
-        {
-            name: "crude oil",
-            range: [100_000, 5_000_000],
-            rate: 35,
-            duration: 30,
-            // recommended: true
-        },
-        {
-            name: " refined products",
-            range: [10_000, 1_000_000],
-            rate: 25,
-            duration: 30
-        },
-        {
-            name: "power systems",
-            range: [5_000, 200_000],
-            rate: 10,
-            duration: 30
-        },
-        {
-            name: " chemicals",
-            range: [15_000, 500_000],
-            rate: 10,
-            duration: 30
-        },
-    ]
+export const planInfo: Array<IPlan> = [
+    {
+        name: "gas",
+        range: [100_000, 2_000_000],
+        rate: 35,
+        duration: 30
+    },
+    {
+        name: "crude oil",
+        range: [100_000, 5_000_000],
+        rate: 35,
+        duration: 30,
+        // recommended: true
+    },
+    {
+        name: " refined products",
+        range: [10_000, 1_000_000],
+        rate: 25,
+        duration: 30
+    },
+    {
+        name: "power systems",
+        range: [5_000, 200_000],
+        rate: 10,
+        duration: 30
+    },
+    {
+        name: " chemicals",
+        range: [15_000, 500_000],
+        rate: 10,
+        duration: 30
+    },
+]
+ const Plans = (props) => {
     return (
         <Container >
 

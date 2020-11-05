@@ -25,8 +25,7 @@ const PageLayout: React.FC = (props) => {
       </Head>
       <style jsx>{`
         .page-layout {  
-          display: grid;    
-          grid-template-columns: repeat(10, [col-start] minmax(min-content, 1fr) [col-end] );
+         
         }       
         `}</style>
       {props.children}
