@@ -32,6 +32,20 @@ export enum Plans {
   None = 'none'
 }
 
+export type DepositAttributes = {
+  __typename?: 'DepositAttributes';
+  id: Scalars['ID'];
+  userId: Scalars['Int'];
+  plan?: Maybe<Scalars['String']>;
+  amount: Scalars['Int'];
+  status?: Maybe<Scalars['String']>;
+  slug?: Maybe<Scalars['String']>;
+  users: User;
+  wallet_balance: Scalars['Int'];
+  createdAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
 export type User = {
   __typename?: 'User';
   id: Scalars['ID'];
@@ -49,6 +63,7 @@ export type User = {
   auth_token?: Maybe<Scalars['String']>;
   createdAt: Scalars['DateTime'];
   updatedAt: Scalars['DateTime'];
+  deposits?: Maybe<Array<Maybe<DepositAttributes>>>;
 };
 
 export type Plan = {
@@ -63,6 +78,19 @@ export type Plan = {
   user_id: Scalars['Int'];
   createdAt: Scalars['DateTime'];
   updatedAt: Scalars['DateTime'];
+};
+
+export type UserToken = {
+  __typename?: 'UserToken';
+  auth_token?: Maybe<Scalars['String']>;
+  message: Scalars['String'];
+};
+
+export type Response = {
+  __typename?: 'Response';
+  message?: Maybe<Scalars['String']>;
+  status?: Maybe<Scalars['String']>;
+  referenceId: Scalars['String'];
 };
 
 export type Register = {
@@ -80,10 +108,14 @@ export type Login = {
   password: Scalars['String'];
 };
 
-export type UserToken = {
-  __typename?: 'UserToken';
-  auth_token?: Maybe<Scalars['String']>;
-  message: Scalars['String'];
+export type Id = {
+  id: Scalars['ID'];
+};
+
+export type DepositRequest = {
+  userId: Scalars['ID'];
+  amount: Scalars['Int'];
+  plan: Scalars['String'];
 };
 
 export type Query = {
@@ -91,6 +123,7 @@ export type Query = {
   helloWorld: Scalars['String'];
   getUser: User;
   getUsers: Array<User>;
+  getPendingDeposits?: Maybe<Array<DepositAttributes>>;
 };
 
 
@@ -102,6 +135,8 @@ export type Mutation = {
   __typename?: 'Mutation';
   register: User;
   login: User;
+  depositRequest: Response;
+  activateDeposit: Response;
 };
 
 
@@ -113,6 +148,44 @@ export type MutationRegisterArgs = {
 export type MutationLoginArgs = {
   input: Login;
 };
+
+
+export type MutationDepositRequestArgs = {
+  input: DepositRequest;
+};
+
+
+export type MutationActivateDepositArgs = {
+  input?: Maybe<Id>;
+};
+
+export type ActivateDepositMutationVariables = Exact<{
+  input?: Maybe<Id>;
+}>;
+
+
+export type ActivateDepositMutation = (
+  { __typename?: 'Mutation' }
+  & { activateDeposit: (
+    { __typename?: 'Response' }
+    & Pick<Response, 'message' | 'status'>
+  ) }
+);
+
+export type GetPendingDepositsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetPendingDepositsQuery = (
+  { __typename?: 'Query' }
+  & { getPendingDeposits?: Maybe<Array<(
+    { __typename?: 'DepositAttributes' }
+    & Pick<DepositAttributes, 'id' | 'userId' | 'slug' | 'status' | 'amount' | 'plan' | 'createdAt'>
+    & { users: (
+      { __typename?: 'User' }
+      & Pick<User, 'id' | 'email' | 'first_name'>
+    ) }
+  )>> }
+);
 
 export type LoginMutationVariables = Exact<{
   input: Login;
@@ -140,6 +213,19 @@ export type RegisterMutation = (
   ) }
 );
 
+export type DepositRequestMutationVariables = Exact<{
+  input: DepositRequest;
+}>;
+
+
+export type DepositRequestMutation = (
+  { __typename?: 'Mutation' }
+  & { depositRequest: (
+    { __typename?: 'Response' }
+    & Pick<Response, 'message' | 'status' | 'referenceId'>
+  ) }
+);
+
 export type GetUserQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -152,6 +238,82 @@ export type GetUserQuery = (
 );
 
 
+export const ActivateDepositDocument = gql`
+    mutation activateDeposit($input: Id) {
+  activateDeposit(input: $input) {
+    message
+    status
+  }
+}
+    `;
+export type ActivateDepositMutationFn = Apollo.MutationFunction<ActivateDepositMutation, ActivateDepositMutationVariables>;
+
+/**
+ * __useActivateDepositMutation__
+ *
+ * To run a mutation, you first call `useActivateDepositMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useActivateDepositMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [activateDepositMutation, { data, loading, error }] = useActivateDepositMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useActivateDepositMutation(baseOptions?: Apollo.MutationHookOptions<ActivateDepositMutation, ActivateDepositMutationVariables>) {
+        return Apollo.useMutation<ActivateDepositMutation, ActivateDepositMutationVariables>(ActivateDepositDocument, baseOptions);
+      }
+export type ActivateDepositMutationHookResult = ReturnType<typeof useActivateDepositMutation>;
+export type ActivateDepositMutationResult = Apollo.MutationResult<ActivateDepositMutation>;
+export type ActivateDepositMutationOptions = Apollo.BaseMutationOptions<ActivateDepositMutation, ActivateDepositMutationVariables>;
+export const GetPendingDepositsDocument = gql`
+    query getPendingDeposits {
+  getPendingDeposits {
+    id
+    userId
+    slug
+    status
+    amount
+    plan
+    createdAt
+    users {
+      id
+      email
+      first_name
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetPendingDepositsQuery__
+ *
+ * To run a query within a React component, call `useGetPendingDepositsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetPendingDepositsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetPendingDepositsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetPendingDepositsQuery(baseOptions?: Apollo.QueryHookOptions<GetPendingDepositsQuery, GetPendingDepositsQueryVariables>) {
+        return Apollo.useQuery<GetPendingDepositsQuery, GetPendingDepositsQueryVariables>(GetPendingDepositsDocument, baseOptions);
+      }
+export function useGetPendingDepositsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetPendingDepositsQuery, GetPendingDepositsQueryVariables>) {
+          return Apollo.useLazyQuery<GetPendingDepositsQuery, GetPendingDepositsQueryVariables>(GetPendingDepositsDocument, baseOptions);
+        }
+export type GetPendingDepositsQueryHookResult = ReturnType<typeof useGetPendingDepositsQuery>;
+export type GetPendingDepositsLazyQueryHookResult = ReturnType<typeof useGetPendingDepositsLazyQuery>;
+export type GetPendingDepositsQueryResult = Apollo.QueryResult<GetPendingDepositsQuery, GetPendingDepositsQueryVariables>;
 export const LoginDocument = gql`
     mutation login($input: Login!) {
   login(input: $input) {
@@ -244,6 +406,40 @@ export function useRegisterMutation(baseOptions?: Apollo.MutationHookOptions<Reg
 export type RegisterMutationHookResult = ReturnType<typeof useRegisterMutation>;
 export type RegisterMutationResult = Apollo.MutationResult<RegisterMutation>;
 export type RegisterMutationOptions = Apollo.BaseMutationOptions<RegisterMutation, RegisterMutationVariables>;
+export const DepositRequestDocument = gql`
+    mutation depositRequest($input: DepositRequest!) {
+  depositRequest(input: $input) {
+    message
+    status
+    referenceId
+  }
+}
+    `;
+export type DepositRequestMutationFn = Apollo.MutationFunction<DepositRequestMutation, DepositRequestMutationVariables>;
+
+/**
+ * __useDepositRequestMutation__
+ *
+ * To run a mutation, you first call `useDepositRequestMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDepositRequestMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [depositRequestMutation, { data, loading, error }] = useDepositRequestMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useDepositRequestMutation(baseOptions?: Apollo.MutationHookOptions<DepositRequestMutation, DepositRequestMutationVariables>) {
+        return Apollo.useMutation<DepositRequestMutation, DepositRequestMutationVariables>(DepositRequestDocument, baseOptions);
+      }
+export type DepositRequestMutationHookResult = ReturnType<typeof useDepositRequestMutation>;
+export type DepositRequestMutationResult = Apollo.MutationResult<DepositRequestMutation>;
+export type DepositRequestMutationOptions = Apollo.BaseMutationOptions<DepositRequestMutation, DepositRequestMutationVariables>;
 export const GetUserDocument = gql`
     query getUser {
   getUser {

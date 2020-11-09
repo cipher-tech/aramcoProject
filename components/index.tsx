@@ -11,6 +11,9 @@ import Plans from "./plans/plans";
 import StockPlans from "./stockPlans/stockPlans";
 import AdminSidebar from "./admin/sidebar/sidebar";
 import UserStatsCards from "./userStatsCards/userStatsCards";
+import ModalComponent from "./modalComponent/modalComponent";
+import MasterAdminSidebar from "./admin/sidebar/masterAdminSidebar";
+import Table from "./admin/tableComponent/table";
 
 export const Layout = PageLayout
 export const CustomFontSize = FontSize
@@ -25,3 +28,6 @@ export const Plan = Plans
 export const StockPlan = StockPlans
 export const SideBar = AdminSidebar
 export const UserStats = UserStatsCards
+export const Modal = ModalComponent
+export const MasterAdminSidenav = MasterAdminSidebar
+export const TableComponent = Table

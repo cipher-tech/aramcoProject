@@ -1,13 +1,16 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Head from 'next/head'
 import styled, { keyframes } from "styled-components";
 import { Field, Formik } from 'formik'
 import * as Yup from 'yup';
 
-import { InputErrorMessage, Plan, SideBar, StockPlan, UserStats } from "../../components/index"
+import { InputErrorMessage, Modal, Plan, SideBar, StockPlan, UserStats } from "../../components/index"
 import theme from '../../styles/theme';
-import { planInfo } from '../../components/plans/plans';
-import { sharesInfo, stockInfo } from '../../components/stockPlans/stockPlans';
+import { planInfo, IPlan } from '../../components/plans/plans';
+import { sharesInfo, stockInfo, IStockPlan } from '../../components/stockPlans/stockPlans';
+import { GetStaticProps } from 'next';
+import { useDepositRequestMutation, useGetUserQuery } from '../../generated/apolloComponent';
+import { withApollo } from '../../lib/apolloClient';
 // import { ReactComponent as Spinner } from "/images/svg/spinner.svg";
 
 const spinnerRotation = keyframes`
@@ -19,7 +22,7 @@ const spinnerRotation = keyframes`
     }
 `
 const Container = styled.div`
-    grid-column: 1/-1; /*  ${(props) => props.gridPos || "2/-1"}; */
+    grid-column: 1/-1; 
     display: ${(props) => (props.hidden ? "none" : "grid")} ;
     min-height: 100%;
     min-width: 100%;
@@ -33,6 +36,40 @@ const Container = styled.div`
     font-size: 60%;
     *{
         margin-top: 0;
+    }
+    .modal__container{
+        place-items: center;
+        background: ${theme.colorLight};
+        padding: 2rem 3rem;
+        height: max-content;
+        align-self: center;
+        color: ${theme.colorDark};
+        text-align: center;
+        position: relative;
+        border-radius: 1rem;
+        display: grid;
+        width: 90%;
+        justify-self: center;
+        
+        .close{
+            justify-self: flex-end;
+            cursor: pointer;
+        }
+        img{
+            height: 20rem;
+            width: 20rem;
+        }
+        &--text{
+            padding: 1rem;
+        }
+        &-address{
+            font-size: ${theme.font.large};
+            color: ${theme.colorSecondary};
+            width: 90%;
+            overflow-x: scroll;
+            width: 100%;
+            overflow: hidden;
+        }
     }
     .loadingSpinner{
         justify-self: center;
@@ -453,12 +490,34 @@ const Container = styled.div`
     }
 `;
 
-const Request_Deposit = () => {
+const Request_Deposit = (props) => {
     const [isSelling, setIsSelling] = useState(true);
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
+    const [isModalActive, setIsModalActive] = useState(false);
     const [message, setMessage] = useState('')
-    // const [message, setMessage] = useState('')
-    const [SelectedPlan, setSelectedPlan] = useState({name: ""})
+    const [, setIsCopied] = useState(false)
+
+    const [SelectedPlan, setSelectedPlan] = useState<IPlan | IStockPlan>({
+        name: "",
+        range: [5_000, Infinity],
+        rate: 35,
+        duration: 30
+    })
+    const { data, loading, error } = useGetUserQuery()
+    const [depositRequestMutation, { data: depositRequestMutationData , loading: depositRequestMutationLoading, error: depositRequestMutationError }] = useDepositRequestMutation()
+    // useEffect(() => {
+    //     console.log(data);
+    // }, [data])
+
+    async function copy(type) {
+        if (type === "refId") {
+            await navigator.clipboard.writeText("Copy refrenceId")
+            setIsCopied(true)
+            return
+        }
+        await navigator.clipboard.writeText("Some other text")
+        setIsCopied(true)
+    }
 
     const allPlans = [
         ...planInfo,
@@ -469,32 +528,38 @@ const Request_Deposit = () => {
         amount: Yup.number()
             .min(1, 'Too Short!')
             .max(7, 'Too Long!')
-            .required('Required'),
-        plan: Yup.string().required("Required")
+            .required('Required')
+            .lessThan(SelectedPlan.range[1] - 1, `must be less than ${SelectedPlan.range[1] - 1} `)
+            .moreThan(SelectedPlan.range[0] - 1, `must be greater than ${SelectedPlan.range[0] - 1} `),
+        // plan: Yup.string().required("Required")
     });
 
-    const handleSelect = ({target}) =>{
+    const handleSelect = ({ target }) => {
         const plan = allPlans.find(item => item.name === target.value)
         console.log(plan);
-        
-        setSelectedPlan(plan)
-    } 
-    const submit = async (inputs) => {
-        // await setMessage('')
-        // let response = await loginMutation({
-        //     variables: {
-        //         input: inputs
-        //     },
-        // })
-        // if (error) return setMessage('Something went wrong, please try again or contact admin')
-        // console.log(inputs, data, response);
-        // setMessage('login successful.')
-        // router.push("/admin")
 
+        setSelectedPlan(plan)
+    }
+    const submit = async (inputs) => {
+        await setIsLoading(true)
+        await setMessage('')
+        let response = await depositRequestMutation({
+            variables: {
+                input: {
+                    amount: inputs.amount,
+                    userId: data.getUser.id,
+                    plan: SelectedPlan.name
+                }
+            }
+        })
+        if (depositRequestMutationError) return setMessage('Something went wrong, please try again or contact admin')
+        if (!depositRequestMutationLoading) await setIsLoading(false)
+        
+        console.log(depositRequestMutationData, response);
+        setIsModalActive(true)
     }
     return (
         <>
-
             <style jsx>{`
                 .page-title{
                     font-weight:bold;
@@ -629,7 +694,7 @@ const Request_Deposit = () => {
                             ) : null} */}
                             {/* {console.log(fx.rates)} */}
                             <Container hidden={false} gridPos={'1/-1'}>
-                                {/* <Modal isActive={isModalActive}>
+                                <Modal isActive={isModalActive}>
                                     <div className="modal__container">
                                         <span
                                             role="img"
@@ -638,28 +703,28 @@ const Request_Deposit = () => {
                                             onClick={() => setIsModalActive(false)}
                                         >
                                             ❌
-                    </span>
-                                        <img src={qrcode} alt="" />
+                                        </span>
+                                        <img src="/images/qrcode.png" alt="" />
 
                                         <p className="modal__container--text">
-                                            please pay exactly ${isSelling ? dollarSellingPrice : amount} into this {isSelling ? "bitcoin address" : "account"}
+                                            please pay exactly the amount specified into this bitcoin address 
                                         </p>
 
                                         <p className="modal__container-address">
-                                            {bitcoinAddress}
-                                            <button onClick={() => copy()}> copy</button>
+                                            {"ood9euur8r90itiogig484t8pmf20"}
+                                            <button onClick={() => copy("address")}> copy</button>
                                         </p>
 
                                         <p className="modal__container--text">
                                             After successful payment contact customer care with the unique
-                        refrence_id below,and proof of payment. <br />
+                                            refrence_id below,and proof of payment. <br />
                                             <span className="modal__container-address">
-                                                {refrenceId}
+                                                {"refrenceId"}
                                                 <button onClick={() => copy("refId")}> copy</button>
                                             </span>
                                         </p>
                                     </div>
-                                </Modal> */}
+                                </Modal>
                                 {/* <div className="loadingScreen"/> */}
                                 <div className="coin">
                                     <div className="coin-options">
@@ -668,9 +733,9 @@ const Request_Deposit = () => {
                                                 <h4 className="coin-options__types--container-h4">Activate A Plan</h4>
                                             </div>
                                         </div>
-
+                                        <p>{message} </p>
                                         <p className="coin-options__buy-sell">
-                                            {!true ? null : (
+                                            {true ? null : (
                                                 <span
                                                     className={`coin-options__buy-sell--item ${isSelling ? null : " tab"
                                                         }`}
@@ -695,11 +760,11 @@ const Request_Deposit = () => {
                                         <h3 className="coin-options__header">
                                             and enter an amount to deposit
                                         </h3>
-                                       
+
                                         <Formik onSubmit={submit}
                                             initialValues={{
                                                 amount: "",
-                                                plan: "",
+                                                // plan: "",
                                             }}
                                             validationSchema={DepositSchema}>
                                             {({ handleSubmit, errors, touched }) => (
@@ -723,6 +788,14 @@ const Request_Deposit = () => {
                                                     </select>
                                                     <InputErrorMessage message={errors.plan} field={errors.plan} touched={touched.plan} />
 
+                                                    {SelectedPlan.name ?
+                                                        <p>
+                                                            <span>{SelectedPlan.name}</span> <br />
+                                                            <span>Range: {SelectedPlan.range[0]} - {SelectedPlan.range[1]}</span>
+                                                        </p>
+                                                        : null
+                                                    }
+
                                                     <div>
                                                         {/* <span>{ console.log(regionContext?.country?.symbol)}</span>  */}
                                                         <span className="coin-options__amounts">
@@ -738,7 +811,7 @@ const Request_Deposit = () => {
                                                     </div>
                                                     <button type="submit" className={`coin-options__button`}>
                                                         Continue
-                                                        {!isLoading ? <img src="/images/svg/spinner.svg" className="loadingSpinner" /> : null}
+                                                        {isLoading ? <img src="/images/svg/spinner.svg" className="loadingSpinner" /> : null}
                                                     </button>
                                                 </form>
                                             )}
@@ -769,4 +842,5 @@ const Request_Deposit = () => {
     )
 }
 
-export default Request_Deposit
+export default withApollo({ ssr: true })(Request_Deposit)
+

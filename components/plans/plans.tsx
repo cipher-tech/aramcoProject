@@ -45,9 +45,10 @@ const Container = styled.div`
 export interface IPlan {
     name: string
     range: [number, number]
-    rate: number
-    duration: number
+    rate?: number
+    duration?: number
     recommended?: boolean
+    text?: string
 }
 export const planInfo: Array<IPlan> = [
     {

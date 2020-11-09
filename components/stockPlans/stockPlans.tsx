@@ -42,14 +42,16 @@ const Container = styled.div`
         color: #29303b; 
     }
 `
-export interface IPlan {
+export interface IStockPlan {
     name: string
     range?: [number, number]
     recommended?: boolean
     type?: string
     text?: string
+    rate?: number
+    duration?: number
 }
-export const stockInfo: Array<IPlan> = [
+export const stockInfo: Array<IStockPlan> = [
     {
         name: "large cap stock",
         range: [1_000_000, Infinity],
@@ -78,7 +80,7 @@ export const stockInfo: Array<IPlan> = [
     },
 ]
 
-export const sharesInfo: Array<IPlan> = [
+export const sharesInfo: Array<IStockPlan> = [
     {
         name: "redeemable shares",
         range: [100_000, Infinity],
@@ -105,7 +107,7 @@ const StockPlans = (props) => {
             <div className="pricing-plans-container">
 
                 {/* <!-- Plan --> */}
-                {stockInfo.map((item: IPlan, index) => (
+                {stockInfo.map((item: IStockPlan, index) => (
                     <PlanCard key={index} info={item} />
                 )
                 )}
@@ -118,7 +120,7 @@ const StockPlans = (props) => {
             <div className="pricing-plans-container">
 
                 {/* <!-- Plan --> */}
-                {sharesInfo.map((item: IPlan, index) => (
+                {sharesInfo.map((item: IStockPlan, index) => (
                     <PlanCard key={index} info={item} />
                 )
                 )}
