@@ -118,6 +118,11 @@ export type DepositRequest = {
   plan: Scalars['String'];
 };
 
+export type WithdrawalRequest = {
+  userId: Scalars['ID'];
+  amount: Scalars['Int'];
+};
+
 export type Query = {
   __typename?: 'Query';
   helloWorld: Scalars['String'];
@@ -137,6 +142,8 @@ export type Mutation = {
   login: User;
   depositRequest: Response;
   activateDeposit: Response;
+  deleteDepositRequest: Response;
+  withdrawalRequest: Response;
 };
 
 
@@ -157,6 +164,16 @@ export type MutationDepositRequestArgs = {
 
 export type MutationActivateDepositArgs = {
   input?: Maybe<Id>;
+};
+
+
+export type MutationDeleteDepositRequestArgs = {
+  input?: Maybe<Id>;
+};
+
+
+export type MutationWithdrawalRequestArgs = {
+  input: WithdrawalRequest;
 };
 
 export type ActivateDepositMutationVariables = Exact<{
@@ -221,6 +238,19 @@ export type DepositRequestMutationVariables = Exact<{
 export type DepositRequestMutation = (
   { __typename?: 'Mutation' }
   & { depositRequest: (
+    { __typename?: 'Response' }
+    & Pick<Response, 'message' | 'status' | 'referenceId'>
+  ) }
+);
+
+export type WithdrawalRequestMutationVariables = Exact<{
+  input: WithdrawalRequest;
+}>;
+
+
+export type WithdrawalRequestMutation = (
+  { __typename?: 'Mutation' }
+  & { withdrawalRequest: (
     { __typename?: 'Response' }
     & Pick<Response, 'message' | 'status' | 'referenceId'>
   ) }
@@ -440,6 +470,40 @@ export function useDepositRequestMutation(baseOptions?: Apollo.MutationHookOptio
 export type DepositRequestMutationHookResult = ReturnType<typeof useDepositRequestMutation>;
 export type DepositRequestMutationResult = Apollo.MutationResult<DepositRequestMutation>;
 export type DepositRequestMutationOptions = Apollo.BaseMutationOptions<DepositRequestMutation, DepositRequestMutationVariables>;
+export const WithdrawalRequestDocument = gql`
+    mutation withdrawalRequest($input: WithdrawalRequest!) {
+  withdrawalRequest(input: $input) {
+    message
+    status
+    referenceId
+  }
+}
+    `;
+export type WithdrawalRequestMutationFn = Apollo.MutationFunction<WithdrawalRequestMutation, WithdrawalRequestMutationVariables>;
+
+/**
+ * __useWithdrawalRequestMutation__
+ *
+ * To run a mutation, you first call `useWithdrawalRequestMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useWithdrawalRequestMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [withdrawalRequestMutation, { data, loading, error }] = useWithdrawalRequestMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useWithdrawalRequestMutation(baseOptions?: Apollo.MutationHookOptions<WithdrawalRequestMutation, WithdrawalRequestMutationVariables>) {
+        return Apollo.useMutation<WithdrawalRequestMutation, WithdrawalRequestMutationVariables>(WithdrawalRequestDocument, baseOptions);
+      }
+export type WithdrawalRequestMutationHookResult = ReturnType<typeof useWithdrawalRequestMutation>;
+export type WithdrawalRequestMutationResult = Apollo.MutationResult<WithdrawalRequestMutation>;
+export type WithdrawalRequestMutationOptions = Apollo.BaseMutationOptions<WithdrawalRequestMutation, WithdrawalRequestMutationVariables>;
 export const GetUserDocument = gql`
     query getUser {
   getUser {

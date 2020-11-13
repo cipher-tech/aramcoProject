@@ -6,11 +6,8 @@ import * as Yup from 'yup';
 
 import { InputErrorMessage, Modal, Plan, SideBar, StockPlan, UserStats } from "../../components/index"
 import theme from '../../styles/theme';
-import { planInfo, IPlan } from '../../components/plans/plans';
-import { sharesInfo, stockInfo, IStockPlan } from '../../components/stockPlans/stockPlans';
-import { GetStaticProps } from 'next';
-import { useDepositRequestMutation, useGetUserQuery } from '../../generated/apolloComponent';
 import { withApollo } from '../../lib/apolloClient';
+import { useWithdrawalRequestMutation } from '../../generated/apolloComponent';
 // import { ReactComponent as Spinner } from "/images/svg/spinner.svg";
 
 const spinnerRotation = keyframes`
@@ -496,6 +493,7 @@ const Request_Deposit = (props) => {
     const [isModalActive, setIsModalActive] = useState(false);
     const [message, setMessage] = useState('')
     const [, setIsCopied] = useState(false)
+    const [withdrawalRequestMutation, { data, loading, error }] = useWithdrawalRequestMutation()
     // useEffect(() => {
     //     console.log(data);
     // }, [data])
@@ -511,28 +509,30 @@ const Request_Deposit = (props) => {
     }
     const withdrawalSchema = Yup.object().shape({
         amount: Yup.number()
-            .min(1, 'Too Short!')
-            .max(6, 'Too Long!')
             .required('Required')
     });
 
     const submit = async (inputs) => {
         await setIsLoading(true)
         await setMessage('')
-        // let response = await depositRequestMutation({
-        //     variables: {
-        //         input: {
-        //             amount: inputs.amount,
-        //             userId: data.getUser.id,
-        //             plan: SelectedPlan.name
-        //         }
-        //     }
-        // })
-        // if (depositRequestMutationError) return setMessage('Something went wrong, please try again or contact admin')
-        // if (!depositRequestMutationLoading) await setIsLoading(false)
-
-        console.log(inputs);
-        // setIsModalActive(true)
+        withdrawalRequestMutation({
+            variables: {
+                input: {
+                    amount: inputs.amount,
+                    userId: "id",
+                }
+            }
+        })
+        .then(async response => {
+            if (error) return setMessage('Something went wrong, please try again or contact admin')
+            if (!loading) await setIsLoading(false)
+    
+            console.log({response, data});
+            setIsModalActive(true)
+        })
+        .catch( async err => {
+            await setMessage('Something went wrong, please try again or contact admin')
+        })
     }
     return (
         <>
@@ -668,7 +668,6 @@ const Request_Deposit = (props) => {
                                     <span onClick={() => setShowPopUpMessage(false)}>✖</span>{" "}
                                 </PopUpMessage>
                             ) : null} */}
-                            {/* {console.log(fx.rates)} */}
                             <Container hidden={false} gridPos={'1/-1'}>
                                 <Modal isActive={isModalActive}>
                                     <div className="modal__container">
@@ -683,21 +682,16 @@ const Request_Deposit = (props) => {
                                         <img src="/images/qrcode.png" alt="" />
 
                                         <p className="modal__container--text">
-                                            please pay exactly the amount specified into this bitcoin address
+                                            Withdrawal request placed Successfully 
                                         </p>
 
                                         <p className="modal__container-address">
-                                            {"ood9euur8r90itiogig484t8pmf20"}
+                                            Refrence ID : {"ood9euur8r90itiogig484t8pmf20"}
                                             <button onClick={() => copy("address")}> copy</button>
                                         </p>
 
                                         <p className="modal__container--text">
-                                            After successful payment contact customer care with the unique
-                                            refrence_id below,and proof of payment. <br />
-                                            <span className="modal__container-address">
-                                                {"refrenceId"}
-                                                <button onClick={() => copy("refId")}> copy</button>
-                                            </span>
+                                            Payment will be made to your bitcoin address with in the next 3 working days. <br />
                                         </p>
                                     </div>
                                 </Modal>
