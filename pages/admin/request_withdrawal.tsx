@@ -105,6 +105,7 @@ const Container = styled.div`
         }
         &--text{
             padding: 1rem;
+            font-size: ${theme.font.xsmall};
         }
         &-address{
             font-size: ${theme.font.medium};
@@ -493,6 +494,7 @@ const Request_Deposit = (props) => {
     const [isModalActive, setIsModalActive] = useState(false);
     const [message, setMessage] = useState('')
     const [, setIsCopied] = useState(false)
+    const [refId, setRefId] = useState('')
     const [withdrawalRequestMutation, { data, loading, error }] = useWithdrawalRequestMutation()
     // useEffect(() => {
     //     console.log(data);
@@ -531,6 +533,7 @@ const Request_Deposit = (props) => {
             setIsModalActive(true)
         })
         .catch( async err => {
+            await setIsLoading(false)
             await setMessage('Something went wrong, please try again or contact admin')
         })
     }
@@ -686,7 +689,7 @@ const Request_Deposit = (props) => {
                                         </p>
 
                                         <p className="modal__container-address">
-                                            Refrence ID : {"ood9euur8r90itiogig484t8pmf20"}
+                                            Refrence ID : {data?.withdrawalRequest?.referenceId}
                                             <button onClick={() => copy("address")}> copy</button>
                                         </p>
 
