@@ -14,7 +14,7 @@ const AdminSidebar = () => {
 
 
                         <li className="nav-item start">
-                            <a href="admin-dashboard.html" className="nav-link ">
+                            <a href="/admin" className="nav-link ">
                                 <i className="icon-home"></i><span className="title">Dashboard</span>
                             </a>
                         </li>
@@ -24,7 +24,7 @@ const AdminSidebar = () => {
                                 <span className="title">Deposit</span><span className="arrow"></span></a>
                             <ul className="sub-menu">
                                 <li className="nav-item">
-                                    <a href="https://coinforest.net/admin/manual-method" className="nav-link nav-toggle"><i className="fa fa-plus"></i>
+                                    <a href="/admin/request_Deposit" className="nav-link nav-toggle"><i className="fa fa-plus"></i>
                                         <span className="title">Request Deposit</span></a>
                                 </li>
 
@@ -44,8 +44,8 @@ const AdminSidebar = () => {
                                 <span className="title">Withdrawal</span><span className="arrow"></span></a>
                             <ul className="sub-menu">
                                 <li className="nav-item">
-                                    <a href="admin/withdraw-confirm-show.html" className="nav-link nav-toggle"><i className="fa fa-check"></i>
-                                        <span className="title">Completed Withdraw</span></a>
+                                    <a href="/admin/request_withdrawal" className="nav-link nav-toggle"><i className="fa fa-check"></i>
+                                        <span className="title">Request Withdraw</span></a>
                                 </li>
                                 <li className="nav-item">
                                     <a href="admin/withdraw-pending.html" className="nav-link nav-toggle"><i className="fa fa-spinner"></i>

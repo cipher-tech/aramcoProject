@@ -40,7 +40,7 @@ const UserStatsCards = () => {
                                                 </div>
                                                 <div className="details">
                                                     <div className="number">
-                                                        $ <span data-counter="counterup" data-value="3050">0</span>
+                                                        $ <span data-counter="counterup" data-value="0">0</span>
                                                     </div>
                                                     <div className="desc  bold uppercase "> Total Earnings </div>
                                                 </div>
@@ -55,7 +55,7 @@ const UserStatsCards = () => {
                                                 </div>
                                                 <div className="details">
                                                     <div className="number">
-                                                        $  <span data-counter="counterup" data-value="926579">0</span>
+                                                        $  <span data-counter="counterup" data-value="0">0</span>
                                                     </div>
                                                     <div className="desc  bold uppercase"> Total Deposit </div>
                                                 </div>
@@ -70,7 +70,7 @@ const UserStatsCards = () => {
                                                 </div>
                                                 <div className="details">
                                                     <div className="number">
-                                                        $ <span data-counter="counterup" data-value="330702">0</span>
+                                                        $ <span data-counter="counterup" data-value="0">0</span>
                                                     </div>
                                                     <div className="desc bold uppercase"> Total Withdraw </div>
                                                 </div>

@@ -30,9 +30,11 @@ const index = () => {
 
         setMessage(ActivateDepositMutationError? "Could not activate deposit" : "Deposit Activated. Plan started")
         await refetchPendingDeposits()
+        console.log("pending");
+        
     }
     const deleteDeposit = (id) => {
-
+        
     }
 
     return (
