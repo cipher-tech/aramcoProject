@@ -8,12 +8,14 @@ import { withApollo } from '../../lib/apolloClient';
 const index = () => {
     const {data, loading, error, networkStatus} = useGetUserQuery()
 
-    useEffect(() => {
-        console.log(data, "network stats>>>", networkStatus);
+    // useEffect(() => {
+    //     console.log(data, "network stats>>>", networkStatus);
         
-    }, [data, networkStatus])
+    // }, [data, networkStatus])
 
-    
+    if(error){
+        return "loading"
+    }
     
     return (
         <>
@@ -69,22 +71,22 @@ const index = () => {
 
                 <link rel="shortcut icon" href="/admin/assets/images/favicon.png" />
 
-                <script async src="/admin/assets/admin/js/jquery.counterup.min.js" type="text/javascript"></script>
-                <script async src="/admin/assets/admin/js/demo.min.js" type="text/javascript"></script>
-                <script async src="/admin/assets/admin/js/jquery.min.js" type="text/javascript"></script>
-                <script async src="/admin/assets/admin/js/bootstrap.min.js" type="text/javascript"></script>
-                <script async src="/admin/assets/admin/js/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
-                <script async src="/admin/assets/admin/js/jquery.slimscroll.min.js" type="text/javascript"></script>
-                <script async src="/admin/assets/admin/js/jquery.blockui.min.js" type="text/javascript"></script>
-                <script async src="/admin/assets/admin/js/app.min.js" type="text/javascript"></script>
-                <script async src="/admin/assets/admin/js/quick-sidebar.min.js" type="text/javascript"></script>
-                <script async src="/admin/assets/admin/js/layout.min.js" type="text/javascript"></script>
-                <script async src="/admin/assets/admin/js/datatable.js" type="text/javascript"></script>
-                <script async src="/admin/assets/admin/js/datatables.min.js" type="text/javascript"></script>
-                <script async src="/admin/assets/admin/js/datatables.bootstrap.js" type="text/javascript"></script>
-                <script async src="/admin/assets/admin/js/table-datatables-buttons.min.js" type="text/javascript"></script>
-                <script async src="/admin/assets/admin/js/sweetalert.min.js"></script>
-                <script async src="/admin/assets/admin/js/jquery.waypoints.min.js" type="text/javascript"></script>
+                <script defer src="/admin/assets/admin/js/jquery.counterup.min.js" type="text/javascript"></script>
+                <script defer src="/admin/assets/admin/js/demo.min.js" type="text/javascript"></script>
+                <script defer src="/admin/assets/admin/js/jquery.min.js" type="text/javascript"></script>
+                <script defer src="/admin/assets/admin/js/bootstrap.min.js" type="text/javascript"></script>
+                <script defer src="/admin/assets/admin/js/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+                <script defer src="/admin/assets/admin/js/jquery.slimscroll.min.js" type="text/javascript"></script>
+                <script defer src="/admin/assets/admin/js/jquery.blockui.min.js" type="text/javascript"></script>
+                <script defer src="/admin/assets/admin/js/app.min.js" type="text/javascript"></script>
+                <script defer src="/admin/assets/admin/js/quick-sidebar.min.js" type="text/javascript"></script>
+                <script defer src="/admin/assets/admin/js/layout.min.js" type="text/javascript"></script>
+                <script defer src="/admin/assets/admin/js/datatable.js" type="text/javascript"></script>
+                <script defer src="/admin/assets/admin/js/datatables.min.js" type="text/javascript"></script>
+                <script defer src="/admin/assets/admin/js/datatables.bootstrap.js" type="text/javascript"></script>
+                <script defer src="/admin/assets/admin/js/table-datatables-buttons.min.js" type="text/javascript"></script>
+                <script defer src="/admin/assets/admin/js/sweetalert.min.js"></script>
+                <script defer src="/admin/assets/admin/js/jquery.waypoints.min.js" type="text/javascript"></script>
             </Head>
 
             <body className="page-header-fixed page-sidebar-closed-hide-logo">
@@ -115,7 +117,7 @@ const index = () => {
                                     <a href="javascript:;" className="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
 
 
-                                        <span className="username"> Welcome, thesoftking </span>
+                                        <span className="username">  </span>
                                         <i className="fa fa-angle-down"></i>
                                     </a>
                                     <ul className="dropdown-menu dropdown-menu-default">
@@ -189,7 +191,7 @@ const index = () => {
                                                                 </div>
                                                                 <div className="details">
                                                                     <div className="number">
-                                                                        $ <span data-counter="counterup" data-value="3050">0</span>
+                                                                        $ <span data-counter="counterup" data-value="0">0</span>
                                                                     </div>
                                                                     <div className="desc  bold uppercase "> Total Earnings </div>
                                                                 </div>
@@ -204,7 +206,7 @@ const index = () => {
                                                                 </div>
                                                                 <div className="details">
                                                                     <div className="number">
-                                                                        $  <span data-counter="counterup" data-value="926579">0</span>
+                                                                        $  <span data-counter="counterup" data-value="0">0</span>
                                                                     </div>
                                                                     <div className="desc  bold uppercase"> Total Deposit </div>
                                                                 </div>
@@ -219,7 +221,7 @@ const index = () => {
                                                                 </div>
                                                                 <div className="details">
                                                                     <div className="number">
-                                                                        $ <span data-counter="counterup" data-value="330702">0</span>
+                                                                        $ <span data-counter="counterup" data-value="0">0</span>
                                                                     </div>
                                                                     <div className="desc bold uppercase"> Total Withdraw </div>
                                                                 </div>

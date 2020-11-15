@@ -14,6 +14,8 @@ import UserStatsCards from "./userStatsCards/userStatsCards";
 import ModalComponent from "./modalComponent/modalComponent";
 import MasterAdminSidebar from "./admin/sidebar/masterAdminSidebar";
 import Table from "./admin/tableComponent/table";
+import ProductCard from "./productCard/productCard";
+import AdminHeader from "./adminHeader/adminHeader";
 
 export const Layout = PageLayout
 export const CustomFontSize = FontSize
@@ -31,3 +33,5 @@ export const UserStats = UserStatsCards
 export const Modal = ModalComponent
 export const MasterAdminSidenav = MasterAdminSidebar
 export const TableComponent = Table
+export const Card = ProductCard
+export const UserAdminHeader = AdminHeader

@@ -31,6 +31,7 @@ const Values = () => {
                             display: flex;
                             /* max-width: 45rem; */
                             flex-direction: column;
+                            justify-content: space-between;
                             &__img{
                                 height: 24rem;
                                 max-width: 45rem;
@@ -67,7 +68,7 @@ const Values = () => {
                 `}</style>
                 <div className="main">
                     <NavBar />
-                    <Head header="Creating value" title="Products" image="/images/headerImage.jpg"
+                    <Head header="Creating value" title="Products" image="/images/headerImg.jpg"
                         text="Our diverse and expanding range of products create value." />
                 </div>
                 <Text text={`From transportation fuels to advanced materials, our diverse and expanding range of
@@ -77,33 +78,33 @@ const Values = () => {
                     <div className="product-container">
                         <div className="product-item">
                             <div className="product-item__img">
-                                <img src="/images/moreInfo-2.jpg" alt="product img" className="" />
+                                <img src="/images/oil.jpg" alt="product img" className="" />
                             </div>
                             <p className="product-item__text">
                                 We have built a reputation for unmatched reliability
                                 in supplying crude oil to energy markets around the world.
                             </p>
-                            <button className="product-item__btn">READ More</button>
+                            <button className="product-item__btn">Read More</button>
                         </div>
                         <div className="product-item">
                             <div className="product-item__img">
-                                <img src="/images/moreInfo-2.jpg" alt="product img" className="" />
+                                <img src="/images/productImg2.jpg" alt="product img" className="" />
                             </div>
                             <p className="product-item__text">
-                                We have built a reputation for unmatched reliability
-                                in supplying crude oil to energy markets around the world.
+                                We're the sole supplier of natural gas to Saudi Arabia,
+                                the seventh largest natural gas market in the world.
                         </p>
-                            <button className="product-item__btn">READ More</button>
+                            <button className="product-item__btn">Read More</button>
                         </div>
                         <div className="product-item">
                             <div className="product-item__img">
-                                <img src="/images/moreInfo-2.jpg" alt="product img" className="" />
+                                <img src="/images/productImg3.jpg" alt="product img" className="" />
                             </div>
                             <p className="product-item__text">
-                                We have built a reputation for unmatched reliability
-                                in supplying crude oil to energy markets around the world.
+                                We are a preeminent player in the global petrochemicals industry, committed to innovation, growth,
+                                and realizing the full potential of every hydrocarbon molecule that we produce.
                         </p>
-                            <button className="product-item__btn">READ More</button>
+                            <button className="product-item__btn">Read More</button>
                         </div>
                     </div>
                 </div>

@@ -70,7 +70,7 @@ const MasterAdminSidebar = () => {
                                     <a href="admin/show-block-user.html" className="nav-link nav-toggle"><i className="fa fa-user-times"></i>
                                         <span className="title">Block Users</span></a>
                                 </li>
-                                <li className="nav-item">
+                                {/* <li className="nav-item">
                                     <a href="admin/all-verify-user.html" className="nav-link nav-toggle"><i className="fa fa-check"></i>
                                         <span className="title">Verified Users</span></a>
                                 </li>
@@ -81,7 +81,7 @@ const MasterAdminSidebar = () => {
                                 <li className="nav-item">
                                     <a href="admin/email-unverified-user.html" className="nav-link nav-toggle"><i className="fa fa-envelope-open"></i>
                                         <span className="title">Email Unverified</span></a>
-                                </li>
+                                </li> */}
                             </ul>
                         </li>
 

@@ -36,10 +36,13 @@ const index = () => {
     const deleteDeposit = (id) => {
         
     }
+    if(error || ActivateDepositMutationError || userHasError || userIsLoading || depositsIsLoading || ActivateDepositMutationLoading){
+        return "loading"
+    }
 
     return (
         <>
-            <style jsx>{`
+            <style jsx>{` 
                 .page-title{
                     font-weight:bold;
                     text-transform: uppercase;
@@ -98,12 +101,12 @@ const index = () => {
                 <script async src="/admin/assets/admin/js/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
                 <script async src="/admin/assets/admin/js/jquery.slimscroll.min.js" type="text/javascript"></script>
                 <script async src="/admin/assets/admin/js/jquery.blockui.min.js" type="text/javascript"></script>
+                <script  src="/admin/assets/admin/js/datatables.bootstrap.js" type="text/javascript"></script>
                 <script async src="/admin/assets/admin/js/app.min.js" type="text/javascript"></script>
                 <script async src="/admin/assets/admin/js/quick-sidebar.min.js" type="text/javascript"></script>
                 <script async src="/admin/assets/admin/js/layout.min.js" type="text/javascript"></script>
-                <script async src="/admin/assets/admin/js/datatable.js" type="text/javascript"></script>
-                <script async src="/admin/assets/admin/js/datatables.min.js" type="text/javascript"></script>
-                <script async src="/admin/assets/admin/js/datatables.bootstrap.js" type="text/javascript"></script>
+                <script defer src="/admin/assets/admin/js/datatable.js" type="text/javascript"></script>
+                <script defer src="/admin/assets/admin/js/datatables.min.js" type="text/javascript"></script>
                 <script async src="/admin/assets/admin/js/table-datatables-buttons.min.js" type="text/javascript"></script>
                 <script async src="/admin/assets/admin/js/sweetalert.min.js"></script>
                 <script async src="/admin/assets/admin/js/jquery.waypoints.min.js" type="text/javascript"></script>
@@ -258,7 +261,7 @@ const index = () => {
                                     :
                                     <TableComponent title="Deposit Request"
                                         headers={[ "userId","email", "slug", " status ", "amount", "plan", "createdAt"]}
-                                        body={pendingDeposits.getPendingDeposits} 
+                                        body={pendingDeposits.getPendingDeposits || [{}]} 
                                         keys={[ "userId","slug","status","amount","plan","createdAt","users"]}
                                         nestedKeys={['email']} 
                                         buttonAction={[activateDeposit, deleteDeposit]}/>

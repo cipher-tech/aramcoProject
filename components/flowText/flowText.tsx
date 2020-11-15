@@ -6,12 +6,12 @@ function FlowText({text}) {
         <>
             <style jsx>{`
                 .main-Text{
-                    grid-column: 2/10;
+                    grid-column: 1/-1;
                     text-align: center;
                     width: 90%;
                     align-self: center;
                     justify-self: center;
-                    font-size: ${theme.font.medium};
+                    font-size: ${theme.font.small};
                     padding: 6.5rem 1rem;
                     color: ${theme.colorGrey};
                     font-weight: 100;

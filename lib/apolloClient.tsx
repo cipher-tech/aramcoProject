@@ -3,6 +3,7 @@ import App from 'next/app';
 import Head from 'next/head';
 import { ApolloProvider } from '@apollo/react-hooks';
 import createApolloClient from '../apolloClient';
+import redirect from './redirect';
 
 // On the client, we store the Apollo Client in the following variable.
 // This prevents the client from reinitializing between page transitions.
@@ -153,6 +154,9 @@ export const withApollo = ({ ssr = false } = {}) => (PageComponent) => {
                         // Handle them in components via the data.error prop:
                         // https://www.apollographql.com/docs/react/api/react-apollo.html#graphql-query-data-error
                         console.error('Error while running `getDataFromTree`', error);
+                        if (error.message.includes("Not Authorized")){
+                            redirect(ctx.ctx, "/login")
+                        }
                     }
 
                     // getDataFromTree does not call componentWillUnmount

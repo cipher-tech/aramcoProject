@@ -23,11 +23,18 @@ const Nav = () => {
                     &-list{
                         display: flex;
                         &__item{
+                            display: flex;
+                            align-items: center;
                             color: ${theme.colorPrimary};
-                            padding: 1.5rem 2rem;
+                            padding: .5rem 2rem;
                             list-style-type: none;
                             font-size: ${theme.font.xxsmall};
                             cursor: pointer;
+                            transition: all 1s .1s ease-in-out;
+                            &:hover{
+                                transition: all 1s .1s ease-in-out;
+                                border-bottom: solid thin ${theme.colorPrimary};
+                            }
                         }
                     }
                 }  
@@ -35,11 +42,19 @@ const Nav = () => {
             <nav className="navbar">
                 <img className="navbar-logo" src="/images/logo.png" alt="logo" />
                 <ul className="navbar-list">
-                    <li className="navbar-list__item">Who we are</li>
-                    <li className="navbar-list__item">Creating value</li>
-                    <li className="navbar-list__item">Making a difference</li>
-                    <li className="navbar-list__item">Partnering with us</li>
-                    <li className="navbar-list__item">Investors</li>
+                    <li className="navbar-list__item">
+                        <a href="/overview">Who we are</a>
+                    </li>
+                    <li className="navbar-list__item">
+                        <a href="/values">Creating value</a>
+                    </li>
+                    {/* <li className="navbar-list__item">Making a difference</li> */}
+                    <li className="navbar-list__item">
+                        <a href="/plans/products">Partnering with us</a>
+                    </li>
+                    <li className="navbar-list__item">
+                        <a href="/investors">Investors</a>
+                    </li>
                 </ul>
                 <ul className="navbar-list">
                     <li className="navbar-list__item">

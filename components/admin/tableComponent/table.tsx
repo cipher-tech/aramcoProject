@@ -63,16 +63,27 @@ const Table = ({ headers, body, buttonAction, title, nestedKeys, keys }: ITableP
                                                         })
 
                                                     }
-                                                    <td>
-                                                        <button type="button" 
-                                                        className="btn btn-primary bold uppercase btn-sm block_button" 
-                                                        data-toggle="modal1" data-target="#blockModal" 
-                                                        data-id="622"
-                                                        onClick={() => buttonAction[0](item)}>
-                                                            <i className='fa fa-times'></i> Activate
-                                                        </button>
-                                                        <a href="https://coinforest.net/admin/user-details/622" className="btn  bold uppercase btn-danger btn-sm"><i className="fa fa-eye"></i> delete</a>
-                                                    </td>
+                                                    { buttonAction ?
+                                                        <td>
+                                                            <button type="button"
+                                                                className="btn btn-primary bold uppercase btn-sm block_button"
+                                                                data-toggle="modal1" data-target="#blockModal"
+                                                                data-id="622"
+                                                                onClick={() => buttonAction[0](item)}>
+                                                                <i className='fa fa-eye'></i> Activate
+                                                            </button>
+
+                                                            <button type="button"
+                                                                className="btn  bold uppercase btn-danger btn-sm"
+                                                                data-toggle="modal1" data-target="#blockModal"
+                                                                data-id="622"
+                                                                onClick={() => buttonAction[1](item)}>
+                                                                <i className='fa fa-times'></i> delete
+                                                            </button>
+                                                        </td>
+                                                        :
+                                                        null
+                                                    }
                                                 </tr>
                                             ))
                                         }

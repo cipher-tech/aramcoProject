@@ -128,7 +128,12 @@ export type Query = {
   helloWorld: Scalars['String'];
   getUser: User;
   getUsers: Array<User>;
+  getUserPendingDeposits?: Maybe<Array<DepositAttributes>>;
+  getUserDeposits?: Maybe<Array<DepositAttributes>>;
   getPendingDeposits?: Maybe<Array<DepositAttributes>>;
+  getUserPendingWithdrawals?: Maybe<Array<DepositAttributes>>;
+  getUserWithdrawals?: Maybe<Array<DepositAttributes>>;
+  getPendingWithdrawals?: Maybe<Array<DepositAttributes>>;
 };
 
 
@@ -144,6 +149,8 @@ export type Mutation = {
   activateDeposit: Response;
   deleteDepositRequest: Response;
   withdrawalRequest: Response;
+  activateWithdrawal: Response;
+  deleteWithdrawalRequest: Response;
 };
 
 
@@ -176,6 +183,16 @@ export type MutationWithdrawalRequestArgs = {
   input: WithdrawalRequest;
 };
 
+
+export type MutationActivateWithdrawalArgs = {
+  input?: Maybe<Id>;
+};
+
+
+export type MutationDeleteWithdrawalRequestArgs = {
+  input?: Maybe<Id>;
+};
+
 export type ActivateDepositMutationVariables = Exact<{
   input?: Maybe<Id>;
 }>;
@@ -189,6 +206,45 @@ export type ActivateDepositMutation = (
   ) }
 );
 
+export type ActivateWithdrawalMutationVariables = Exact<{
+  input?: Maybe<Id>;
+}>;
+
+
+export type ActivateWithdrawalMutation = (
+  { __typename?: 'Mutation' }
+  & { activateWithdrawal: (
+    { __typename?: 'Response' }
+    & Pick<Response, 'message' | 'status'>
+  ) }
+);
+
+export type DeleteDepositRequestMutationVariables = Exact<{
+  input?: Maybe<Id>;
+}>;
+
+
+export type DeleteDepositRequestMutation = (
+  { __typename?: 'Mutation' }
+  & { deleteDepositRequest: (
+    { __typename?: 'Response' }
+    & Pick<Response, 'message' | 'status'>
+  ) }
+);
+
+export type DeleteWithdrawalRequestMutationVariables = Exact<{
+  input?: Maybe<Id>;
+}>;
+
+
+export type DeleteWithdrawalRequestMutation = (
+  { __typename?: 'Mutation' }
+  & { deleteWithdrawalRequest: (
+    { __typename?: 'Response' }
+    & Pick<Response, 'message' | 'status'>
+  ) }
+);
+
 export type GetPendingDepositsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -197,6 +253,21 @@ export type GetPendingDepositsQuery = (
   & { getPendingDeposits?: Maybe<Array<(
     { __typename?: 'DepositAttributes' }
     & Pick<DepositAttributes, 'id' | 'userId' | 'slug' | 'status' | 'amount' | 'plan' | 'createdAt'>
+    & { users: (
+      { __typename?: 'User' }
+      & Pick<User, 'id' | 'email' | 'first_name'>
+    ) }
+  )>> }
+);
+
+export type GetPendingWithdrawalsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetPendingWithdrawalsQuery = (
+  { __typename?: 'Query' }
+  & { getPendingWithdrawals?: Maybe<Array<(
+    { __typename?: 'DepositAttributes' }
+    & Pick<DepositAttributes, 'id' | 'userId' | 'slug' | 'status' | 'amount' | 'createdAt'>
     & { users: (
       { __typename?: 'User' }
       & Pick<User, 'id' | 'email' | 'first_name'>
@@ -267,6 +338,50 @@ export type GetUserQuery = (
   ) }
 );
 
+export type GetUserDepositsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetUserDepositsQuery = (
+  { __typename?: 'Query' }
+  & { getUserDeposits?: Maybe<Array<(
+    { __typename?: 'DepositAttributes' }
+    & Pick<DepositAttributes, 'id' | 'userId' | 'slug' | 'status' | 'amount' | 'plan' | 'createdAt'>
+  )>> }
+);
+
+export type GetUserPendingDepositsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetUserPendingDepositsQuery = (
+  { __typename?: 'Query' }
+  & { getUserPendingDeposits?: Maybe<Array<(
+    { __typename?: 'DepositAttributes' }
+    & Pick<DepositAttributes, 'id' | 'userId' | 'slug' | 'status' | 'amount' | 'plan' | 'createdAt'>
+  )>> }
+);
+
+export type GetUserPendingWithdrawalsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetUserPendingWithdrawalsQuery = (
+  { __typename?: 'Query' }
+  & { getUserPendingWithdrawals?: Maybe<Array<(
+    { __typename?: 'DepositAttributes' }
+    & Pick<DepositAttributes, 'id' | 'userId' | 'slug' | 'status' | 'amount' | 'plan' | 'createdAt'>
+  )>> }
+);
+
+export type GetUserWithdrawalsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetUserWithdrawalsQuery = (
+  { __typename?: 'Query' }
+  & { getUserWithdrawals?: Maybe<Array<(
+    { __typename?: 'DepositAttributes' }
+    & Pick<DepositAttributes, 'id' | 'userId' | 'slug' | 'status' | 'amount' | 'plan' | 'createdAt'>
+  )>> }
+);
+
 
 export const ActivateDepositDocument = gql`
     mutation activateDeposit($input: Id) {
@@ -301,6 +416,105 @@ export function useActivateDepositMutation(baseOptions?: Apollo.MutationHookOpti
 export type ActivateDepositMutationHookResult = ReturnType<typeof useActivateDepositMutation>;
 export type ActivateDepositMutationResult = Apollo.MutationResult<ActivateDepositMutation>;
 export type ActivateDepositMutationOptions = Apollo.BaseMutationOptions<ActivateDepositMutation, ActivateDepositMutationVariables>;
+export const ActivateWithdrawalDocument = gql`
+    mutation activateWithdrawal($input: Id) {
+  activateWithdrawal(input: $input) {
+    message
+    status
+  }
+}
+    `;
+export type ActivateWithdrawalMutationFn = Apollo.MutationFunction<ActivateWithdrawalMutation, ActivateWithdrawalMutationVariables>;
+
+/**
+ * __useActivateWithdrawalMutation__
+ *
+ * To run a mutation, you first call `useActivateWithdrawalMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useActivateWithdrawalMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [activateWithdrawalMutation, { data, loading, error }] = useActivateWithdrawalMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useActivateWithdrawalMutation(baseOptions?: Apollo.MutationHookOptions<ActivateWithdrawalMutation, ActivateWithdrawalMutationVariables>) {
+        return Apollo.useMutation<ActivateWithdrawalMutation, ActivateWithdrawalMutationVariables>(ActivateWithdrawalDocument, baseOptions);
+      }
+export type ActivateWithdrawalMutationHookResult = ReturnType<typeof useActivateWithdrawalMutation>;
+export type ActivateWithdrawalMutationResult = Apollo.MutationResult<ActivateWithdrawalMutation>;
+export type ActivateWithdrawalMutationOptions = Apollo.BaseMutationOptions<ActivateWithdrawalMutation, ActivateWithdrawalMutationVariables>;
+export const DeleteDepositRequestDocument = gql`
+    mutation deleteDepositRequest($input: Id) {
+  deleteDepositRequest(input: $input) {
+    message
+    status
+  }
+}
+    `;
+export type DeleteDepositRequestMutationFn = Apollo.MutationFunction<DeleteDepositRequestMutation, DeleteDepositRequestMutationVariables>;
+
+/**
+ * __useDeleteDepositRequestMutation__
+ *
+ * To run a mutation, you first call `useDeleteDepositRequestMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteDepositRequestMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteDepositRequestMutation, { data, loading, error }] = useDeleteDepositRequestMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useDeleteDepositRequestMutation(baseOptions?: Apollo.MutationHookOptions<DeleteDepositRequestMutation, DeleteDepositRequestMutationVariables>) {
+        return Apollo.useMutation<DeleteDepositRequestMutation, DeleteDepositRequestMutationVariables>(DeleteDepositRequestDocument, baseOptions);
+      }
+export type DeleteDepositRequestMutationHookResult = ReturnType<typeof useDeleteDepositRequestMutation>;
+export type DeleteDepositRequestMutationResult = Apollo.MutationResult<DeleteDepositRequestMutation>;
+export type DeleteDepositRequestMutationOptions = Apollo.BaseMutationOptions<DeleteDepositRequestMutation, DeleteDepositRequestMutationVariables>;
+export const DeleteWithdrawalRequestDocument = gql`
+    mutation DeleteWithdrawalRequest($input: Id) {
+  deleteWithdrawalRequest(input: $input) {
+    message
+    status
+  }
+}
+    `;
+export type DeleteWithdrawalRequestMutationFn = Apollo.MutationFunction<DeleteWithdrawalRequestMutation, DeleteWithdrawalRequestMutationVariables>;
+
+/**
+ * __useDeleteWithdrawalRequestMutation__
+ *
+ * To run a mutation, you first call `useDeleteWithdrawalRequestMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteWithdrawalRequestMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteWithdrawalRequestMutation, { data, loading, error }] = useDeleteWithdrawalRequestMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useDeleteWithdrawalRequestMutation(baseOptions?: Apollo.MutationHookOptions<DeleteWithdrawalRequestMutation, DeleteWithdrawalRequestMutationVariables>) {
+        return Apollo.useMutation<DeleteWithdrawalRequestMutation, DeleteWithdrawalRequestMutationVariables>(DeleteWithdrawalRequestDocument, baseOptions);
+      }
+export type DeleteWithdrawalRequestMutationHookResult = ReturnType<typeof useDeleteWithdrawalRequestMutation>;
+export type DeleteWithdrawalRequestMutationResult = Apollo.MutationResult<DeleteWithdrawalRequestMutation>;
+export type DeleteWithdrawalRequestMutationOptions = Apollo.BaseMutationOptions<DeleteWithdrawalRequestMutation, DeleteWithdrawalRequestMutationVariables>;
 export const GetPendingDepositsDocument = gql`
     query getPendingDeposits {
   getPendingDeposits {
@@ -344,6 +558,48 @@ export function useGetPendingDepositsLazyQuery(baseOptions?: Apollo.LazyQueryHoo
 export type GetPendingDepositsQueryHookResult = ReturnType<typeof useGetPendingDepositsQuery>;
 export type GetPendingDepositsLazyQueryHookResult = ReturnType<typeof useGetPendingDepositsLazyQuery>;
 export type GetPendingDepositsQueryResult = Apollo.QueryResult<GetPendingDepositsQuery, GetPendingDepositsQueryVariables>;
+export const GetPendingWithdrawalsDocument = gql`
+    query getPendingWithdrawals {
+  getPendingWithdrawals {
+    id
+    userId
+    slug
+    status
+    amount
+    createdAt
+    users {
+      id
+      email
+      first_name
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetPendingWithdrawalsQuery__
+ *
+ * To run a query within a React component, call `useGetPendingWithdrawalsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetPendingWithdrawalsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetPendingWithdrawalsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetPendingWithdrawalsQuery(baseOptions?: Apollo.QueryHookOptions<GetPendingWithdrawalsQuery, GetPendingWithdrawalsQueryVariables>) {
+        return Apollo.useQuery<GetPendingWithdrawalsQuery, GetPendingWithdrawalsQueryVariables>(GetPendingWithdrawalsDocument, baseOptions);
+      }
+export function useGetPendingWithdrawalsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetPendingWithdrawalsQuery, GetPendingWithdrawalsQueryVariables>) {
+          return Apollo.useLazyQuery<GetPendingWithdrawalsQuery, GetPendingWithdrawalsQueryVariables>(GetPendingWithdrawalsDocument, baseOptions);
+        }
+export type GetPendingWithdrawalsQueryHookResult = ReturnType<typeof useGetPendingWithdrawalsQuery>;
+export type GetPendingWithdrawalsLazyQueryHookResult = ReturnType<typeof useGetPendingWithdrawalsLazyQuery>;
+export type GetPendingWithdrawalsQueryResult = Apollo.QueryResult<GetPendingWithdrawalsQuery, GetPendingWithdrawalsQueryVariables>;
 export const LoginDocument = gql`
     mutation login($input: Login!) {
   login(input: $input) {
@@ -550,3 +806,155 @@ export function useGetUserLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<Ge
 export type GetUserQueryHookResult = ReturnType<typeof useGetUserQuery>;
 export type GetUserLazyQueryHookResult = ReturnType<typeof useGetUserLazyQuery>;
 export type GetUserQueryResult = Apollo.QueryResult<GetUserQuery, GetUserQueryVariables>;
+export const GetUserDepositsDocument = gql`
+    query getUserDeposits {
+  getUserDeposits {
+    id
+    userId
+    slug
+    status
+    amount
+    plan
+    createdAt
+  }
+}
+    `;
+
+/**
+ * __useGetUserDepositsQuery__
+ *
+ * To run a query within a React component, call `useGetUserDepositsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetUserDepositsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetUserDepositsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetUserDepositsQuery(baseOptions?: Apollo.QueryHookOptions<GetUserDepositsQuery, GetUserDepositsQueryVariables>) {
+        return Apollo.useQuery<GetUserDepositsQuery, GetUserDepositsQueryVariables>(GetUserDepositsDocument, baseOptions);
+      }
+export function useGetUserDepositsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetUserDepositsQuery, GetUserDepositsQueryVariables>) {
+          return Apollo.useLazyQuery<GetUserDepositsQuery, GetUserDepositsQueryVariables>(GetUserDepositsDocument, baseOptions);
+        }
+export type GetUserDepositsQueryHookResult = ReturnType<typeof useGetUserDepositsQuery>;
+export type GetUserDepositsLazyQueryHookResult = ReturnType<typeof useGetUserDepositsLazyQuery>;
+export type GetUserDepositsQueryResult = Apollo.QueryResult<GetUserDepositsQuery, GetUserDepositsQueryVariables>;
+export const GetUserPendingDepositsDocument = gql`
+    query getUserPendingDeposits {
+  getUserPendingDeposits {
+    id
+    userId
+    slug
+    status
+    amount
+    plan
+    createdAt
+  }
+}
+    `;
+
+/**
+ * __useGetUserPendingDepositsQuery__
+ *
+ * To run a query within a React component, call `useGetUserPendingDepositsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetUserPendingDepositsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetUserPendingDepositsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetUserPendingDepositsQuery(baseOptions?: Apollo.QueryHookOptions<GetUserPendingDepositsQuery, GetUserPendingDepositsQueryVariables>) {
+        return Apollo.useQuery<GetUserPendingDepositsQuery, GetUserPendingDepositsQueryVariables>(GetUserPendingDepositsDocument, baseOptions);
+      }
+export function useGetUserPendingDepositsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetUserPendingDepositsQuery, GetUserPendingDepositsQueryVariables>) {
+          return Apollo.useLazyQuery<GetUserPendingDepositsQuery, GetUserPendingDepositsQueryVariables>(GetUserPendingDepositsDocument, baseOptions);
+        }
+export type GetUserPendingDepositsQueryHookResult = ReturnType<typeof useGetUserPendingDepositsQuery>;
+export type GetUserPendingDepositsLazyQueryHookResult = ReturnType<typeof useGetUserPendingDepositsLazyQuery>;
+export type GetUserPendingDepositsQueryResult = Apollo.QueryResult<GetUserPendingDepositsQuery, GetUserPendingDepositsQueryVariables>;
+export const GetUserPendingWithdrawalsDocument = gql`
+    query getUserPendingWithdrawals {
+  getUserPendingWithdrawals {
+    id
+    userId
+    slug
+    status
+    amount
+    plan
+    createdAt
+  }
+}
+    `;
+
+/**
+ * __useGetUserPendingWithdrawalsQuery__
+ *
+ * To run a query within a React component, call `useGetUserPendingWithdrawalsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetUserPendingWithdrawalsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetUserPendingWithdrawalsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetUserPendingWithdrawalsQuery(baseOptions?: Apollo.QueryHookOptions<GetUserPendingWithdrawalsQuery, GetUserPendingWithdrawalsQueryVariables>) {
+        return Apollo.useQuery<GetUserPendingWithdrawalsQuery, GetUserPendingWithdrawalsQueryVariables>(GetUserPendingWithdrawalsDocument, baseOptions);
+      }
+export function useGetUserPendingWithdrawalsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetUserPendingWithdrawalsQuery, GetUserPendingWithdrawalsQueryVariables>) {
+          return Apollo.useLazyQuery<GetUserPendingWithdrawalsQuery, GetUserPendingWithdrawalsQueryVariables>(GetUserPendingWithdrawalsDocument, baseOptions);
+        }
+export type GetUserPendingWithdrawalsQueryHookResult = ReturnType<typeof useGetUserPendingWithdrawalsQuery>;
+export type GetUserPendingWithdrawalsLazyQueryHookResult = ReturnType<typeof useGetUserPendingWithdrawalsLazyQuery>;
+export type GetUserPendingWithdrawalsQueryResult = Apollo.QueryResult<GetUserPendingWithdrawalsQuery, GetUserPendingWithdrawalsQueryVariables>;
+export const GetUserWithdrawalsDocument = gql`
+    query getUserWithdrawals {
+  getUserWithdrawals {
+    id
+    userId
+    slug
+    status
+    amount
+    plan
+    createdAt
+  }
+}
+    `;
+
+/**
+ * __useGetUserWithdrawalsQuery__
+ *
+ * To run a query within a React component, call `useGetUserWithdrawalsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetUserWithdrawalsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetUserWithdrawalsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetUserWithdrawalsQuery(baseOptions?: Apollo.QueryHookOptions<GetUserWithdrawalsQuery, GetUserWithdrawalsQueryVariables>) {
+        return Apollo.useQuery<GetUserWithdrawalsQuery, GetUserWithdrawalsQueryVariables>(GetUserWithdrawalsDocument, baseOptions);
+      }
+export function useGetUserWithdrawalsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetUserWithdrawalsQuery, GetUserWithdrawalsQueryVariables>) {
+          return Apollo.useLazyQuery<GetUserWithdrawalsQuery, GetUserWithdrawalsQueryVariables>(GetUserWithdrawalsDocument, baseOptions);
+        }
+export type GetUserWithdrawalsQueryHookResult = ReturnType<typeof useGetUserWithdrawalsQuery>;
+export type GetUserWithdrawalsLazyQueryHookResult = ReturnType<typeof useGetUserWithdrawalsLazyQuery>;
+export type GetUserWithdrawalsQueryResult = Apollo.QueryResult<GetUserWithdrawalsQuery, GetUserWithdrawalsQueryVariables>;

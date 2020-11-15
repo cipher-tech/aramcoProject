@@ -27,7 +27,7 @@ const Products = () => {
                 a source of energy and as a feedstock has other advantages; it allows us to free up more crude oil for export and other high value applications.
                 Over the years, we have built a comprehensive gas infrastructure in the Kingdom that ensures timely and efficient delivery to our customers.`} />
                 
-                <h2>Trade on Products</h2>
+               
                 <Plan />
                 <Foot />
             </CustomFontSize>

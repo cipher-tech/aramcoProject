@@ -15,7 +15,7 @@ const ImageInfo = (props) => {
                     margin: 0rem 0;
                     align-self: stretch;
                     justify-items: flex-end;
-                    background-image: url('/images/moreInfo.jpg');
+                    background-image: url(${props.bgImage});
                     background-repeat: no-repeat;
                     background-size: cover;
                     &:nth-child(2){

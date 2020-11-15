@@ -173,16 +173,6 @@ const Home: React.FC = () => {
                     the continuity of an energy supply upon which the world relies.`}
                 btnLight="FIND OUT MORE" bgImage="/images/moreInfo-2.jpg"
             />
-            {/* <div className="imageInfo jusLeft">
-                <div className="imageInfo-container jusLeft-container">
-                    <h2 className="imageInfo-container__title">Our response to COVID-19</h2>
-                    <p className="imageInfo-container__text">
-                        People are our priority. We are securing the health and safety of our workforce and communities and ensuring
-                        the continuity of an energy supply upon which the world relies.
-                    </p>
-                    <button className="imageInfo-container__button btn-light">FIND OUT MORE</button>
-                </div>
-            </div> */}
 
             <Foot />
         </CustomFontSize>

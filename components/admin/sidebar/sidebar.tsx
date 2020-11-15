@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 const AdminSidebar = () => {
@@ -24,17 +25,29 @@ const AdminSidebar = () => {
                                 <span className="title">Deposit</span><span className="arrow"></span></a>
                             <ul className="sub-menu">
                                 <li className="nav-item">
-                                    <a href="/admin/request_Deposit" className="nav-link nav-toggle"><i className="fa fa-plus"></i>
-                                        <span className="title">Request Deposit</span></a>
+                                    <Link href="/admin/request_Deposit" >
+                                        <a className="nav-link nav-toggle"><i className="fa fa-plus"></i>
+                                            <span className="title">Request Deposit</span>
+                                        </a>
+                                    </Link>
+
                                 </li>
 
                                 <li className="nav-item">
-                                    <a href="admin/pending-deposit.html" className="nav-link nav-toggle"><i className="fa fa-spinner"></i>
-                                        <span className="title">Pending Request</span></a>
+                                    <Link href="/admin/pending_deposits" >
+                                        <a className="nav-link nav-toggle"><i className="fa fa-spinner"></i>
+                                            <span className="title">Pending Request</span>
+                                        </a>
+                                    </Link>
+
                                 </li>
                                 <li className="nav-item">
-                                    <a href="admin/request-deposit.html" className="nav-link nav-toggle"><i className="fa fa-history"></i>
-                                        <span className="title">Deposit History</span></a>
+                                    <Link href="/admin/deposits">
+                                        <a className="nav-link nav-toggle"><i className="fa fa-history"></i>
+                                            <span className="title">Deposit History</span>
+                                        </a>
+                                    </Link>
+
                                 </li>
                             </ul>
                         </li>
@@ -44,20 +57,30 @@ const AdminSidebar = () => {
                                 <span className="title">Withdrawal</span><span className="arrow"></span></a>
                             <ul className="sub-menu">
                                 <li className="nav-item">
-                                    <a href="/admin/request_withdrawal" className="nav-link nav-toggle"><i className="fa fa-check"></i>
-                                        <span className="title">Request Withdraw</span></a>
+                                    <Link href="/admin/request_withdrawal">
+                                        <a className="nav-link nav-toggle"><i className="fa fa-check"></i>
+                                            <span className="title">Request Withdraw</span>
+                                        </a>
+                                    </Link>
+
                                 </li>
                                 <li className="nav-item">
-                                    <a href="admin/withdraw-pending.html" className="nav-link nav-toggle"><i className="fa fa-spinner"></i>
-                                        <span className="title">Pending Withdraw</span></a>
+                                    <Link href="/admin/pending_withdrawals">
+                                        <a className="nav-link nav-toggle"><i className="fa fa-spinner"></i>
+                                            <span className="title">Pending Withdraw</span>
+                                        </a>
+                                    </Link>
                                 </li>
                                 <li className="nav-item">
-                                    <a href="admin/withdraw-request-all.html" className="nav-link nav-toggle"><i className="fa fa-cloud-upload"></i>
-                                        <span className="title">Withdraw History</span></a>
+                                    <Link href="/admin/withdrawals">
+                                        <a className="nav-link nav-toggle"><i className="fa fa-cloud-upload"></i>
+                                            <span className="title">Withdraw History</span>
+                                        </a>
+                                    </Link>
                                 </li>
                             </ul>
                         </li>
-{/* 
+                        {/* 
                         <li className="nav-item">
                             <a href="javascript:;" className="nav-link nav-toggle"><i className="fa fa-list"></i>
                                 <span className="title">Investment Plan</span><span className="arrow"></span></a>
@@ -108,4 +131,4 @@ const AdminSidebar = () => {
     )
 }
 
-export default  AdminSidebar
+export default AdminSidebar
