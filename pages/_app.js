@@ -1,16 +1,15 @@
+import Head from 'next/head'
 import '../styles/globals.css'
 import { Layout } from "../components/index"
-// import { ApolloProvider } from '@apollo/client'
-// import { useApollo } from '../lib/apolloClient'
 
 function MyApp({ Component, pageProps }) {
-  // const apolloClient = useApollo(pageProps.initialApolloState)
+  const AddAdminHeader = Component.Tags ? Component.Tags : React.Fragment;
   return (
-    // <ApolloProvider client={apolloClient}>
-      <Layout>
+    <Layout>
+      {/* <AddAdminHeader> */}
         <Component {...pageProps} />
-      </Layout>
-    // </ApolloProvider>
+      {/* </AddAdminHeader> */}
+    </Layout>
   )
 }
 

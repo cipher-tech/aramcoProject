@@ -1,7 +1,7 @@
 import React from 'react'
 import { useGetUserStatsQuery } from '../../generated/apolloComponent'
 
-const UserStatsCards = () => {
+const AdminStatsCards = () => {
     const { data, loading, error } = useGetUserStatsQuery()
 
     if (loading) return  <p>loading ...</p>
@@ -93,4 +93,4 @@ const UserStatsCards = () => {
     )
 }
 
-export default UserStatsCards
+export default AdminStatsCards

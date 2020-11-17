@@ -20,7 +20,7 @@ const AdminSidebar = () => {
                             </a>
                         </li>
 
-                        <li className="nav-item">
+                        {/* <li className="nav-item">
                             <a href="javascript:;" className="nav-link nav-toggle"><i className="fa fa-university"></i>
                                 <span className="title">Deposit</span><span className="arrow"></span></a>
                             <ul className="sub-menu">
@@ -79,7 +79,7 @@ const AdminSidebar = () => {
                                     </Link>
                                 </li>
                             </ul>
-                        </li>
+                        </li> */}
                         {/* 
                         <li className="nav-item">
                             <a href="javascript:;" className="nav-link nav-toggle"><i className="fa fa-list"></i>

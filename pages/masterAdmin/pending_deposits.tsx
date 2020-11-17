@@ -1,27 +1,23 @@
 import Head from 'next/head'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 // import { Helmet } from "react-helmet";
-import { MasterAdminSidenav, MasterAdminStatsCard, Plan, SideBar, StockPlan, TableComponent } from "../../components/index"
-import { DepositAttributes, useActivateWithdrawalMutation, useDeleteWithdrawalRequestMutation, useGetPendingDepositsQuery, useGetPendingWithdrawalsQuery, useGetUserQuery } from '../../generated/apolloComponent';
+import { MasterAdminSidenav, MasterAdminStatsCard, TableComponent, UserAdminHeader } from "../../components/index"
+import { DepositAttributes, useActivateDepositMutation, useDeleteDepositRequestMutation, useGetPendingDepositsQuery, useGetUserQuery } from '../../generated/apolloComponent';
+
 import { withApollo } from '../../lib/apolloClient';
 
-const index = () => {
+const Pending_deposits = () => {
     const [message, setMessage] = useState("")
-    const { data, loading: userIsLoading, error: userHasError } = useGetUserQuery()
-    const { data: pendingWithdrawal, loading: withdrawalIsLoading, error, refetch: refetchPendingWithdrawal } = useGetPendingWithdrawalsQuery()
-    const [WithdrawalMutation, { data: WithdrawalMutationData,
-        loading: WithdrawalMutationLoading,
-        error: WithdrawalMutationError }] = useActivateWithdrawalMutation()
+    const { data: pendingDeposits, loading: depositsIsLoading, error, refetch: refetchPendingDeposits } = useGetPendingDepositsQuery()
+    const [ActivateDepositMutation, { data: ActivateDepositMutationData,
+        loading: ActivateDepositMutationLoading,
+        error: ActivateDepositMutationError }] = useActivateDepositMutation()
+    const [deleteDepositRequestMutation, { data: deleteDepositData, loading: deleteDepositLoading, error: deleteDepositError }] = useDeleteDepositRequestMutation()
 
-    const [deleteWithdrawalMutation, { data: deleteWithdrawalMutationData,
-        loading: deleteWithdrawalMutationLoading,
-        error: deleteWithdrawalMutationError }] = useDeleteWithdrawalRequestMutation()
-
-
-    const Withdrawal = async (payload: DepositAttributes) => {
+    const activateDeposit = async (payload: DepositAttributes) => {
         // console.log(payload);
         await setMessage('')
-        await WithdrawalMutation({
+        await ActivateDepositMutation({
             variables: {
                 input: {
                     id: payload.id
@@ -29,23 +25,26 @@ const index = () => {
             }
         })
 
-        setMessage(WithdrawalMutationError ? "Could not activate deposit" : "deposit Activated. Plan started")
-        await refetchPendingWithdrawal()
+        setMessage(ActivateDepositMutationError ? "Could not activate deposit" : "Deposit Activated. Plan started")
+        await refetchPendingDeposits()
+        console.log("pending");
+
+    }
+    const deleteDeposit = async (payload) => {
+        await setMessage('')
+        await deleteDepositRequestMutation({
+            variables: {
+                input: {
+                    id: payload.id
+                }
+            }
+        })
+        setMessage(deleteDepositError ? "Could not activate deposit" : "Deposit Activated. Plan started")
+        await refetchPendingDeposits()
         console.log("pending");
     }
-    const deleteWithdrawal = async (payload) => {
-        await setMessage('')
-        await deleteWithdrawalMutation({
-            variables: {
-                input: {
-                    id: payload.id
-                }
-            }
-        })
-
-        setMessage(deleteWithdrawalMutationError ? "Could not activate deposit" : "deposit Activated. Plan started")
-        await refetchPendingWithdrawal()
-        console.log("pending");
+    if (error || ActivateDepositMutationError || depositsIsLoading || ActivateDepositMutationLoading) {
+        return "loading"
     }
 
     return (
@@ -104,10 +103,6 @@ const index = () => {
             </Head>
 
             <body className="page-header-fixed page-sidebar-closed-hide-logo">
-
-
-
-
                 {/* <!-- BEGIN HEADER & CONTENT DIVIDER --> */}
                 <div className="clearfix"></div>
                 <div className="page-container">
@@ -129,14 +124,14 @@ const index = () => {
 
                             <div className="row">
                                 {message}
-                                {withdrawalIsLoading ? "Loading..."
+                                {depositsIsLoading ? "Loading..."
                                     :
-                                    <TableComponent title="Withdrawal Request"
-                                        headers={["userId", "email", "slug", " status ", "amount", "createdAt"]}
-                                        body={pendingWithdrawal.getPendingWithdrawals}
-                                        keys={["userId", "users", "slug", "status", "amount", "createdAt",]}
+                                    <TableComponent title="Deposit Request"
+                                        headers={["userId", "email", "slug", " status ", "amount", "plan", "createdAt"]}
+                                        body={pendingDeposits.getPendingDeposits || [{}]}
+                                        keys={["userId", "users", "slug", "status", "amount", "plan", "createdAt",]}
                                         nestedKeys={['email']}
-                                        buttonAction={[Withdrawal, deleteWithdrawal]} />
+                                        buttonAction={[activateDeposit, deleteDeposit]} />
                                 }
                             </div>
                         </div>
@@ -159,4 +154,4 @@ const index = () => {
     )
 }
 
-export default withApollo({ ssr: true })(index)
+export default withApollo({ ssr: true })(Pending_deposits)

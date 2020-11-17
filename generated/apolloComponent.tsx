@@ -93,6 +93,15 @@ export type Response = {
   referenceId: Scalars['String'];
 };
 
+export type UserStats = {
+  __typename?: 'UserStats';
+  totalBalance: Scalars['Int'];
+  totalEarnings: Scalars['Int'];
+  totalDeposits: Scalars['Int'];
+  totalWithdrawal: Scalars['Int'];
+  activePlan?: Maybe<Scalars['String']>;
+};
+
 export type Register = {
   first_name: Scalars['String'];
   last_name: Scalars['String'];
@@ -134,6 +143,10 @@ export type Query = {
   getUserPendingWithdrawals?: Maybe<Array<DepositAttributes>>;
   getUserWithdrawals?: Maybe<Array<DepositAttributes>>;
   getPendingWithdrawals?: Maybe<Array<DepositAttributes>>;
+  getAdminDeposits?: Maybe<Array<DepositAttributes>>;
+  getAdminWithdrawals?: Maybe<Array<DepositAttributes>>;
+  getUserStats: UserStats;
+  getAdminStats: UserStats;
 };
 
 
@@ -243,6 +256,50 @@ export type DeleteWithdrawalRequestMutation = (
     { __typename?: 'Response' }
     & Pick<Response, 'message' | 'status'>
   ) }
+);
+
+export type GetAdminDepositsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetAdminDepositsQuery = (
+  { __typename?: 'Query' }
+  & { getAdminDeposits?: Maybe<Array<(
+    { __typename?: 'DepositAttributes' }
+    & Pick<DepositAttributes, 'id' | 'userId' | 'slug' | 'status' | 'amount' | 'createdAt'>
+  )>> }
+);
+
+export type GetAdminStatsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetAdminStatsQuery = (
+  { __typename?: 'Query' }
+  & { getAdminStats: (
+    { __typename?: 'UserStats' }
+    & Pick<UserStats, 'totalBalance' | 'totalEarnings' | 'totalDeposits' | 'totalWithdrawal'>
+  ) }
+);
+
+export type GetAdminWithdrawalsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetAdminWithdrawalsQuery = (
+  { __typename?: 'Query' }
+  & { getAdminWithdrawals?: Maybe<Array<(
+    { __typename?: 'DepositAttributes' }
+    & Pick<DepositAttributes, 'id' | 'userId' | 'slug' | 'status' | 'amount' | 'createdAt'>
+  )>> }
+);
+
+export type GetUsersQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetUsersQuery = (
+  { __typename?: 'Query' }
+  & { getUsers: Array<(
+    { __typename?: 'User' }
+    & Pick<User, 'id' | 'first_name' | 'email' | 'phone_no' | 'plan' | 'coin_address'>
+  )> }
 );
 
 export type GetPendingDepositsQueryVariables = Exact<{ [key: string]: never; }>;
@@ -369,6 +426,17 @@ export type GetUserPendingWithdrawalsQuery = (
     { __typename?: 'DepositAttributes' }
     & Pick<DepositAttributes, 'id' | 'userId' | 'slug' | 'status' | 'amount' | 'plan' | 'createdAt'>
   )>> }
+);
+
+export type GetUserStatsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetUserStatsQuery = (
+  { __typename?: 'Query' }
+  & { getUserStats: (
+    { __typename?: 'UserStats' }
+    & Pick<UserStats, 'totalBalance' | 'totalEarnings' | 'totalDeposits' | 'activePlan'>
+  ) }
 );
 
 export type GetUserWithdrawalsQueryVariables = Exact<{ [key: string]: never; }>;
@@ -515,6 +583,152 @@ export function useDeleteWithdrawalRequestMutation(baseOptions?: Apollo.Mutation
 export type DeleteWithdrawalRequestMutationHookResult = ReturnType<typeof useDeleteWithdrawalRequestMutation>;
 export type DeleteWithdrawalRequestMutationResult = Apollo.MutationResult<DeleteWithdrawalRequestMutation>;
 export type DeleteWithdrawalRequestMutationOptions = Apollo.BaseMutationOptions<DeleteWithdrawalRequestMutation, DeleteWithdrawalRequestMutationVariables>;
+export const GetAdminDepositsDocument = gql`
+    query getAdminDeposits {
+  getAdminDeposits {
+    id
+    userId
+    slug
+    status
+    amount
+    createdAt
+  }
+}
+    `;
+
+/**
+ * __useGetAdminDepositsQuery__
+ *
+ * To run a query within a React component, call `useGetAdminDepositsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetAdminDepositsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetAdminDepositsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetAdminDepositsQuery(baseOptions?: Apollo.QueryHookOptions<GetAdminDepositsQuery, GetAdminDepositsQueryVariables>) {
+        return Apollo.useQuery<GetAdminDepositsQuery, GetAdminDepositsQueryVariables>(GetAdminDepositsDocument, baseOptions);
+      }
+export function useGetAdminDepositsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetAdminDepositsQuery, GetAdminDepositsQueryVariables>) {
+          return Apollo.useLazyQuery<GetAdminDepositsQuery, GetAdminDepositsQueryVariables>(GetAdminDepositsDocument, baseOptions);
+        }
+export type GetAdminDepositsQueryHookResult = ReturnType<typeof useGetAdminDepositsQuery>;
+export type GetAdminDepositsLazyQueryHookResult = ReturnType<typeof useGetAdminDepositsLazyQuery>;
+export type GetAdminDepositsQueryResult = Apollo.QueryResult<GetAdminDepositsQuery, GetAdminDepositsQueryVariables>;
+export const GetAdminStatsDocument = gql`
+    query getAdminStats {
+  getAdminStats {
+    totalBalance
+    totalEarnings
+    totalDeposits
+    totalWithdrawal
+  }
+}
+    `;
+
+/**
+ * __useGetAdminStatsQuery__
+ *
+ * To run a query within a React component, call `useGetAdminStatsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetAdminStatsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetAdminStatsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetAdminStatsQuery(baseOptions?: Apollo.QueryHookOptions<GetAdminStatsQuery, GetAdminStatsQueryVariables>) {
+        return Apollo.useQuery<GetAdminStatsQuery, GetAdminStatsQueryVariables>(GetAdminStatsDocument, baseOptions);
+      }
+export function useGetAdminStatsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetAdminStatsQuery, GetAdminStatsQueryVariables>) {
+          return Apollo.useLazyQuery<GetAdminStatsQuery, GetAdminStatsQueryVariables>(GetAdminStatsDocument, baseOptions);
+        }
+export type GetAdminStatsQueryHookResult = ReturnType<typeof useGetAdminStatsQuery>;
+export type GetAdminStatsLazyQueryHookResult = ReturnType<typeof useGetAdminStatsLazyQuery>;
+export type GetAdminStatsQueryResult = Apollo.QueryResult<GetAdminStatsQuery, GetAdminStatsQueryVariables>;
+export const GetAdminWithdrawalsDocument = gql`
+    query getAdminWithdrawals {
+  getAdminWithdrawals {
+    id
+    userId
+    slug
+    status
+    amount
+    createdAt
+  }
+}
+    `;
+
+/**
+ * __useGetAdminWithdrawalsQuery__
+ *
+ * To run a query within a React component, call `useGetAdminWithdrawalsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetAdminWithdrawalsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetAdminWithdrawalsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetAdminWithdrawalsQuery(baseOptions?: Apollo.QueryHookOptions<GetAdminWithdrawalsQuery, GetAdminWithdrawalsQueryVariables>) {
+        return Apollo.useQuery<GetAdminWithdrawalsQuery, GetAdminWithdrawalsQueryVariables>(GetAdminWithdrawalsDocument, baseOptions);
+      }
+export function useGetAdminWithdrawalsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetAdminWithdrawalsQuery, GetAdminWithdrawalsQueryVariables>) {
+          return Apollo.useLazyQuery<GetAdminWithdrawalsQuery, GetAdminWithdrawalsQueryVariables>(GetAdminWithdrawalsDocument, baseOptions);
+        }
+export type GetAdminWithdrawalsQueryHookResult = ReturnType<typeof useGetAdminWithdrawalsQuery>;
+export type GetAdminWithdrawalsLazyQueryHookResult = ReturnType<typeof useGetAdminWithdrawalsLazyQuery>;
+export type GetAdminWithdrawalsQueryResult = Apollo.QueryResult<GetAdminWithdrawalsQuery, GetAdminWithdrawalsQueryVariables>;
+export const GetUsersDocument = gql`
+    query getUsers {
+  getUsers {
+    id
+    first_name
+    email
+    phone_no
+    plan
+    coin_address
+  }
+}
+    `;
+
+/**
+ * __useGetUsersQuery__
+ *
+ * To run a query within a React component, call `useGetUsersQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetUsersQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetUsersQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetUsersQuery(baseOptions?: Apollo.QueryHookOptions<GetUsersQuery, GetUsersQueryVariables>) {
+        return Apollo.useQuery<GetUsersQuery, GetUsersQueryVariables>(GetUsersDocument, baseOptions);
+      }
+export function useGetUsersLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetUsersQuery, GetUsersQueryVariables>) {
+          return Apollo.useLazyQuery<GetUsersQuery, GetUsersQueryVariables>(GetUsersDocument, baseOptions);
+        }
+export type GetUsersQueryHookResult = ReturnType<typeof useGetUsersQuery>;
+export type GetUsersLazyQueryHookResult = ReturnType<typeof useGetUsersLazyQuery>;
+export type GetUsersQueryResult = Apollo.QueryResult<GetUsersQuery, GetUsersQueryVariables>;
 export const GetPendingDepositsDocument = gql`
     query getPendingDeposits {
   getPendingDeposits {
@@ -920,6 +1134,41 @@ export function useGetUserPendingWithdrawalsLazyQuery(baseOptions?: Apollo.LazyQ
 export type GetUserPendingWithdrawalsQueryHookResult = ReturnType<typeof useGetUserPendingWithdrawalsQuery>;
 export type GetUserPendingWithdrawalsLazyQueryHookResult = ReturnType<typeof useGetUserPendingWithdrawalsLazyQuery>;
 export type GetUserPendingWithdrawalsQueryResult = Apollo.QueryResult<GetUserPendingWithdrawalsQuery, GetUserPendingWithdrawalsQueryVariables>;
+export const GetUserStatsDocument = gql`
+    query getUserStats {
+  getUserStats {
+    totalBalance
+    totalEarnings
+    totalDeposits
+    activePlan
+  }
+}
+    `;
+
+/**
+ * __useGetUserStatsQuery__
+ *
+ * To run a query within a React component, call `useGetUserStatsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetUserStatsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetUserStatsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetUserStatsQuery(baseOptions?: Apollo.QueryHookOptions<GetUserStatsQuery, GetUserStatsQueryVariables>) {
+        return Apollo.useQuery<GetUserStatsQuery, GetUserStatsQueryVariables>(GetUserStatsDocument, baseOptions);
+      }
+export function useGetUserStatsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetUserStatsQuery, GetUserStatsQueryVariables>) {
+          return Apollo.useLazyQuery<GetUserStatsQuery, GetUserStatsQueryVariables>(GetUserStatsDocument, baseOptions);
+        }
+export type GetUserStatsQueryHookResult = ReturnType<typeof useGetUserStatsQuery>;
+export type GetUserStatsLazyQueryHookResult = ReturnType<typeof useGetUserStatsLazyQuery>;
+export type GetUserStatsQueryResult = Apollo.QueryResult<GetUserStatsQuery, GetUserStatsQueryVariables>;
 export const GetUserWithdrawalsDocument = gql`
     query getUserWithdrawals {
   getUserWithdrawals {

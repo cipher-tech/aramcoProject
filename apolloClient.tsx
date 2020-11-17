@@ -15,9 +15,9 @@ export default function createApolloClient(initialState, ctx) {
     const errorLink = onError(({ graphQLErrors, networkError }) => {
         if (graphQLErrors) {
             graphQLErrors.forEach(({ message, locations, path }) => {
-                console.log(
-                    `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
-                )
+                // console.log(
+                //     `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
+                // )
                 if(isBrowser && message.includes("Not Authorized")){
                     return Router.replace("/login")
                 }

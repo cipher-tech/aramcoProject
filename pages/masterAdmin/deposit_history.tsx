@@ -1,52 +1,16 @@
 import Head from 'next/head'
 import React, { useEffect, useState } from 'react'
 // import { Helmet } from "react-helmet";
-import { MasterAdminSidenav, MasterAdminStatsCard, Plan, SideBar, StockPlan, TableComponent } from "../../components/index"
-import { DepositAttributes, useActivateWithdrawalMutation, useDeleteWithdrawalRequestMutation, useGetPendingDepositsQuery, useGetPendingWithdrawalsQuery, useGetUserQuery } from '../../generated/apolloComponent';
+import { MasterAdminSidenav, MasterAdminStatsCard, Plan, SideBar, StockPlan, TableComponent } from "../../components"
+import { useGetAdminDepositsQuery } from '../../generated/apolloComponent';
 import { withApollo } from '../../lib/apolloClient';
 
-const index = () => {
+const DepositHistory = () => {
     const [message, setMessage] = useState("")
-    const { data, loading: userIsLoading, error: userHasError } = useGetUserQuery()
-    const { data: pendingWithdrawal, loading: withdrawalIsLoading, error, refetch: refetchPendingWithdrawal } = useGetPendingWithdrawalsQuery()
-    const [WithdrawalMutation, { data: WithdrawalMutationData,
-        loading: WithdrawalMutationLoading,
-        error: WithdrawalMutationError }] = useActivateWithdrawalMutation()
 
-    const [deleteWithdrawalMutation, { data: deleteWithdrawalMutationData,
-        loading: deleteWithdrawalMutationLoading,
-        error: deleteWithdrawalMutationError }] = useDeleteWithdrawalRequestMutation()
+    const { data, loading: IsLoading, error: HasError } = useGetAdminDepositsQuery()
 
-
-    const Withdrawal = async (payload: DepositAttributes) => {
-        // console.log(payload);
-        await setMessage('')
-        await WithdrawalMutation({
-            variables: {
-                input: {
-                    id: payload.id
-                }
-            }
-        })
-
-        setMessage(WithdrawalMutationError ? "Could not activate deposit" : "deposit Activated. Plan started")
-        await refetchPendingWithdrawal()
-        console.log("pending");
-    }
-    const deleteWithdrawal = async (payload) => {
-        await setMessage('')
-        await deleteWithdrawalMutation({
-            variables: {
-                input: {
-                    id: payload.id
-                }
-            }
-        })
-
-        setMessage(deleteWithdrawalMutationError ? "Could not activate deposit" : "deposit Activated. Plan started")
-        await refetchPendingWithdrawal()
-        console.log("pending");
-    }
+    if(IsLoading) return <p>loading ...</p>
 
     return (
         <>
@@ -105,9 +69,6 @@ const index = () => {
 
             <body className="page-header-fixed page-sidebar-closed-hide-logo">
 
-
-
-
                 {/* <!-- BEGIN HEADER & CONTENT DIVIDER --> */}
                 <div className="clearfix"></div>
                 <div className="page-container">
@@ -119,24 +80,20 @@ const index = () => {
                         <div className="page-content">
                             <h3 className="page-title">Dashboard </h3>
                             <hr />
-
-
                             {/* <!--  ==================================VALIDATION ERRORS==================================  --> */}
                             {/* <!--  ==================================SESSION MESSAGES==================================  --> */}
                             {/* <!-- BEGIN HEADER --> */}
                             <MasterAdminStatsCard />
                             {/* <!-- END HEADER --> */}
-
                             <div className="row">
                                 {message}
-                                {withdrawalIsLoading ? "Loading..."
+                                {IsLoading ? "Loading..."
                                     :
-                                    <TableComponent title="Withdrawal Request"
+                                    <TableComponent title="Deposit History"
                                         headers={["userId", "email", "slug", " status ", "amount", "createdAt"]}
-                                        body={pendingWithdrawal.getPendingWithdrawals}
+                                        body={data.getAdminDeposits}
                                         keys={["userId", "users", "slug", "status", "amount", "createdAt",]}
-                                        nestedKeys={['email']}
-                                        buttonAction={[Withdrawal, deleteWithdrawal]} />
+                                        nestedKeys={['email']} />
                                 }
                             </div>
                         </div>
@@ -159,4 +116,4 @@ const index = () => {
     )
 }
 
-export default withApollo({ ssr: true })(index)
+export default withApollo({ ssr: true })(DepositHistory)

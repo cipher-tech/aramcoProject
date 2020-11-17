@@ -1,11 +1,10 @@
 import React from 'react'
-import { useGetUserStatsQuery } from '../../generated/apolloComponent'
+import { useGetAdminStatsQuery } from '../../generated/apolloComponent'
 
-const UserStatsCards = () => {
-    const { data, loading, error } = useGetUserStatsQuery()
+const AdminStatsCard = () => {
+    const { data, loading, error } = useGetAdminStatsQuery()
 
-    if (loading) return  <p>loading ...</p>
-
+    if (loading) return <p>loading ...</p>
     return (
         <>
             <div className="row">
@@ -30,7 +29,7 @@ const UserStatsCards = () => {
                                             </div>
                                             <div className="details">
                                                 <div className="number">
-                                                    $ <span data-counter="counterup" data-value=""> {data.getUserStats.totalBalance} </span>
+                                                    $ <span data-counter="counterup" data-value="">{data.getAdminStats.totalBalance}</span>
                                                 </div>
                                                 <div className="desc bold uppercase"> Total User Balance</div>
                                             </div>
@@ -45,7 +44,7 @@ const UserStatsCards = () => {
                                                 </div>
                                                 <div className="details">
                                                     <div className="number">
-                                                        $ <span data-counter="counterup" data-value="0"> {data.getUserStats.totalEarnings} </span>
+                                                        $ <span data-counter="counterup" data-value="0">{data.getAdminStats.totalEarnings}</span>
                                                     </div>
                                                     <div className="desc  bold uppercase "> Total Earnings </div>
                                                 </div>
@@ -60,7 +59,7 @@ const UserStatsCards = () => {
                                                 </div>
                                                 <div className="details">
                                                     <div className="number">
-                                                        $  <span data-counter="counterup" data-value="0">{data.getUserStats.totalDeposits}</span>
+                                                        $  <span data-counter="counterup" data-value="0">{data.getAdminStats.totalDeposits}</span>
                                                     </div>
                                                     <div className="desc  bold uppercase"> Total Deposit </div>
                                                 </div>
@@ -75,9 +74,9 @@ const UserStatsCards = () => {
                                                 </div>
                                                 <div className="details">
                                                     <div className="number">
-                                                        <span data-counter="counterup" data-value="0"> {data.getUserStats.activePlan || "None"} </span>
+                                                        $ <span data-counter="counterup" data-value="0">{data.getAdminStats.totalWithdrawal}</span>
                                                     </div>
-                                                    <div className="desc bold uppercase"> Active Plan </div>
+                                                    <div className="desc bold uppercase"> Total Withdraw </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -93,4 +92,4 @@ const UserStatsCards = () => {
     )
 }
 
-export default UserStatsCards
+export default AdminStatsCard
