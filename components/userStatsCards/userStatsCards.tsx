@@ -4,7 +4,7 @@ import { useGetUserStatsQuery } from '../../generated/apolloComponent'
 const UserStatsCards = () => {
     const { data, loading, error } = useGetUserStatsQuery()
 
-    if (loading) return  <p>loading ...</p>
+    if (loading || error) return  <p>loading ...</p>
 
     return (
         <>

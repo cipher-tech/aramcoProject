@@ -76,12 +76,12 @@ export const planInfo: Array<IPlan> = [
         rate: 10,
         duration: 30
     },
-    {
-        name: " chemicals",
-        range: [15_000, 500_000],
-        rate: 10,
-        duration: 30
-    },
+    // {
+    //     name: " chemicals",
+    //     range: [15_000, 500_000],
+    //     rate: 10,
+    //     duration: 30
+    // },
 ]
  const Plans = (props) => {
     return (

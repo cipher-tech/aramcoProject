@@ -20,108 +20,51 @@ const AdminSidebar = () => {
                             </a>
                         </li>
 
-                        {/* <li className="nav-item">
-                            <a href="javascript:;" className="nav-link nav-toggle"><i className="fa fa-university"></i>
-                                <span className="title">Deposit</span><span className="arrow"></span></a>
-                            <ul className="sub-menu">
-                                <li className="nav-item">
-                                    <Link href="/admin/request_Deposit" >
-                                        <a className="nav-link nav-toggle"><i className="fa fa-plus"></i>
-                                            <span className="title">Request Deposit</span>
-                                        </a>
-                                    </Link>
-
-                                </li>
-
-                                <li className="nav-item">
-                                    <Link href="/admin/pending_deposits" >
-                                        <a className="nav-link nav-toggle"><i className="fa fa-spinner"></i>
-                                            <span className="title">Pending Request</span>
-                                        </a>
-                                    </Link>
-
-                                </li>
-                                <li className="nav-item">
-                                    <Link href="/admin/deposits">
-                                        <a className="nav-link nav-toggle"><i className="fa fa-history"></i>
-                                            <span className="title">Deposit History</span>
-                                        </a>
-                                    </Link>
-
-                                </li>
-                            </ul>
+                        <li className="nav-item start">
+                            <Link href="/admin/request_Deposit" >
+                                <a className="nav-link nav-toggle"><i className="fa fa-plus"></i>
+                                    <span className="title">Make Deposit</span>
+                                </a>
+                            </Link>
                         </li>
+                        <li className="nav-item start">
+                            <Link href="/admin/pending_deposits" >
+                                <a className="nav-link nav-toggle"><i className="fa fa-spinner"></i>
+                                    <span className="title">Pending Request</span>
+                                </a>
+                            </Link>
 
-                        <li className="nav-item">
-                            <a href="javascript:;" className="nav-link nav-toggle"><i className="fa fa-exchange"></i>
-                                <span className="title">Withdrawal</span><span className="arrow"></span></a>
-                            <ul className="sub-menu">
-                                <li className="nav-item">
-                                    <Link href="/admin/request_withdrawal">
-                                        <a className="nav-link nav-toggle"><i className="fa fa-check"></i>
-                                            <span className="title">Request Withdraw</span>
-                                        </a>
-                                    </Link>
+                        </li>
+                        <li className="nav-item start">
+                            <Link href="/admin/deposits">
+                                <a className="nav-link nav-toggle"><i className="fa fa-history"></i>
+                                    <span className="title">Deposit History</span>
+                                </a>
+                            </Link>
 
-                                </li>
-                                <li className="nav-item">
-                                    <Link href="/admin/pending_withdrawals">
-                                        <a className="nav-link nav-toggle"><i className="fa fa-spinner"></i>
-                                            <span className="title">Pending Withdraw</span>
-                                        </a>
-                                    </Link>
-                                </li>
-                                <li className="nav-item">
-                                    <Link href="/admin/withdrawals">
-                                        <a className="nav-link nav-toggle"><i className="fa fa-cloud-upload"></i>
-                                            <span className="title">Withdraw History</span>
-                                        </a>
-                                    </Link>
-                                </li>
-                            </ul>
-                        </li> */}
-                        {/* 
-                        <li className="nav-item">
-                            <a href="javascript:;" className="nav-link nav-toggle"><i className="fa fa-list"></i>
-                                <span className="title">Investment Plan</span><span className="arrow"></span></a>
-                            <ul className="sub-menu">
-                                <li className="nav-item">
-                                    <a href="admin/plan-create.html" className="nav-link nav-toggle"><i className="fa fa-plus"></i>
-                                        <span className="title">Create New Plan</span></a>
-                                </li>
-                                <li className="nav-item">
-                                    <a href="admin/plan-show.html" className="nav-link nav-toggle"><i className="fa fa-desktop"></i>
-                                        <span className="title">View All Plan</span></a>
-                                </li>
-                            </ul>
-                        </li> */}
-                        {/* <li className="nav-item">
-                            <a href="javascript:;" className="nav-link nav-toggle"><i className="fa fa-users"></i>
-                                <span className="title">Manage User</span><span className="arrow"></span></a>
-                            <ul className="sub-menu">
-                                <li className="nav-item">
-                                    <a href="admin/manage-user.html" className="nav-link nav-toggle"><i className="fa fa-desktop"></i>
-                                        <span className="title">All Users</span></a>
-                                </li>
-                                <li className="nav-item">
-                                    <a href="admin/show-block-user.html" className="nav-link nav-toggle"><i className="fa fa-user-times"></i>
-                                        <span className="title">Block Users</span></a>
-                                </li>
-                                <li className="nav-item">
-                                    <a href="admin/all-verify-user.html" className="nav-link nav-toggle"><i className="fa fa-check"></i>
-                                        <span className="title">Verified Users</span></a>
-                                </li>
-                                <li className="nav-item">
-                                    <a href="admin/phone-unverified-user.html" className="nav-link nav-toggle"><i className="fa fa-tty"></i>
-                                        <span className="title">Phone Unverified</span></a>
-                                </li>
-                                <li className="nav-item">
-                                    <a href="admin/email-unverified-user.html" className="nav-link nav-toggle"><i className="fa fa-envelope-open"></i>
-                                        <span className="title">Email Unverified</span></a>
-                                </li>
-                            </ul>
-                        </li> */}
+                        </li>
+                        <li className="nav-item start">
+                            <Link href="/admin/request_withdrawal">
+                                <a className="nav-link nav-toggle"><i className="fa fa-check"></i>
+                                    <span className="title">Request Withdraw</span>
+                                </a>
+                            </Link>
 
+                        </li>
+                        <li className="nav-item start">
+                            <Link href="/admin/pending_withdrawals">
+                                <a className="nav-link nav-toggle"><i className="fa fa-spinner"></i>
+                                    <span className="title">Pending Withdraw</span>
+                                </a>
+                            </Link>
+                        </li>
+                        <li className="nav-item start">
+                            <Link href="/admin/withdrawals">
+                                <a className="nav-link nav-toggle"><i className="fa fa-cloud-upload"></i>
+                                    <span className="title">Withdraw History</span>
+                                </a>
+                            </Link>
+                        </li>
                     </ul>
                     {/* <!-- END SIDEBAR MENU --> */}
                 </div>

@@ -61,6 +61,7 @@ const Container = styled.div`
         }
         &--text{
             padding: 1rem;
+            font-size: ${theme.font.xxsmall}
         }
         &-address{
             font-size: ${theme.font.large};
@@ -70,6 +71,9 @@ const Container = styled.div`
             width: 100%;
             overflow: hidden;
         }
+    }
+    .plan-info{
+        font-size: ${theme.font.xsmall}
     }
     .loadingSpinner{
         justify-self: center;
@@ -503,7 +507,7 @@ const Request_Deposit = (props) => {
         rate: 35,
         duration: 30
     })
-    const { data, loading, error } = useGetUserQuery()
+    // const { data, loading, error } = useGetUserQuery()
     const [depositRequestMutation, { data: depositRequestMutationData , loading: depositRequestMutationLoading, error: depositRequestMutationError }] = useDepositRequestMutation()
     // useEffect(() => {
     //     console.log(data);
@@ -547,12 +551,15 @@ const Request_Deposit = (props) => {
             variables: {
                 input: {
                     amount: inputs.amount,
-                    userId: data.getUser.id,
+                    userId: "none",
                     plan: SelectedPlan.name
                 }
             }
         })
-        if (depositRequestMutationError) return setMessage('Something went wrong, please try again or contact admin')
+        if (depositRequestMutationError || response.data.depositRequest.status === "false" ){
+            setIsLoading(false)
+            return setMessage(response.data.depositRequest.message)
+        } 
         if (!depositRequestMutationLoading) await setIsLoading(false)
         
         console.log(depositRequestMutationData, response);
@@ -603,23 +610,6 @@ const Request_Deposit = (props) => {
                 <link rel="stylesheet" type="text/css" href="/admin/assets/admin/css/sweetalert.css" />
 
                 <link rel="shortcut icon" href="/admin/assets/images/favicon.png" />
-
-                <script src="/admin/assets/admin/js/demo.min.js" type="text/javascript"></script>
-                <script src="/admin/assets/admin/js/jquery.min.js" type="text/javascript"></script>
-                <script src="/admin/assets/admin/js/bootstrap.min.js" type="text/javascript"></script>
-                <script src="/admin/assets/admin/js/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
-                <script src="/admin/assets/admin/js/jquery.slimscroll.min.js" type="text/javascript"></script>
-                <script src="/admin/assets/admin/js/jquery.blockui.min.js" type="text/javascript"></script>
-                <script src="/admin/assets/admin/js/app.min.js" type="text/javascript"></script>
-                <script src="/admin/assets/admin/js/quick-sidebar.min.js" type="text/javascript"></script>
-                <script src="/admin/assets/admin/js/layout.min.js" type="text/javascript"></script>
-                <script src="/admin/assets/admin/js/datatable.js" type="text/javascript"></script>
-                <script src="/admin/assets/admin/js/datatables.min.js" type="text/javascript"></script>
-                <script src="/admin/assets/admin/js/datatables.bootstrap.js" type="text/javascript"></script>
-                <script src="/admin/assets/admin/js/table-datatables-buttons.min.js" type="text/javascript"></script>
-                <script src="/admin/assets/admin/js/sweetalert.min.js"></script>
-                <script src="/admin/assets/admin/js/jquery.waypoints.min.js" type="text/javascript"></script>
-                <script src="/admin/assets/admin/js/jquery.counterup.min.js" type="text/javascript"></script>
             </Head>
 
             <body className="page-header-fixed page-sidebar-closed-hide-logo">
@@ -650,7 +640,7 @@ const Request_Deposit = (props) => {
                                     <a href="javascript:;" className="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
 
 
-                                        <span className="username"> Welcome, thesoftking </span>
+                                        <span className="username"> </span>
                                         <i className="fa fa-angle-down"></i>
                                     </a>
                                     <ul className="dropdown-menu dropdown-menu-default">
@@ -715,14 +705,14 @@ const Request_Deposit = (props) => {
                                             <button onClick={() => copy("address")}> copy</button>
                                         </p>
 
-                                        <p className="modal__container--text">
+                                        {/* <p className="modal__container--text">
                                             After successful payment contact customer care with the unique
                                             refrence_id below,and proof of payment. <br />
                                             <span className="modal__container-address">
                                                 {"refrenceId"}
                                                 <button onClick={() => copy("refId")}> copy</button>
                                             </span>
-                                        </p>
+                                        </p> */}
                                     </div>
                                 </Modal>
                                 {/* <div className="loadingScreen"/> */}
@@ -733,7 +723,7 @@ const Request_Deposit = (props) => {
                                                 <h4 className="coin-options__types--container-h4">Activate A Plan</h4>
                                             </div>
                                         </div>
-                                        <p>{message} </p>
+                                        <p className="plan-info">{message} </p>
                                         <p className="coin-options__buy-sell">
                                             {true ? null : (
                                                 <span
@@ -789,7 +779,7 @@ const Request_Deposit = (props) => {
                                                     <InputErrorMessage message={errors.plan} field={errors.plan} touched={touched.plan} />
 
                                                     {SelectedPlan.name ?
-                                                        <p>
+                                                        <p className="plan-info">
                                                             <span>{SelectedPlan.name}</span> <br />
                                                             <span>Range: {SelectedPlan.range[0]} - {SelectedPlan.range[1]}</span>
                                                         </p>

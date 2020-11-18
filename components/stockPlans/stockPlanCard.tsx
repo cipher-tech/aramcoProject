@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import theme from '../../styles/theme'
-import { IPlan } from './stockPlans'
+// import IPlan  from './stockPlans'
 // import { FormValidator } from '../../formValidator'
 // import { StyledInput } from '../styledComponents'
 // import { ValidationMessage } from '../../validationMessage'
@@ -13,7 +13,12 @@ import { IPlan } from './stockPlans'
 const Container = styled.div`
     box-shadow: .1rem .2rem 1.3rem rgba(0,0,0,.1),
     -.2rem -.1rem 1.3rem rgba(150,150,150,.1);
+    display: flex;
+    align-content: stretch;
     .pricing-plan{
+        justify-content: space-between;
+        display: flex;
+        flex-direction: column;
         padding-left: .364583333in;
         padding-top: .364583333in;
         padding-right: 12.75pt;
@@ -30,8 +35,15 @@ const Container = styled.div`
             text-transform: capitalize;
             text-transform: capitalize;
         }
-        p{
+        &--info{
+            font-size: 1.175pc;
+            text-transform: capitalize;
             margin: 0;
+            &-range{
+                font-size: 1.375pc;
+                font-weight: 600;
+                color: ${theme.colorPrimary};
+            }
         }
         .uk-switcher{
             margin: 0;
@@ -118,10 +130,10 @@ const Container = styled.div`
     }
 `
 
-interface props{
+interface props {
     info: IPlan
 }
-const StockPlanCard = ({info}: props) => {
+const StockPlanCard = ({ info }: props) => {
     const [showInput, setShowInput] = useState(false)
     // const [amount, setAmount] = useState("")
     // const [popUpMessage, setPopUpMessage] = useState(null)
@@ -130,20 +142,23 @@ const StockPlanCard = ({info}: props) => {
 
 
     const submit = async () => {
-
         const id = JSON.parse(localStorage.getItem("userInfo")).user.id
-
     }
     const toggleShowInput = () => {
         setShowInput(!showInput)
     }
-    return (
+    return ( 
         <Container>
             <div className={`pricing-plan ${info.recommended}`}>
                 {/* {showpopUpMessage ? <PopUpMessage error={hasError}> {popUpMessage} <span onClick={() => setShowPopUpMessage(false)}>✖</span> </PopUpMessage> : null} */}
                 {info.recommended ? <div className="recommended-badge">Recommended</div> : ""}
                 <h3>{info.name}</h3>
-                <p> {info.name} (${`${info.range[0]} - $${info.range[1]}`}) makes </p>
+                <p className="pricing-plan--info"> 
+                    {info.name} <br/>
+                    <span className="pricing-plan--info-range">
+                         ${`${info.range[0]} - $${info.range[1]}`} 
+                    </span> makes
+                </p>
                 <ul className="uk-switcher" id="change-plan">
                     <li>
                         <div className="pricing-plan-label">{info.text}</div>

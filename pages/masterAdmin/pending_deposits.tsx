@@ -39,7 +39,7 @@ const Pending_deposits = () => {
                 }
             }
         })
-        setMessage(deleteDepositError ? "Could not activate deposit" : "Deposit Activated. Plan started")
+        await setMessage(deleteDepositError ? "Could not delete deposit" : "Deposit deleted.")
         await refetchPendingDeposits()
         console.log("pending");
     }

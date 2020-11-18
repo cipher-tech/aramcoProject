@@ -75,8 +75,7 @@ export const stockInfo: Array<IStockPlan> = [
         name: "blue chip stocks",
         range: [1_000, Infinity],
         type: "stock",
-        text: `blue chip stocks (Berkshire Hathaway, AbbVie, Alibaba Group Holding,Johnson & Johnson,Facebook,
-            British American Tobacco,McDonald's Corp,Duke Energy Corp)-(start price) $1000`
+        text: `blue chip stocks (Berkshire Hathaway etc)-(start price) $1000`
     },
 ]
 

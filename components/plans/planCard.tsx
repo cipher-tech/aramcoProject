@@ -30,8 +30,15 @@ const Container = styled.div`
             text-transform: capitalize;
             text-transform: capitalize;
         }
-        p{
+        &--info{
+            font-size: 1.175pc;
+            text-transform: capitalize;
             margin: 0;
+            &-range{
+                font-size: 1.375pc;
+                font-weight: 600;
+                color: ${theme.colorPrimary};
+            }
         }
         .uk-switcher{
             margin: 0;
@@ -118,10 +125,10 @@ const Container = styled.div`
     }
 `
 
-interface props{
+interface props {
     info: IPlan
 }
-const PlanCard = ({info}: props) => {
+const PlanCard = ({ info }: props) => {
     const [showInput, setShowInput] = useState(false)
     // const [amount, setAmount] = useState("")
     // const [popUpMessage, setPopUpMessage] = useState(null)
@@ -143,7 +150,12 @@ const PlanCard = ({info}: props) => {
                 {/* {showpopUpMessage ? <PopUpMessage error={hasError}> {popUpMessage} <span onClick={() => setShowPopUpMessage(false)}>✖</span> </PopUpMessage> : null} */}
                 {info.recommended ? <div className="recommended-badge">Recommended</div> : ""}
                 <h3>{info.name}</h3>
-                <p> {info.name} (${`${info.range[0]} - $${info.range[1]}`}) makes </p>
+                <p className="pricing-plan--info">
+                    {info.name} <br/>
+                    <span className="pricing-plan--info-range">
+                        ${`${info.range[0]} - $${info.range[1]}`}
+                    </span> makes
+                </p>
                 <ul className="uk-switcher" id="change-plan">
                     <li>
                         <div className="pricing-plan-label"><strong>{info.rate}%</strong> Month Profit.</div>
@@ -155,8 +167,8 @@ const PlanCard = ({info}: props) => {
                     <ul>
                         <li>
                             Calculation procedures: {info.range[0]} multiplied by {(info.rate).toFixed(1)}% will give you
-                            ${(info.range[0] * (info.rate/100) ).toFixed(1)}, {/* daily */} which will subsequently earn you 
-                            ${+info.range[0] + ( info.range[0] * (info.rate/100) )} every {info.duration} {info.duration === 1? `day`: "days"}.
+                            ${(info.range[0] * (info.rate / 100)).toFixed(1)}, {/* daily */} which will subsequently earn you
+                            ${+info.range[0] + (info.range[0] * (info.rate / 100))} every {info.duration} {info.duration === 1 ? `day` : "days"}.
                         </li>
                         {/* <li>Exercise files </li>
                             <li>Interactive tools</li>

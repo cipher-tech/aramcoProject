@@ -24,7 +24,7 @@ const LoginPage = () => {
     const router = useRouter()
 
     const submit = async (inputs: Login) => {
-        await setMessage('')
+        await setMessage('') 
         let response = await loginMutation({
             variables: {
                 input: inputs
@@ -34,7 +34,7 @@ const LoginPage = () => {
         console.log(inputs, data, response);
         setMessage('login successful.')
         router.push("/admin")
-
+  
     }
     return (
         <div className="logInMain">
