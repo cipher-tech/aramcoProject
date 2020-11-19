@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import theme from '../../styles/theme'
-// import IPlan  from './stockPlans'
+import IPlan  from './stockPlans'
 // import { FormValidator } from '../../formValidator'
 // import { StyledInput } from '../styledComponents'
 // import { ValidationMessage } from '../../validationMessage'
@@ -130,10 +130,10 @@ const Container = styled.div`
     }
 `
 
-interface props {
-    info: IPlan
-}
-const StockPlanCard = ({ info }: props) => {
+// interface props: Array<IPlan> {
+//     info: 
+// }
+const StockPlanCard = ({ info }) => {
     const [showInput, setShowInput] = useState(false)
     // const [amount, setAmount] = useState("")
     // const [popUpMessage, setPopUpMessage] = useState(null)
