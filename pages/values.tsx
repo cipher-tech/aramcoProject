@@ -1,5 +1,5 @@
 import React from 'react'
-import { CustomFontSize, Foot, Head, InfoImage, NavBar, Text } from '../components'
+import { CustomFontSize, Foot, Head, InfoImage, NavBar, Text, UserNav } from '../components'
 import theme from '../styles/theme'
 
 const Values = () => {
@@ -67,6 +67,7 @@ const Values = () => {
                     }
                 `}</style>
                 <div className="main">
+                    <UserNav />
                     <NavBar />
                     <Head header="Creating value" title="Products" image="/images/headerImg.jpg"
                         text="Our diverse and expanding range of products create value." />

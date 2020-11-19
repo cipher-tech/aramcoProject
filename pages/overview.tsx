@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, CustomFontSize, Foot, Head, InfoImage, NavBar, Text } from '../components'
+import { Card, CustomFontSize, Foot, Head, InfoImage, NavBar, Text, UserNav } from '../components'
 import theme from '../styles/theme'
 
 const Values = () => {
@@ -28,6 +28,7 @@ const Values = () => {
                     }
                 `}</style>
                 <div className="main">
+                    <UserNav />
                     <NavBar />
                     <Head header="Who we are" title="Overview" image="/images/overview.jpg"
                         text="A category all of our own" />

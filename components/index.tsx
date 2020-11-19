@@ -18,6 +18,7 @@ import ProductCard from "./productCard/productCard";
 import AdminHeader from "./adminHeader/adminHeader";
 import AdminStatsCard from "./adminStatsCard/adminStatsCard";
 import AdminHeaderTags from "./AdminHeaderTags/AdminHeaderTags";
+import UserNavbarComponent from "./userNavbar/navbarComponent";
 
 export const Layout = PageLayout
 export const CustomFontSize = FontSize
@@ -39,3 +40,4 @@ export const Card = ProductCard
 export const UserAdminHeader = AdminHeader
 export const MasterAdminStatsCard = AdminStatsCard
 export const AdminHeaderTag = AdminHeaderTags
+export const UserNav = UserNavbarComponent

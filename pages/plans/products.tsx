@@ -1,5 +1,5 @@
 import React from 'react'
-import { CustomFontSize, Foot, Head, Plan, Text } from '../../components'
+import { CustomFontSize, Foot, Head, Plan, StockPlan, Text, UserNav } from '../../components'
 import Nav from '../../components/navbar/nav'
 import theme from '../../styles/theme'
 
@@ -15,6 +15,7 @@ const Products = () => {
                 }
             `}</style>
             <CustomFontSize>
+                <UserNav />
                 <Nav />
                 <Head header="investments" title="Product"
                     text="Trade on our Investment plans" image="/images/headerImage.jpg" />
@@ -28,7 +29,7 @@ const Products = () => {
                 Over the years, we have built a comprehensive gas infrastructure in the Kingdom that ensures timely and efficient delivery to our customers.`} />
                 
                
-                <Plan />
+               <StockPlan />
                 <Foot />
             </CustomFontSize>
         </>

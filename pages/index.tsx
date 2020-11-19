@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import { CustomFontSize, Foot, InfoImage, NavBar, TopInfo } from '../components'
+import { CustomFontSize, Foot, InfoImage, NavBar, TopInfo, UserNav } from '../components'
 import theme from '../styles/theme'
 // import gql from 'graphql-tag';
 import { withApollo } from '../lib/apolloClient';
@@ -121,6 +121,7 @@ const Home: React.FC = () => {
         `}</style>
 
             <div className="main">
+                <UserNav />
                 <NavBar />
                 <div className="main-content">
                     <h1 className="main-content-bigText">

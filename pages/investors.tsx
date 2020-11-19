@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, CustomFontSize, Foot, Head, InfoImage, NavBar, Text } from '../components'
+import { Card, CustomFontSize, Foot, Head, InfoImage, NavBar, Plan, Text, UserNav } from '../components'
 import theme from '../styles/theme'
 
 const Investors = () => {
@@ -28,6 +28,7 @@ const Investors = () => {
                     }
                 `}</style>
                 <div className="main">
+                    <UserNav />
                     <NavBar />
                     <Head header="Saudi Aramco" title="Investor overview" image="/images/headerImage.jpg"
                         text="Access our financial reports and ESG content." />
@@ -66,6 +67,7 @@ const Investors = () => {
                     the continuity of an energy supply upon which the world relies.`}
                     btnLight="FIND OUT MORE" bgImage="/images/moreInfo-1.jpg"
                 />
+                <Plan />
                 <Foot />
             </CustomFontSize>
         </>
