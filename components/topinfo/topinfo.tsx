@@ -7,7 +7,6 @@ const TopInfo = () => {
             <style jsx>{`
                 .topInfo{
                     grid-column: 2/10;
-                    max-height: 39rem;
                     max-width: 100%;
                     display: grid;
                     grid-template-columns: 3fr 2fr;
@@ -15,11 +14,14 @@ const TopInfo = () => {
                     margin: 2rem 0;
                     @media only screen and (max-width: ${theme.breakPoints.bpLarge}) {
                         grid-column: 1/-1;
+                    };
+                    @media only screen and (max-width: ${theme.breakPoints.bpSmall}) {
+                        grid-template-columns: 1fr;
                     } 
                     &-title{
                         grid-column: 1/-1;
                         justify-self: flex-start;
-                        padding: 1rem 0rem;
+                        padding: 1rem 1rem;
                         font-size: ${theme.font.large};
                         color: ${theme.colorGrey};
                     }
@@ -29,6 +31,9 @@ const TopInfo = () => {
                         background-image: linear-gradient(270deg,transparent,rgba(0,0,0,.4)), url('/images/infoImg.jpg');
                         background-repeat: no-repeat;
                         background-size: cover;
+                        @media only screen and (max-width: ${theme.breakPoints.bpSmall}) {
+                            display: none;
+                        } 
                     }
                     &-container{
                         padding: 2rem;

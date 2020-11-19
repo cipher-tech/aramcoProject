@@ -7,6 +7,7 @@ export const getUserStats = gql`
 		totalEarnings
 		totalDeposits
 		activePlan
+        totalWithdrawal
     }
 }
 `

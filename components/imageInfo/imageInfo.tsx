@@ -31,6 +31,9 @@ const ImageInfo = (props) => {
                         flex-direction: column;
                         justify-content: center;
                         font-weight: 100;
+                        @media only screen and (max-width: ${theme.breakPoints.bpSmall}) {
+                            grid-column: 1/-1;
+                        } 
                         &__subHead{
                             padding: 1rem 0rem;
                         }
@@ -72,6 +75,9 @@ const ImageInfo = (props) => {
                     }
                     .imageInfo-container{
                         grid-column: 1;
+                        @media only screen and (max-width: ${theme.breakPoints.bpSmall}) {
+                            grid-column: 1/-1;
+                        } 
                     }
                 }
             `}</style>

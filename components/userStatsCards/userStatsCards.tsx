@@ -30,9 +30,9 @@ const UserStatsCards = () => {
                                             </div>
                                             <div className="details">
                                                 <div className="number">
-                                                    $ <span data-counter="counterup" data-value=""> {data.getUserStats.totalBalance} </span>
+                                                    $ <span data-counter="counterup" data-value=""> {data.getUserStats.totalWithdrawal} </span>
                                                 </div>
-                                                <div className="desc bold uppercase"> Total User Balance</div>
+                                                <div className="desc bold uppercase"> Total Withdrawal</div>
                                             </div>
                                         </div>
                                     </div>
