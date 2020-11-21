@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 import theme from '../../styles/theme'
 
@@ -85,9 +86,16 @@ const ImageInfo = (props) => {
                 <div className="imageInfo-container">
                     {props.subHead && <h3 className="imageInfo-container__subHead">{props.subHead}</h3>}
                     {props.title && <h2 className="imageInfo-container__title"> {props.title} </h2>}
-                    {props.text &&<p className="imageInfo-container__text">{props.text}</p>}
-                    {props.btnLight && <button className="imageInfo-container__button btn-light"> {props.btnLight} </button>}
-                    {props.btn && <button className="imageInfo-container__button"> {props.btn} </button>}
+                    {props.text && <p className="imageInfo-container__text">{props.text}</p>}
+                    {props.btnLight &&
+                        <Link href="/overview">
+                            <button className="imageInfo-container__button btn-light"> {props.btnLight} </button>
+                        </Link>}
+                    {props.btn &&
+                        <Link href="/overview">
+                            <button className="imageInfo-container__button"> {props.btn} </button>
+                        </Link>
+                    }
                 </div>
             </div>
 

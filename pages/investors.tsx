@@ -41,18 +41,20 @@ const Investors = () => {
                 <div className="product">
                     <div className="product-container">
                         <Card image="/images/moreInfo-2.jpg"
+                        link="/overview"
                             text="We have built a reputation for unmatched reliability
                         in supplying crude oil to energy markets around the world." />
 
-                        <Card image="/images/moreInfo-2.jpg"
+                        <Card image="/images/cardimg2.png" link="/overview"
                             text="We're the sole supplier of natural gas to Saudi Arabia,
                         the seventh largest natural gas market in the world." />
 
-                        <Card image="/images/moreInfo-2.jpg"
+                        <Card image="/images/cardimg1.jpg" link="/overview"
                             text="We are a preeminent player in the global petrochemicals industry, committed to innovation, growth,
                         and realizing the full potential of every hydrocarbon molecule that we produce." />
                     </div>
                 </div>
+                <Plan />
                 <InfoImage left title="Join our team"
                     subHead="Careers"
                     bgImage="/images/moreInfo-2.jpg"
@@ -65,9 +67,8 @@ const Investors = () => {
                 <InfoImage left title="Our response to COVID-19"
                     text={`People are our priority. We are securing the health and safety of our workforce and communities and ensuring
                     the continuity of an energy supply upon which the world relies.`}
-                    btnLight="FIND OUT MORE" bgImage="/images/moreInfo-1.jpg"
+                    btnLight="FIND OUT MORE" bgImage="/images/productImg2.jpg"
                 />
-                <Plan />
                 <Foot />
             </CustomFontSize>
         </>

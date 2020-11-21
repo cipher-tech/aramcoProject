@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 import { CustomFontSize, Foot, Head, InfoImage, NavBar, Text, UserNav } from '../components'
 import theme from '../styles/theme'
@@ -85,7 +86,10 @@ const Values = () => {
                                 We have built a reputation for unmatched reliability
                                 in supplying crude oil to energy markets around the world.
                             </p>
-                            <button className="product-item__btn">Read More</button>
+                            <Link href="/overview">
+                                <button className="product-item__btn">Read More</button>
+                            </Link>
+
                         </div>
                         <div className="product-item">
                             <div className="product-item__img">
@@ -95,7 +99,9 @@ const Values = () => {
                                 We're the sole supplier of natural gas to Saudi Arabia,
                                 the seventh largest natural gas market in the world.
                         </p>
-                            <button className="product-item__btn">Read More</button>
+                            <Link href="/overview">
+                                <button className="product-item__btn">Read More</button>
+                            </Link>
                         </div>
                         <div className="product-item">
                             <div className="product-item__img">
@@ -105,7 +111,9 @@ const Values = () => {
                                 We are a preeminent player in the global petrochemicals industry, committed to innovation, growth,
                                 and realizing the full potential of every hydrocarbon molecule that we produce.
                         </p>
-                            <button className="product-item__btn">Read More</button>
+                            <Link href="/overview">
+                                <button className="product-item__btn">Read More</button>
+                            </Link>
                         </div>
                     </div>
                 </div>

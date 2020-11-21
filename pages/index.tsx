@@ -131,7 +131,7 @@ const Home: React.FC = () => {
                     <p className="main-content-text">
                         <br /> Learn how D&I is integral to the way we operate.
                 </p>
-                    <a className="main-content-link" href="/"> LEARN MORE </a>
+                    <a className="main-content-link" href="/overview"> LEARN MORE </a>
                 </div>
 
             </div>
@@ -145,21 +145,28 @@ const Home: React.FC = () => {
                     <h2 className="glance-container__title">Nonmetallic Solutions</h2>
                     <p className="glance-container__text">At Aramco, we are a catalyst for developing technology
                     </p>
-                    <button className="glance-container__button">Learn More</button>
+                    <Link href="/overview">
+                        <a className="glance-container__button">Learn More</a>
+                    </Link>
+                    
                 </div>
                 <div className="glance-container">
                     <h3 className="glance-container__subHead">IN-HOUSE TECHNOLOGIES</h3>
                     <h2 className="glance-container__title">Nonmetallic Solutions</h2>
                     <p className="glance-container__text">At Aramco, we are a catalyst technology solutions to
                     </p>
-                    <button className="glance-container__button">Learn More</button>
+                     <Link href="/overview">
+                        <a className="glance-container__button">Learn More</a>
+                    </Link>
                 </div>
                 <div className="glance-container">
                     <h3 className="glance-container__subHead">IN-HOUSE TECHNOLOGIES</h3>
                     <h2 className="glance-container__title">Nonmetallic Solutions</h2>
                     <p className="glance-container__text">At Aramco, we are a catalyst for technology .
                     </p>
-                    <button className="glance-container__button">Learn More</button>
+                     <Link href="/overview">
+                        <a className="glance-container__button">Learn More</a>
+                    </Link>
                 </div>
             </div>
 

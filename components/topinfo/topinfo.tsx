@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 import theme from '../../styles/theme'
 
@@ -79,7 +80,9 @@ const TopInfo = () => {
                     <p className="topInfo-container__text">At Aramco, we are a catalyst for developing technology solutions to address some of the
                     world’s most pressing energy and materials challenges.
                     </p>
-                    <button className="topInfo-container__button">Learn More</button>
+                    <Link href="/overview" >
+                        <a className="topInfo-container__button">Learn More </a>
+                    </Link>
                 </div>
             </div>
         </>

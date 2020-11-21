@@ -1,7 +1,13 @@
+import Link from 'next/link'
 import React from 'react'
 import theme from '../../styles/theme'
 
-const ProductCard = ({ image, text }) => {
+interface IProps {
+    image: string
+    text: string
+    link?: string
+}
+const ProductCard = ({ image, text, link }: IProps) => {
     return (
         <>
             <style jsx>{`
@@ -59,7 +65,10 @@ const ProductCard = ({ image, text }) => {
                 <p className="item__text">
                     {text}
                 </p>
-                <button className="item__btn">Read More</button>
+                <Link href={link || "/overview"}>
+                    <button className="item__btn">Read More</button>
+                </Link>
+
             </div>
         </>
     )

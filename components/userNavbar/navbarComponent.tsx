@@ -3,10 +3,6 @@ import styled from "styled-components";
 import { useSpring, animated } from 'react-spring';
 import Link from 'next/link';
 import theme from '../../styles/theme';
-// import routes from '../../navigation/routes';
-// import logo from "../../images/logo.svg"
-// import { ReactComponent as MenuIcon } from "../../images/svgIcons/menu.svg"
-// import { ContextData } from '../../context/contextData';
 
 const Container = styled.div`
     display: grid;
@@ -64,30 +60,43 @@ const Container = styled.div`
         }
     }
     .navbar-mobile__list{
+        background: #4a4a4a;
+        height: 100%;
         position: fixed;
-        top: 50%;
+        /* top: 50%; */
         /* left: -50%; */
         /* width: 25rem; */
-        transform: translate(-50%, -50%);
+        /* transform: translate(-50%, -50%); */
+        width: 100%;
         list-style: none;
         z-index: 1203;
         display: flex;
         flex-direction: column;
+        @media only screen and (min-width: ${theme.breakPoints.bpMedium}) {
+            max-width: 40rem;
+            width: 40rem;
+        }
         &--item{
+            &:first-child{
+                background: none;
+
+            }
             text-transform: capitalize;
-            padding: 1rem 3rem;
-            margin: 1rem 0;
+            padding: 2.5rem 3rem;
+            /* margin: 1rem 0; */
             width: max-content;
             align-self: center;
             cursor: pointer;
-            text-align: center;
-            background-image: linear-gradient(125deg,  transparent 50%,  ${theme.colorSecondary} 50% ) ;
+            text-align: left;
+            background: #007eac;
+            width: 100%;
             font-size: ${theme.font.xsmall};
             transition: all .4s ease-in-out .1s;
             background-size: 230%;
             color: ${theme.colorWhite};
             text-decoration: none;
-
+            border-top: solid 1px #ffffff2e;
+            
             &:hover{
                 background-position: 100%;
                 transform: translateX(1rem);
@@ -187,7 +196,7 @@ const UserNavbarComponent = (props) => {
         transform: mobileNavIsOpen ? "scale(170)" : "scale(0)"
     })
     const springMove = useSpring({
-        left: mobileNavIsOpen ? "50%;" : "-50%"
+        left: mobileNavIsOpen ? "0%" : "-200%"
     })
     return (!props.show ?
         <Container>
@@ -197,6 +206,9 @@ const UserNavbarComponent = (props) => {
                 <animated.div style={{ transform: spring.transform }} className="navbar-mobile__overlay"></animated.div>
             </div>
             <animated.ul style={{ left: springMove.left }} onClick={toggleMobileNav} className="navbar-mobile__list">
+                <div className="navbar-mobile__list--item">
+                    <p className="navbar-mobile__list--item--toggle" onClick={toggleMobileNav}> X </p>
+                </div>
                 <Link href={"/"}>
                     <a className="navbar-mobile__list--item">
                         home
