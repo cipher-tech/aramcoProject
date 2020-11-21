@@ -177,6 +177,7 @@ const Home: React.FC = () => {
             />
             
             <InfoImage left title="Our response to COVID-19"  
+            link="/plans/products"
                 text={`People are our priority. We are securing the health and safety of our workforce and communities and ensuring
                     the continuity of an energy supply upon which the world relies.`}
                 btnLight="FIND OUT MORE" bgImage="/images/moreInfo-2.jpg"

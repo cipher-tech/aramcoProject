@@ -30,11 +30,11 @@ const Investors = () => {
                 <div className="main">
                     <UserNav />
                     <NavBar />
-                    <Head header="Saudi Aramco" title="Investor overview" image="/images/headerImage.jpg"
+                    <Head header="Sabic Aramco" title="Investor overview" image="/images/headerImage.jpg"
                         text="Access our financial reports and ESG content." />
                 </div>
                 <Text text={`
-                    Saudi Aramco is the world’s largest integrated oil and gas company; its upstream operations manages 
+                    Sabic Aramco is the world’s largest integrated oil and gas company; its upstream operations manages 
                     the Kingdom’s unique hydrocarbon reserve base, optimizing production and maximizing long-term value. 
                     It also operates a strategically integrated global downstream business. Headquartered in the city of Dhahran, 
                     the company operates within the Kingdom and worldwide, and employs around 79,800 people.`} />

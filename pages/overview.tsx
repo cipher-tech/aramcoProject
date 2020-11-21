@@ -30,26 +30,26 @@ const Values = () => {
                 <div className="main">
                     <UserNav />
                     <NavBar />
-                    <Head header="Who we are" title="Overview" image="/images/overview.jpg"
+                    <Head header="" title="Who we are" image="/images/overview.jpg"
                         text="A category all of our own" />
                 </div>
-                <Text text={`Ranked among the world's largest petrochemicals manufacturers,SABIC is a public company based in Riyadh, Saudi Arabia. 
-                    70% of the Company's shares are owned by Saudi Aramco, with the remaining 30% publicly traded on the Saudi stock exchange. 
-                    Aramco previously announced the successful completion of its share acquisition of a 70% stake in Saudi Basic 
+                <Text text={`Ranked among the world's largest petrochemicals manufacturers,SABIC is a public company based in Riyadh, Sabic Arabia. 
+                    70% of the Company's shares are owned by Sabic Aramco, with the remaining 30% publicly traded on the Sabic stock exchange. 
+                    Aramco previously announced the successful completion of its share acquisition of a 70% stake in Sabic Basic 
                     Industries Corporation (SABIC) from the Public Investment Fund (PIF), 
-                    the sovereign wealth fund of Saudi Arabia, for a total purchase price of SAR 259.125 billion (US$ 69.1 
+                    the sovereign wealth fund of Sabic Arabia, for a total purchase price of SAR 259.125 billion (US$ 69.1 
                     equating to SAR 123.39 price per share. equating to SAR 123.39 price per share.The merge saw that a new company SABIC-ARAMCO emerged and this made the 
                     MBS declare that Aramco would be privatized with a goal of issuing 5 percent of its equity to the public to raise $100 billion. 
                     The funds would be earmarked for transfer to the PIF to use in its investment strategy of buying high-tech, non-oil related firms locally and 
-                    overseas to diversify the Saudi economy. The privatization effort turned out to be much more complicated than expected, 
+                    overseas to diversify the Sabic economy. The privatization effort turned out to be much more complicated than expected, 
                     as the financial markets insisted that Aramco provide full disclosure of all its activities, assets, liabilities, profits, 
                     and losses, a mammoth task for a company with sales of over $355 billion, numerous joint ventures, and without any previously published data. 
                     This prospectus provides investors with audited statements on financial results and on oil reserves and goes a 
                     long way towards satisfying investors.
 
-                    In late November 2019, Saudi Aramco issued a second prospectus with updated information on its own figures and those of SABIC. 
+                    In late November 2019, Sabic Aramco issued a second prospectus with updated information on its own figures and those of SABIC. 
                     It then decided to limit the IPO to 1.5 percent of the capital, down from the original 5 percent announced in 2016. Furthermore, 
-                    Saudi Aramco decided to float shares only on the Tadawul stock market in Riyadh. This decision came on the heels of intense criticism of the Kingdom 
+                    Sabic Aramco decided to float shares only on the Tadawul stock market in Riyadh. This decision came on the heels of intense criticism of the Kingdom 
                     in the international press for numerous issues, ranging from a perceived overvaluation of the company to the country’s human rights record. 
                     The placement of shares proceeded on the Tadawul exchange at the price of SAR32 ($8.53) per share. The company successfully raised $25.6 billion,
                     but it will not attempt to raise more from the international markets for the time being.`} />
@@ -60,7 +60,7 @@ const Values = () => {
                         in supplying crude oil to energy markets around the world." />
 
                         <Card image="/images/cardimg2.png"
-                            text="We're the sole supplier of natural gas to Saudi Arabia,
+                            text="We're the sole supplier of natural gas to Sabic Arabia,
                         the seventh largest natural gas market in the world." />
 
                         <Card image="/images/cardimg4.jpg"

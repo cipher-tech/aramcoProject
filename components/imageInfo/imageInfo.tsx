@@ -88,7 +88,7 @@ const ImageInfo = (props) => {
                     {props.title && <h2 className="imageInfo-container__title"> {props.title} </h2>}
                     {props.text && <p className="imageInfo-container__text">{props.text}</p>}
                     {props.btnLight &&
-                        <Link href="/overview">
+                        <Link href={props.link || "/plans/products"}>
                             <button className="imageInfo-container__button btn-light"> {props.btnLight} </button>
                         </Link>}
                     {props.btn &&

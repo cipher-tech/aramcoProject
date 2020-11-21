@@ -151,7 +151,7 @@ const PlanCard = ({ info }: props) => {
                 {info.recommended ? <div className="recommended-badge">Recommended</div> : ""}
                 <h3>{info.name}</h3>
                 <p className="pricing-plan--info">
-                    {info.name} <br/>
+                    
                     <span className="pricing-plan--info-range">
                         ${`${info.range[0]} - $${info.range[1]}`}
                     </span> makes

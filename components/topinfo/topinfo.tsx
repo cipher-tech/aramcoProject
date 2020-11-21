@@ -77,7 +77,7 @@ const TopInfo = () => {
                 <div className="topInfo-container">
                     <h3 className="topInfo-container__subHead">IN-HOUSE TECHNOLOGIES</h3>
                     <h2 className="topInfo-container__title">Nonmetallic Solutions</h2>
-                    <p className="topInfo-container__text">At Aramco, we are a catalyst for developing technology solutions to address some of the
+                    <p className="topInfo-container__text">At Sabic Aramco, we are a catalyst for developing technology solutions to address some of the
                     world’s most pressing energy and materials challenges.
                     </p>
                     <Link href="/overview" >
