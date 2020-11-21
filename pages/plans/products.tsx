@@ -18,7 +18,7 @@ const Products = () => {
                 <UserNav />
                 <Nav />
                 <Head header="investments" title="Product"
-                    text="Trade on our Investment plans" image="/images/headerImage.jpg" />
+                    text="Explore Our stocks and shares" image="/images/headerImage.jpg" />
 
                 <Text text={`Trade on gas, 
                 Our natural gas is a fundamental product used to meet growing domestic energy 
