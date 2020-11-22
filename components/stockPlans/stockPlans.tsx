@@ -26,10 +26,11 @@ const Container = styled.div`
             color: ${theme.colorPrimary};  
             font-size: 35px;
             font-weight: 600;
+            margin: 6rem 1rem 3rem;
         }
     }
     .pricing-plans-container{
-        margin-top: .729166667in;
+        margin-top: 3rem;
         background: white;
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
@@ -56,26 +57,26 @@ export const stockInfo: Array<IStockPlan> = [
         name: "large cap stock",
         range: [1_000_000, Infinity],
         type: "stock",
-        text: "buy large stock cap stocks (start price) $1,000,000 "
+        text: "Buy large stock cap stocks"
     },
     {
         name: "Small cap stock",
         range: [100_000, Infinity],
         type: "stock",
-        text: "Buy small cap stocks (start price) $100,000"
+        text: "Buy small cap stocks"
         // recommended: true
     },
     {
         name: " mid cap stocks",
         range: [50_000, Infinity],
         type: "stock",
-        text: "buy mid cap stocks (start price) 50,000"
+        text: "Buy mid cap stocks"
     },
     {
         name: "blue chip stocks",
         range: [1_000, Infinity],
         type: "stock",
-        text: `blue chip stocks (Berkshire Hathaway etc)-(start price) $1000`
+        text: `blue chip stocks (Berkshire Hathaway etc)`
     },
 ]
 
@@ -84,13 +85,13 @@ export const sharesInfo: Array<IStockPlan> = [
         name: "redeemable shares",
         range: [100_000, Infinity],
         type: "share",
-        text: "buy redeemable shares (start price) 100,000"
+        text: "Buy redeemable shares"
     },
     {
         name: "Equity shares",
         range: [1_000_000, Infinity],
         type: "share",
-        text: "buy Equity shares (start price) 1,000,000"
+        text: "Buy Equity shares"
     },
 ]
 const StockPlans = (props) => {

@@ -62,6 +62,7 @@ const Container = styled.div`
                 font-size: 18px;
                 border-radius: 3pt;
                 background: #f6f6f6;
+                color: ${theme.colorPrimary};
 
                 strong{
                     line-height: 1.87pc;
@@ -156,8 +157,8 @@ const StockPlanCard = ({ info }) => {
                 <p className="pricing-plan--info"> 
                  
                     <span className="pricing-plan--info-range">
-                         ${`${info.range[0]} - $${info.range[1]}`} 
-                    </span> makes
+                        starts at ${`${info.range[0]}`} 
+                    </span> 
                 </p>
                 <ul className="uk-switcher" id="change-plan">
                     <li>
@@ -166,28 +167,8 @@ const StockPlanCard = ({ info }) => {
 
                 </ul>
                 <div className="pricing-plan-features">
-                    {/* <strong>Features of the {info.name} Plan</strong> */}
-                    <ul>
-                        {/* <li>
-                            Calculation procedures: {info.range[0]} multiplied by {(info.rate).toFixed(1)}% will give you
-                            ${(info.range[0] * (info.rate/100) ).toFixed(1)}, which will subsequently earn you 
-                            ${+info.range[0] + ( info.range[0] * (info.rate/100) )} every {info.duration} {info.duration === 1? `day`: "days"}.
-                        </li> */}
-                        {/* <li>Exercise files </li>
-                            <li>Interactive tools</li>
-                            <li>On-demand learning</li> */}
-                    </ul>
                 </div>
                 <button onClick={toggleShowInput} className="btns">Purchase Plan</button>
-
-                {/* {showInput ? <FormValidator buttonClass="rate-summit"
-                classname=" rate-div "
-                data={state} rules={rules}
-                submit={submit}>
-                <StyledInput name="amount" updatedValue={setAmount} value={state.amount}
-                    placeHolder="Amount" type="number" icon={lock} />
-                <ValidationMessage field="amount" />
-            </FormValidator> : ""} */}
             </div>
         </Container>
     )

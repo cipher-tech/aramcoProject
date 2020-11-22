@@ -17,7 +17,7 @@ const Products = () => {
             <CustomFontSize>
                 <UserNav />
                 <Nav />
-                <Head header="investments" title="Product"
+                <Head header="Partnering with us" title="Product"
                     text="Explore Our stocks and shares" image="/images/headerImage.jpg" />
 
                 <Text text={`Trade on gas, 

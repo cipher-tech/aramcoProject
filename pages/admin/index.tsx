@@ -1,7 +1,7 @@
 ﻿import Head from 'next/head'
 import React, { useEffect } from 'react'
 // import { Helmet } from "react-helmet";
-import { Plan, SideBar, StockPlan, UserStats } from "../../components/index"
+import { Plan, SideBar, StockChart, StockPlan, UserStats } from "../../components/index"
 import { useGetUserQuery } from '../../generated/apolloComponent';
 import { withApollo } from '../../lib/apolloClient';
 
@@ -134,8 +134,9 @@ const index = () => {
 
                             {/* <!--  ==================================VALIDATION ERRORS==================================  --> */}
                             {/* <!--  ==================================SESSION MESSAGES==================================  --> */}
+                            
                             <UserStats />
-                           
+                           <StockChart />
                             <Plan />
                             <StockPlan />
 {/* 

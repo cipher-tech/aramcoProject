@@ -22,6 +22,10 @@ const Header = ({ header, title, text, image }) => {
                         place-content: center;
                         background-color: ${theme.colorPrimary};
                         padding: 2rem;
+                        &-txtContainer{
+                            width: max-content;
+                            align-self: center;
+                        }
                     }
                     &-bigText{
                         align-self: center;
@@ -47,15 +51,17 @@ const Header = ({ header, title, text, image }) => {
             `}</style>
             <div className="main-content">
                 <div className="main-content__left">
-                    <h1 className="main-content-bigText">
-                        {header}
-                        <br />
-                        <span>{title}</span>
-                    </h1>
-                    <p className="main-content-text">
-                        <br />
-                        {text}
-                    </p>
+                    <div className="main-content__left-txtContainer">
+                        <h1 className="main-content-bigText">
+                            {header}
+                            <br />
+                            <span>{title}</span>
+                        </h1>
+                        <p className="main-content-text">
+                            <br />
+                            {text}
+                        </p>
+                    </div>
                 </div>
                 <div className="main-content__right">
                 </div>
