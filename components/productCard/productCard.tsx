@@ -57,8 +57,8 @@ const ProductCard = ({ image, text, link, download }: IProps) => {
                         outline: none;
                     }
                 }
-            }
-        `}</style>
+            } 
+        `}</style> 
             <div className="item">
                 <div className="item__img">
                     <div className="item__img-overlay" />
