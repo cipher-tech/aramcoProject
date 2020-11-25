@@ -22,7 +22,7 @@ const Investors = () => {
                             display: grid;
                             width: 100%;
                             justify-content: space-between;
-                            grid-template-columns:  repeat(auto-fit, minmax(22rem, 45rem));
+                            grid-template-columns:  repeat(auto-fit, minmax(28rem, 1fr));
                         }
                         
                     }
@@ -40,16 +40,16 @@ const Investors = () => {
                     the company operates within the Kingdom and worldwide, and employs around 79,800 people.`} />
                 <div className="product">
                     <div className="product-container">
-                        <Card image="/images/moreInfo-2.jpg"
+                        <Card download={true} image="/images/moreInfo-2.jpg"
                         link="/overview"
                             text="We have built a reputation for unmatched reliability
                         in supplying crude oil to energy markets around the world." />
 
-                        <Card image="/images/cardimg2.png" link="/overview"
+                        <Card download={true} image="/images/cardimg2.png" link="/overview"
                             text="We're the sole supplier of natural gas to Saudi Arabia,
                         the seventh largest natural gas market in the world." />
 
-                        <Card image="/images/cardimg1.jpg" link="/overview"
+                        <Card download={true} image="/images/cardimg1.jpg" link="/overview"
                             text="We are a preeminent player in the global petrochemicals industry, committed to innovation, growth,
                         and realizing the full potential of every hydrocarbon molecule that we produce." />
                     </div>

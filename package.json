@@ -12,6 +12,7 @@
     "@apollo/client": "^3.2.5",
     "@apollo/react-hooks": "^4.0.0",
     "@apollo/react-ssr": "^4.0.0",
+    "@types/styled-components": "^5.1.4",
     "@types/yup": "^0.29.8",
     "apollo-boost": "^0.4.9",
     "apollo-cache-inmemory": "^1.6.6",

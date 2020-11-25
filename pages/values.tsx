@@ -24,7 +24,7 @@ const Values = () => {
                             display: grid;
                             width: 100%;
                             justify-content: space-between;
-                            grid-template-columns:  repeat(auto-fit, minmax(22rem, 45rem));
+                            grid-template-columns:  repeat(auto-fit, minmax(29rem, 1fr));
 
                         }
                         &-item{

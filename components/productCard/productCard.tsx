@@ -6,8 +6,9 @@ interface IProps {
     image: string
     text: string
     link?: string
+    download?: boolean
 }
-const ProductCard = ({ image, text, link }: IProps) => {
+const ProductCard = ({ image, text, link, download }: IProps) => {
     return (
         <>
             <style jsx>{`
@@ -51,6 +52,7 @@ const ProductCard = ({ image, text, link }: IProps) => {
                     color: ${theme.colorWhite};
                     border: none;
                     cursor: pointer;
+                    text-align: center;
                     &:focus{
                         outline: none;
                     }
@@ -65,9 +67,10 @@ const ProductCard = ({ image, text, link }: IProps) => {
                 <p className="item__text">
                     {text}
                 </p>
-                <Link href={link || "/overview"}>
-                    <button className="item__btn">Read More</button>
-                </Link>
+                {/* <Link  > */}
+                    <a download={download ? true : false } 
+                    href={download ? "/pdf/aramcoPdf.pdf" : (link || "/overview")} className="item__btn">Read More</a>
+                {/* </Link> */}
 
             </div>
         </>

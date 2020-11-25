@@ -1,5 +1,6 @@
 import React from 'react'
-import { VictoryLine, VictoryChart, VictoryZoomContainer,VictoryAxis,VictoryBrushContainer } from 'victory';
+import { VictoryLine, VictoryChart, VictoryZoomContainer,
+  VictoryTheme, VictoryAxis,VictoryBrushContainer } from 'victory';
 
 class StockPlanChart extends React.Component<{}, {zoomDomain: any}> {
   constructor(props) {
@@ -16,7 +17,7 @@ class StockPlanChart extends React.Component<{}, {zoomDomain: any}> {
   render() {
     return (
       <div>
-        <VictoryChart width={600} height={270} scale={{ x: "time" }}
+        <VictoryChart /* theme={VictoryTheme.material} */ width={600} height={270} scale={{ x: "time" }}
           containerComponent={
             <VictoryZoomContainer
               zoomDimension="x"
