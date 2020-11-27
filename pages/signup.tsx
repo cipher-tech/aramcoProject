@@ -6,7 +6,7 @@ import { useRouter } from 'next/dist/client/router';
 import Link from 'next/link';
 
 import { withApollo } from '../lib/apolloClient';
-import { Plans, Register, useRegisterMutation } from '../generated/apolloComponent'
+import { Plan, Register, useRegisterMutation } from '../generated/apolloComponent'
 import theme from '../styles/theme'
 import { InputErrorMessage } from '../components';
 
@@ -106,7 +106,7 @@ const SignUp = () => {
                                 email: "",
                                 phone_no: "",
                                 password: "",
-                                plan: Plans.Beginners,
+                                plan: "none",
                                 coin_address: "",
                             }} validationSchema={SignupSchema}>
                             {({ handleSubmit, errors, touched }) => (

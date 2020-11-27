@@ -1,9 +1,9 @@
 import Head from 'next/head'
 import React, { useEffect, useState } from 'react'
 import { Helmet } from "react-helmet";
-import { MasterAdminSidenav, MasterAdminStatsCard, TableComponent } from "../../components"
-import { useGetAdminWithdrawalsQuery, } from '../../generated/apolloComponent';
-import { withApollo } from '../../lib/apolloClient';
+import { MasterAdminSidenav, MasterAdminStatsCard, TableComponent } from "../../../components"
+import { useGetAdminWithdrawalsQuery, } from '../../../generated/apolloComponent';
+import { withApollo } from '../../../lib/apolloClient';
 
 const WithdrawalHistory = () => {
     const [message, setMessage] = useState("")
