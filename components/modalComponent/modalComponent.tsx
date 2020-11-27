@@ -5,7 +5,7 @@ import styled from 'styled-components'
 
 const Container = styled.div`
     position: fixed;
-    display: ${props => props.isActive ? "grid" : "none"};
+    display: ${ "grid" || "none"};
     /* place-items: center; */
     justify-content: center;
     top: 0;
