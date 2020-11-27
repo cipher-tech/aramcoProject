@@ -13,7 +13,7 @@ const InputError = ({ message, field, touched }: Props) => {
             <style jsx>{`
                 #errorMsg{
                     color: red;
-                    font-size: smaller;
+                    font-size: small;
                 }
             `}</style>
             <p id="errorMsg">

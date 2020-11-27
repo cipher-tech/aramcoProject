@@ -38,7 +38,7 @@ const Container = styled.div`
                 border-bottom: solid thin ${theme.colorPrimary};
             }
             &:hover > .navbar-list__item--dropDown{
-                bottom: -24.5rem ;
+                bottom: -22.5rem ;
             }
             &--dropDown{
                 cursor: default;
@@ -57,7 +57,7 @@ const Container = styled.div`
                     flex-direction: column;
                     justify-content: space-evenly;
                     height: 100%;
-                    padding: 3rem 3rem;
+                    padding: 7rem 3rem;
                     /* background-color: #00a3e0; */
                     &__item{
                         /* padding: 3rem; */

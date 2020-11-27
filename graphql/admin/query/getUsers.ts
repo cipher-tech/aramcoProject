@@ -9,6 +9,9 @@ export const getUsers = gql`
     	phone_no
     	plan
     	coin_address
+		wallet_balance
+		createdAt
+		updatedAt
     }
 }
 `

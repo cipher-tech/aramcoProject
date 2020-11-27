@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import theme from '../../styles/theme'
@@ -141,9 +142,6 @@ const PlanCard = ({ info }: props) => {
         const id = JSON.parse(localStorage.getItem("userInfo")).user.id
 
     }
-    const toggleShowInput = () => {
-        setShowInput(!showInput)
-    }
     return (
         <Container>
             <div className={`pricing-plan ${info.recommended}`}>
@@ -151,7 +149,7 @@ const PlanCard = ({ info }: props) => {
                 {info.recommended ? <div className="recommended-badge">Recommended</div> : ""}
                 <h3>{info.name}</h3>
                 <p className="pricing-plan--info">
-                    
+
                     <span className="pricing-plan--info-range">
                         ${`${info.range[0]} - $${info.range[1]}`}
                     </span> makes
@@ -175,7 +173,12 @@ const PlanCard = ({ info }: props) => {
                             <li>On-demand learning</li> */}
                     </ul>
                 </div>
-                <button onClick={toggleShowInput} className="btns">Purchase Plan</button>
+                <Link href={{
+                    pathname: "/admin/[name]",
+                    query: { name: info.name }
+                }}>
+                    <button className="btns">Purchase Plan</button>
+                </Link>
 
                 {/* {showInput ? <FormValidator buttonClass="rate-summit"
                 classname=" rate-div "

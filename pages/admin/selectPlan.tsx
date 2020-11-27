@@ -4,13 +4,11 @@ import styled, { keyframes } from "styled-components";
 import { Field, Formik } from 'formik'
 import * as Yup from 'yup';
 
-import { InputErrorMessage, Modal, Plan, SideBar, StockPlan, UserStats } from "../../components/index"
+import { InputErrorMessage, Modal, Plan, SideBar, StockPlan, UserAdminHeader, UserStats } from "../../components/index"
 import theme from '../../styles/theme';
-import { planInfo, IPlan } from '../../components/plans/plans';
-import { sharesInfo, stockInfo, IStockPlan } from '../../components/stockPlans/stockPlans';
-import { GetStaticProps } from 'next';
-import { useDepositRequestMutation, useGetUserQuery } from '../../generated/apolloComponent';
 import { withApollo } from '../../lib/apolloClient';
+import { useWithdrawalRequestMutation } from '../../generated/apolloComponent';
+import Plans from '../../components/plans/plans';
 // import { ReactComponent as Spinner } from "/images/svg/spinner.svg";
 
 const spinnerRotation = keyframes`
@@ -61,7 +59,6 @@ const Container = styled.div`
         }
         &--text{
             padding: 1rem;
-            font-size: ${theme.font.xxsmall}
         }
         &-address{
             font-size: ${theme.font.large};
@@ -71,9 +68,6 @@ const Container = styled.div`
             width: 100%;
             overflow: hidden;
         }
-    }
-    .plan-info{
-        font-size: ${theme.font.xsmall}
     }
     .loadingSpinner{
         justify-self: center;
@@ -112,6 +106,7 @@ const Container = styled.div`
         }
         &--text{
             padding: 1rem;
+            font-size: ${theme.font.xsmall};
         }
         &-address{
             font-size: ${theme.font.medium};
@@ -495,20 +490,13 @@ const Container = styled.div`
 `;
 
 const Request_Deposit = (props) => {
-    const [isSelling, setIsSelling] = useState(true);
+
     const [isLoading, setIsLoading] = useState(false);
     const [isModalActive, setIsModalActive] = useState(false);
     const [message, setMessage] = useState('')
     const [, setIsCopied] = useState(false)
-
-    const [SelectedPlan, setSelectedPlan] = useState<IPlan | IStockPlan>({
-        name: "",
-        range: [5_000, Infinity],
-        rate: 35,
-        duration: 30
-    })
-    // const { data, loading, error } = useGetUserQuery()
-    const [depositRequestMutation, { data: depositRequestMutationData , loading: depositRequestMutationLoading, error: depositRequestMutationError }] = useDepositRequestMutation()
+    const [refId, setRefId] = useState('')
+    const [withdrawalRequestMutation, { data, loading, error }] = useWithdrawalRequestMutation()
     // useEffect(() => {
     //     console.log(data);
     // }, [data])
@@ -522,48 +510,33 @@ const Request_Deposit = (props) => {
         await navigator.clipboard.writeText("Some other text")
         setIsCopied(true)
     }
-
-    const allPlans = [
-        ...planInfo,
-        ...stockInfo,
-        ...sharesInfo
-    ]
-    const DepositSchema = Yup.object().shape({
+    const withdrawalSchema = Yup.object().shape({
         amount: Yup.number()
-            .min(1, 'Too Short!')
-            .max(7, 'Too Long!')
             .required('Required')
-            .lessThan(SelectedPlan.range[1] - 1, `must be less than ${SelectedPlan.range[1] - 1} `)
-            .moreThan(SelectedPlan.range[0] - 1, `must be greater than ${SelectedPlan.range[0] - 1} `),
-        // plan: Yup.string().required("Required")
     });
 
-    const handleSelect = ({ target }) => {
-        const plan = allPlans.find(item => item.name === target.value)
-        console.log(plan);
-
-        setSelectedPlan(plan)
-    }
     const submit = async (inputs) => {
         await setIsLoading(true)
         await setMessage('')
-        let response = await depositRequestMutation({
+        withdrawalRequestMutation({
             variables: {
                 input: {
                     amount: inputs.amount,
-                    userId: "none",
-                    plan: SelectedPlan.name
+                    userId: "id",
                 }
             }
         })
-        if (depositRequestMutationError || response.data.depositRequest.status === "false" ){
-            setIsLoading(false)
-            return setMessage(response.data.depositRequest.message)
-        } 
-        if (!depositRequestMutationLoading) await setIsLoading(false)
-        
-        console.log(depositRequestMutationData, response);
-        setIsModalActive(true)
+        .then(async response => {
+            if (error) return setMessage('Something went wrong, please try again or contact admin')
+            if (!loading) await setIsLoading(false)
+    
+            console.log({response, data});
+            setIsModalActive(true)
+        })
+        .catch( async err => {
+            await setIsLoading(false)
+            await setMessage('Something went wrong, please try again or contact admin')
+        })
     }
     return (
         <>
@@ -615,46 +588,7 @@ const Request_Deposit = (props) => {
             <body className="page-header-fixed page-sidebar-closed-hide-logo">
 
                 {/* <!-- BEGIN HEADER --> */}
-                <div className="page-header navbar navbar-fixed-top" style={{ backgroundColor: "#2C4065" }}>
-                    <div className="page-header-inner " style={{ backgroundColor: "#2C4065" }}>
-
-
-                        {/* <!-- BEGIN LOGO --> */}
-                        <div className="page-logo">
-                            <a href="">
-                                <img src="/admin/assets/images/logo.png" className="logo-default" alt="-" style={{ filter: "brightness(0) invert(1)", width: "150px", height: "45px" }} />
-
-                            </a>
-
-                            <div className="menu-toggler sidebar-toggler" style={{ backgroundColor: "#2C4065" }}></div>
-                        </div>
-                        {/* <!-- END LOGO --> */}
-
-
-                        {/* <!-- BEGIN RESPONSIVE MENU TOGGLER --> */}
-                        <a href="javascript:;" className="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse"> </a>
-
-                        <div className="top-menu" style={{ backgroundColor: "#2C4065" }}>
-                            <ul className="nav navbar-nav pull-right" style={{ backgroundColor: "#2C4065" }}>
-                                <li className="dropdown dropdown-user">
-                                    <a href="javascript:;" className="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-
-
-                                        <span className="username"> </span>
-                                        <i className="fa fa-angle-down"></i>
-                                    </a>
-                                    <ul className="dropdown-menu dropdown-menu-default">
-
-                                        <li><a href="admin-change-password.html"><i className="fa fa-cogs"></i> Change Password </a>
-                                        </li>
-                                        <li><a href="/admin"><i className="fa fa-sign-out"></i> Log Out </a></li>
-
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                <UserAdminHeader />
                 {/* <!-- END HEADER --> */}
 
 
@@ -674,143 +608,8 @@ const Request_Deposit = (props) => {
                             {/* <!--  ==================================SESSION MESSAGES==================================  --> */}
 
                             <UserStats />
-
-                            {/* {showpopUpMessage ? (
-                                <PopUpMessage error={hasError}>
-                                    {" "}
-                                    {popUpMessage}{" "}
-                                    <span onClick={() => setShowPopUpMessage(false)}>✖</span>{" "}
-                                </PopUpMessage>
-                            ) : null} */}
-                            {/* {console.log(fx.rates)} */}
-                            <Container hidden={false} gridPos={'1/-1'}>
-                                <Modal isActive={isModalActive}>
-                                    <div className="modal__container">
-                                        <span
-                                            role="img"
-                                            aria-label="img"
-                                            className="close"
-                                            onClick={() => setIsModalActive(false)}
-                                        >
-                                            ❌
-                                        </span>
-                                        <img src="/images/qrcode.png" alt="" />
-
-                                        <p className="modal__container--text">
-                                            please pay exactly the amount specified into this bitcoin address 
-                                        </p>
-
-                                        <p className="modal__container-address">
-                                            {"ood9euur8r90itiogig484t8pmf20"}
-                                            <button onClick={() => copy("address")}> copy</button>
-                                        </p>
-
-                                        {/* <p className="modal__container--text">
-                                            After successful payment contact customer care with the unique
-                                            refrence_id below,and proof of payment. <br />
-                                            <span className="modal__container-address">
-                                                {"refrenceId"}
-                                                <button onClick={() => copy("refId")}> copy</button>
-                                            </span>
-                                        </p> */}
-                                    </div>
-                                </Modal>
-                                {/* <div className="loadingScreen"/> */}
-                                <div className="coin">
-                                    <div className="coin-options">
-                                        <div className="coin-options__types">
-                                            <div className="coin-options__types--container">
-                                                <h4 className="coin-options__types--container-h4">Activate A Plan</h4>
-                                            </div>
-                                        </div>
-                                        <p className="plan-info">{message} </p>
-                                        <p className="coin-options__buy-sell">
-                                            {true ? null : (
-                                                <span
-                                                    className={`coin-options__buy-sell--item ${isSelling ? null : " tab"
-                                                        }`}
-                                                    onClick={() => setIsSelling(false)}
-                                                >
-                                                    Spend from balance
-                                                </span>
-                                            )}
-                                            <span
-                                                className={`coin-options__buy-sell--item ${true ? " tab" : null
-                                                    }`}
-                                                onClick={() => true /* setIsSelling(true) */}>
-                                                Request Deposit
-                                            </span>
-                                        </p>
-
-                                        <h3 className="coin-options__header red">
-                                            Select a plan
-                                        </h3>
-
-
-                                        <h3 className="coin-options__header">
-                                            and enter an amount to deposit
-                                        </h3>
-
-                                        <Formik onSubmit={submit}
-                                            initialValues={{
-                                                amount: "",
-                                                // plan: "",
-                                            }}
-                                            validationSchema={DepositSchema}>
-                                            {({ handleSubmit, errors, touched }) => (
-                                                <form onSubmit={handleSubmit}>
-                                                    <select
-                                                        name="plan"
-                                                        value={SelectedPlan.name}
-                                                        className="coin-options-paymentOptions"
-                                                        onChange={handleSelect}
-                                                    >
-                                                        <option value="">Select Plan</option>
-                                                        {planInfo.map((item, index) => (
-                                                            <option key={index} value={item.name}>{item.name}</option>
-                                                        ))}
-                                                        {stockInfo.map((item, index) => (
-                                                            <option key={index} value={item.name}>{item.name}(Stock Plan)</option>
-                                                        ))}
-                                                        {sharesInfo.map((item, index) => (
-                                                            <option key={index} value={item.name}>{item.name}(Shares)</option>
-                                                        ))}
-                                                    </select>
-                                                    <InputErrorMessage message={errors.plan} field={errors.plan} touched={touched.plan} />
-
-                                                    {SelectedPlan.name ?
-                                                        <p className="plan-info">
-                                                            <span>{SelectedPlan.name}</span> <br />
-                                                            <span>Range: {SelectedPlan.range[0]} - {SelectedPlan.range[1]}</span>
-                                                        </p>
-                                                        : null
-                                                    }
-
-                                                    <div>
-                                                        {/* <span>{ console.log(regionContext?.country?.symbol)}</span>  */}
-                                                        <span className="coin-options__amounts">
-                                                            <Field
-                                                                name="amount"
-                                                                type="number"
-
-                                                                className="coin-options__value input-container"
-                                                                placeholder="Enter Value"
-                                                            />
-                                                        </span>
-                                                        <InputErrorMessage message={errors.amount} field={errors.amount} touched={touched.amount} />
-                                                    </div>
-                                                    <button type="submit" className={`coin-options__button`}>
-                                                        Continue
-                                                        {isLoading ? <img src="/images/svg/spinner.svg" className="loadingSpinner" /> : null}
-                                                    </button>
-                                                </form>
-                                            )}
-                                        </Formik>
-                                    </div>
-
-                                </div>
-                            </Container>
-
+                            <Plans />
+                            <StockPlan />
                         </div>
                     </div>
                     {/* <!-- END CONTENT --> */}

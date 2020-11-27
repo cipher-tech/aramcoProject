@@ -1,33 +1,37 @@
+import { route } from 'next/dist/next-server/server/router';
 import Head from 'next/head'
+import { useRouter } from 'next/router';
 import React, { useState } from 'react'
 // import { Helmet } from "react-helmet";
-import { MasterAdminSidenav, MasterAdminStatsCard, TableComponent, UserAdminHeader } from "../../components/index"
-import { DepositAttributes, useActivateDepositMutation, useDeleteDepositRequestMutation, useGetPendingDepositsQuery, useGetUserQuery } from '../../generated/apolloComponent';
+import { MasterAdminSidenav, MasterAdminStatsCard, TableComponent, UserAdminHeader } from "../../../components/index"
+import { DepositAttributes, useDeleteDepositRequestMutation, useGetPendingDepositsQuery } from '../../../generated/apolloComponent';
 
-import { withApollo } from '../../lib/apolloClient';
+import { withApollo } from '../../../lib/apolloClient';
 
 const Pending_deposits = () => {
     const [message, setMessage] = useState("")
     const { data: pendingDeposits, loading: depositsIsLoading, error, refetch: refetchPendingDeposits } = useGetPendingDepositsQuery()
-    const [ActivateDepositMutation, { data: ActivateDepositMutationData,
-        loading: ActivateDepositMutationLoading,
-        error: ActivateDepositMutationError }] = useActivateDepositMutation()
     const [deleteDepositRequestMutation, { data: deleteDepositData, loading: deleteDepositLoading, error: deleteDepositError }] = useDeleteDepositRequestMutation()
 
+    const router = useRouter()
     const activateDeposit = async (payload: DepositAttributes) => {
         // console.log(payload);
-        await setMessage('')
-        await ActivateDepositMutation({
-            variables: {
-                input: {
-                    id: payload.id
-                }
-            }
+        router.push({
+            pathname: "/masterAdmin/deposit/deposit",
+            query: {payload: JSON.stringify(payload)}
         })
+        // await setMessage('')
+        // await ActivateDepositMutation({
+        //     variables: {
+        //         input: {
+        //             id: payload.id
+        //         }
+        //     }
+        // })
 
-        setMessage(ActivateDepositMutationError ? "Could not activate deposit" : "Deposit Activated. Plan started")
-        await refetchPendingDeposits()
-        console.log("pending");
+        // setMessage(ActivateDepositMutationError ? "Could not activate deposit" : "Deposit Activated. Plan started")
+        // await refetchPendingDeposits()
+        // console.log("pending");
 
     }
     const deleteDeposit = async (payload) => {
@@ -43,7 +47,7 @@ const Pending_deposits = () => {
         await refetchPendingDeposits()
         console.log("pending");
     }
-    if (error || ActivateDepositMutationError || depositsIsLoading || ActivateDepositMutationLoading) {
+    if (error || depositsIsLoading) {
         return "loading"
     }
 
@@ -131,7 +135,8 @@ const Pending_deposits = () => {
                                         body={pendingDeposits.getPendingDeposits || [{}]}
                                         keys={["userId", "users", "slug", "status", "amount", "plan", "createdAt",]}
                                         nestedKeys={['email']}
-                                        buttonAction={[activateDeposit, deleteDeposit]} />
+                                        buttonAction={[activateDeposit, deleteDeposit]} 
+                                        buttonText={["View", "Delete"]} />
                                 }
                             </div>
                         </div>

@@ -4,11 +4,12 @@ export interface ITableProps {
     headers: string[]
     body: any
     buttonAction?: [Function, Function]
+    buttonText?: string[]
     title: string
     nestedKeys?: string[]
     keys: string[]
 }
-const Table = ({ headers, body, buttonAction, title, nestedKeys, keys }: ITableProps) => {
+const Table = ({ headers, body, buttonAction, title, nestedKeys, keys, buttonText }: ITableProps) => {
     return (
         <>
             {/* <!-- BEGIN CONTENT --> */}
@@ -70,7 +71,8 @@ const Table = ({ headers, body, buttonAction, title, nestedKeys, keys }: ITableP
                                                                 data-toggle="modal1" data-target="#blockModal"
                                                                 data-id="622"
                                                                 onClick={() => buttonAction[0](item)}>
-                                                                <i className='fa fa-eye'></i> Activate
+                                                                <i className='fa fa-eye'></i> &nbsp;
+                                                                {buttonText? buttonText[0]: "Activate"}
                                                             </button>
 
                                                             <button type="button"
@@ -78,7 +80,8 @@ const Table = ({ headers, body, buttonAction, title, nestedKeys, keys }: ITableP
                                                                 data-toggle="modal1" data-target="#blockModal"
                                                                 data-id="622"
                                                                 onClick={() => buttonAction[1](item)}>
-                                                                <i className='fa fa-times'></i> delete
+                                                                <i className='fa fa-times'></i>  &nbsp;
+                                                                {buttonText? buttonText[1]: "Delete"}
                                                             </button>
                                                         </td>
                                                         :

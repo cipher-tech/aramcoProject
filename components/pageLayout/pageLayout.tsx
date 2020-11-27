@@ -8,7 +8,7 @@ const PageLayout: React.FC = (props) => {
 
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+        <link href="/admin/assets/admin/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
         {/* <!-- Favicon --> */}
         <link href="/assets/images/favicon.png" rel="icon" type="image/png" />
 

@@ -20,14 +20,14 @@ const MasterAdminSidebar = () => {
                             </a>
                         </li>
                         <li className="nav-item start">
-                            <Link href="/masterAdmin/pending_deposits" >
+                            <Link href="/masterAdmin/deposit/pending_deposits" >
                                 <a className="nav-link nav-toggle"><i className="fa fa-spinner"></i>
                                     <span className="title">Pending Deposits</span>
                                 </a>
                             </Link>
                         </li>
                         <li className="nav-item ">
-                            <Link href="/masterAdmin/deposit_history">
+                            <Link href="/masterAdmin/deposit/deposit_history">
                                 <a className="nav-link nav-toggle"><i className="fa fa-history"></i>
                                     <span className="title">Deposit History</span>
                                 </a>
@@ -35,7 +35,7 @@ const MasterAdminSidebar = () => {
                         </li>
 
                         <li className="nav-item">
-                            <Link href="/masterAdmin/getPendingWithdrawals">
+                            <Link href="/masterAdmin/withdrawals/getPendingWithdrawals">
                                 <a className="nav-link nav-toggle"><i className="fa fa-history"></i>
                                     <span className="title">Pending Withdraw</span>
                                 </a>
@@ -43,7 +43,7 @@ const MasterAdminSidebar = () => {
 
                         </li>
                         <li className="nav-item">
-                            <Link href="/masterAdmin/withdrawal_history">
+                            <Link href="/masterAdmin/withdrawals/withdrawal_history">
                                 <a className="nav-link nav-toggle"><i className="fa fa-history"></i>
                                     <span className="title">Withdraw History</span>
                                 </a>
@@ -51,7 +51,7 @@ const MasterAdminSidebar = () => {
                         </li>
 
                         <li className="nav-item">
-                            <Link href="/masterAdmin/users">
+                            <Link href="/masterAdmin/users/users">
                                 <a className="nav-link nav-toggle"><i className="fa fa-history"></i>
                                     <span className="title">All Users</span>
                                 </a>

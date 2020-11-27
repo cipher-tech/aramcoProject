@@ -90,7 +90,7 @@ export const planInfo: Array<IPlan> = [
             {/* <Heading dark={props.dark} title="Pricing Plans" /> */}
 
             <div className="section-title">
-                <h1> Trading Plans </h1>
+                <h1> Product Plans </h1>
             </div>
 
             <div className="pricing-plans-container">

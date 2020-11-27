@@ -21,7 +21,7 @@ const AdminSidebar = () => {
                         </li>
 
                         <li className="nav-item start">
-                            <Link href="/admin/request_Deposit" >
+                            <Link href="/admin/selectPlan" >
                                 <a className="nav-link nav-toggle"><i className="fa fa-plus"></i>
                                     <span className="title">Make Deposit</span>
                                 </a>

@@ -1,16 +1,16 @@
 import Head from 'next/head'
 import React, { useEffect, useState } from 'react'
+// import { Helmet } from "react-helmet";
+import { MasterAdminSidenav, MasterAdminStatsCard, Plan, SideBar, StockPlan, TableComponent } from "../../../components"
+import { useGetAdminDepositsQuery } from '../../../generated/apolloComponent';
+import { withApollo } from '../../../lib/apolloClient';
 
-import { MasterAdminSidenav, MasterAdminStatsCard, TableComponent } from "../../components"
-import { useGetUsersQuery } from '../../generated/apolloComponent';
-import { withApollo } from '../../lib/apolloClient';
-
-const Users = () => {
+const DepositHistory = () => {
     const [message, setMessage] = useState("")
 
-    const { data, loading: IsLoading, error: HasError } = useGetUsersQuery()
+    const { data, loading: IsLoading, error: HasError } = useGetAdminDepositsQuery()
 
-    if (IsLoading) return <p>loading ...</p>
+    if(IsLoading) return <p>loading ...</p>
 
     return (
         <>
@@ -83,16 +83,16 @@ const Users = () => {
                             {/* <!--  ==================================VALIDATION ERRORS==================================  --> */}
                             {/* <!--  ==================================SESSION MESSAGES==================================  --> */}
                             {/* <!-- BEGIN HEADER --> */}
-                            {/* <MasterAdminStatsCard /> */}
+                            <MasterAdminStatsCard />
                             {/* <!-- END HEADER --> */}
                             <div className="row">
                                 {message}
                                 {IsLoading ? "Loading..."
                                     :
-                                    <TableComponent title="All Users"
-                                        headers={["Id", "First_name", "Email", "Phone_no", "Plan", "Coin_address",]}
-                                        body={data.getUsers}
-                                        keys={["id", "first_name", "email", "phone_no", "plan", "coin_address",]}
+                                    <TableComponent title="Deposit History"
+                                        headers={["userId", "email", "slug", " status ", "amount", "createdAt"]}
+                                        body={data.getAdminDeposits}
+                                        keys={["userId", "users", "slug", "status", "amount", "createdAt",]}
                                         nestedKeys={['email']} />
                                 }
                             </div>
@@ -116,4 +116,4 @@ const Users = () => {
     )
 }
 
-export default withApollo({ ssr: true })(Users)
+export default withApollo({ ssr: true })(DepositHistory)

@@ -24,14 +24,6 @@ export enum Status {
   Unverified = 'unverified'
 }
 
-export enum Plans {
-  Beginners = 'beginners',
-  Standard = 'standard',
-  Advance = 'advance',
-  Business = 'business',
-  None = 'none'
-}
-
 export type DepositAttributes = {
   __typename?: 'DepositAttributes';
   id: Scalars['ID'];
@@ -57,7 +49,7 @@ export type User = {
   status: Scalars['String'];
   coin_address?: Maybe<Scalars['String']>;
   wallet_balance?: Maybe<Scalars['Int']>;
-  plan?: Maybe<Plans>;
+  plan?: Maybe<Scalars['String']>;
   role: UserRole;
   slug: Scalars['String'];
   auth_token?: Maybe<Scalars['String']>;
@@ -108,7 +100,7 @@ export type Register = {
   email: Scalars['String'];
   phone_no: Scalars['String'];
   password: Scalars['String'];
-  plan: Plans;
+  plan?: Maybe<Scalars['String']>;
   coin_address?: Maybe<Scalars['String']>;
 };
 
@@ -160,6 +152,8 @@ export type Mutation = {
   login: User;
   depositRequest: Response;
   activateDeposit: Response;
+  cancelDeposit: Response;
+  cancelWithdrawal: Response;
   deleteDepositRequest: Response;
   withdrawalRequest: Response;
   activateWithdrawal: Response;
@@ -184,6 +178,16 @@ export type MutationDepositRequestArgs = {
 
 
 export type MutationActivateDepositArgs = {
+  input?: Maybe<Id>;
+};
+
+
+export type MutationCancelDepositArgs = {
+  input?: Maybe<Id>;
+};
+
+
+export type MutationCancelWithdrawalArgs = {
   input?: Maybe<Id>;
 };
 
@@ -228,6 +232,32 @@ export type ActivateWithdrawalMutationVariables = Exact<{
 export type ActivateWithdrawalMutation = (
   { __typename?: 'Mutation' }
   & { activateWithdrawal: (
+    { __typename?: 'Response' }
+    & Pick<Response, 'message' | 'status'>
+  ) }
+);
+
+export type CancelDepositMutationVariables = Exact<{
+  input?: Maybe<Id>;
+}>;
+
+
+export type CancelDepositMutation = (
+  { __typename?: 'Mutation' }
+  & { cancelDeposit: (
+    { __typename?: 'Response' }
+    & Pick<Response, 'message' | 'status'>
+  ) }
+);
+
+export type CancelWithdrawalMutationVariables = Exact<{
+  input?: Maybe<Id>;
+}>;
+
+
+export type CancelWithdrawalMutation = (
+  { __typename?: 'Mutation' }
+  & { cancelWithdrawal: (
     { __typename?: 'Response' }
     & Pick<Response, 'message' | 'status'>
   ) }
@@ -299,7 +329,7 @@ export type GetUsersQuery = (
   { __typename?: 'Query' }
   & { getUsers: Array<(
     { __typename?: 'User' }
-    & Pick<User, 'id' | 'first_name' | 'email' | 'phone_no' | 'plan' | 'coin_address'>
+    & Pick<User, 'id' | 'first_name' | 'email' | 'phone_no' | 'plan' | 'coin_address' | 'wallet_balance' | 'createdAt' | 'updatedAt'>
   )> }
 );
 
@@ -526,6 +556,72 @@ export function useActivateWithdrawalMutation(baseOptions?: Apollo.MutationHookO
 export type ActivateWithdrawalMutationHookResult = ReturnType<typeof useActivateWithdrawalMutation>;
 export type ActivateWithdrawalMutationResult = Apollo.MutationResult<ActivateWithdrawalMutation>;
 export type ActivateWithdrawalMutationOptions = Apollo.BaseMutationOptions<ActivateWithdrawalMutation, ActivateWithdrawalMutationVariables>;
+export const CancelDepositDocument = gql`
+    mutation cancelDeposit($input: Id) {
+  cancelDeposit(input: $input) {
+    message
+    status
+  }
+}
+    `;
+export type CancelDepositMutationFn = Apollo.MutationFunction<CancelDepositMutation, CancelDepositMutationVariables>;
+
+/**
+ * __useCancelDepositMutation__
+ *
+ * To run a mutation, you first call `useCancelDepositMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCancelDepositMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [cancelDepositMutation, { data, loading, error }] = useCancelDepositMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useCancelDepositMutation(baseOptions?: Apollo.MutationHookOptions<CancelDepositMutation, CancelDepositMutationVariables>) {
+        return Apollo.useMutation<CancelDepositMutation, CancelDepositMutationVariables>(CancelDepositDocument, baseOptions);
+      }
+export type CancelDepositMutationHookResult = ReturnType<typeof useCancelDepositMutation>;
+export type CancelDepositMutationResult = Apollo.MutationResult<CancelDepositMutation>;
+export type CancelDepositMutationOptions = Apollo.BaseMutationOptions<CancelDepositMutation, CancelDepositMutationVariables>;
+export const CancelWithdrawalDocument = gql`
+    mutation cancelWithdrawal($input: Id) {
+  cancelWithdrawal(input: $input) {
+    message
+    status
+  }
+}
+    `;
+export type CancelWithdrawalMutationFn = Apollo.MutationFunction<CancelWithdrawalMutation, CancelWithdrawalMutationVariables>;
+
+/**
+ * __useCancelWithdrawalMutation__
+ *
+ * To run a mutation, you first call `useCancelWithdrawalMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCancelWithdrawalMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [cancelWithdrawalMutation, { data, loading, error }] = useCancelWithdrawalMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useCancelWithdrawalMutation(baseOptions?: Apollo.MutationHookOptions<CancelWithdrawalMutation, CancelWithdrawalMutationVariables>) {
+        return Apollo.useMutation<CancelWithdrawalMutation, CancelWithdrawalMutationVariables>(CancelWithdrawalDocument, baseOptions);
+      }
+export type CancelWithdrawalMutationHookResult = ReturnType<typeof useCancelWithdrawalMutation>;
+export type CancelWithdrawalMutationResult = Apollo.MutationResult<CancelWithdrawalMutation>;
+export type CancelWithdrawalMutationOptions = Apollo.BaseMutationOptions<CancelWithdrawalMutation, CancelWithdrawalMutationVariables>;
 export const DeleteDepositRequestDocument = gql`
     mutation deleteDepositRequest($input: Id) {
   deleteDepositRequest(input: $input) {
@@ -710,6 +806,9 @@ export const GetUsersDocument = gql`
     phone_no
     plan
     coin_address
+    wallet_balance
+    createdAt
+    updatedAt
   }
 }
     `;
