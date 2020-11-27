@@ -134,7 +134,7 @@ const Withdrawal = () => {
                                             <div className="row">
                                                 <div className="col-md-12">
                                                     <div className="text-center bold">
-                                                        <h3>Transaction ID : {withdrawal.slug}</h3>
+                                                         <h3>Transaction ID : {withdrawal.slug}</h3>
                                                         {/* <h3>withdrawal Method : Manual BTC</h3> */}
                                                         {/* <h3>Send Amount : 203 - USD</h3> */}
                                                         <h3>Withdrawal Amount : {withdrawal.amount} - USD</h3>
