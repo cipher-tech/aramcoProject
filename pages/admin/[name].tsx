@@ -25,7 +25,7 @@ const spinnerRotation = keyframes`
 `
 const Container = styled.div`
     grid-column: 1/-1; 
-    display: ${(props) => (props.hidden ? "none" : "grid")} ;
+    display: grid;
     min-height: 100%;
     min-width: 100%;
     padding: 1.5rem;

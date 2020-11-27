@@ -38,7 +38,6 @@ const Container = styled.div`
             transition: all .3s ease-in-out .1s;
             z-index: 1300;
             cursor: pointer;
-            justify-self: ${props => props.sidenavIsOpen ? "center" : "flex-start"};
 
             path{
                 height: 100%;
