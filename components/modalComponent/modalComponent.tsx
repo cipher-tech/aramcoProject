@@ -3,9 +3,9 @@ import styled from 'styled-components'
 // import { ContextData } from '../../context/contextData'
 // import { useState } from 'react'
 
-const Container = styled.div`
+const Container: any = styled.div`
     position: fixed;
-    display: ${ "grid" || "none"};
+    display: ${(props:any) => props.isActive ? "grid" : "none"};
     /* place-items: center; */
     justify-content: center;
     top: 0;
