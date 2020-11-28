@@ -8,7 +8,7 @@ const Container = styled.div`
     grid-column: 1/-1;
     width: 100%;          
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     padding: 1.5rem 2.5rem;
     box-shadow:  0.3rem 0.3rem .7rem #00000073,
         -0.3rem -0.3rem .7rem rgba(230, 230, 230, 29%);
@@ -48,7 +48,7 @@ const Container = styled.div`
                 color: ${theme.colorWhite};
                 /* padding: 3rem 3rem; */
                 width: 100%;
-                background-color:  #007eac /* ${theme.colorPrimary} */ ;
+                background-color:  #056386 /* ${theme.colorPrimary} */ ;
                 display: grid;
                 grid-template-columns: 2fr 3fr;
                 justify-items: space-around;
@@ -125,7 +125,7 @@ const Nav = () => {
                 <img className="navbar-logo" src="/images/logo.png" alt="logo" />
                 <ul className="navbar-list">
                     <li className="navbar-list__item">
-                        <p>Who we are</p>
+                    <a className="navbar-list__item--link" href="/overview">Who we are</a>
                         <div className="navbar-list__item--dropDown">
                             <div className="navbar-list__item--dropDown-options">
                                 <p className="navbar-list__item--dropDown-options__item">
@@ -149,7 +149,8 @@ const Nav = () => {
                         </div>
                     </li>
                     <li className="navbar-list__item">
-                        <p>Creating value</p>
+                    <a className="navbar-list__item--link" href="/values">Creating value</a>
+                       
                         <div className="navbar-list__item--dropDown">
                             <div className="navbar-list__item--dropDown-options">
                                 <p className="navbar-list__item--dropDown-options__item">
@@ -174,7 +175,7 @@ const Nav = () => {
                     </li>
                     {/* <li className="navbar-list__item">Making a difference</li> */}
                     <li className="navbar-list__item">
-                        <p>Partnering with us</p>
+                        <a className="navbar-list__item--link" href="/investors">Partnering with us</a>
                         <div className="navbar-list__item--dropDown">
                             <div className="navbar-list__item--dropDown-options">
                                 <p className="navbar-list__item--dropDown-options__item">
@@ -182,85 +183,90 @@ const Nav = () => {
                                     <span>Explore Our stocks and shares</span>
                                 </p>
                             </div>
+
                             <div className="navbar-list__item--dropDown-info">
-                                <h3 className="navbar-list__item--dropDown-info__title">Become A Partner</h3>
+                                <h3 className="navbar-list__item--dropDown-info__title">Become An Partner</h3>
                                 <p className="navbar-list__item--dropDown-info__text">
                                     <span>
-                                        Info:
+                                        Become An Customer:
                                     </span>
                                     <span>
-                                    Aramco previously announced the successful completion of its share acquisition of a 70% 
-                                    stake in Basic Industries Corporation from the Public Investment Fund.
+                                        Sabic Aramco is the world’s largest integrated oil and gas company.
                                     </span>
                                     <a href="/plans/products">Read More</a>
                                 </p>
-                                <div className="navbar-list__item--dropDown-info__text">
-
+                                <p className="navbar-list__item--dropDown-info__text">
                                     <span>
-                                        <ul>
-                                            <li>
-                                                <a href="/plans/products">Trade on Gas</a>
-                                            </li>
-                                            <li>
-                                                <a href="/plans/products">Trade on Oil</a>
-                                            </li>
-                                            <li>
-                                                <a href="/plans/products">Trade on Chemicals</a>
-                                            </li>
-
-                                        </ul>
+                                        Become An Supplier:
+                                    </span>
+                                    <span>
+                                        Being an energy leader in a world of changing energy demand,
+                                        we embrace our role to find effective energy solutions.
                                     </span>
                                     <a href="/plans/products">Read More</a>
-                                </div>
+                                </p>
                             </div>
+
 
                         </div>
                     </li>
                     <li className="navbar-list__item">
-                        <p className="navbar-list__item--link" /* href="/investors" */>Investors</p>
+                        <a className="navbar-list__item--link" href="/investors">Investors</a>
 
                         <div className="navbar-list__item--dropDown">
                             <div className="navbar-list__item--dropDown-options">
                                 <p className="navbar-list__item--dropDown-options__item">
                                     Investors
                                     {/* <br/> */}
-                                    <span></span>
+                                    <span>Explore Our Investment Plans</span>
                                 </p>
                                 {/* <p className="navbar-list__item--dropDown-options__item">
                                     Product
                                     <span>small text</span>
                                 </p> */}
                             </div>
+
                             <div className="navbar-list__item--dropDown-info">
-                                <h3 className="navbar-list__item--dropDown-info__title">Become An Investor</h3>
+                                <h3 className="navbar-list__item--dropDown-info__title">Become an Investor</h3>
                                 <p className="navbar-list__item--dropDown-info__text">
                                     <span>
-                                        Customer:
+                                        Invest In Products:
                                     </span>
                                     <span>
-                                        Sabic Aramco is the world’s largest integrated oil and gas company.
+                                        Aramco previously announced the successful completion of its share acquisition of a 70%
+                                        stake in Basic Industries Corporation from the Public Investment Fund.
                                     </span>
                                     <a href="/investors">Read More</a>
                                 </p>
-                                <p className="navbar-list__item--dropDown-info__text">
+                                <div className="navbar-list__item--dropDown-info__text">
                                     <span>
-                                        Supplier:
+                                        Become an Investor:
                                     </span>
                                     <span>
-                                        Being an energy leader in a world of changing energy demand,
-                                        we embrace our role to find effective energy solutions.
+                                        <ul>
+                                            <li>
+                                                <a href="/plans/products">Invest on Gas</a>
+                                            </li>
+                                            <li>
+                                                <a href="/plans/products">Invest on Oil</a>
+                                            </li>
+                                            <li>
+                                                <a href="/plans/products">Invest on Chemicals</a>
+                                            </li>
+
+                                        </ul>
                                     </span>
-                                    <a href="#">Read More</a>
-                                </p>
+                                    <a href="/investors">Read More</a>
+                                </div>
                             </div>
                         </div>
                     </li>
                 </ul>
                 <ul className="navbar-list">
                     <li className="navbar-list__item">
-                        <Link href="/login">
-                            <a>Login</a>
-                        </Link>
+                        {/* <Link > */}
+                            <a href="/login">Login</a>
+                        {/* </Link> */}
                     </li>
                     {/* <li className="navbar-list__item">Login</li> */}
                 </ul>

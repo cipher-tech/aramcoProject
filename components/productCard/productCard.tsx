@@ -1,14 +1,17 @@
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
 import theme from '../../styles/theme'
 
 interface IProps {
+    title?: string
     image: string
     text: string
     link?: string
     download?: boolean
+    collapsible?: boolean
 }
-const ProductCard = ({ image, text, link, download }: IProps) => {
+const ProductCard = ({ image, text, link, download, title,collapsible }: IProps) => {
+    const [expand, setExpand] = useState(false)
     return (
         <>
             <style jsx>{`
@@ -18,16 +21,25 @@ const ProductCard = ({ image, text, link, download }: IProps) => {
                 /* max-width: 45rem; */
                 justify-content: space-between;
                 flex-direction: column;
+                align-items: center;
                 &__img{
                     height: 24rem;
                     max-width: 45rem;
                     overflow: hidden;
                     position: relative;
+                    display: grid;
                     &-overlay{
                         position: absolute;
                         height: 100%;
                         width: 100%;
                         background: rgba(0, 0, 0, 0.575);
+                    }
+                    &-title{
+                        position: absolute;
+                        place-self: center;
+                        font-size: ${theme.font.large};
+                        color: ${theme.colorWhite};
+                        text-transform: capitalize;
                     }
                     img{
                         object-fit: cover;
@@ -37,39 +49,47 @@ const ProductCard = ({ image, text, link, download }: IProps) => {
                 }
                 &__text{
                     text-align: center;
-                    width: 90%;
+                    width: 95%;
                     align-self: center;
                     justify-self: center;
-                    font-size: ${theme.font.medium};
-                    padding: 1rem 1rem 3rem;
+                    font-size: ${theme.font.small};
+                    padding: 1rem 1rem 2rem;
                     color: ${theme.colorGrey};
                     font-weight: 100;
                 }
                 &__btn{
                     width: 100%;
+                    max-width: 45rem;
                     padding: 1.5rem;
                     background: ${theme.colorPrimary};
                     color: ${theme.colorWhite};
                     border: none;
                     cursor: pointer;
+                    font-size: ${theme.font.small};
                     text-align: center;
                     &:focus{
                         outline: none;
                     }
                 }
             } 
-        `}</style> 
+        `}</style>
             <div className="item">
                 <div className="item__img">
+                    <h3 className="item__img-title"> {title} </h3>
                     <div className="item__img-overlay" />
                     <img src={image} alt="product img" className="" />
                 </div>
                 <p className="item__text">
-                    {text}
+                    {expand? text : text.substr(0,90)}
                 </p>
                 {/* <Link  > */}
-                    <a download={download ? true : false } 
-                    href={download ? "/pdf/aramcoPdf.pdf" : (link || "/overview")} className="item__btn">Read More</a>
+                {
+                    collapsible ?
+                        <button className="item__btn" onClick={() => setExpand(!expand)}> Read More</button>
+                        :
+                        <a download={download ? true : false}
+                            href={download ? "/pdf/aramcoPdf.pdf" : (link || "/overview")} className="item__btn">Read More</a>
+                }
                 {/* </Link> */}
 
             </div>

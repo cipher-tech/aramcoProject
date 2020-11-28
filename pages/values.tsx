@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
-import { CustomFontSize, Foot, Head, InfoImage, NavBar, Text, UserNav } from '../components'
+import { Card, CustomFontSize, Foot, Head, InfoImage, NavBar, Text, UserNav } from '../components'
 import theme from '../styles/theme'
 
 const Values = () => {
@@ -59,6 +59,7 @@ const Values = () => {
                                 background: ${theme.colorPrimary};
                                 color: ${theme.colorWhite};
                                 border: none;
+                                font-size: ${theme.font.small};
                                 cursor: pointer;
                                 &:focus{
                                     outline: none;
@@ -78,46 +79,25 @@ const Values = () => {
                 and shareholders.`} />
                 <div className="product">
                     <div className="product-container">
-                        <div className="product-item">
-                            <div className="product-item__img">
-                                <img src="/images/oil.jpg" alt="product img" className="" />
-                            </div>
-                            <p className="product-item__text">
-                                We have built a reputation for unmatched reliability
-                                in supplying crude oil to energy markets around the world.
-                            </p>
-                            <Link href="/overview">
-                                <button className="product-item__btn">Read More</button>
-                            </Link>
+                        <Card title="reputation" download={true} image="/images/oil.jpg"
+                            link="/overview"
+                            text="We have built a reputation for unmatched reliability
+                            in supplying crude oil to energy markets around the world." />
 
-                        </div>
-                        <div className="product-item">
-                            <div className="product-item__img">
-                                <img src="/images/productImg2.jpg" alt="product img" className="" />
-                            </div>
-                            <p className="product-item__text">
-                                We're the sole supplier of natural gas to Saudi Arabia,
-                                the seventh largest natural gas market in the world.
-                        </p>
-                            <Link href="/overview">
-                                <button className="product-item__btn">Read More</button>
-                            </Link>
-                        </div>
-                        <div className="product-item">
-                            <div className="product-item__img">
-                                <img src="/images/productImg3.jpg" alt="product img" className="" />
-                            </div>
-                            <p className="product-item__text">
-                                We are a preeminent player in the global petrochemicals industry, committed to innovation, growth,
-                                and realizing the full potential of every hydrocarbon molecule that we produce.
-                        </p>
-                            <Link href="/overview">
-                                <button className="product-item__btn">Read More</button>
-                            </Link>
-                        </div>
+                        <Card title="natural gas" download={true} image="/images/productImg2.jpg"
+                            link="/overview"
+                            text="We're the sole supplier of natural gas to Saudi Arabia,
+                            the seventh largest natural gas market in the world." />
+
+                        <Card title="committed" download={true} image="/images/productImg3.jpg"
+                            link="/overview"
+                            text="We are a preeminent player in the global petrochemicals industry, committed to innovation, growth,
+                            and realizing the full potential of every hydrocarbon molecule that we produce." />
+
                     </div>
                 </div>
-                <InfoImage left title="Join our team"
+                <InfoImage left title="Join our team" 
+                    download
                     subHead="Careers"
                     bgImage="/images/moreInfo-2.jpg"
                     text={`Every day, our multi-national team of more than 70,000 

@@ -22,7 +22,7 @@ const Investors = () => {
                             display: grid;
                             width: 100%;
                             justify-content: space-between;
-                            grid-template-columns:  repeat(auto-fit, minmax(28rem, 1fr));
+                            grid-template-columns:  repeat(auto-fit, minmax(38rem, 1fr));
                         }
                         
                     }
@@ -40,16 +40,28 @@ const Investors = () => {
                     the company operates within the Kingdom and worldwide, and employs around 79,800 people.`} />
                 <div className="product">
                     <div className="product-container">
-                        <Card download={true} image="/images/moreInfo-2.jpg"
+                        <Card title="crude oil" download={true} collapsible image="/images/moreInfo-2.jpg"
                         link="/overview"
                             text="We have built a reputation for unmatched reliability
                         in supplying crude oil to energy markets around the world." />
 
-                        <Card download={true} image="/images/cardimg2.png" link="/overview"
+                        <Card title="natural gas" download={true} collapsible image="/images/cardimg2.png" link="/overview"
                             text="We're the sole supplier of natural gas to Saudi Arabia,
                         the seventh largest natural gas market in the world." />
 
-                        <Card download={true} image="/images/cardimg1.jpg" link="/overview"
+                        <Card title="petrochemicals" download={true} collapsible image="/images/cardimg1.jpg" link="/overview"
+                            text="We are a preeminent player in the global petrochemicals industry, committed to innovation, growth,
+                        and realizing the full potential of every hydrocarbon molecule that we produce." />
+
+                        <Card title="petrochemicals" download={true} collapsible image="/images/cardimg1.jpg" link="/overview"
+                            text="We are a preeminent player in the global petrochemicals industry, committed to innovation, growth,
+                        and realizing the full potential of every hydrocarbon molecule that we produce." />
+
+                        <Card title="petrochemicals" download={true} collapsible image="/images/cardimg1.jpg" link="/overview"
+                            text="We are a preeminent player in the global petrochemicals industry, committed to innovation, growth,
+                        and realizing the full potential of every hydrocarbon molecule that we produce." />
+
+                        <Card title="petrochemicals" download={true} collapsible image="/images/cardimg1.jpg" link="/overview"
                             text="We are a preeminent player in the global petrochemicals industry, committed to innovation, growth,
                         and realizing the full potential of every hydrocarbon molecule that we produce." />
                     </div>

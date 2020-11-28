@@ -5,11 +5,16 @@ import { Layout } from "../components/index"
 function MyApp({ Component, pageProps }) {
   const AddAdminHeader = Component.Tags ? Component.Tags : React.Fragment;
   return (
-    <Layout>
-      {/* <AddAdminHeader> */}
+    <>
+      <Head>
+        <link rel="stylesheet" href="/assets/css/style.css" />
+      </Head>
+      <Layout>
+        {/* <AddAdminHeader> */}
         <Component {...pageProps} />
-      {/* </AddAdminHeader> */}
-    </Layout>
+        {/* </AddAdminHeader> */}
+      </Layout>
+    </>
   )
 }
 

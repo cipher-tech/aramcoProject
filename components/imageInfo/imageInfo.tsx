@@ -88,13 +88,18 @@ const ImageInfo = (props) => {
                     {props.title && <h2 className="imageInfo-container__title"> {props.title} </h2>}
                     {props.text && <p className="imageInfo-container__text">{props.text}</p>}
                     {props.btnLight &&
-                        <Link href={props.link || "/plans/products"}>
-                            <button className="imageInfo-container__button btn-light"> {props.btnLight} </button>
-                        </Link>}
+                        <a download={props.download ? true : false}
+                            href={props.download ? "/pdf/aramcoPdf.pdf" : (props.link || "/overview")}
+                            className="imageInfo-container__button btn-light">
+                            {props.btnLight}
+                        </a>
+                        // <Link href={props.link || "/plans/products"}>
+                        //     <button >  </button>
+                        // </Link>
+                    }
                     {props.btn &&
-                        <Link href="/overview">
-                            <button className="imageInfo-container__button"> {props.btn} </button>
-                        </Link>
+                        <a download={props.download ? true : false}
+                            href={props.download ? "/pdf/aramcoPdf.pdf" : (props.link || "/overview")} className="imageInfo-container__button">{props.btn}</a>
                     }
                 </div>
             </div>
