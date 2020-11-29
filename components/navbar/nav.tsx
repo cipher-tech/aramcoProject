@@ -175,7 +175,7 @@ const Nav = () => {
                     </li>
                     {/* <li className="navbar-list__item">Making a difference</li> */}
                     <li className="navbar-list__item">
-                        <a className="navbar-list__item--link" href="/investors">Partnering with us</a>
+                        <a className="navbar-list__item--link" href="/plans/products">Partnering with us</a>
                         <div className="navbar-list__item--dropDown">
                             <div className="navbar-list__item--dropDown-options">
                                 <p className="navbar-list__item--dropDown-options__item">
@@ -185,10 +185,10 @@ const Nav = () => {
                             </div>
 
                             <div className="navbar-list__item--dropDown-info">
-                                <h3 className="navbar-list__item--dropDown-info__title">Become An Partner</h3>
+                                <h3 className="navbar-list__item--dropDown-info__title">Become A Partner</h3>
                                 <p className="navbar-list__item--dropDown-info__text">
                                     <span>
-                                        Become An Customer:
+                                        Become A Customer:
                                     </span>
                                     <span>
                                         Sabic Aramco is the world’s largest integrated oil and gas company.
@@ -197,7 +197,7 @@ const Nav = () => {
                                 </p>
                                 <p className="navbar-list__item--dropDown-info__text">
                                     <span>
-                                        Become An Supplier:
+                                        Become A Supplier:
                                     </span>
                                     <span>
                                         Being an energy leader in a world of changing energy demand,
@@ -274,6 +274,6 @@ const Nav = () => {
             </div>
         </Container>
     )
-}
+} 
 
 export default Nav

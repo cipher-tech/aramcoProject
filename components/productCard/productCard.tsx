@@ -22,6 +22,7 @@ const ProductCard = ({ image, text, link, download, title,collapsible }: IProps)
                 justify-content: space-between;
                 flex-direction: column;
                 align-items: center;
+                transition: all .5s linear;
                 &__img{
                     height: 24rem;
                     max-width: 45rem;
@@ -37,9 +38,10 @@ const ProductCard = ({ image, text, link, download, title,collapsible }: IProps)
                     &-title{
                         position: absolute;
                         place-self: center;
-                        font-size: ${theme.font.large};
+                        font-size: ${theme.font.medium};
                         color: ${theme.colorWhite};
                         text-transform: capitalize;
+                        z-index: 2;
                     }
                     img{
                         object-fit: cover;
@@ -56,6 +58,7 @@ const ProductCard = ({ image, text, link, download, title,collapsible }: IProps)
                     padding: 1rem 1rem 2rem;
                     color: ${theme.colorGrey};
                     font-weight: 100;
+                    transition: all .5s linear;
                 }
                 &__btn{
                     width: 100%;

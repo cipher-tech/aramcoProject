@@ -73,14 +73,16 @@ const Values = () => {
                     bgImage="/images/heroImg.jpg"
                     text={`As our business operations expand, so do the initiatives we undertake 
                     to ensure we leave an enduring legacy of protecting the planet we all inhabit..`}
-                    btnLight=""
+                    download
+                    btnLight="FIND OUT MORE"
                 />
                 <InfoImage title="Careers"
+                    download
                     subHead="Join our team"
                     bgImage="/images/heroImg2.jpg"
                     text={`Every day, our multi-national team of more than 70,000 people combines passion, purpose, 
                     and performance to achieve a common objective: unlocking the full potential of the Kingdom’s resources.`}
-                    btnLight=""
+                    btnLight="FIND OUT MORE"
                 />
                 {/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" version="1.1" role="img" aria-labelledby="at-svg-email-9" style={{ fill: "rgb(255, 255, 255)", width: "24px", height: "24px" }}>
                     <title id="at-svg-email-9">Email</title>

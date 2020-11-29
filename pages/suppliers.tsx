@@ -2,7 +2,7 @@ import React from 'react'
 import { Card, CustomFontSize, Foot, Head, InfoImage, NavBar, Plan, Text, UserNav } from '../components'
 import theme from '../styles/theme'
 
-const Investors = () => {
+const Suppliers = () => {
     return (
         <>
             <CustomFontSize>
@@ -30,8 +30,8 @@ const Investors = () => {
                 <div className="main">
                     <UserNav />
                     <NavBar />
-                    <Head header="Sabic Aramco" title="Investor overview" image="/images/headerImage.jpg"
-                        text="Access our financial reports and ESG content." />
+                    <Head header="Partnering with us" title="Suppliers" image="/images/heroImg1.jpg"
+                        text={`A world-class supply chain, focused on delivering` + <br /> + `greater value and enabling continued growth.`} />
                 </div>
                 <Text text={`
                     Sabic Aramco is the world’s largest integrated oil and gas company; its upstream operations manages 
@@ -92,7 +92,8 @@ const Investors = () => {
                         and realizing the full potential of every hydrocarbon molecule that we produce." />
                     </div>
                 </div>
-                <Plan />
+
+                    div.serviceInfo
                 <InfoImage left title="Join our team"
                     download
                     subHead="Careers"
@@ -102,16 +103,10 @@ const Investors = () => {
                         a common objective: unlocking the full potential of the Kingdom’s resources.`}
                     btnLight="FIND OUT MORE"
                 />
-
-                <InfoImage left title="Our response to COVID-19"
-                    download text={`People are our priority. We are securing the health and safety of our workforce and communities and ensuring
-                    the continuity of an energy supply upon which the world relies.`}
-                    btnLight="FIND OUT MORE" bgImage="/images/productImg2.jpg"
-                />
                 <Foot />
             </CustomFontSize>
         </>
     )
 }
 
-export default Investors
+export default Suppliers

@@ -74,7 +74,9 @@ const Footer = () => {
                 <div className="footer-column">
                     <h3 className="footer-column__title">Social media</h3>
                     <ul className="footer-column-list">
-                        <li className="footer-column-list__item">Telegram</li>
+                        <li className="footer-column-list__item">
+                            <img src="/images/telegram.png" alt="next" height="60px" width="60px" />
+                        </li>
                     </ul>
                 </div>
                 <p>© 2020 Saudi Arabian Oil Co.</p>
