@@ -23,8 +23,61 @@ const Suppliers = () => {
                             width: 100%;
                             justify-content: space-between;
                             grid-template-columns:  repeat(auto-fit, minmax(38rem, 1fr));
+                            @media only screen and (max-width: ${theme.breakPoints.bpSmall}) {
+                                grid-template-columns:  1fr;
+                            } 
                         }
                         
+                    }
+                    .serviceInfo{
+                        grid-column: 1/-1;
+                        max-width: 100%;
+                        width: 90%;
+                        justify-self: center;
+                        display: grid;
+                        align-content: center;
+                        grid-template-columns: 1fr;
+                        margin: 2rem 0;
+                        padding: 4rem 3rem;
+                        align-self: stretch;
+                        justify-items: flex-start;
+                        background-image: linear-gradient(to right,rgba(0,0,0,.8),rgba(0,0,0,.8)), url(/images/img.jpg);
+                        background-repeat: no-repeat;
+                        background-size: cover;
+                        @media only screen and (max-width: ${theme.breakPoints.bpSmall}) {
+                            padding: 4rem 1rem;
+                        } 
+                        &-content{
+                            background: ${theme.colorWhite};
+                            width: 45%;
+                            padding: 1rem 2rem;
+                            @media only screen and (max-width: ${theme.breakPoints.bpLarge}) {
+                                width: 55%;
+                            }
+                            @media only screen and (max-width: ${theme.breakPoints.bpMedium}) {
+                                width: 65%;
+                            } 
+                            @media only screen and (max-width: ${theme.breakPoints.bpSmall}) {
+                                width: 100%;
+                            } 
+                            &__title{
+                                font-size: ${theme.font.medium};
+                                padding: 2rem 0;
+                            }
+                            &__text{
+                                font-size: ${theme.font.small};
+                                @media only screen and (max-width: ${theme.breakPoints.bpSmall}) {
+                                    font-size: ${theme.font.xsmall};
+                                } 
+                            }
+                            button{
+                                margin: 2rem 0;
+                                background: ${theme.colorPrimary};
+                                border: none;
+                                padding: 1rem 2rem;
+                                color: ${theme.colorWhite};
+                            }
+                        }
                     }
                 `}</style>
                 <div className="main">
@@ -41,7 +94,7 @@ const Suppliers = () => {
                 <div className="product">
                     <div className="product-container">
                         <Card title="trade on gas" download={true} collapsible image="/images/moreInfo-2.jpg"
-                        link="/overview"
+                            link="/overview"
                             text="Our natural gas is a fundamental product used to meet growing domestic energy 
                             demand to power industries such as steel, aluminum, and water desalination. It provides an efficient, cleaner burning energy alternative for 
                             these activities which helps lower emissions. Since our natural gas production yields large quantities of ethane, natural gas liquids 
@@ -93,7 +146,21 @@ const Suppliers = () => {
                     </div>
                 </div>
 
-                    div.serviceInfo
+                <div className="serviceInfo">
+                    <div className="serviceInfo-content">
+                        <h3 className="serviceInfo-content__title">
+                            iktva
+                        </h3>
+                        <p className="serviceInfo-content__text">
+                            Our In-Kingdom Total Value Add (iktva) program is designed to drive
+                            supply-chain efficiency and value across our operations, and to encourage the development of a diverse,
+                            sustainable, and globally competitive energy sector in the Kingdom.
+                       </p>
+                        <button>
+                            Find Out More
+                       </button>
+                    </div>
+                </div>
                 <InfoImage left title="Join our team"
                     download
                     subHead="Careers"

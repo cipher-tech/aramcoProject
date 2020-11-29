@@ -31,6 +31,11 @@ const Footer = () => {
                         &__item{
                             font-size: ${theme.font.xxxsmall};
                             padding: 1rem 0;
+                            img{
+                                height: 5rem;
+                                width: 5rem;
+                                margin: 1rem
+                            }
                         }
                     }
                 }
@@ -75,7 +80,8 @@ const Footer = () => {
                     <h3 className="footer-column__title">Social media</h3>
                     <ul className="footer-column-list">
                         <li className="footer-column-list__item">
-                            <img src="/images/telegram.png" alt="next" height="60px" width="60px" />
+                            <img src="/images/telegram.png" alt="next" />
+                            <img src="/images/mail.png" alt="next" />
                         </li>
                     </ul>
                 </div>

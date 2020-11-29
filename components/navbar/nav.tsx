@@ -179,7 +179,7 @@ const Nav = () => {
                         <div className="navbar-list__item--dropDown">
                             <div className="navbar-list__item--dropDown-options">
                                 <p className="navbar-list__item--dropDown-options__item">
-                                    Partnering with us
+                                    Partnering with us.
                                     <span>Explore Our stocks and shares</span>
                                 </p>
                             </div>
@@ -203,7 +203,7 @@ const Nav = () => {
                                         Being an energy leader in a world of changing energy demand,
                                         we embrace our role to find effective energy solutions.
                                     </span>
-                                    <a href="/plans/products">Read More</a>
+                                    <a href="/suppliers">Read More</a>
                                 </p>
                             </div>
 
