@@ -32,7 +32,7 @@ const Container = styled.div`
         margin-top: .729166667in;
         background: white;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
         border-radius: .041666667in;
         /* font-family: gotham-rounded !important; */
         font-size: 15px;
