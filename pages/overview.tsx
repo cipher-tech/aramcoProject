@@ -55,17 +55,65 @@ const Values = () => {
                     but it will not attempt to raise more from the international markets for the time being.`} />
                 <div className="product">
                     <div className="product-container">
-                        <Card image="/images/cardimg1.jpg"
-                            text="We have built a reputation for unmatched reliability
-                        in supplying crude oil to energy markets around the world." />
+                        <Card title="Our corporate governance: " download={true} collapsible image="/images/cardimg1.jpg" link="/overview"
+                            text="Our comprehensive corporate governance structure shapes who we are and how we are seen by the world; more than that, it guides our actions and ensures we uphold the highest professional and ethical business standards.
+                            From the diverse experience of our Board and Corporate Management team, to our regular reporting and independent auditing practices, our robust corporate governance ensures transparency, effective oversight and accountability at all levels of operation.
+                            Our comprehensive corporate governance structure shapes who we are and how we are seen by the world; more than that, it guides our actions and ensures we uphold the highest professional and ethical business standards.
+                            Our corporate management team members possess deep-domain knowledge and expertise across our company and the industry. They embody the company’s high performance culture and uphold our corporate values while leading the attainment of our business objectives." />
 
-                        <Card image="/images/cardimg2.png"
-                            text="We're the sole supplier of natural gas to Sabic Arabia,
-                        the seventh largest natural gas market in the world." />
+                        <Card title="Board Of Directors: 
+                                    Yousef Abdullah Al-Benyan " download={true} collapsible image="/images/bod2.jpeg" link="/overview"
+                            text="Mr. Yousef Abdullah Al-Benyan is the Vice Chairman and CEO of SABIC and a member of the Investment Committee.
+                            Mr. Al-Benyan holds a Bachelor’s degree in Economics and a Master’s degree in Industrial Management.
+                            In addition, he has received several specialized courses in Executive Management.
+                            " />
 
-                        <Card image="/images/cardimg4.jpg"
-                            text="We are a preeminent player in the global petrochemicals industry, committed to innovation, growth,
-                        and realizing the full potential of every hydrocarbon molecule that we produce." />
+                        <Card title="Board Of Directors: 
+                                    Mr. Amin H. Nasser " download={true} collapsible image="/images/bod3.jpeg" link="/overview"
+                            text="Mr. Amin H. Nasser has been President and Chief Executive Officer of Saudi Aramco since 2015.
+                            He has served in a number of leadership positions at Saudi Aramco, including as Senior Vice President for Upstream.
+                            Mr. Nasser has a Bachelor’s degree in Petroleum Engineering from King Fahd University of Petroleum and Minerals,
+                            and has completed the Senior Executive Program at Columbia University.
+                            " />
+
+                        <Card title="Board Of Directors: 
+                                    HE Mohammed A. Al-Jadaan " download={true} collapsible image="/images/bod4.jpeg" link="/overview"
+                            text="HE Mohammed A. Al-Jadaan is currently Minister of Finance for Saudi Arabia, acting Minister of Economy and 
+                            Planning and a member of the Saudi Council of Ministers. He also serves as a member of the 
+                            Council for Economic and Development Affairs of Saudi Arabia. He also serves as a member of a \
+                            number of international boards, including the Boards of Governors of the International Monetary Fund and the World Bank.
+                            HE Al-Jadaan has a degree in Islamic Economics from Imam Muhammad bin Saud Islamic University, 
+                            and a degree in Legal Studies from the Institute of Public Administration, Riyadh.
+                            " />
+
+                        <Card title="Board Of Directors: 
+                                    HE Mohammad M. Al-Tuwaijri " download={true} collapsible image="/images/bod5.jpeg" link="/overview"
+                            text="HE Mohammad M. Al-Tuwaijri is an advisor to the Saudi Royal Court in a Minister Rank, 
+                            a Member of the Council of Economic and Development Affairs, a Board Member of the Public 
+                            Investment Fund and Chairman of its Investment Committee. He has previously been the Minister of 
+                            Economy and Planning of Saudi Arabia. Previously, he served as Vice Chairman and CEO of HSBC’s Global 
+                            Banking & Markets, Middle East & North Africa (MENA), and as Managing Director of JP Morgan Chase Bank, Saudi Arabia.
+                            " />
+
+                        <Card title="Board Of Directors: 
+                                Mr. Andrew N. Liveris " download={true} collapsible image="/images/bod6.jpeg" link="/overview"
+                            text="Mr. Andrew N. Liveris is Chairman of the Board of Lucid Motors, Deputy Chairman of the Board of Worley Parsons, a member 
+                            of the Board of Directors of IBM Corporation and on the Board of Trustees of the King Abdullah University of Science and Technology.
+                            He formerly served as Chairman and CEO of The Dow Chemical Company, and was a member of the Board of Directors of DowDuPont Inc. and of Citigroup Inc.
+                            " />
+
+                        <Card title="Board Of Directors: 
+                                HE Yasir Othman Al-Rumayyan " download={true} collapsible image="/images/bod1.jpeg" link="/overview"
+                            text="HE Yasir Othman Al-Rumayyan is the Chairman of Saudi Aramco’s Board of Directors and the Governor of the Public Investment Fund.
+                            He also serves as an advisor to the General Secretariat of the Council of Ministers, the Chairman of the Saudi Decision Support 
+                            Center, and a Board member of Uber Technologies, Inc. and ARM Limited.
+                            " />
+
+                        <Card title="Ethics and governance " download={true} collapsible image="/images/productImg.jpg" link="/overview"
+                            text="Our ethics and compliance principles are deeply embedded within our corporate culture and form the basis for a suite of policies, codes and guidelines that guide and inform our employees as they implement the company’s business strategy.
+                            These same components shape our compliance programs which serve as the benchmark against which we measure our performance and that of our partners — contractors, consultants, suppliers, affiliates and joint ventures within the Kingdom of Saudi Arabia and abroad." />
+
+
                     </div>
                 </div>
                 <InfoImage left title="Planet"

@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 import { Card, CustomFontSize, Foot, Head, InfoImage, NavBar, Plan, Text, UserNav } from '../components'
 import theme from '../styles/theme'
@@ -93,7 +94,7 @@ const Suppliers = () => {
                     the company operates within the Kingdom and worldwide, and employs around 79,800 people.`} />
                 <div className="product">
                     <div className="product-container">
-                        <Card title="trade on gas" download={true} collapsible image="/images/moreInfo-2.jpg"
+                        <Card title="Supply gas" download={true} collapsible image="/images/moreInfo-2.jpg"
                             link="/overview"
                             text="Our natural gas is a fundamental product used to meet growing domestic energy 
                             demand to power industries such as steel, aluminum, and water desalination. It provides an efficient, cleaner burning energy alternative for 
@@ -102,7 +103,7 @@ const Suppliers = () => {
                             a source of energy and as a feedstock has other advantages; it allows us to free up more crude oil for export and other high value applications.
                             Over the years, we have built a comprehensive gas infrastructure in the Kingdom that ensures timely and efficient delivery to our customers." />
 
-                        <Card title="trade on crude oil" download={true} collapsible image="/images/cardimg2.png" link="/overview"
+                        <Card title="Supply crude oil" download={true} collapsible image="/images/cardimg2.png" link="/overview"
                             text="Over 80 years of access to largely conventional petroleum reserves, combined with the application of
                             leading industry and proprietary technologies, gives us the ability to consistently drive high value at low cost and to operate efficiently 
                             across high demand product segments.
@@ -111,7 +112,7 @@ const Suppliers = () => {
                             to optimize our crude oil production mix to always meet our customer’s needs
                             And we continue to invest in our upstream capabilities to ensure we meet rising demand, well into the future." />
 
-                        <Card title="trade on refined products" download={true} collapsible image="/images/cardimg1.jpg" link="/overview"
+                        <Card title="Supply refined products" download={true} collapsible image="/images/cardimg1.jpg" link="/overview"
                             text="The company's downstream operations began in 1945 when the Ras Tanura refinery started operations and expanded with the acquisition of an in-Kingdom 
                             refining network from Samarec in 1993. Today, we produce a full slate of quality fuels and lubricants that meet or exceed international quality standards.
                             Our principle refined products include: LPG, naphtha, gasoline, jet fuel/kerosene, diesel, fuel oil, and asphalt. 
@@ -121,7 +122,7 @@ const Suppliers = () => {
                             customers and consumers. In addition, we participate in five refineries with international partners in the Kingdom, four of which have integrated chemicals
                             manufacturing capability." />
 
-                        <Card title="trade on power systems" download={true} collapsible image="/images/heroImg3.jpg" link="/overview"
+                        <Card title="Supply power systems" download={true} collapsible image="/images/heroImg3.jpg" link="/overview"
                             text="Powering our communities with reliable and efficient energy lies at the center of all we do. From pioneering solutions to modern energy 
                             challenges to creating power infrastructure to providing power to industry and families -
                             SAPCO consolidates leading power industry entities to meet our customers’ needs.
@@ -131,7 +132,7 @@ const Suppliers = () => {
                             Our operations span energy supply, infrastructure development and operations, expert consultation,
                             and maintenance services. " />
 
-                        <Card title="trade on chemicals" download={true} collapsible image="/images/productImg1.jpg" link="/overview"
+                        <Card title="Supply chemicals" download={true} collapsible image="/images/productImg1.jpg" link="/overview"
                             text="As today’s fastest growing crude oil demand sector, chemicals presents considerable opportunities for future growth and long-term value creation. 
                             Our chemicals business currently spans the production of basic chemicals such as aromatics, olefins, and polyolefins to more complex products such 
                             as polyols and advanced synthetic rubber. Our chemicals products are found in the many of the items we use every day
@@ -156,9 +157,11 @@ const Suppliers = () => {
                             supply-chain efficiency and value across our operations, and to encourage the development of a diverse,
                             sustainable, and globally competitive energy sector in the Kingdom.
                        </p>
-                        <button>
-                            Find Out More
+                        <Link href="/overview">
+                            <button>
+                                Find Out More
                        </button>
+                        </Link>
                     </div>
                 </div>
                 <InfoImage left title="Join our team"
