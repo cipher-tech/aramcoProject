@@ -145,8 +145,8 @@ const Home: React.FC = () => {
                     <h2 className="glance-container__title">Nonmetallic Solutions</h2>
                     <p className="glance-container__text">At Aramco, we are a catalyst for developing technology
                     </p>
-                    <Link href="/overview">
-                        <a className="glance-container__button">Learn More</a>
+                    <Link  href="/images/pdfImage.jpg">
+                        <a download className="glance-container__button">Learn More</a>
                     </Link>
                     
                 </div>
@@ -155,8 +155,8 @@ const Home: React.FC = () => {
                     <h2 className="glance-container__title">Nonmetallic Solutions</h2>
                     <p className="glance-container__text">At Aramco, we are a catalyst technology solutions to
                     </p>
-                     <Link href="/overview">
-                        <a className="glance-container__button">Learn More</a>
+                     <Link href="/images/pdfImage.jpg">
+                        <a download className="glance-container__button">Learn More</a>
                     </Link>
                 </div>
                 <div className="glance-container">
@@ -164,8 +164,8 @@ const Home: React.FC = () => {
                     <h2 className="glance-container__title">Nonmetallic Solutions</h2>
                     <p className="glance-container__text">At Aramco, we are a catalyst for technology .
                     </p>
-                     <Link href="/overview">
-                        <a className="glance-container__button">Learn More</a>
+                     <Link href="/images/pdfImage.jpg">
+                        <a download className="glance-container__button">Learn More</a>
                     </Link>
                 </div>
             </div>

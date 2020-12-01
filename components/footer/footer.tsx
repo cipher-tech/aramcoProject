@@ -10,12 +10,15 @@ const Footer = () => {
                 grid-column: 1/-1;
                 width: 100%;
                 display: grid;
-                grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
                 padding: 2rem 2rem;
                 justify-items: center;
                 gap: 1rem;
                 background: ${theme.colorDark};
                 color: ${theme.colorWhite};
+                @media only screen and (max-width: ${theme.breakPoints.bpSmall}) {
+                    justify-items: flex-start;
+                } 
                 &-column{
                     display: flex;
                     flex-direction: column;

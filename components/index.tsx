@@ -20,6 +20,7 @@ import AdminStatsCard from "./adminStatsCard/adminStatsCard";
 import AdminHeaderTags from "./AdminHeaderTags/AdminHeaderTags";
 import UserNavbarComponent from "./userNavbar/navbarComponent";
 import StockPlanChart from "./chart/stockChart";
+import Accodion from "./accodion/accodion";
 
 export const Layout = PageLayout
 export const CustomFontSize = FontSize
@@ -43,3 +44,4 @@ export const MasterAdminStatsCard = AdminStatsCard
 export const AdminHeaderTag = AdminHeaderTags
 export const UserNav = UserNavbarComponent
 export const StockChart = StockPlanChart
+export const DropAccodion = Accodion
