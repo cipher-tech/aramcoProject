@@ -7,6 +7,8 @@ const Footer = () => {
         <>
             <style jsx>{`
             .footer{
+                margin-top: 0;
+                border: none;
                 grid-column: 1/-1;
                 width: 100%;
                 display: grid;

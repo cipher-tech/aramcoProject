@@ -17,7 +17,7 @@ const Container = styled.div`
         display: none; 
     } 
     &-logo{
-        border-radius: 50%;
+        /* border-radius: 50%; */
     }
     &-list{
         display: flex;
@@ -265,7 +265,8 @@ const Nav = () => {
                 <ul className="navbar-list">
                     <li className="navbar-list__item">
                         {/* <Link > */}
-                            <a href="/login">Login</a>
+                            <a href="/login">Login | &nbsp; </a>
+                            <a href="/signup"> Register</a>
                         {/* </Link> */}
                     </li>
                     {/* <li className="navbar-list__item">Login</li> */}

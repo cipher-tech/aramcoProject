@@ -134,7 +134,7 @@ const Home: React.FC = () => {
                     <a className="main-content-link" href="/overview"> LEARN MORE </a>
                 </div>
 
-            </div>
+            </div> 
 
             <TopInfo />
             
@@ -145,7 +145,7 @@ const Home: React.FC = () => {
                     <h2 className="glance-container__title">Nonmetallic Solutions</h2>
                     <p className="glance-container__text">At Aramco, we are a catalyst for developing technology
                     </p>
-                    <Link  href="/images/pdfImage.jpg">
+                    <Link  href="/pdf/aramcoPdf.pdf">
                         <a download className="glance-container__button">Learn More</a>
                     </Link>
                     
@@ -155,7 +155,7 @@ const Home: React.FC = () => {
                     <h2 className="glance-container__title">Nonmetallic Solutions</h2>
                     <p className="glance-container__text">At Aramco, we are a catalyst technology solutions to
                     </p>
-                     <Link href="/images/pdfImage.jpg">
+                     <Link href="/pdf/aramcoPdf.pdf">
                         <a download className="glance-container__button">Learn More</a>
                     </Link>
                 </div>
@@ -164,7 +164,7 @@ const Home: React.FC = () => {
                     <h2 className="glance-container__title">Nonmetallic Solutions</h2>
                     <p className="glance-container__text">At Aramco, we are a catalyst for technology .
                     </p>
-                     <Link href="/images/pdfImage.jpg">
+                     <Link href="/pdf/aramcoPdf.pdf">
                         <a download className="glance-container__button">Learn More</a>
                     </Link>
                 </div>

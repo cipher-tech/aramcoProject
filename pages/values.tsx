@@ -97,7 +97,7 @@ const Values = () => {
                     </div>
                 </div>
                 <InfoImage left title="Join our team" 
-                    download
+                    link={"/signup"}
                     subHead="Careers"
                     bgImage="/images/moreInfo-2.jpg"
                     text={`Every day, our multi-national team of more than 70,000 
