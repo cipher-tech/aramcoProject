@@ -17,7 +17,7 @@ const Container = styled.div`
     .navbar-mobile{
         position: fixed;
         top: 0rem;
-        right: 0rem;
+        right: 3rem;
         display: grid;
         align-items: center;
         place-items: center;
@@ -38,6 +38,9 @@ const Container = styled.div`
             transition: all .3s ease-in-out .1s;
             z-index: 1300;
             cursor: pointer;
+            img{
+                height: 2.5rem;
+            }
 
             path{
                 height: 100%;
@@ -201,7 +204,9 @@ const UserNavbarComponent = (props) => {
         <Container>
 
             <div className="navbar-mobile">
-                <p className="navbar-mobile__icon" onClick={toggleMobileNav}> ⬜</p>
+                <p className="navbar-mobile__icon" onClick={toggleMobileNav}>
+                    <img src="/images/menuIcon.svg" alt="next"/>
+                </p>
                 <animated.div style={{ transform: spring.transform }} className="navbar-mobile__overlay"></animated.div>
             </div>
             <animated.ul style={{ left: springMove.left }} onClick={toggleMobileNav} className="navbar-mobile__list">

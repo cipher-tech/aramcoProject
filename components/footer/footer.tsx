@@ -57,14 +57,14 @@ const Footer = () => {
                             <Link href="/" >
                                 <a className="topInfo-container__button">Home </a>
                             </Link>
-                        </li>
+                        </li>  
                         <li className="footer-column-list__item">
                             <Link href="/overview" >
                                 <a className="topInfo-container__button">Who are we </a>
                             </Link>
                         </li>
                         <li className="footer-column-list__item">
-                            <Link href="/investors" >
+                            <Link href="/investors" > 
                                 <a className="topInfo-container__button">Investors </a>
                             </Link>
                         </li>

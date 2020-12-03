@@ -50,11 +50,11 @@ const Container = styled.div`
                    justify-content: center;
                 } 
                 &--img{
-                    align-self: stretch;
+                    align-self: center;
                     height: 190px;
-                    object-fit: contain;
+                    /* object-fit: contain; */
                     width: 100%;
-                    max-width: 45rem;
+                    max-width: 30rem;
                     @media only screen and (max-width: ${theme.breakPoints.bpLarge}) {
                         align-self: center;
                         margin: 1rem 0;
@@ -62,8 +62,10 @@ const Container = styled.div`
                 }
                 &--text{
                     align-self: center;
-                    text-align: center;
+                    text-align: left;
+                    padding: 0 1.5rem;
                     &__span{
+                        display: block;
                         color: ${theme.colorPrimary};
                         width: 100%;
                         text-align: center;
@@ -93,7 +95,7 @@ export default function Accodion(props) {
                     {
                         !props.profile ? props.text :
                             props.profileInfo.map((item, index) => (
-                                <div className="faq__body-info">
+                                <div key={index} className="faq__body-info">
                                     <img className="faq__body-info--img" src={item.image || "/images/bod2.jpeg"} alt="icon" />
                                     <p className="faq__body-info--text">
                                         <span className="faq__body-info--text__span">{item.title} </span>
