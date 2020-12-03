@@ -12,7 +12,7 @@ const Footer = () => {
                 grid-column: 1/-1;
                 width: 100%;
                 display: grid;
-                grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
                 padding: 2rem 2rem;
                 justify-items: center;
                 gap: 1rem;
@@ -57,14 +57,14 @@ const Footer = () => {
                             <Link href="/" >
                                 <a className="topInfo-container__button">Home </a>
                             </Link>
-                        </li>  
+                        </li>
                         <li className="footer-column-list__item">
                             <Link href="/overview" >
                                 <a className="topInfo-container__button">Who are we </a>
                             </Link>
                         </li>
                         <li className="footer-column-list__item">
-                            <Link href="/investors" > 
+                            <Link href="/investors" >
                                 <a className="topInfo-container__button">Investors </a>
                             </Link>
                         </li>

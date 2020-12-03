@@ -21,6 +21,7 @@ import AdminHeaderTags from "./AdminHeaderTags/AdminHeaderTags";
 import UserNavbarComponent from "./userNavbar/navbarComponent";
 import StockPlanChart from "./chart/stockChart";
 import Accodion from "./accodion/accodion";
+import ImageCard from "./imageCard/imageCard";
 
 export const Layout = PageLayout
 export const CustomFontSize = FontSize
@@ -45,3 +46,4 @@ export const AdminHeaderTag = AdminHeaderTags
 export const UserNav = UserNavbarComponent
 export const StockChart = StockPlanChart
 export const DropAccodion = Accodion
+export const ImgCard = ImageCard
