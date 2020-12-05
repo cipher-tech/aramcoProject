@@ -151,12 +151,12 @@ const PlanCard = ({ info }: props) => {
                 <p className="pricing-plan--info">
 
                     <span className="pricing-plan--info-range">
-                        ${`${info.range[0]} - $${info.range[1]}`}
+                        ${`${info.rangeText[0]} - $${info.rangeText[1]}`}
                     </span> makes
                 </p>
                 <ul className="uk-switcher" id="change-plan">
                     <li>
-                        <div className="pricing-plan-label"><strong>{info.rate}%</strong> Month Profit.</div>
+                        <div className="pricing-plan-label"><strong>{info.rate}%</strong> Monthly Profit.</div>
                     </li>
 
                 </ul>

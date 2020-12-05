@@ -106,8 +106,8 @@ const Values = () => {
                     <Head header="" title="Who we are" image="/images/overview.jpg"
                         text="A category all of our own" />
                 </div>
-                <Text text={`Ranked among the world's largest petrochemicals manufacturers,SABIC is a public company based in Riyadh, Sabic Arabia. 
-                    70% of the Company's shares are owned by Sabic Aramco, with the remaining 30% publicly traded on the Sabic stock exchange. 
+                <Text text={`Ranked among the world's largest petrochemicals manufacturers, Aramco is a public company based in Riyadh, Sabic Arabia. 
+                    70% of the Company's shares are owned by Sabic , with the remaining 30% publicly traded on the Sabic stock exchange. 
                     Aramco previously announced the successful completion of its share acquisition of a 70% stake in Sabic Basic 
                     Industries Corporation (SABIC) from the Public Investment Fund (PIF), 
                     the sovereign wealth fund of Sabic Arabia, for a total purchase price of SAR 259.125 billion (US$ 69.1 

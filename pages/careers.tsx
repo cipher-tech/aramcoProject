@@ -17,7 +17,8 @@ const Careers: React.FC = () => {
                 color: ${theme.colorPrimary};   
                 &-content{
                     grid-column: 1/-1;
-                    background-image: linear-gradient(270deg,transparent,rgba(0,0,0,.4)), url('/images/headerImage.jpg');
+                    background-image: linear-gradient(270deg,transparent,rgba(0,0,0,.4)), url('/images/heroImg3.jpg');
+                    background-size: cover;
                     background-repeat: no-repeat;
                     height: 50rem;
                     width: 100%;

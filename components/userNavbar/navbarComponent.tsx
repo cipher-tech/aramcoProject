@@ -15,7 +15,7 @@ const Container = styled.div`
     /* height: 90vh; */
     position: relative;
     .navbar-mobile{
-        position: fixed;
+        position: absolute;
         top: 0rem;
         right: 3rem;
         display: grid;

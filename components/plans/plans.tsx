@@ -44,6 +44,7 @@ const Container = styled.div`
 `
 export interface IPlan {
     name: string
+    rangeText: string[]
     range: [number, number]
     rate?: number
     duration?: number
@@ -53,12 +54,14 @@ export interface IPlan {
 export const planInfo: Array<IPlan> = [
     {
         name: "gas",
+        rangeText: ["100,000", "2,000,000"],
         range: [100_000, 2_000_000],
         rate: 35,
         duration: 30
     },
     {
         name: "crude oil",
+        rangeText: ["100,000", "5,000,000"],
         range: [100_000, 5_000_000],
         rate: 35,
         duration: 30,
@@ -66,24 +69,28 @@ export const planInfo: Array<IPlan> = [
     },
     {
         name: " refined products",
+        rangeText: ["10,000", "1,000,000"],
         range: [10_000, 1_000_000],
         rate: 25,
         duration: 30
     },
     {
         name: "power systems",
+        rangeText: ["5,000", "200,000"],
         range: [5_000, 200_000],
         rate: 10,
         duration: 30
     },
     {
         name: " chemicals",
+        rangeText: ["15,000", "500,000"],
         range: [15_000, 500_000],
         rate: 10,
         duration: 30
     },
     {
         name: " petrochemicals ",
+        rangeText: ["10,000", "100,000"],
         range: [10_000, 100_000],
         rate: 10,
         duration: 30

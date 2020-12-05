@@ -82,7 +82,7 @@ const Footer = () => {
                 </div>
 
                 <div className="footer-column">
-                    <h3 className="footer-column__title">Social media</h3>
+                    <h3 className="footer-column__title">Contact Us</h3>
                     <ul className="footer-column-list">
                         <li className="footer-column-list__item">
                             <img src="/images/telegram.png" alt="next" />
@@ -94,6 +94,6 @@ const Footer = () => {
             </footer>
         </>
     )
-}
+} 
 
 export default Footer

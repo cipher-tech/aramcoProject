@@ -173,7 +173,7 @@ const Home: React.FC = () => {
             <InfoImage  download subHead="October 07, 2020" title="The Arabian Sun"  
                 text="In this week's issue: Aramco’s circular economy in action"
                 btnLight="DOWNLOAD ISSUE (PDF, 7 MB)" 
-                btn="VIEW ALL PUBLICATIONS" bgImage="/images/moreInfo-2.jpg"
+                btn="VIEW ALL PUBLICATIONS" bgImage="/images/cardimg3.jpg"
             />
             
             <InfoImage left title="Our response to COVID-19"  

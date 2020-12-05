@@ -46,6 +46,7 @@ const Container = styled.div`
 export interface IStockPlan {
     name: string
     range?: [number, number]
+    rangeText?: [string]
     recommended?: boolean
     type?: string
     text?: string
@@ -56,12 +57,14 @@ export const stockInfo: Array<IStockPlan> = [
     {
         name: "large cap stock",
         range: [1_000_000, Infinity],
+        rangeText: ["1,000,000"],
         type: "stock",
         text: "Buy large stock cap stocks"
     },
     {
         name: "Small cap stock",
         range: [100_000, Infinity],
+        rangeText: ["100,000"],
         type: "stock",
         text: "Buy small cap stocks"
         // recommended: true
@@ -69,12 +72,14 @@ export const stockInfo: Array<IStockPlan> = [
     {
         name: " mid cap stocks",
         range: [50_000, Infinity],
+        rangeText: ["50,000"],
         type: "stock",
         text: "Buy mid cap stocks"
     },
     {
         name: "blue chip stocks",
         range: [1_000, Infinity],
+        rangeText: ["1,000"],
         type: "stock",
         text: `blue chip stocks (Berkshire Hathaway etc)`
     },
@@ -84,12 +89,14 @@ export const sharesInfo: Array<IStockPlan> = [
     {
         name: "redeemable shares",
         range: [100_000, Infinity],
+        rangeText: ["100,000"],
         type: "share",
         text: "Buy redeemable shares"
     },
     {
         name: "Equity shares",
         range: [1_000_000, Infinity],
+        rangeText: ["1,000,000"],
         type: "share",
         text: "Buy Equity shares"
     },

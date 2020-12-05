@@ -157,7 +157,7 @@ const StockPlanCard = ({ info }) => {
                 <p className="pricing-plan--info"> 
                  
                     <span className="pricing-plan--info-range">
-                        starts at ${`${info.range[0]}`} 
+                        starts at ${`${info.rangeText[0]}`} 
                     </span> 
                 </p>
                 <ul className="uk-switcher" id="change-plan">
