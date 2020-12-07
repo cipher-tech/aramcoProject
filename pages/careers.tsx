@@ -193,7 +193,7 @@ const Careers: React.FC = () => {
                 text="We are a global company with over 70,000 employees. Be part of a diverse global culture, working on 
                 challenging projects with dynamic, talented people in a world-class environment.
                 Select your region below, and explore the benefits and available opportunities."
-                btnLight="DOWNLOAD Pdf (PDF, 7 MB)"
+                btnLight="VIEW ALL PUBLICATIONS"
                 /* btn="VIEW ALL PUBLICATIONS" */ bgImage="/images/moreInfo-2.jpg"
                 /* btn2="VIEW ALL PUBLICATIONS" */
             />
@@ -233,7 +233,7 @@ const Careers: React.FC = () => {
                 text="We are a global company with over 70,000 employees. Be part of a diverse global culture, working on 
                 challenging projects with dynamic, talented people in a world-class environment.
                 Select your region below, and explore the benefits and available opportunities."
-                btnLight="DOWNLOAD Pdf (PDF, 7 MB)"
+                btnLight="VIEW ALL PUBLICATIONS"
                 /* btn="VIEW ALL PUBLICATIONS" */ bgImage="/images/moreInfo-2.jpg"
                /*  btn2="VIEW ALL PUBLICATIONS" */
             />
