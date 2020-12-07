@@ -94,7 +94,7 @@ const Investors = () => {
                 </div>
                 <Plan />
                 <InfoImage left title="Join our team"
-                    link={"/signup"}
+                    link={"/careers"}
                     subHead="Careers"
                     bgImage="/images/moreInfo-2.jpg"
                     text={`Every day, our multi-national team of more than 70,000 

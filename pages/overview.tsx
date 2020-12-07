@@ -149,6 +149,7 @@ const Values = () => {
                     </div>
                 </div>
                 <InfoImage left title="Planet"
+                 link={"/overview"}
                     subHead="Planet"
                     bgImage="/images/heroImg.jpg"
                     text={`As our business operations expand, so do the initiatives we undertake 
@@ -157,7 +158,7 @@ const Values = () => {
                     btnLight="FIND OUT MORE"
                 />
                 <InfoImage title="Careers"
-                    download
+                    link={"/careers"}
                     subHead="Join our team"
                     bgImage="/images/heroImg2.jpg"
                     text={`Every day, our multi-national team of more than 70,000 people combines passion, purpose, 

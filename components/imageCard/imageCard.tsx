@@ -8,7 +8,6 @@ const ImageCard = (props) => {
             <style jsx>{`
                 .imageInfo{
                     grid-column: 1/-1;
-                    height: 49rem;
                     max-width: 100%;
                     width: 100%;
                     display: flex;
@@ -25,6 +24,9 @@ const ImageCard = (props) => {
                         max-height: 45rem;
                         max-width: 45rem;
                         width: 50%;
+                        @media only screen and (max-width: ${theme.breakPoints.bpSmall}) {
+                            width: auto;
+                        }
                     }
                     &-container{
                         grid-column: 2;
@@ -77,6 +79,9 @@ const ImageCard = (props) => {
                     margin: 0rem 0;
                     flex-flow: row-reverse;
                     justify-items: flex-end;
+                    @media only screen and (max-width: ${theme.breakPoints.bpSmall}) {
+                        flex-flow: column;
+                    } 
                     &:nth-child(1){
                         justify-items: flex-start;
                     }
@@ -96,7 +101,7 @@ const ImageCard = (props) => {
                     {props.text && <p className="imageInfo-container__text">{props.text}</p>}
                     {props.btnLight &&
                         <a download={props.download ? true : false}
-                            href={props.download ? "/pdf/aramcoPdf.pdf" : (props.link || "/overview")}
+                            href={props.download ? (props.downloadLink || "/pdf/aramcoPdf.pdf") : (props.link || "/overview")}
                             className="imageInfo-container__button btn-light">
                             {props.btnLight}
                         </a>

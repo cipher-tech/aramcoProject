@@ -17,7 +17,7 @@ const Careers: React.FC = () => {
                 color: ${theme.colorPrimary};   
                 &-content{
                     grid-column: 1/-1;
-                    background-image: linear-gradient(270deg,transparent,rgba(0,0,0,.4)), url('/images/heroImg3.jpg');
+                    background-image: linear-gradient(270deg,transparent,rgba(0,0,0,.4)), url('/images/img2.jpg');
                     background-size: cover;
                     background-repeat: no-repeat;
                     height: 50rem;
@@ -187,13 +187,15 @@ const Careers: React.FC = () => {
                 </div>
             </div>
 
-            <ImgCard download title="Explore our career opportunities"
+            <ImgCard download 
+            downloadLink="/pdf/aramcoPdf2.pdf"
+             title="Explore our career opportunities"
                 text="We are a global company with over 70,000 employees. Be part of a diverse global culture, working on 
                 challenging projects with dynamic, talented people in a world-class environment.
                 Select your region below, and explore the benefits and available opportunities."
-                btnLight="DOWNLOAD ISSUE (PDF, 7 MB)"
-                btn="VIEW ALL PUBLICATIONS" bgImage="/images/moreInfo-2.jpg"
-                btn2="VIEW ALL PUBLICATIONS"
+                btnLight="DOWNLOAD Pdf (PDF, 7 MB)"
+                /* btn="VIEW ALL PUBLICATIONS" */ bgImage="/images/moreInfo-2.jpg"
+                /* btn2="VIEW ALL PUBLICATIONS" */
             />
 
             <div className="textSection">
@@ -227,16 +229,16 @@ const Careers: React.FC = () => {
                 </div>
             </div>
 
-            <ImgCard download left title="Explore our career opportunities"
+            <ImgCard download  downloadLink="/pdf/aramcoPdf2.pdf" left title="Explore our career opportunities"
                 text="We are a global company with over 70,000 employees. Be part of a diverse global culture, working on 
                 challenging projects with dynamic, talented people in a world-class environment.
                 Select your region below, and explore the benefits and available opportunities."
-                btnLight="DOWNLOAD ISSUE (PDF, 7 MB)"
-                btn="VIEW ALL PUBLICATIONS" bgImage="/images/moreInfo-2.jpg"
-                btn2="VIEW ALL PUBLICATIONS"
+                btnLight="DOWNLOAD Pdf (PDF, 7 MB)"
+                /* btn="VIEW ALL PUBLICATIONS" */ bgImage="/images/moreInfo-2.jpg"
+               /*  btn2="VIEW ALL PUBLICATIONS" */
             />
 
-            <InfoImage left title="Our response to COVID-19"
+            <InfoImage download left title="Our response to COVID-19"
                 link="/plans/products"
                 text={`People are our priority. We are securing the health and safety of our workforce and communities and ensuring
                     the continuity of an energy supply upon which the world relies.`}
