@@ -1,22 +1,22 @@
 ﻿import Head from 'next/head'
 import React, { useEffect } from 'react'
 // import { Helmet } from "react-helmet";
-import { Plan, SideBar, StockChart, StockPlan, UserStats } from "../../components/index"
+import { Plan, SideBar, StockChart, StockPlan, UserAdminHeader, UserStats } from "../../components/index"
 import { useGetUserQuery } from '../../generated/apolloComponent';
 import { withApollo } from '../../lib/apolloClient';
 
 const index = () => {
-    const {data, loading, error, networkStatus} = useGetUserQuery()
+    const { data, loading, error, networkStatus } = useGetUserQuery()
 
     // useEffect(() => {
     //     console.log(data, "network stats>>>", networkStatus);
-        
+
     // }, [data, networkStatus])
 
-    if(error){
+    if (error) {
         return "loading"
     }
-    
+
     return (
         <>
             <style jsx>{`
@@ -74,51 +74,7 @@ const index = () => {
             </Head>
 
             <body className="page-header-fixed page-sidebar-closed-hide-logo">
-
-                {/* <!-- BEGIN HEADER --> */}
-                <div className="page-header navbar navbar-fixed-top" style={{ backgroundColor: "#2C4065" }}>
-                    <div className="page-header-inner " style={{ backgroundColor: "#2C4065" }}>
-
-
-                        {/* <!-- BEGIN LOGO --> */}
-                        <div className="page-logo">
-                            <a href="">
-                                <img src="/admin/assets/images/logo.png" className="logo-default" alt="-" style={{ filter: "brightness(0) invert(1)", width: "150px", height: "45px" }} />
-
-                            </a>
-
-                            <div className="menu-toggler sidebar-toggler" style={{ backgroundColor: "#2C4065" }}></div>
-                        </div>
-                        {/* <!-- END LOGO --> */}
-
-
-                        {/* <!-- BEGIN RESPONSIVE MENU TOGGLER --> */}
-                        <a href="javascript:;" className="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse"> </a>
-
-                        <div className="top-menu" style={{ backgroundColor: "#2C4065" }}>
-                            <ul className="nav navbar-nav pull-right" style={{ backgroundColor: "#2C4065" }}>
-                                <li className="dropdown dropdown-user">
-                                    <a href="javascript:;" className="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-
-
-                                        <span className="username">  </span>
-                                        <i className="fa fa-angle-down"></i>
-                                    </a>
-                                    <ul className="dropdown-menu dropdown-menu-default">
-
-                                        <li><a href="admin-change-password.html"><i className="fa fa-cogs"></i> Change Password </a>
-                                        </li>
-                                        <li><a href="/admin"><i className="fa fa-sign-out"></i> Log Out </a></li>
-
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                {/* <!-- END HEADER --> */}
-
-
+                <UserAdminHeader />
                 {/* <!-- BEGIN HEADER & CONTENT DIVIDER --> */}
                 <div className="clearfix"></div>
                 <div className="page-container">
@@ -134,12 +90,12 @@ const index = () => {
 
                             {/* <!--  ==================================VALIDATION ERRORS==================================  --> */}
                             {/* <!--  ==================================SESSION MESSAGES==================================  --> */}
-                            
+
                             <UserStats />
-                           <StockChart />
+                            <StockChart />
                             <Plan />
                             <StockPlan />
-{/* 
+                            {/* 
                             <div className="row">
                                 <div className="col-md-12">
                                     <div className="row">
@@ -527,7 +483,7 @@ const index = () => {
 
                 {/* <!-- BEGIN SCRIPTS --> */}
                 {/* <Helmet> */}
-                    {/* <script src="/admin/assets/admin/js/quick-sidebar.min.js" type="text/javascript"></script>
+                {/* <script src="/admin/assets/admin/js/quick-sidebar.min.js" type="text/javascript"></script>
                     <script src="/admin/assets/admin/js/demo.min.js" type="text/javascript"></script>
                     <script src="/admin/assets/admin/js/jquery.min.js" type="text/javascript"></script>
                     <script src="/admin/assets/admin/js/bootstrap.min.js" type="text/javascript"></script>

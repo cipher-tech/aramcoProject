@@ -131,13 +131,15 @@ const Home: React.FC = () => {
                     <p className="main-content-text">
                         <br /> Learn how D&I is integral to the way we operate.
                 </p>
-                    <a className="main-content-link" href="/overview"> LEARN MORE </a>
+                    <Link href="/overview">
+                        <a className="main-content-link" > LEARN MORE </a>
+                    </Link>
                 </div>
 
-            </div> 
+            </div>
 
             <TopInfo />
-            
+
             <div className="glance">
                 <h2 className="glance-title">ARAMCO AT A GLANCE</h2>
                 <div className="glance-container">
@@ -145,17 +147,17 @@ const Home: React.FC = () => {
                     <h2 className="glance-container__title">Nonmetallic Solutions</h2>
                     <p className="glance-container__text">At Aramco, we are a catalyst for developing technology
                     </p>
-                    <Link  href="/pdf/aramcoPdf.pdf">
+                    <Link href="/pdf/aramcoPdf.pdf">
                         <a download className="glance-container__button">Learn More</a>
                     </Link>
-                    
+
                 </div>
                 <div className="glance-container">
                     <h3 className="glance-container__subHead">IN-HOUSE TECHNOLOGIES</h3>
                     <h2 className="glance-container__title">Nonmetallic Solutions</h2>
                     <p className="glance-container__text">At Aramco, we are a catalyst technology solutions to
                     </p>
-                     <Link href="/pdf/aramcoPdf.pdf">
+                    <Link href="/pdf/aramcoPdf.pdf">
                         <a download className="glance-container__button">Learn More</a>
                     </Link>
                 </div>
@@ -164,20 +166,20 @@ const Home: React.FC = () => {
                     <h2 className="glance-container__title">Nonmetallic Solutions</h2>
                     <p className="glance-container__text">At Aramco, we are a catalyst for technology .
                     </p>
-                     <Link href="/pdf/aramcoPdf.pdf">
+                    <Link href="/pdf/aramcoPdf.pdf">
                         <a download className="glance-container__button">Learn More</a>
                     </Link>
                 </div>
             </div>
 
-            <InfoImage  download subHead="October 07, 2020" title="The Arabian Sun"  
+            <InfoImage download subHead="October 07, 2020" title="The Arabian Sun"
                 text="In this week's issue: Aramco’s circular economy in action"
-                btnLight="DOWNLOAD ISSUE (PDF, 7 MB)" 
+                btnLight="DOWNLOAD ISSUE (PDF, 7 MB)"
                 btn="VIEW ALL PUBLICATIONS" bgImage="/images/cardimg3.jpg"
             />
-            
-            <InfoImage left title="Our response to COVID-19"  
-            link="/plans/products"
+
+            <InfoImage left title="Our response to COVID-19"
+               link={"/images/pdfImage.jpg"}
                 text={`People are our priority. We are securing the health and safety of our workforce and communities and ensuring
                     the continuity of an energy supply upon which the world relies.`}
                 btnLight="FIND OUT MORE" bgImage="/images/moreInfo-2.jpg"

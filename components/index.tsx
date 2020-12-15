@@ -22,6 +22,7 @@ import UserNavbarComponent from "./userNavbar/navbarComponent";
 import StockPlanChart from "./chart/stockChart";
 import Accodion from "./accodion/accodion";
 import ImageCard from "./imageCard/imageCard";
+import UserAdminNavbarComponent from "./admin/sidebar/masterAdminSideNav";
 
 export const Layout = PageLayout
 export const CustomFontSize = FontSize
@@ -47,3 +48,4 @@ export const UserNav = UserNavbarComponent
 export const StockChart = StockPlanChart
 export const DropAccodion = Accodion
 export const ImgCard = ImageCard
+export const MasterAdminSideMenu = UserAdminNavbarComponent

@@ -61,13 +61,10 @@ const Deposit = (props) => {
                 {/* <!-- BEGIN HEADER --> */}
                 <UserAdminHeader />
                 {/* <!-- END HEADER --> */}
-
-
                 {/* <!-- BEGIN HEADER & CONTENT DIVIDER --> */}
                 <div className="clearfix"></div>
                 <div className="page-container">
                     <SideBar />
-
 
                     {/* <!-- BEGIN CONTENT --> */}
                     <div className="page-content-wrapper">

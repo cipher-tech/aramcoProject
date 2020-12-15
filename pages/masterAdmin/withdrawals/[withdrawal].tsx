@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
-import { MasterAdminSidenav } from '../../../components'
+import { MasterAdminSidenav, UserAdminHeader } from '../../../components'
 import { DepositAttributes, useActivateDepositMutation, useActivateWithdrawalMutation, useCancelDepositMutation, useCancelWithdrawalMutation } from '../../../generated/apolloComponent'
 import { withApollo } from '../../../lib/apolloClient'
 
@@ -115,6 +115,7 @@ const Withdrawal = () => {
 
             </Head>
             <body className="page-header-fixed page-sidebar-closed-hide-logo">
+                <UserAdminHeader />
                 <div className="clearfix"></div>
                 <div className="page-container">
                     <MasterAdminSidenav />

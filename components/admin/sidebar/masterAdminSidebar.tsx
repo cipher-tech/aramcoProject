@@ -16,19 +16,22 @@ const MasterAdminSidebar = () => {
 
                         <li className="nav-item start">
                             <a href="/masterAdmin" className="nav-link ">
-                                <i className="icon-home"></i><span className="title">Dashboard</span>
+                                <img src="/images/svg/home.svg" alt="svg icon" /> &nbsp;
+                                <span className="title">Dashboard</span>
                             </a>
                         </li>
                         <li className="nav-item start">
                             <Link href="/masterAdmin/deposit/pending_deposits" >
-                                <a className="nav-link nav-toggle"><i className="fa fa-spinner"></i>
+                                <a className="nav-link nav-toggle">
+                                    <img src="/images/svg/hourglass.svg" alt="svg icon" /> &nbsp;
                                     <span className="title">Pending Deposits</span>
                                 </a>
                             </Link>
                         </li>
                         <li className="nav-item ">
                             <Link href="/masterAdmin/deposit/deposit_history">
-                                <a className="nav-link nav-toggle"><i className="fa fa-history"></i>
+                                <a className="nav-link nav-toggle">
+                                    <img src="/images/svg/database.svg" alt="svg icon" />&nbsp;
                                     <span className="title">Deposit History</span>
                                 </a>
                             </Link>
@@ -36,7 +39,8 @@ const MasterAdminSidebar = () => {
 
                         <li className="nav-item">
                             <Link href="/masterAdmin/withdrawals/getPendingWithdrawals">
-                                <a className="nav-link nav-toggle"><i className="fa fa-history"></i>
+                                <a className="nav-link nav-toggle">
+                                    <img src="/images/svg/hourglass.svg" alt="svg icon" /> &nbsp;
                                     <span className="title">Pending Withdraw</span>
                                 </a>
                             </Link>
@@ -44,7 +48,8 @@ const MasterAdminSidebar = () => {
                         </li>
                         <li className="nav-item">
                             <Link href="/masterAdmin/withdrawals/withdrawal_history">
-                                <a className="nav-link nav-toggle"><i className="fa fa-history"></i>
+                                <a className="nav-link nav-toggle">
+                                    <img src="/images/svg/database.svg" alt="svg icon" />&nbsp;
                                     <span className="title">Withdraw History</span>
                                 </a>
                             </Link>
@@ -52,7 +57,8 @@ const MasterAdminSidebar = () => {
 
                         <li className="nav-item">
                             <Link href="/masterAdmin/users/users">
-                                <a className="nav-link nav-toggle"><i className="fa fa-history"></i>
+                                <a className="nav-link nav-toggle">
+                                    <img src="/images/svg/layers.svg" alt="svg icon" />&nbsp;
                                     <span className="title">All Users</span>
                                 </a>
                             </Link>

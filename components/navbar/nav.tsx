@@ -25,7 +25,7 @@ const Container = styled.div`
             display: flex;
             align-items: center;
             color: ${theme.colorPrimary};
-            padding: .5rem 2rem;
+            padding: .5rem 1rem;
             list-style-type: none;
             
             font-size: ${theme.font.xxsmall};
@@ -125,7 +125,9 @@ const Nav = () => {
                 <img className="navbar-logo" src="/images/logo.png" alt="logo" />
                 <ul className="navbar-list">
                     <li className="navbar-list__item">
-                    <a className="navbar-list__item--link" href="/overview">Who we are</a>
+                        <Link href="/overview">
+                            <a className="navbar-list__item--link" >Who we are</a>
+                        </Link>
                         <div className="navbar-list__item--dropDown">
                             <div className="navbar-list__item--dropDown-options">
                                 <p className="navbar-list__item--dropDown-options__item">
@@ -143,14 +145,18 @@ const Nav = () => {
                                         Ranked among the world's largest petrochemicals manufacturers,
                                         SABIC is a public company based in Riyadh, Sabic Arabia.
                                     </span>
-                                    <a href="/overview">Read More</a>
+                                    <Link href="/overview">
+                                        <a >Read More</a>
+                                    </Link>
                                 </p>
                             </div>
                         </div>
                     </li>
                     <li className="navbar-list__item">
-                    <a className="navbar-list__item--link" href="/values">Creating value</a>
-                       
+                        <Link href="/values">
+                            <a className="navbar-list__item--link" >Creating value</a>
+                        </Link>
+
                         <div className="navbar-list__item--dropDown">
                             <div className="navbar-list__item--dropDown-options">
                                 <p className="navbar-list__item--dropDown-options__item">
@@ -168,14 +174,18 @@ const Nav = () => {
                                         From transportation fuels to advanced materials, our diverse and
                                         expanding range of products create value not only for our customers, but also our company.
                                     </span>
-                                    <a href="/values">Read More</a>
+                                    <Link href="/values">
+                                        <a>Read More</a>
+                                    </Link>
                                 </p>
                             </div>
                         </div>
                     </li>
                     {/* <li className="navbar-list__item">Making a difference</li> */}
                     <li className="navbar-list__item">
-                        <a className="navbar-list__item--link" href="/plans/products">Partnering with us</a>
+                        <Link href="/plans/products">
+                            <a className="navbar-list__item--link" >Partnering with us</a>
+                        </Link>
                         <div className="navbar-list__item--dropDown">
                             <div className="navbar-list__item--dropDown-options">
                                 <p className="navbar-list__item--dropDown-options__item">
@@ -193,7 +203,9 @@ const Nav = () => {
                                     <span>
                                         Sabic Aramco is the world’s largest integrated oil and gas company.
                                     </span>
-                                    <a href="/plans/products">Read More</a>
+                                    <Link href="/plans/products">
+                                        <a>Read More</a>
+                                    </Link>
                                 </p>
                                 <p className="navbar-list__item--dropDown-info__text">
                                     <span>
@@ -203,7 +215,9 @@ const Nav = () => {
                                         Being an energy leader in a world of changing energy demand,
                                         we embrace our role to find effective energy solutions.
                                     </span>
-                                    <a href="/suppliers">Read More</a>
+                                    <Link href="/suppliers">
+                                        <a>Read More</a>
+                                    </Link>
                                 </p>
                             </div>
 
@@ -211,7 +225,9 @@ const Nav = () => {
                         </div>
                     </li>
                     <li className="navbar-list__item">
-                        <a className="navbar-list__item--link" href="/investors">Investors</a>
+                        <Link href="/investors">
+                            <a className="navbar-list__item--link">Investors</a>
+                        </Link>
 
                         <div className="navbar-list__item--dropDown">
                             <div className="navbar-list__item--dropDown-options">
@@ -236,7 +252,9 @@ const Nav = () => {
                                         Aramco previously announced the successful completion of its share acquisition of a 70%
                                         stake in Basic Industries Corporation from the Public Investment Fund.
                                     </span>
-                                    <a href="/investors">Read More</a>
+                                    <Link href="/investors">
+                                        <a>Read More</a>
+                                    </Link>
                                 </p>
                                 <div className="navbar-list__item--dropDown-info__text">
                                     <span>
@@ -245,18 +263,26 @@ const Nav = () => {
                                     <span>
                                         <ul>
                                             <li>
-                                                <a href="/plans/products">Invest on Gas</a>
+                                                <Link href="/plans/products">
+                                                    <a>Invest on Gas</a>
+                                                </Link>
                                             </li>
                                             <li>
-                                                <a href="/plans/products">Invest on Oil</a>
+                                                <Link href="/plans/products">
+                                                    <a>Invest on Oil</a>
+                                                </Link>
                                             </li>
                                             <li>
-                                                <a href="/plans/products">Invest on Chemicals</a>
+                                                <Link href="/plans/products">
+                                                    <a>Invest on Chemicals</a>
+                                                </Link>
                                             </li>
 
                                         </ul>
                                     </span>
-                                    <a href="/investors">Read More</a>
+                                    <Link href="/investors">
+                                        <a>Read More</a>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
@@ -264,10 +290,14 @@ const Nav = () => {
                 </ul>
                 <ul className="navbar-list">
                     <li className="navbar-list__item">
-                        {/* <Link > */}
-                            <a href="/login">Login | &nbsp; </a>
-                            <a href="/signup"> Register</a>
-                        {/* </Link> */}
+                        <Link href="/login">
+                            <a>Login</a>
+                        </Link>
+                    </li>
+                    <li className="navbar-list__item">
+                        <Link href="/signup">
+                            <a> Register</a>
+                        </Link>
                     </li>
                     {/* <li className="navbar-list__item">Login</li> */}
                 </ul>
@@ -275,6 +305,6 @@ const Nav = () => {
             </div>
         </Container>
     )
-} 
+}
 
 export default Nav

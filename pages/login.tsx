@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Field, Formik } from 'formik'
 import * as Yup from 'yup';
 import Head from 'next/head'
@@ -20,11 +20,15 @@ const SignupSchema = Yup.object().shape({
 
 const LoginPage = () => {
     const [message, setMessage] = useState('')
+    const [ShowContent, setShowContent] = useState(false)
     const [loginMutation, { data, loading, error }] = useLoginMutation()
     const router = useRouter()
 
+    useEffect(() => {
+        setShowContent(true)
+    }, [])
     const submit = async (inputs: Login) => {
-        await setMessage('') 
+        await setMessage('')
         let response = await loginMutation({
             variables: {
                 input: inputs
@@ -34,10 +38,11 @@ const LoginPage = () => {
         console.log(inputs, data, response);
         setMessage('login successful.')
         router.push("/admin")
-  
+
     }
+    // if (!ShowContent) return <p>Loading</p>
     return (
-        <div className="logInMain">
+        <>
             <Head>
                 {/* <!-- Basic Page Needs */}
                 {/* ================================================== --> */}
@@ -51,30 +56,44 @@ const LoginPage = () => {
 
                 {/* <!-- CSS  */}
                 {/* ================================================== --> */}
-                <link rel="stylesheet" href="/assets/css/style.css" />
-                <link rel="stylesheet" href="/assets/css/night-mode.css" />
+                {/* <link rel="stylesheet" href="/assets/css/style.css" /> */}
+                {/* <link rel="stylesheet" href="/assets/css/night-mode.css" /> */}
                 <link rel="stylesheet" href="/assets/css/framework.css" />
 
                 {/* <!-- icons */}
                 {/* ================================================== --> */}
                 <link rel="stylesheet" href="/assets/css/icons.css" />
-                {/* <script src="/assets/js/main.js"></script> */}
+
+                <script src="/assets/js/jquery-3.3.1.min.js"></script>
+                {/* <script async src="/assets/js/main.js"></script> */}
+                {/* <script async src="/assets/js/framework.js"></script> */}
+                <script async src="/assets/js/simplebar.js"></script>
             </Head>
 
             {/* <body> */}
             <style jsx>{`
                 .logInMain{
                         grid-column: 1/-1;
+                        min-height: 100vh
                     }
                 .bigFont{
                     font-size: ${theme.font.xxsmall} ;
                     color: currentColor;
                 }
+                .mainReg{
+                    min-height: 100vh;
+                    align-items: center;
+                    display: flex;
+                    &-container{
+                        max-width: 100%;
+                        background: white;
+                    }
+                }
                 `}</style>
             {/* <!-- Content */}
             {/* ================================================== --> */}
-            <div id="mainReg" uk-height-viewport="expand: true" className="uk-flex uk-flex-middle">
-                <div className="uk-width-1-3@m uk-width-1-2@s m-auto">
+            <div id="mainReg" uk-height-viewport="expand: true" className="uk-flex mainReg uk-flex-middle">
+                <div className="mainReg-container uk-width-1-3@m uk-width-1-2@s m-auto">
                     <div className="uk-card-default p-6 rounded">
                         <div className="my-4 uk-text-center">
                             <h2 className="mb-0">Welcome Back</h2>
@@ -145,13 +164,8 @@ const LoginPage = () => {
             </div>
 
             {/* <!-- javaScripts================================================== --> */}
-            <Head>
-                <script src="/assets/js/jquery-3.3.1.min.js"></script>
-                <script src="/assets/js/framework.js"></script>
-                <script src="/assets/js/simplebar.js"></script>
-            </Head>
             {/* </body>  */}
-        </div>
+        </>
     )
 }
 

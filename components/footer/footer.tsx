@@ -85,8 +85,17 @@ const Footer = () => {
                     <h3 className="footer-column__title">Contact Us</h3>
                     <ul className="footer-column-list">
                         <li className="footer-column-list__item">
-                            <img src="/images/telegram.png" alt="next" />
-                            <img src="/images/mail.png" alt="next" />
+                            <Link href="https://t.me/AramcoSa1">
+                                <a>
+                                    <img src="/images/telegram.png" alt="next" />
+                                </a>
+                            </Link>
+                            <Link href="mailto:support@sabic-aramco.com">
+                                <a>
+                                    <img src="/images/mail.png" alt="next" />
+                                </a>
+                            </Link>
+
                         </li>
                     </ul>
                 </div>
@@ -94,6 +103,6 @@ const Footer = () => {
             </footer>
         </>
     )
-} 
+}
 
 export default Footer

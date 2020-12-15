@@ -94,28 +94,32 @@ const ImageCard = (props) => {
                 }
             `}</style>
             <div className={`imageInfo ${props.left ? " jusLeft" : ""}`}>
-                <img className="cardImage" src={props.bgImage} alt="img"/>
+                <img className="cardImage" src={props.bgImage} alt="img" />
                 <div className="imageInfo-container">
                     {props.subHead && <h3 className="imageInfo-container__subHead">{props.subHead}</h3>}
                     {props.title && <h2 className="imageInfo-container__title"> {props.title} </h2>}
                     {props.text && <p className="imageInfo-container__text">{props.text}</p>}
                     {props.btnLight &&
-                        <a download={props.download ? true : false}
-                            href={props.download ? (props.downloadLink || "/pdf/aramcoPdf.pdf") : (props.link || "/overview")}
-                            className="imageInfo-container__button btn-light">
-                            {props.btnLight}
-                        </a>
+                        <Link href={props.download ? (props.downloadLink || "/pdf/aramcoPdf.pdf") : (props.link || "/overview")}>
+                            <a download={props.download ? true : false} className="imageInfo-container__button btn-light">
+                                {props.btnLight}
+                            </a>
+                        </Link>
                         // <Link href={props.link || "/plans/products"}>
                         //     <button >  </button>
                         // </Link>
                     }
                     {props.btn &&
-                        <a download={props.download ? true : false}
-                            href={props.download ? "/pdf/aramcoPdf.pdf" : (props.link || "/overview")} className="imageInfo-container__button">{props.btn}</a>
+                        <Link href={props.download ? "/pdf/aramcoPdf.pdf" : (props.link || "/overview")}>
+                            <a download={props.download ? true : false}
+                                className="imageInfo-container__button">{props.btn}</a>
+                        </Link>
                     }
                     {props.btn2 &&
-                        <a download={props.download ? true : false}
-                            href={props.download ? "/pdf/aramcoPdf.pdf" : (props.link || "/overview")} className="imageInfo-container__button">{props.btn}</a>
+                        <Link href={props.download ? "/pdf/aramcoPdf.pdf" : (props.link || "/overview")}>
+                            <a download={props.download ? true : false}
+                                className="imageInfo-container__button">{props.btn}</a>
+                        </Link>
                     }
                 </div>
             </div>

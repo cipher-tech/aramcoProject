@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import React, { useEffect, useState } from 'react'
 import { Helmet } from "react-helmet";
-import { MasterAdminSidenav, MasterAdminStatsCard, TableComponent } from "../../../components"
+import { MasterAdminSidenav, MasterAdminStatsCard, TableComponent, UserAdminHeader } from "../../../components"
 import { useGetAdminWithdrawalsQuery, } from '../../../generated/apolloComponent';
 import { withApollo } from '../../../lib/apolloClient';
 
@@ -66,7 +66,7 @@ const WithdrawalHistory = () => {
             </Head>
 
             <body className="page-header-fixed page-sidebar-closed-hide-logo">
-
+                <UserAdminHeader />
                 {/* <!-- BEGIN HEADER & CONTENT DIVIDER --> */}
                 <div className="clearfix"></div>
                 <div className="page-container">

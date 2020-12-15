@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react'
 // import { Helmet } from "react-helmet";
-import { MasterAdminSidenav, MasterAdminStatsCard, Plan, SideBar, StockPlan, TableComponent } from "../../../components/index"
+import { MasterAdminSidenav, MasterAdminStatsCard, Plan, SideBar, StockPlan, TableComponent, UserAdminHeader } from "../../../components/index"
 import { DepositAttributes, useActivateWithdrawalMutation, useDeleteWithdrawalRequestMutation, useGetPendingDepositsQuery, useGetPendingWithdrawalsQuery, useGetUserQuery } from '../../../generated/apolloComponent';
 import { withApollo } from '../../../lib/apolloClient';
 
@@ -109,6 +109,7 @@ const index = () => {
             </Head>
 
             <body className="page-header-fixed page-sidebar-closed-hide-logo">
+                <UserAdminHeader />
                 {/* <!-- BEGIN HEADER & CONTENT DIVIDER --> */}
                 <div className="clearfix"></div>
                 <div className="page-container">

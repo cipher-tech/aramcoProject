@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import React from 'react'
-import { MasterAdminSidenav, UserStats } from '../../../components'
+import { MasterAdminSidenav, UserAdminHeader, UserStats } from '../../../components'
 import { User } from '../../../generated/apolloComponent'
 import { withApollo } from '../../../lib/apolloClient'
 
@@ -42,7 +42,7 @@ const ViewUser = () => {
 
             </Head>
             <body className="page-header-fixed page-sidebar-closed-hide-logo">
-
+                <UserAdminHeader />
                 {/* <!-- BEGIN HEADER & CONTENT DIVIDER --> */}
                 <div className="clearfix"></div>
                 <div className="page-container">

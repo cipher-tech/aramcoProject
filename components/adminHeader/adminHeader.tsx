@@ -1,15 +1,25 @@
 import React from 'react'
+import styled from 'styled-components'
+import { MasterAdminSideMenu, UserNav } from '..'
+import theme from '../../styles/theme'
 
+const Container = styled.div`
+    width: 100%;
+    @media only screen and (max-width: ${theme.breakPoints.bpLarge}) {
+        display: none; 
+    }
+`
 const AdminHeader = () => {
     return (
-        <>
-            <div className="page-header navbar navbar-fixed-top" style={{ backgroundColor: "#2C4065" }}>
+        <> 
+            <MasterAdminSideMenu />
+            <Container className="page-header navbar navbar-fixed-top" style={{ backgroundColor: "#2C4065" }}>
                 <div className="page-header-inner " style={{ backgroundColor: "#2C4065" }}>
                     {/* <!-- BEGIN LOGO --> */}
                     <div className="page-logo">
-                        <a href="">
+                        {/* <a href="">
                             <img src="/admin/assets/images/logo.png" className="logo-default" alt="-" style={{ filter: "brightness(0) invert(1)", width: "150px", height: "45px" }} />
-                        </a>
+                        </a> */}
                         <div className="menu-toggler sidebar-toggler" style={{ backgroundColor: "#2C4065" }}></div>
                     </div>
                     {/* <!-- END LOGO --> */}
@@ -17,13 +27,13 @@ const AdminHeader = () => {
                     {/* <!-- BEGIN RESPONSIVE MENU TOGGLER --> */}
                     <a href="javascript:;" className="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse"> </a>
 
-                    <div className="top-menu" style={{ backgroundColor: "#2C4065" }}>
+                    {/* <div className="top-menu" style={{ backgroundColor: "#2C4065" }}>
                         <ul className="nav navbar-nav pull-right" style={{ backgroundColor: "#2C4065" }}>
                             <li className="dropdown dropdown-user">
-                                <a href="javascript:;" className="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                <a href="" className="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
 
 
-                                    <span className="username"> Welcome, thesoftking </span>
+                                    <span className="username"> Sabic Aramco</span>
                                     <i className="fa fa-angle-down"></i>
                                 </a>
                                 <ul className="dropdown-menu dropdown-menu-default">
@@ -35,9 +45,9 @@ const AdminHeader = () => {
                                 </ul>
                             </li>
                         </ul>
-                    </div>
+                    </div> */}
                 </div>
-            </div>
+            </Container>
         </>
     )
 }

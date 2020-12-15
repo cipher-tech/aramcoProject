@@ -4,7 +4,7 @@ import styled, { keyframes } from "styled-components";
 import { Field, Formik } from 'formik'
 import * as Yup from 'yup';
 
-import { InputErrorMessage, Modal, Plan, SideBar, StockPlan, UserStats } from "../../components/index"
+import { InputErrorMessage, Modal, Plan, SideBar, StockPlan, UserAdminHeader, UserStats } from "../../components/index"
 import theme from '../../styles/theme';
 import { planInfo, IPlan } from '../../components/plans/plans';
 import { sharesInfo, stockInfo, IStockPlan } from '../../components/stockPlans/stockPlans';
@@ -536,8 +536,8 @@ const Request_Deposit = (props) => {
             .min(1, 'Too Short!')
             .max(7, 'Too Long!')
             .required('Required')
-            .lessThan(SelectedPlan.range[1] - 1, `must be less than ${SelectedPlan.range[1] - 1} `)
-            .moreThan(SelectedPlan.range[0] - 1, `must be greater than ${SelectedPlan.range[0] - 1} `),
+            .lessThan(SelectedPlan?.range[1] - 1, `must be less than ${SelectedPlan?.range[1] - 1} `)
+            .moreThan(SelectedPlan?.range[0] - 1, `must be greater than ${SelectedPlan?.range[0] - 1} `),
     });
 
     const handleSelect = ({ name }: ParsedUrlQuery) => {
@@ -617,51 +617,7 @@ const Request_Deposit = (props) => {
             </Head>
 
             <body className="page-header-fixed page-sidebar-closed-hide-logo">
-
-                {/* <!-- BEGIN HEADER --> */}
-                <div className="page-header navbar navbar-fixed-top" style={{ backgroundColor: "#2C4065" }}>
-                    <div className="page-header-inner " style={{ backgroundColor: "#2C4065" }}>
-
-
-                        {/* <!-- BEGIN LOGO --> */}
-                        <div className="page-logo">
-                            <a href="">
-                                <img src="/admin/assets/images/logo.png" className="logo-default" alt="-" style={{ filter: "brightness(0) invert(1)", width: "150px", height: "45px" }} />
-
-                            </a>
-
-                            <div className="menu-toggler sidebar-toggler" style={{ backgroundColor: "#2C4065" }}></div>
-                        </div>
-                        {/* <!-- END LOGO --> */}
-
-
-                        {/* <!-- BEGIN RESPONSIVE MENU TOGGLER --> */}
-                        <a href="javascript:;" className="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse"> </a>
-
-                        <div className="top-menu" style={{ backgroundColor: "#2C4065" }}>
-                            <ul className="nav navbar-nav pull-right" style={{ backgroundColor: "#2C4065" }}>
-                                <li className="dropdown dropdown-user">
-                                    <a href="javascript:;" className="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-
-
-                                        <span className="username"> </span>
-                                        <i className="fa fa-angle-down"></i>
-                                    </a>
-                                    <ul className="dropdown-menu dropdown-menu-default">
-
-                                        <li><a href="admin-change-password.html"><i className="fa fa-cogs"></i> Change Password </a>
-                                        </li>
-                                        <li><a href="/admin"><i className="fa fa-sign-out"></i> Log Out </a></li>
-
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                {/* <!-- END HEADER --> */}
-
-
+                <UserAdminHeader />
                 {/* <!-- BEGIN HEADER & CONTENT DIVIDER --> */}
                 <div className="clearfix"></div>
                 <div className="page-container">
@@ -773,10 +729,10 @@ const Request_Deposit = (props) => {
 
                                                     {SelectedPlan.name ?
                                                         <p className="plan-info">
-                                                            <span>Name: {SelectedPlan.name}</span>
-                                                            <span>Price Range: {SelectedPlan.range[0]} - {SelectedPlan.range[1]}</span>
-                                                            <span>Rate: {SelectedPlan.rate}</span>
-                                                            <span>Duration: {SelectedPlan.duration}</span>
+                                                            <span>Name: {SelectedPlan?.name}</span>
+                                                            <span>Price Range: {SelectedPlan?.range[0]} - {SelectedPlan?.range[1]}</span>
+                                                            <span>Rate: {SelectedPlan?.rate}</span>
+                                                            <span>Duration: {SelectedPlan?.duration}</span>
                                                         </p>
                                                         : null
                                                     }

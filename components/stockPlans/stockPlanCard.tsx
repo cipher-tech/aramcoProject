@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import theme from '../../styles/theme'
@@ -168,7 +169,13 @@ const StockPlanCard = ({ info }) => {
                 </ul>
                 <div className="pricing-plan-features">
                 </div>
-                <button onClick={toggleShowInput} className="btns">Purchase Plan</button>
+                <Link href={{
+                    pathname: "/admin/[name]",
+                    query: { name: info.name }
+                }}>
+                    <button className="btns">Purchase Plan</button>
+                </Link>
+                {/* <button onClick={toggleShowInput} className="btns">Purchase Plan</button> */}
             </div>
         </Container>
     )

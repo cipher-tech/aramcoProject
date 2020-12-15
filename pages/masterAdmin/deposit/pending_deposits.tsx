@@ -108,6 +108,7 @@ const Pending_deposits = () => {
 
             <body className="page-header-fixed page-sidebar-closed-hide-logo">
                 {/* <!-- BEGIN HEADER & CONTENT DIVIDER --> */}
+                <UserAdminHeader />
                 <div className="clearfix"></div>
                 <div className="page-container">
 

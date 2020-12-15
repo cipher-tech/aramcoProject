@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
-import { MasterAdminSidenav } from '../../../components'
+import { MasterAdminSidenav, UserAdminHeader } from '../../../components'
 import { DepositAttributes, useActivateDepositMutation, useCancelDepositMutation } from '../../../generated/apolloComponent'
 import { withApollo } from '../../../lib/apolloClient'
 
@@ -117,7 +117,7 @@ const ViewDeposit = () => {
             <body className="page-header-fixed page-sidebar-closed-hide-logo">
 
                 {/* <!-- BEGIN HEADER --> */}
-
+                <UserAdminHeader />
                 {/* <!-- END HEADER --> */}
 
 

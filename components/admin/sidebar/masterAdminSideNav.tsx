@@ -2,7 +2,8 @@ import React, { useState, useContext } from 'react'
 import styled from "styled-components";
 import { useSpring, animated } from 'react-spring';
 import Link from 'next/link';
-import theme from '../../styles/theme';
+import theme from '../../../styles/theme';
+import { useRouter } from 'next/router';
 
 const Container = styled.div`
     display: grid;
@@ -23,7 +24,7 @@ const Container = styled.div`
         padding: 2rem;
         z-index: 1200;
         display: none; 
-        @media only screen and (max-width: ${theme.breakPoints.bpLarge}) {
+        @media only screen and (max-width: ${theme.breakPoints.bpxLarge}) {
             display: flex; 
         }
         &__logo{
@@ -203,9 +204,10 @@ const Container = styled.div`
     }
 `
 
-const UserNavbarComponent = (props) => {
+const UserAdminNavbarComponent = (props) => {
 
     const [mobileNavIsOpen, setMobileNavIsOpen] = useState(!true)
+    const router = useRouter()
     // const loginSignUpContext = useContext(ContextData)
     const toggleMobileNav = () => {
         setMobileNavIsOpen(!mobileNavIsOpen)
@@ -219,15 +221,75 @@ const UserNavbarComponent = (props) => {
     const springMove = useSpring({
         left: mobileNavIsOpen ? "0%" : "-200%"
     })
+    console.log(router) //temp1.route.startsWith("/admin")
+    const UserLinks = [
+        {
+            route: "/admin",
+            name: "Dashboard"
+        },
+        {
+            route: "/admin/deposits",
+            name: "Deposits"
+        },
+        {
+            route: "/admin/pending_deposits",
+            name: "pending_deposits"
+        },
+        {
+            route: "/admin/pending_withdrawals",
+            name: "pending_withdrawals"
+        },
+        {
+            route: "/admin/request_withdrawal",
+            name: "request_withdrawal"
+        },
+        {
+            route: "/admin/selectPlan",
+            name: "selectPlan"
+        },
+        {
+            route: "/admin/withdrawals",
+            name: "withdrawals"
+        },
+
+    ]
+    const AdminLinks = [
+        {
+            route: "/masterAdmin",
+            name: "Dashboard"
+        },
+        {
+            route: "/masterAdmin/deposit/deposit_history",
+            name: "Deposits"
+        },
+        {
+            route: "/masterAdmin/deposit/pending_deposits",
+            name: "pending_deposits"
+        },
+        {
+            route: "/masterAdmin/withdrawals/getPendingWithdrawals",
+            name: "Pending Withdrawals"
+        },
+        {
+            route: "/masterAdmin/withdrawals/withdrawal_history",
+            name: "withdrawal history"
+        },
+        {
+            route: "/masterAdmin/users/users",
+            name: "All users"
+        },
+       
+    ]
     return (!props.show ?
         <Container>
 
             <div className="navbar-mobile">
                 <p className="navbar-mobile__logo" onClick={toggleMobileNav}>
-                    <img src="/images/logo.png" alt="next" />
+                    {/* <img src="/images/logo.png" alt="next" /> */}
                 </p>
                 <p className="navbar-mobile__icon" onClick={toggleMobileNav}>
                     <img src="/images/menuIcon.svg" alt="next" />
+                    {/* ⬛ */}
                 </p>
                 <animated.div style={{ transform: spring.transform }} className="navbar-mobile__overlay"></animated.div>
             </div>
@@ -235,39 +297,59 @@ const UserNavbarComponent = (props) => {
                 <div className="navbar-mobile__list--item">
                     <p className="navbar-mobile__list--item--toggle" onClick={toggleMobileNav}> X </p>
                 </div>
-                <Link href={"/"}>
+                {
+                    router.route.startsWith("/admin") ?
+                        UserLinks.map((item, index) => (
+                            <Link key={index + 913} href={item.route}>
+                                <a className="navbar-mobile__list--item">
+                                    {item.name}
+                                </a>
+                            </Link>
+                        ))
+                        :
+                        AdminLinks.map((item, index) => (
+                            <Link key={index + 992773} href={item.route}>
+                                <a className="navbar-mobile__list--item">
+                                    {item.name}
+                                </a>
+                            </Link>
+                        ))
+                }
+
+
+                {/* <Link href={"/admin/deposits"}>
                     <a className="navbar-mobile__list--item">
-                        home
+                        deposits
                     </a>
                 </Link>
-                <Link href={"/overview"}>
+                <Link href={"/admin/pending_deposits"}>
                     <a className="navbar-mobile__list--item">
-                        Who we are
+                        pending_deposits
                     </a>
                 </Link>
-                <Link href={"/values"}>
+                <Link href={"/admin/pending_withdrawals"}>
                     <a className="navbar-mobile__list--item">
-                        Creating value
+                        pending_withdrawals
                     </a>
                 </Link>
-                <Link href={"/plans/products"}>
+                <Link href={"/admin/request_withdrawal"}>
                     <a className="navbar-mobile__list--item">
-                        Partnering with us
+                        request_withdrawal
                     </a>
                 </Link>
-                <Link href={"/investors"}>
+                <Link href={"/admin/selectPlan"}>
                     <a className="navbar-mobile__list--item">
-                        Investors
+                        selectPlan
                     </a>
                 </Link>
-                <Link href={"/login"}>
+                <Link href={"/admin/withdrawals"}>
                     <a className="navbar-mobile__list--item">
-                        login
+                        withdrawals
                     </a>
-                </Link>
+                </Link> */}
             </animated.ul>
         </Container> : null
     )
 }
 
-export default UserNavbarComponent
+export default UserAdminNavbarComponent

@@ -86,6 +86,7 @@ const Careers: React.FC = () => {
                 justify-content: center;
                 align-items: center;
                 margin: 2rem 0;
+                padding: 1rem 2.5rem;
                 @media only screen and (max-width: ${theme.breakPoints.bpLarge}) {
                     flex-direction: column;
                 }
@@ -100,6 +101,9 @@ const Careers: React.FC = () => {
                     text-align: left;
                     color: ${theme.colorDark};
                     margin: 1rem;
+                    @media only screen and (max-width: ${theme.breakPoints.bpLarge}) {
+                    flex-direction: column;
+                }
                     }
                     &__text{
                         color: ${theme.colorDark};
@@ -212,7 +216,9 @@ const Careers: React.FC = () => {
                         safety, and excellence, allowing them to achieve remarkable results within an ever-changing
                         global market.
                     </p>
-                    <button className="textSection-container__btn">LEARN MORE</button>
+                    <Link href="/signup">
+                        <button className="textSection-container__btn">LEARN MORE</button>
+                    </Link>
                 </div>
                 <div className="textSection-container">
                     <h3 className="textSection-container__title">Investing in our people</h3>
@@ -225,7 +231,9 @@ const Careers: React.FC = () => {
                         Our success is a result of facing challenges head-on with determination, persistence, and innovative thinking,
                         which is made possible through our unique training programs.
                     </p>
-                    <button className="textSection-container__btn">LEARN MORE</button>
+                    <Link href="/signup">
+                        <button className="textSection-container__btn">LEARN MORE</button>
+                    </Link>
                 </div>
             </div>
 
