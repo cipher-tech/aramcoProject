@@ -525,7 +525,7 @@ const Request_Deposit = (props) => {
             setIsCopied(true)
             return
         }
-        await navigator.clipboard.writeText("Some other text")
+        await navigator.clipboard.writeText("1AVqE3MqZSDbrdihXtX9Ny5DAeWD329fQ8")
         setIsCopied(true)
     }
 
@@ -660,25 +660,25 @@ const Request_Deposit = (props) => {
                                             >
                                                 ❌
                                         </span>
-                                            <img src="/images/qrcode.png" alt="" />
+                                            <img src="/images/qrcode.jpeg" alt="" />
 
                                             <p className="modal__container--text">
                                                 please pay exactly the amount specified into this bitcoin address
                                         </p>
 
                                             <p className="modal__container-address">
-                                                {"ood9euur8r90itiogig484t8pmf20"}
-                                                <button onClick={() => copy("address")}> copy</button>
+                                                {"1AVqE3MqZSDbrdihXtX9Ny5DAeWD329fQ8"}
+                                                <button onClick={() => copy("")}> copy</button>
                                             </p>
+                                            
 
-                                            {/* <p className="modal__container--text">
-                                            After successful payment contact customer care with the unique
-                                            refrence_id below,and proof of payment. <br />
-                                            <span className="modal__container-address">
+                                            <p className="modal__container--text">
+                                            After successful payment contact customer care via the live chat with proof of payment. <br />
+                                            {/* <span className="modal__container-address">
                                                 {"refrenceId"}
                                                 <button onClick={() => copy("refId")}> copy</button>
-                                            </span>
-                                        </p> */}
+                                            </span> */}
+                                        </p>
                                         </div>
                                     </Modal>
                                     {/* <div className="loadingScreen"/> */}
