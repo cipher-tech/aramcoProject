@@ -496,9 +496,13 @@ const Request_Deposit = (props) => {
     const [, setIsCopied] = useState(false)
     const [refId, setRefId] = useState('')
     const [withdrawalRequestMutation, { data, loading, error }] = useWithdrawalRequestMutation()
-    // useEffect(() => {
-    //     console.log(data);
-    // }, [data])
+    const [showContent, setShowContent] = useState(false)
+    useEffect(() => {
+        // console.log(data, "network stats>>>", networkStatus);
+        setTimeout(() => {
+            setShowContent(true)
+        }, 1500)
+    })
 
     async function copy(type) {
         if (type === "refId") {
@@ -525,17 +529,17 @@ const Request_Deposit = (props) => {
                 }
             }
         })
-        .then(async response => {
-            if (error) return setMessage('Something went wrong, please try again or contact admin')
-            if (!loading) await setIsLoading(false)
-    
-            console.log({response, data});
-            setIsModalActive(true)
-        })
-        .catch( async err => {
-            await setIsLoading(false)
-            await setMessage('Something went wrong, please try again or contact admin')
-        })
+            .then(async response => {
+                if (error) return setMessage('Something went wrong, please try again or contact admin')
+                if (!loading) await setIsLoading(false)
+
+                console.log({ response, data });
+                setIsModalActive(true)
+            })
+            .catch(async err => {
+                await setIsLoading(false)
+                await setMessage('Something went wrong, please try again or contact admin')
+            })
     }
     return (
         <>
@@ -555,7 +559,7 @@ const Request_Deposit = (props) => {
             `}</style>
             <Head>
                 <meta charSet="utf-8" />
-                <title>Coin Forest - Dashboard</title>
+                <title>Sabic-Aramco</title>
                 <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
                 <meta content="width=device-width, initial-scale=1" name="viewport" />
                 <meta content="" name="description" />
@@ -581,51 +585,51 @@ const Request_Deposit = (props) => {
 
                 <link rel="stylesheet" type="text/css" href="/admin/assets/admin/css/sweetalert.css" />
 
-                <link rel="shortcut icon" href="/admin/assets/images/favicon.png" />
+                <link rel="shortcut icon" href="/images/logo.png" />
             </Head>
+            {showContent &&
+                <body className="page-header-fixed page-sidebar-closed-hide-logo">
 
-            <body className="page-header-fixed page-sidebar-closed-hide-logo">
-
-                {/* <!-- BEGIN HEADER --> */}
-                <UserAdminHeader />
-                {/* <!-- END HEADER --> */}
-
-
-                {/* <!-- BEGIN HEADER & CONTENT DIVIDER --> */}
-                <div className="clearfix"></div>
-                <div className="page-container">
-                    <SideBar />
+                    {/* <!-- BEGIN HEADER --> */}
+                    <UserAdminHeader />
+                    {/* <!-- END HEADER --> */}
 
 
-                    {/* <!-- BEGIN CONTENT --> */}
-                    <div className="page-content-wrapper">
-                        <div className="page-content">
-                            <h3 className="page-title">Dashboard </h3>
-                            <hr />
+                    {/* <!-- BEGIN HEADER & CONTENT DIVIDER --> */}
+                    <div className="clearfix"></div>
+                    <div className="page-container">
+                        <SideBar />
 
-                            {/* <!--  ==================================VALIDATION ERRORS==================================  --> */}
-                            {/* <!--  ==================================SESSION MESSAGES==================================  --> */}
 
-                            <UserStats />
-                            <Plans />
-                            <StockPlan />
+                        {/* <!-- BEGIN CONTENT --> */}
+                        <div className="page-content-wrapper">
+                            <div className="page-content">
+                                <h3 className="page-title">Dashboard </h3>
+                                <hr />
+
+                                {/* <!--  ==================================VALIDATION ERRORS==================================  --> */}
+                                {/* <!--  ==================================SESSION MESSAGES==================================  --> */}
+
+                                <UserStats />
+                                <Plans />
+                                <StockPlan />
+                            </div>
+                        </div>
+                        {/* <!-- END CONTENT --> */}
+                    </div>
+                    {/* <!-- END CONTAINER --> */}
+
+
+                    {/* <!-- BEGIN FOOTER --> */}
+                    <div className="page-footer">
+                        <div className="page-footer-inner"> 2020 All Copyright &copy; Reserved. </div>
+                        <div className="scroll-to-top">
+                            <i className="icon-arrow-up"></i>
                         </div>
                     </div>
-                    {/* <!-- END CONTENT --> */}
-                </div>
-                {/* <!-- END CONTAINER --> */}
 
-
-                {/* <!-- BEGIN FOOTER --> */}
-                <div className="page-footer">
-                    <div className="page-footer-inner"> 2020 All Copyright &copy; Reserved. </div>
-                    <div className="scroll-to-top">
-                        <i className="icon-arrow-up"></i>
-                    </div>
-                </div>
-
-            </body>
-
+                </body>
+            }
         </>
     )
 }

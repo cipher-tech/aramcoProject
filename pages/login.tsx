@@ -52,13 +52,13 @@ const LoginPage = () => {
                 <meta name="description" content="Login" />
 
                 {/* <!-- Favicon --> */}
-                <link href="/assets/images/favicon.png" rel="icon" type="image/png" />
+                <link href="/images/logo.png" rel="icon" type="image/png" />
 
                 {/* <!-- CSS  */}
                 {/* ================================================== --> */}
                 {/* <link rel="stylesheet" href="/assets/css/style.css" /> */}
                 {/* <link rel="stylesheet" href="/assets/css/night-mode.css" /> */}
-                <link rel="stylesheet" href="/assets/css/framework.css" />
+                {/* <link rel="stylesheet" href="/assets/css/framework.css" /> */}
 
                 {/* <!-- icons */}
                 {/* ================================================== --> */}
@@ -84,9 +84,60 @@ const LoginPage = () => {
                     min-height: 100vh;
                     align-items: center;
                     display: flex;
+                    background: #edeff0;
                     &-container{
                         max-width: 100%;
                         background: white;
+                        &__div{
+                            background: #fff;
+                            color: #666;
+                            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+                            padding: 2.5rem;
+                            border-radius: 6pt;
+                            &--text{
+                                text-align: center !important;
+                                margin: 1.5rem 0 ;
+                                h2{
+                                    margin-bottom: 0 !important;
+                                    font-size: 27px;
+                                    font-weight: 600;   
+                                    color: #3e416d;
+                                    text-transform: capitalize;
+                                    margin: 0 0 15px 0;
+                                }
+                                .small{
+                                    font-size: 1.6rem;
+                                    margin: .5rem;
+                                }
+                                p{
+                                    font-size: 1.6rem;
+                                    color: currentColor;
+                                    margin: .5rem;
+                                }
+                            }
+                            &--form{
+                                margin-left: -15px;
+                                .w-100{
+                                    width: 100%;
+                                }
+                                .uk-position-relative{
+                                    position: relative;
+                                }
+                                & > * {
+                                    padding-left: 15px;
+                                }
+                                &-input{
+                                    margin-bottom: 15px;
+                                    label{
+                                        color: #3e416d;
+                                        font-size: 15px;
+                                        margin-bottom: 5px;
+                                        display: block;
+                                        font-weight: 600;
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
                 `}</style>
@@ -94,8 +145,8 @@ const LoginPage = () => {
             {/* ================================================== --> */}
             <div id="mainReg" uk-height-viewport="expand: true" className="uk-flex mainReg uk-flex-middle">
                 <div className="mainReg-container uk-width-1-3@m uk-width-1-2@s m-auto">
-                    <div className="uk-card-default p-6 rounded">
-                        <div className="my-4 uk-text-center">
+                    <div className="mainReg-container__div uk-card-default p-6 rounded">
+                        <div className="mainReg-container__div--text my-4 uk-text-center">
                             <h2 className="mb-0">Welcome Back</h2>
                             <p className="bigFont my-2">Login to manage your account.</p>
                             <p className="text-success small">{error ? "Email or password incorrect." : ""}</p>
@@ -108,9 +159,9 @@ const LoginPage = () => {
                             }}
                             validationSchema={SignupSchema}>
                             {({ handleSubmit, errors, touched }) => (
-                                <form onSubmit={handleSubmit} className="uk-child-width-1-1 uk-grid-small" uk-grid="true">
+                                <form onSubmit={handleSubmit} className="mainReg-container__div--form uk-child-width-1-1 uk-grid-small" uk-grid="true">
                                     <div>
-                                        <div className="uk-form-group">
+                                        <div className="mainReg-container__div--form-input uk-form-group">
                                             <label className="uk-form-label"> Email</label>
 
                                             <div className="uk-position-relative w-100">

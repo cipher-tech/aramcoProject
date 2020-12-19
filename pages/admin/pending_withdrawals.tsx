@@ -4,13 +4,20 @@ import Head from 'next/head';
 import { SideBar, TableComponent, UserAdminHeader, UserStats } from "../../components/index"
 import theme from '../../styles/theme';
 import { withApollo } from '../../lib/apolloClient';
-import { useGetUserPendingWithdrawalsQuery} from '../../generated/apolloComponent';
+import { useGetUserPendingWithdrawalsQuery } from '../../generated/apolloComponent';
 // import { ReactComponent as Spinner } from "/images/svg/spinner.svg";
 
 const PendingWithdrawal = (props) => {
     const { data, loading, error } = useGetUserPendingWithdrawalsQuery()
-    if(loading) return "Loading..."
-    if(error) return "An error ocurred"
+    const [showContent, setShowContent] = useState(false)
+    useEffect(() => {
+        // console.log(data, "network stats>>>", networkStatus);
+        setTimeout(() => {
+            setShowContent(true)
+        }, 1500)
+    })
+    if (loading) return "Loading..."
+    if (error) return "An error ocurred"
     return (
         <>
             <style jsx>{`
@@ -29,7 +36,7 @@ const PendingWithdrawal = (props) => {
             `}</style>
             <Head>
                 <meta charSet="utf-8" />
-                <title>Coin Forest - Dashboard</title>
+                <title>Sabic-Aramco</title>
                 <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
                 <meta content="width=device-width, initial-scale=1" name="viewport" />
                 <meta content="" name="description" />
@@ -55,58 +62,58 @@ const PendingWithdrawal = (props) => {
 
                 <link rel="stylesheet" type="text/css" href="/admin/assets/admin/css/sweetalert.css" />
 
-                <link rel="shortcut icon" href="/admin/assets/images/favicon.png" />
+                <link rel="shortcut icon" href="/images/logo.png" />
             </Head>
-
-            <body className="page-header-fixed page-sidebar-closed-hide-logo">
-                {/* <!-- BEGIN HEADER --> */}
-                <UserAdminHeader />
-                {/* <!-- END HEADER --> */}
-
-
-                {/* <!-- BEGIN HEADER & CONTENT DIVIDER --> */}
-                <div className="clearfix"></div>
-                <div className="page-container">
-                    <SideBar />
+            {showContent &&
+                <body className="page-header-fixed page-sidebar-closed-hide-logo">
+                    {/* <!-- BEGIN HEADER --> */}
+                    <UserAdminHeader />
+                    {/* <!-- END HEADER --> */}
 
 
-                    {/* <!-- BEGIN CONTENT --> */}
-                    <div className="page-content-wrapper">
-                        <div className="page-content">
-                            <h3 className="page-title">Dashboard </h3>
-                            <hr />
+                    {/* <!-- BEGIN HEADER & CONTENT DIVIDER --> */}
+                    <div className="clearfix"></div>
+                    <div className="page-container">
+                        <SideBar />
 
-                            {/* <!--  ==================================VALIDATION ERRORS==================================  --> */}
-                            {/* <!--  ==================================SESSION MESSAGES==================================  --> */}
 
-                            <UserStats />
+                        {/* <!-- BEGIN CONTENT --> */}
+                        <div className="page-content-wrapper">
+                            <div className="page-content">
+                                <h3 className="page-title">Dashboard </h3>
+                                <hr />
 
-                            <div className="row">
-                                {/* {message} */}
-                                {loading ? "Loading..."
-                                    :
-                                    <TableComponent title="Pending Withdrawal Request"
-                                        headers={[ "email", "slug", " status ", "amount", "plan", "createdAt"]}
-                                        body={data.getUserPendingWithdrawals || [{}]}
-                                        keys={["users","slug", "status", "amount", "plan", "createdAt", ]}
-                                        nestedKeys={['email']}
-                                    />
-                                }
+                                {/* <!--  ==================================VALIDATION ERRORS==================================  --> */}
+                                {/* <!--  ==================================SESSION MESSAGES==================================  --> */}
+
+                                <UserStats />
+
+                                <div className="row">
+                                    {/* {message} */}
+                                    {loading ? "Loading..."
+                                        :
+                                        <TableComponent title="Pending Withdrawal Request"
+                                            headers={["email", "slug", " status ", "amount", "plan", "createdAt"]}
+                                            body={data.getUserPendingWithdrawals || [{}]}
+                                            keys={["users", "slug", "status", "amount", "plan", "createdAt",]}
+                                            nestedKeys={['email']}
+                                        />
+                                    }
+                                </div>
                             </div>
                         </div>
+                        {/* <!-- END CONTENT --> */}
                     </div>
-                    {/* <!-- END CONTENT --> */}
-                </div>
 
-                <div className="page-footer">
-                    <div className="page-footer-inner"> 2020 All Copyright &copy; Reserved. </div>
-                    <div className="scroll-to-top">
-                        <i className="icon-arrow-up"></i>
+                    <div className="page-footer">
+                        <div className="page-footer-inner"> 2020 All Copyright &copy; Reserved. </div>
+                        <div className="scroll-to-top">
+                            <i className="icon-arrow-up"></i>
+                        </div>
                     </div>
-                </div>
 
-            </body>
-
+                </body>
+            }
         </>
     )
 }

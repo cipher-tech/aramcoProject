@@ -2,9 +2,9 @@ import { type } from 'os'
 import React from 'react'
 
 type Props = {
-    message: string| any,
-    field: string| any,
-    touched: boolean| any
+    message: string,
+    field: string,
+    touched: boolean
 }
 
 const InputError = ({ message, field, touched }: Props) => {
@@ -13,7 +13,7 @@ const InputError = ({ message, field, touched }: Props) => {
             <style jsx>{`
                 #errorMsg{
                     color: red;
-                    font-size: small;
+                    font-size: smaller;
                 }
             `}</style>
             <p id="errorMsg">

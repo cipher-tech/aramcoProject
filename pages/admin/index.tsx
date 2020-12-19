@@ -1,5 +1,5 @@
 ﻿import Head from 'next/head'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 // import { Helmet } from "react-helmet";
 import { Plan, SideBar, StockChart, StockPlan, UserAdminHeader, UserStats } from "../../components/index"
 import { useGetUserQuery } from '../../generated/apolloComponent';
@@ -7,11 +7,13 @@ import { withApollo } from '../../lib/apolloClient';
 
 const index = () => {
     const { data, loading, error, networkStatus } = useGetUserQuery()
-
-    // useEffect(() => {
-    //     console.log(data, "network stats>>>", networkStatus);
-
-    // }, [data, networkStatus])
+    const [showContent, setShowContent] = useState(false)
+    useEffect(() => {
+        // console.log(data, "network stats>>>", networkStatus);
+        setTimeout(() => {
+            setShowContent(true)
+        }, 1500)
+    })
 
     if (error) {
         return "loading"
@@ -43,7 +45,7 @@ const index = () => {
             `}</style>
             <Head>
                 <meta charSet="utf-8" />
-                <title>Coin Forest - Dashboard</title>
+                <title>Sabic-Aramco</title>
                 <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
                 <meta content="width=device-width, initial-scale=1" name="viewport" />
                 <meta content="" name="description" />
@@ -69,33 +71,36 @@ const index = () => {
 
                 <link rel="stylesheet" type="text/css" href="/admin/assets/admin/css/sweetalert.css" />
 
-                <link rel="shortcut icon" href="/admin/assets/images/favicon.png" />
+                <link rel="shortcut icon" href="/images/logo.png" />
 
             </Head>
 
-            <body className="page-header-fixed page-sidebar-closed-hide-logo">
-                <UserAdminHeader />
-                {/* <!-- BEGIN HEADER & CONTENT DIVIDER --> */}
-                <div className="clearfix"></div>
-                <div className="page-container">
-                    <SideBar />
+            {
+                showContent &&
+
+                <body className="page-header-fixed page-sidebar-closed-hide-logo">
+                    <UserAdminHeader />
+                    {/* <!-- BEGIN HEADER & CONTENT DIVIDER --> */}
+                    <div className="clearfix"></div>
+                    <div className="page-container">
+                        <SideBar />
 
 
-                    {/* <!-- BEGIN CONTENT --> */}
-                    <div className="page-content-wrapper">
-                        <div className="page-content">
-                            <h3 className="page-title">Dashboard </h3>
-                            <hr />
+                        {/* <!-- BEGIN CONTENT --> */}
+                        <div className="page-content-wrapper">
+                            <div className="page-content">
+                                <h3 className="page-title">Dashboard </h3>
+                                <hr />
 
 
-                            {/* <!--  ==================================VALIDATION ERRORS==================================  --> */}
-                            {/* <!--  ==================================SESSION MESSAGES==================================  --> */}
+                                {/* <!--  ==================================VALIDATION ERRORS==================================  --> */}
+                                {/* <!--  ==================================SESSION MESSAGES==================================  --> */}
 
-                            <UserStats />
-                            <StockChart />
-                            <Plan />
-                            <StockPlan />
-                            {/* 
+                                <UserStats />
+                                <StockChart />
+                                <Plan />
+                                <StockPlan />
+                                {/* 
                             <div className="row">
                                 <div className="col-md-12">
                                     <div className="row">
@@ -464,26 +469,26 @@ const index = () => {
                                 </div>
                             </div> */}
 
+                            </div>
+                        </div>
+                        {/* <!-- END CONTENT --> */}
+                    </div>
+                    {/* <!-- END CONTAINER --> */}
+
+
+                    {/* <!-- BEGIN FOOTER --> */}
+                    <div className="page-footer">
+                        <div className="page-footer-inner"> 2020 All Copyright &copy; Reserved. </div>
+                        <div className="scroll-to-top">
+                            <i className="icon-arrow-up"></i>
                         </div>
                     </div>
-                    {/* <!-- END CONTENT --> */}
-                </div>
-                {/* <!-- END CONTAINER --> */}
+                    {/* <!-- END FOOTER --> */}
 
 
-                {/* <!-- BEGIN FOOTER --> */}
-                <div className="page-footer">
-                    <div className="page-footer-inner"> 2020 All Copyright &copy; Reserved. </div>
-                    <div className="scroll-to-top">
-                        <i className="icon-arrow-up"></i>
-                    </div>
-                </div>
-                {/* <!-- END FOOTER --> */}
-
-
-                {/* <!-- BEGIN SCRIPTS --> */}
-                {/* <Helmet> */}
-                {/* <script src="/admin/assets/admin/js/quick-sidebar.min.js" type="text/javascript"></script>
+                    {/* <!-- BEGIN SCRIPTS --> */}
+                    {/* <Helmet> */}
+                    {/* <script src="/admin/assets/admin/js/quick-sidebar.min.js" type="text/javascript"></script>
                     <script src="/admin/assets/admin/js/demo.min.js" type="text/javascript"></script>
                     <script src="/admin/assets/admin/js/jquery.min.js" type="text/javascript"></script>
                     <script src="/admin/assets/admin/js/bootstrap.min.js" type="text/javascript"></script>
@@ -499,9 +504,9 @@ const index = () => {
                     <script src="/admin/assets/admin/js/sweetalert.min.js"></script>
                     <script src="/admin/assets/admin/js/jquery.waypoints.min.js" type="text/javascript"></script>
                     <script src="/admin/assets/admin/js/jquery.counterup.min.js" type="text/javascript"></script> */}
-                {/* </Helmet> */}
-            </body>
-
+                    {/* </Helmet> */}
+                </body>
+            }
         </>
     )
 }

@@ -18,7 +18,7 @@ const index = () => {
         loading: deleteWithdrawalMutationLoading,
         error: deleteWithdrawalMutationError }] = useDeleteWithdrawalRequestMutation()
 
-    const router = useRouter() 
+    const router = useRouter()
     const Withdrawal = async (payload: DepositAttributes) => {
 
         router.push({
@@ -79,7 +79,7 @@ const index = () => {
             `}</style>
             <Head>
                 <meta charSet="utf-8" />
-                <title>Coin Forest - Dashboard</title>
+                <title>Sabic-Aramco</title>
                 <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
                 <meta content="width=device-width, initial-scale=1" name="viewport" />
                 <meta content="" name="description" />
@@ -105,7 +105,7 @@ const index = () => {
 
                 <link rel="stylesheet" type="text/css" href="/admin/assets/admin/css/sweetalert.css" />
 
-                <link rel="shortcut icon" href="/admin/assets/images/favicon.png" />
+                <link rel="shortcut icon" href="/images/logo.png" />
             </Head>
 
             <body className="page-header-fixed page-sidebar-closed-hide-logo">
@@ -138,7 +138,7 @@ const index = () => {
                                         keys={["userId", "users", "slug", "status", "amount", "createdAt",]}
                                         nestedKeys={['email']}
                                         buttonAction={[Withdrawal, deleteWithdrawal]}
-                                        buttonText={["View", "Delete"]} 
+                                        buttonText={["View", "Delete"]}
                                     />
                                 }
                             </div>

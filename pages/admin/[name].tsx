@@ -497,7 +497,13 @@ const Request_Deposit = (props) => {
     const [isModalActive, setIsModalActive] = useState(false);
     const [message, setMessage] = useState('')
     const [, setIsCopied] = useState(false)
-
+    const [showContent, setShowContent] = useState(false)
+    useEffect(() => {
+        // console.log(data, "network stats>>>", networkStatus);
+        setTimeout(() => {
+            setShowContent(true)
+        }, 1500)
+    })
     const router = useRouter()
     // console.log(router.query);
 
@@ -550,7 +556,7 @@ const Request_Deposit = (props) => {
         await setIsLoading(true)
         await setMessage('')
         console.log(inputs);
-        
+
         let response = await depositRequestMutation({
             variables: {
                 input: {
@@ -587,7 +593,7 @@ const Request_Deposit = (props) => {
             `}</style>
             <Head>
                 <meta charSet="utf-8" />
-                <title>Coin Forest - Dashboard</title>
+                <title>Sabic-Aramco</title>
                 <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
                 <meta content="width=device-width, initial-scale=1" name="viewport" />
                 <meta content="" name="description" />
@@ -613,59 +619,59 @@ const Request_Deposit = (props) => {
 
                 <link rel="stylesheet" type="text/css" href="/admin/assets/admin/css/sweetalert.css" />
 
-                <link rel="shortcut icon" href="/admin/assets/images/favicon.png" />
+                <link rel="shortcut icon" href="/images/logo.png" />
             </Head>
+            {showContent &&
+                <body className="page-header-fixed page-sidebar-closed-hide-logo">
+                    <UserAdminHeader />
+                    {/* <!-- BEGIN HEADER & CONTENT DIVIDER --> */}
+                    <div className="clearfix"></div>
+                    <div className="page-container">
+                        <SideBar />
 
-            <body className="page-header-fixed page-sidebar-closed-hide-logo">
-                <UserAdminHeader />
-                {/* <!-- BEGIN HEADER & CONTENT DIVIDER --> */}
-                <div className="clearfix"></div>
-                <div className="page-container">
-                    <SideBar />
 
+                        {/* <!-- BEGIN CONTENT --> */}
+                        <div className="page-content-wrapper">
+                            <div className="page-content">
+                                <h3 className="page-title">Dashboard </h3>
+                                <hr />
 
-                    {/* <!-- BEGIN CONTENT --> */}
-                    <div className="page-content-wrapper">
-                        <div className="page-content">
-                            <h3 className="page-title">Dashboard </h3>
-                            <hr />
+                                {/* <!--  ==================================VALIDATION ERRORS==================================  --> */}
+                                {/* <!--  ==================================SESSION MESSAGES==================================  --> */}
 
-                            {/* <!--  ==================================VALIDATION ERRORS==================================  --> */}
-                            {/* <!--  ==================================SESSION MESSAGES==================================  --> */}
+                                <UserStats />
 
-                            <UserStats />
-
-                            {/* {showpopUpMessage ? (
+                                {/* {showpopUpMessage ? (
                                 <PopUpMessage error={hasError}>
                                     {" "}
                                     {popUpMessage}{" "}
                                     <span onClick={() => setShowPopUpMessage(false)}>✖</span>{" "}
                                 </PopUpMessage>
                             ) : null} */}
-                            {/* {console.log(fx.rates)} */}
-                            <Container hidden={false} >
-                                <Modal isActive={isModalActive}>
-                                    <div className="modal__container">
-                                        <span
-                                            role="img"
-                                            aria-label="img"
-                                            className="close"
-                                            onClick={() => setIsModalActive(false)}
-                                        >
-                                            ❌
+                                {/* {console.log(fx.rates)} */}
+                                <Container hidden={false} >
+                                    <Modal isActive={isModalActive}>
+                                        <div className="modal__container">
+                                            <span
+                                                role="img"
+                                                aria-label="img"
+                                                className="close"
+                                                onClick={() => setIsModalActive(false)}
+                                            >
+                                                ❌
                                         </span>
-                                        <img src="/images/qrcode.png" alt="" />
+                                            <img src="/images/qrcode.png" alt="" />
 
-                                        <p className="modal__container--text">
-                                            please pay exactly the amount specified into this bitcoin address
+                                            <p className="modal__container--text">
+                                                please pay exactly the amount specified into this bitcoin address
                                         </p>
 
-                                        <p className="modal__container-address">
-                                            {"ood9euur8r90itiogig484t8pmf20"}
-                                            <button onClick={() => copy("address")}> copy</button>
-                                        </p>
+                                            <p className="modal__container-address">
+                                                {"ood9euur8r90itiogig484t8pmf20"}
+                                                <button onClick={() => copy("address")}> copy</button>
+                                            </p>
 
-                                        {/* <p className="modal__container--text">
+                                            {/* <p className="modal__container--text">
                                             After successful payment contact customer care with the unique
                                             refrence_id below,and proof of payment. <br />
                                             <span className="modal__container-address">
@@ -673,111 +679,111 @@ const Request_Deposit = (props) => {
                                                 <button onClick={() => copy("refId")}> copy</button>
                                             </span>
                                         </p> */}
-                                    </div>
-                                </Modal>
-                                {/* <div className="loadingScreen"/> */}
-                                <div className="coin">
-                                    <div className="coin-options">
-                                        <div className="coin-options__types">
-                                            <div className="coin-options__types--container">
-                                                <h4 className="coin-options__types--container-h4">Activate A Plan</h4>
-                                            </div>
                                         </div>
-                                        <p className="plan-info">{message} </p>
-                                        <p className="coin-options__buy-sell">
-                                            {true ? null : (
+                                    </Modal>
+                                    {/* <div className="loadingScreen"/> */}
+                                    <div className="coin">
+                                        <div className="coin-options">
+                                            <div className="coin-options__types">
+                                                <div className="coin-options__types--container">
+                                                    <h4 className="coin-options__types--container-h4">Activate A Plan</h4>
+                                                </div>
+                                            </div>
+                                            <p className="plan-info">{message} </p>
+                                            <p className="coin-options__buy-sell">
+                                                {true ? null : (
+                                                    <span
+                                                        className={`coin-options__buy-sell--item ${isSelling ? null : " tab"
+                                                            }`}
+                                                        onClick={() => setIsSelling(false)}
+                                                    >
+                                                        Spend from balance
+                                                    </span>
+                                                )}
                                                 <span
-                                                    className={`coin-options__buy-sell--item ${isSelling ? null : " tab"
+                                                    className={`coin-options__buy-sell--item ${true ? " tab" : null
                                                         }`}
-                                                    onClick={() => setIsSelling(false)}
-                                                >
-                                                    Spend from balance
-                                                </span>
-                                            )}
-                                            <span
-                                                className={`coin-options__buy-sell--item ${true ? " tab" : null
-                                                    }`}
-                                                onClick={() => true /* setIsSelling(true) */}>
-                                                Request Deposit
+                                                    onClick={() => true /* setIsSelling(true) */}>
+                                                    Request Deposit
                                             </span>
-                                        </p>
+                                            </p>
 
-                                        <h3 className="coin-options__header red">
-                                            Select a payment option
+                                            <h3 className="coin-options__header red">
+                                                Select a payment option
                                         </h3>
 
 
-                                        <h3 className="coin-options__header">
-                                            and enter an amount to deposit
+                                            <h3 className="coin-options__header">
+                                                and enter an amount to deposit
                                         </h3>
 
-                                        <Formik onSubmit={submit}
-                                            initialValues={{
-                                                paymentOpts: "",
-                                                amount: ''
-                                                // plan: "",
-                                            }}
-                                            validationSchema={DepositSchema}>
-                                            {({ handleSubmit, errors, touched }) => (
-                                                <form onSubmit={handleSubmit}>
-                                                    <Field as="select" className="coin-options-paymentOptions" name="paymentOpts">
-                                                        <option value="">Select Payment Option</option>
-                                                        <option value="Bitcoin">Bitcoin</option>
-                                                        <option value="Bank">Bank</option>
-                                                    </Field>
-                                                    <InputErrorMessage message={errors.paymentOpts} field={errors.paymentOpts} touched={touched.paymentOpts} />
+                                            <Formik onSubmit={submit}
+                                                initialValues={{
+                                                    paymentOpts: "",
+                                                    amount: ''
+                                                    // plan: "",
+                                                }}
+                                                validationSchema={DepositSchema}>
+                                                {({ handleSubmit, errors, touched }) => (
+                                                    <form onSubmit={handleSubmit}>
+                                                        <Field as="select" className="coin-options-paymentOptions" name="paymentOpts">
+                                                            <option value="">Select Payment Option</option>
+                                                            <option value="Bitcoin">Bitcoin</option>
+                                                            <option value="Bank">Bank</option>
+                                                        </Field>
+                                                        <InputErrorMessage message={errors.paymentOpts} field={errors.paymentOpts} touched={touched.paymentOpts} />
 
-                                                    {SelectedPlan.name ?
-                                                        <p className="plan-info">
-                                                            <span>Name: {SelectedPlan?.name}</span>
-                                                            <span>Price Range: {SelectedPlan?.range[0]} - {SelectedPlan?.range[1]}</span>
-                                                            <span>Rate: {SelectedPlan?.rate}</span>
-                                                            <span>Duration: {SelectedPlan?.duration}</span>
-                                                        </p>
-                                                        : null
-                                                    }
+                                                        {SelectedPlan.name ?
+                                                            <p className="plan-info">
+                                                                <span>Name: {SelectedPlan?.name}</span>
+                                                                <span>Price Range: {SelectedPlan?.range[0]} - {SelectedPlan?.range[1]}</span>
+                                                                <span>Rate: {SelectedPlan?.rate}</span>
+                                                                <span>Duration: {SelectedPlan?.duration}</span>
+                                                            </p>
+                                                            : null
+                                                        }
 
-                                                    <div>
-                                                        {/* <span>{ console.log(regionContext?.country?.symbol)}</span>  */}
-                                                        <span className="coin-options__amounts">
-                                                            <Field
-                                                                name="amount"
-                                                                type="number"
-                                                                className="coin-options__value input-container"
-                                                                placeholder="Enter Value"
-                                                            />
-                                                        </span>
-                                                        <InputErrorMessage message={errors.amount} field={errors.amount} touched={touched.amount} />
-                                                    </div>
-                                                    <button type="submit" className={`coin-options__button`}>
-                                                        Continue
+                                                        <div>
+                                                            {/* <span>{ console.log(regionContext?.country?.symbol)}</span>  */}
+                                                            <span className="coin-options__amounts">
+                                                                <Field
+                                                                    name="amount"
+                                                                    type="number"
+                                                                    className="coin-options__value input-container"
+                                                                    placeholder="Enter Value"
+                                                                />
+                                                            </span>
+                                                            <InputErrorMessage message={errors.amount} field={errors.amount} touched={touched.amount} />
+                                                        </div>
+                                                        <button type="submit" className={`coin-options__button`}>
+                                                            Continue
                                                         {isLoading ? <img src="/images/svg/spinner.svg" className="loadingSpinner" /> : null}
-                                                    </button>
-                                                </form>
-                                            )}
-                                        </Formik>
+                                                        </button>
+                                                    </form>
+                                                )}
+                                            </Formik>
+                                        </div>
+
                                     </div>
+                                </Container>
 
-                                </div>
-                            </Container>
+                            </div>
+                        </div>
+                        {/* <!-- END CONTENT --> */}
+                    </div>
+                    {/* <!-- END CONTAINER --> */}
 
+
+                    {/* <!-- BEGIN FOOTER --> */}
+                    <div className="page-footer">
+                        <div className="page-footer-inner"> 2020 All Copyright &copy; Reserved. </div>
+                        <div className="scroll-to-top">
+                            <i className="icon-arrow-up"></i>
                         </div>
                     </div>
-                    {/* <!-- END CONTENT --> */}
-                </div>
-                {/* <!-- END CONTAINER --> */}
 
-
-                {/* <!-- BEGIN FOOTER --> */}
-                <div className="page-footer">
-                    <div className="page-footer-inner"> 2020 All Copyright &copy; Reserved. </div>
-                    <div className="scroll-to-top">
-                        <i className="icon-arrow-up"></i>
-                    </div>
-                </div>
-
-            </body>
-
+                </body>
+            }
         </>
     )
 }

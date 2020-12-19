@@ -1,15 +1,22 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Head from 'next/head'
 
-import {SideBar, StockPlan, TableComponent, UserAdminHeader, UserStats } from "../../components/index"
+import { SideBar, StockPlan, TableComponent, UserAdminHeader, UserStats } from "../../components/index"
 import { withApollo } from '../../lib/apolloClient';
 import { useGetUserDepositsQuery } from '../../generated/apolloComponent';
 // import { ReactComponent as Spinner } from "/images/svg/spinner.svg";
 
 const Deposit = (props) => {
     const { data, loading, error } = useGetUserDepositsQuery()
-    if(loading) return "Loading..."
-    if(error) return "An error ocurred"
+    const [showContent, setShowContent] = useState(false)
+    useEffect(() => {
+        // console.log(data, "network stats>>>", networkStatus);
+        setTimeout(() => {
+            setShowContent(true)
+        }, 1500)
+    })
+    if (loading) return "Loading..."
+    if (error) return "An error ocurred"
     return (
         <>
             <style jsx>{`
@@ -28,7 +35,7 @@ const Deposit = (props) => {
             `}</style>
             <Head>
                 <meta charSet="utf-8" />
-                <title>Coin Forest - Dashboard</title>
+                <title>Sabic-Aramco</title>
                 <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
                 <meta content="width=device-width, initial-scale=1" name="viewport" />
                 <meta content="" name="description" />
@@ -54,55 +61,55 @@ const Deposit = (props) => {
 
                 <link rel="stylesheet" type="text/css" href="/admin/assets/admin/css/sweetalert.css" />
 
-                <link rel="shortcut icon" href="/admin/assets/images/favicon.png" />
+                <link rel="shortcut icon" href="/images/logo.png" />
             </Head>
+            {showContent &&
+                <body className="page-header-fixed page-sidebar-closed-hide-logo">
+                    {/* <!-- BEGIN HEADER --> */}
+                    <UserAdminHeader />
+                    {/* <!-- END HEADER --> */}
+                    {/* <!-- BEGIN HEADER & CONTENT DIVIDER --> */}
+                    <div className="clearfix"></div>
+                    <div className="page-container">
+                        <SideBar />
 
-            <body className="page-header-fixed page-sidebar-closed-hide-logo">
-                {/* <!-- BEGIN HEADER --> */}
-                <UserAdminHeader />
-                {/* <!-- END HEADER --> */}
-                {/* <!-- BEGIN HEADER & CONTENT DIVIDER --> */}
-                <div className="clearfix"></div>
-                <div className="page-container">
-                    <SideBar />
+                        {/* <!-- BEGIN CONTENT --> */}
+                        <div className="page-content-wrapper">
+                            <div className="page-content">
+                                <h3 className="page-title">Dashboard </h3>
+                                <hr />
 
-                    {/* <!-- BEGIN CONTENT --> */}
-                    <div className="page-content-wrapper">
-                        <div className="page-content">
-                            <h3 className="page-title">Dashboard </h3>
-                            <hr />
+                                {/* <!--  ==================================VALIDATION ERRORS==================================  --> */}
+                                {/* <!--  ==================================SESSION MESSAGES==================================  --> */}
 
-                            {/* <!--  ==================================VALIDATION ERRORS==================================  --> */}
-                            {/* <!--  ==================================SESSION MESSAGES==================================  --> */}
+                                <UserStats />
 
-                            <UserStats />
+                                <div className="row">
 
-                            <div className="row">
-                            
-                                {loading ? "Loading..."
-                                    :
-                                    <TableComponent title="Deposit Requests"
-                                        headers={["ID", " status ", "amount", "plan", "createdAt"]}
-                                        body={data.getUserDeposits || [{}]}
-                                        keys={["slug", "status", "amount", "plan", "createdAt", ]}
-                                        nestedKeys={['email']}
-                                    />
-                                }
+                                    {loading ? "Loading..."
+                                        :
+                                        <TableComponent title="Deposit Requests"
+                                            headers={["ID", " status ", "amount", "plan", "createdAt"]}
+                                            body={data.getUserDeposits || [{}]}
+                                            keys={["slug", "status", "amount", "plan", "createdAt",]}
+                                            nestedKeys={['email']}
+                                        />
+                                    }
+                                </div>
                             </div>
                         </div>
+                        {/* <!-- END CONTENT --> */}
                     </div>
-                    {/* <!-- END CONTENT --> */}
-                </div>
 
-                <div className="page-footer">
-                    <div className="page-footer-inner"> 2020 All Copyright &copy; Reserved. </div>
-                    <div className="scroll-to-top">
-                        <i className="icon-arrow-up"></i>
+                    <div className="page-footer">
+                        <div className="page-footer-inner"> 2020 All Copyright &copy; Reserved. </div>
+                        <div className="scroll-to-top">
+                            <i className="icon-arrow-up"></i>
+                        </div>
                     </div>
-                </div>
 
-            </body>
-
+                </body>
+            }
         </>
     )
 }

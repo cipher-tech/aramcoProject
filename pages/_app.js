@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import '../styles/globals.css'
+import '../styles/login.css'
 import { Layout } from "../components/index"
 
 function MyApp({ Component, pageProps }) {

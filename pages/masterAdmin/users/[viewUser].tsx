@@ -12,7 +12,7 @@ const ViewUser = () => {
         <>
             <Head>
                 <meta charSet="utf-8" />
-                <title>Coin Forest - User Details</title>
+                <title>Sabic-Aramco</title>
                 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
                 <meta content="width=device-width, initial-scale=1" name="viewport" />
                 <meta content="" name="description" />
@@ -38,7 +38,7 @@ const ViewUser = () => {
 
                 <link rel="stylesheet" type="text/css" href="/admin/assets/admin/css/sweetalert.css" />
 
-                <link rel="shortcut icon" href="/admin/assets/images/favicon.png" />
+                <link rel="shortcut icon" href="/images/logo.png" />
 
             </Head>
             <body className="page-header-fixed page-sidebar-closed-hide-logo">
@@ -47,7 +47,7 @@ const ViewUser = () => {
                 <div className="clearfix"></div>
                 <div className="page-container">
                     <MasterAdminSidenav />
-                   
+
                     <div className="page-content-wrapper" >
                         <div className="page-content">
                             <h3 className="page-title">User Details </h3>
@@ -82,8 +82,8 @@ const ViewUser = () => {
                                                         </p>
                                                         <hr />
                                                         <p>
-                                                        <strong>Created At : {new Date(user.updatedAt).toDateString()}</strong> <br />
-                                        <br />
+                                                            <strong>Created At : {new Date(user.updatedAt).toDateString()}</strong> <br />
+                                                            <br />
                                                         </p>
                                                     </div>
                                                 </div>
@@ -250,4 +250,4 @@ const ViewUser = () => {
     )
 }
 
-export default withApollo({ssr: true})(ViewUser)
+export default withApollo({ ssr: true })(ViewUser)

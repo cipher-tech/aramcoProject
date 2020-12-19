@@ -84,7 +84,7 @@ const Withdrawal = () => {
 
             <Head>
                 <meta charSet="utf-8" />
-                <title></title>
+                <title>Sabic-Aramco</title>
                 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
                 <meta content="width=device-width, initial-scale=1" name="viewport" />
                 <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
@@ -111,7 +111,7 @@ const Withdrawal = () => {
 
                 <link rel="stylesheet" type="text/css" href="/admin/assets/admin/css/sweetalert.css" />
 
-                <link rel="shortcut icon" href="/admin/assets/images/favicon.png" />
+                <link rel="shortcut icon" href="/images/logo.png" />
 
             </Head>
             <body className="page-header-fixed page-sidebar-closed-hide-logo">
@@ -135,7 +135,7 @@ const Withdrawal = () => {
                                             <div className="row">
                                                 <div className="col-md-12">
                                                     <div className="text-center bold">
-                                                         <h3>Transaction ID : {withdrawal.slug}</h3>
+                                                        <h3>Transaction ID : {withdrawal.slug}</h3>
                                                         {/* <h3>withdrawal Method : Manual BTC</h3> */}
                                                         {/* <h3>Send Amount : 203 - USD</h3> */}
                                                         <h3>Withdrawal Amount : {withdrawal.amount} - USD</h3>

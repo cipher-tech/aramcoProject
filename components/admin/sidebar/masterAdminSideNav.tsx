@@ -9,20 +9,26 @@ const Container = styled.div`
     display: grid;
     grid-column: 1/-1;
     grid-template-rows: min-content;
-    background: ${theme.colorPrimary};
+    background: rgb(44, 64, 101); /* ${theme.colorPrimary}; */
+    z-index: 1990;
     /* width: ; */
     /* height: 90vh; */
     position: relative;
+    .navContainer{
+        position: relative;
+        width: 100%;
+    }
     .navbar-mobile{
-        position: absolute;
+        /* position: absolute; */
         top: 0rem;
-        right: 3rem;
+        background: rgb(44, 64, 101); /* ${theme.colorPrimary}; */
+        /* right: 3rem; */
         justify-content: space-between;
-        width: 90%;
+        width: 100%;
         align-items: center;
         place-items: center;
-        padding: 2rem;
-        z-index: 1200;
+        padding: 0 2rem;
+        z-index: 1990;
         display: none; 
         @media only screen and (max-width: ${theme.breakPoints.bpxLarge}) {
             display: flex; 
@@ -34,6 +40,7 @@ const Container = styled.div`
             align-self: center;
             height: 4rem;
             width: 4rem;
+            margin: 0;
             padding: 0rem .1rem;
             transition: all .3s ease-in-out .1s;
             z-index: 1300;
@@ -54,7 +61,7 @@ const Container = styled.div`
             place-items: center;
             align-self: center;
             height: 4rem;
-            width: 4rem;
+            /* width: 4rem; */
             padding: 0rem .1rem;
             transition: all .3s ease-in-out .1s;
             z-index: 1300;
@@ -78,13 +85,16 @@ const Container = styled.div`
             width: 2rem;
             border-radius: 50%;
             background: #000000e3;
-            /* background: linear-gradient(to bottom , ${theme.colorPrimary} 40% ,  ${theme.colorSecondary} ) ; */
+            /* background: linear-gradient(to bottom , ${theme.colorDark} 40% ,  ${theme.colorSecondary} ) ; */
             /* transform: scale(0); */
         }
     }
+
     .navbar-mobile__list{
         background: #4a4a4a;
-        height: 100%;
+        /* height: 100%; */
+        background: rgb(44, 64, 101); /* ${theme.colorPrimary}; */
+        padding: 1rem;
         position: fixed;
         /* top: 50%; */
         /* left: -50%; */
@@ -96,29 +106,28 @@ const Container = styled.div`
         display: flex;
         flex-direction: column;
         @media only screen and (min-width: ${theme.breakPoints.bpMedium}) {
-            max-width: 40rem;
-            width: 40rem;
+            /* max-width: 40rem;
+            width: 40rem; */
         }
         &--item{
             &:first-child{
                 background: none;
-
             }
             text-transform: capitalize;
-            padding: 2.5rem 3rem;
+            padding: 1.5rem 3rem;
             /* margin: 1rem 0; */
             width: max-content;
             align-self: center;
             cursor: pointer;
             text-align: left;
-            background: #007eac;
+            background: ${theme.colorDark};
             width: 100%;
             font-size: ${theme.font.xsmall};
             transition: all .4s ease-in-out .1s;
             background-size: 230%;
             color: ${theme.colorWhite};
             text-decoration: none;
-            border-top: solid 1px #ffffff2e;
+            /* border-top: solid 1px #ffffff2e; */
             
             &:hover{
                 background-position: 100%;
@@ -130,7 +139,7 @@ const Container = styled.div`
 
 
     .navbar{  
-        background: ${theme.colorPrimary};
+        background: ${theme.colorDark};
         grid-column: 1/-1;
         display: grid;
         /* height: 6rem; */
@@ -219,7 +228,7 @@ const UserAdminNavbarComponent = (props) => {
         transform: mobileNavIsOpen ? "scale(170)" : "scale(0)"
     })
     const springMove = useSpring({
-        left: mobileNavIsOpen ? "0%" : "-200%"
+        top: mobileNavIsOpen ? "8%" : "-400%"
     })
     console.log(router) //temp1.route.startsWith("/admin")
     const UserLinks = [
@@ -283,19 +292,21 @@ const UserAdminNavbarComponent = (props) => {
     return (!props.show ?
         <Container>
 
+            <div className="navContainer">
             <div className="navbar-mobile">
                 <p className="navbar-mobile__logo" onClick={toggleMobileNav}>
-                    {/* <img src="/images/logo.png" alt="next" /> */}
+                    <img src="/images/logo.png" alt="next" />
                 </p>
                 <p className="navbar-mobile__icon" onClick={toggleMobileNav}>
                     <img src="/images/menuIcon.svg" alt="next" />
                     {/* ⬛ */}
                 </p>
-                <animated.div style={{ transform: spring.transform }} className="navbar-mobile__overlay"></animated.div>
+                {/* <animated.div style={{ transform: spring.transform }} className="navbar-mobile__overlay"></animated.div> */}
             </div>
-            <animated.ul style={{ left: springMove.left }} onClick={toggleMobileNav} className="navbar-mobile__list">
+            </div>
+            <animated.ul style={{ top: springMove.top }} onClick={toggleMobileNav} className="navbar-mobile__list">
                 <div className="navbar-mobile__list--item">
-                    <p className="navbar-mobile__list--item--toggle" onClick={toggleMobileNav}> X </p>
+                    {/* <p className="navbar-mobile__list--item--toggle" onClick={toggleMobileNav}> X </p> */}
                 </div>
                 {
                     router.route.startsWith("/admin") ?

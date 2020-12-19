@@ -10,9 +10,9 @@ import 'jquery';
 const index = () => {
     const [message, setMessage] = useState("")
     const { data, loading: userIsLoading, error: userHasError } = useGetUserQuery()
-    const { data: pendingDeposits, loading: depositsIsLoading, error,refetch: refetchPendingDeposits  } = useGetPendingDepositsQuery()
-    const [ActivateDepositMutation, {data: ActivateDepositMutationData, 
-        loading: ActivateDepositMutationLoading, 
+    const { data: pendingDeposits, loading: depositsIsLoading, error, refetch: refetchPendingDeposits } = useGetPendingDepositsQuery()
+    const [ActivateDepositMutation, { data: ActivateDepositMutationData,
+        loading: ActivateDepositMutationLoading,
         error: ActivateDepositMutationError }] = useActivateDepositMutation()
     // useEffect(() => {
     //     console.log(pendingDeposits);
@@ -30,15 +30,15 @@ const index = () => {
             }
         })
 
-        setMessage(ActivateDepositMutationError? "Could not activate deposit" : "Deposit Activated. Plan started")
+        setMessage(ActivateDepositMutationError ? "Could not activate deposit" : "Deposit Activated. Plan started")
         await refetchPendingDeposits()
         console.log("pending");
-        
+
     }
     const deleteDeposit = (id) => {
-        
+
     }
-    if(error || ActivateDepositMutationError || userHasError || userIsLoading || depositsIsLoading || ActivateDepositMutationLoading){
+    if (error || ActivateDepositMutationError || userHasError || userIsLoading || depositsIsLoading || ActivateDepositMutationLoading) {
         return "loading"
     }
 
@@ -68,7 +68,7 @@ const index = () => {
             `}</style>
             <Head>
                 <meta charSet="utf-8" />
-                <title>Coin Forest - Dashboard</title>
+                <title>Sabic-Aramco</title>
                 <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
                 <meta content="width=device-width, initial-scale=1" name="viewport" />
                 <meta content="" name="description" />
@@ -94,7 +94,7 @@ const index = () => {
 
                 <link rel="stylesheet" type="text/css" href="/admin/assets/admin/css/sweetalert.css" />
 
-                <link rel="shortcut icon" href="/admin/assets/images/favicon.png" />
+                <link rel="shortcut icon" href="/images/logo.png" />
             </Head>
 
 
@@ -128,11 +128,11 @@ const index = () => {
                                 {depositsIsLoading ? "Loading..."
                                     :
                                     <TableComponent title="Deposit Request"
-                                        headers={[ "userId","email", "slug", " status ", "amount", "plan", "createdAt"]}
-                                        body={pendingDeposits.getPendingDeposits || [{}]} 
-                                        keys={[ "userId","users","slug","status","amount","plan","createdAt",]}
-                                        nestedKeys={['email']} 
-                                        buttonAction={[activateDeposit, deleteDeposit]}/>
+                                        headers={["userId", "email", "slug", " status ", "amount", "plan", "createdAt"]}
+                                        body={pendingDeposits.getPendingDeposits || [{}]}
+                                        keys={["userId", "users", "slug", "status", "amount", "plan", "createdAt",]}
+                                        nestedKeys={['email']}
+                                        buttonAction={[activateDeposit, deleteDeposit]} />
                                 }
                             </div>
                             <div className="row">
@@ -527,7 +527,7 @@ const index = () => {
 
                 {/* <!-- BEGIN SCRIPTS --> */}
                 {/* <Helmet> */}
-               
+
                 {/* </Helmet> */}
             </body>
 

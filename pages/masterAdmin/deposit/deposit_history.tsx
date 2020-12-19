@@ -10,7 +10,7 @@ const DepositHistory = () => {
 
     const { data, loading: IsLoading, error: HasError } = useGetAdminDepositsQuery()
 
-    if(IsLoading) return <p>loading ...</p>
+    if (IsLoading) return <p>loading ...</p>
 
     return (
         <>
@@ -38,7 +38,7 @@ const DepositHistory = () => {
             `}</style>
             <Head>
                 <meta charSet="utf-8" />
-                <title>Coin Forest - Dashboard</title>
+                <title>Sabic-Aramco</title>
                 <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
                 <meta content="width=device-width, initial-scale=1" name="viewport" />
                 <meta content="" name="description" />
@@ -64,7 +64,7 @@ const DepositHistory = () => {
 
                 <link rel="stylesheet" type="text/css" href="/admin/assets/admin/css/sweetalert.css" />
 
-                <link rel="shortcut icon" href="/admin/assets/images/favicon.png" />
+                <link rel="shortcut icon" href="/images/logo.png" />
             </Head>
 
             <body className="page-header-fixed page-sidebar-closed-hide-logo">

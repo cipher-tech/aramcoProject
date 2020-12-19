@@ -4,7 +4,7 @@ import styled, { keyframes } from "styled-components";
 import { Field, Formik } from 'formik'
 import * as Yup from 'yup';
 
-import { InputErrorMessage, Modal, Plan, SideBar, StockPlan, UserStats } from "../../components/index"
+import { InputErrorMessage, Modal, Plan, SideBar, StockPlan, UserAdminHeader, UserStats } from "../../components/index"
 import theme from '../../styles/theme';
 import { withApollo } from '../../lib/apolloClient';
 import { useWithdrawalRequestMutation } from '../../generated/apolloComponent';
@@ -495,9 +495,13 @@ const Request_Deposit = (props) => {
     const [, setIsCopied] = useState(false)
     const [refId, setRefId] = useState('')
     const [withdrawalRequestMutation, { data, loading, error }] = useWithdrawalRequestMutation()
-    // useEffect(() => {
-    //     console.log(data);
-    // }, [data])
+    const [showContent, setShowContent] = useState(false)
+    useEffect(() => {
+        // console.log(data, "network stats>>>", networkStatus);
+        setTimeout(() => {
+            setShowContent(true)
+        }, 1500)
+    })
 
     async function copy(type) {
         if (type === "refId") {
@@ -524,17 +528,17 @@ const Request_Deposit = (props) => {
                 }
             }
         })
-        .then(async response => {
-            if (error) return setMessage('Something went wrong, please try again or contact admin')
-            if (!loading) await setIsLoading(false)
-    
-            console.log({response, data});
-            setIsModalActive(true)
-        })
-        .catch( async err => {
-            await setIsLoading(false)
-            await setMessage('Something went wrong, please try again or contact admin')
-        })
+            .then(async response => {
+                if (error) return setMessage('Something went wrong, please try again or contact admin')
+                if (!loading) await setIsLoading(false)
+
+                console.log({ response, data });
+                setIsModalActive(true)
+            })
+            .catch(async err => {
+                await setIsLoading(false)
+                await setMessage('Something went wrong, please try again or contact admin')
+            })
     }
     return (
         <>
@@ -554,7 +558,7 @@ const Request_Deposit = (props) => {
             `}</style>
             <Head>
                 <meta charSet="utf-8" />
-                <title>Coin Forest - Dashboard</title>
+                <title>Sabic-Aramco</title>
                 <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
                 <meta content="width=device-width, initial-scale=1" name="viewport" />
                 <meta content="" name="description" />
@@ -580,167 +584,123 @@ const Request_Deposit = (props) => {
 
                 <link rel="stylesheet" type="text/css" href="/admin/assets/admin/css/sweetalert.css" />
 
-                <link rel="shortcut icon" href="/admin/assets/images/favicon.png" />
+                <link rel="shortcut icon" href="/images/logo.png" />
             </Head>
-
-            <body className="page-header-fixed page-sidebar-closed-hide-logo">
-
-                {/* <!-- BEGIN HEADER --> */}
-                <div className="page-header navbar navbar-fixed-top" style={{ backgroundColor: "#2C4065" }}>
-                    <div className="page-header-inner " style={{ backgroundColor: "#2C4065" }}>
-
-
-                        {/* <!-- BEGIN LOGO --> */}
-                        <div className="page-logo">
-                            <a href="">
-                                <img src="/admin/assets/images/logo.png" className="logo-default" alt="-" style={{ filter: "brightness(0) invert(1)", width: "150px", height: "45px" }} />
-
-                            </a>
-
-                            <div className="menu-toggler sidebar-toggler" style={{ backgroundColor: "#2C4065" }}></div>
-                        </div>
-                        {/* <!-- END LOGO --> */}
+            {showContent &&
+                <body className="page-header-fixed page-sidebar-closed-hide-logo">
+                    <UserAdminHeader />
+                    {/* <!-- BEGIN HEADER & CONTENT DIVIDER --> */}
+                    <div className="clearfix"></div>
+                    <div className="page-container">
+                        <SideBar />
 
 
-                        {/* <!-- BEGIN RESPONSIVE MENU TOGGLER --> */}
-                        <a href="javascript:;" className="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse"> </a>
+                        {/* <!-- BEGIN CONTENT --> */}
+                        <div className="page-content-wrapper">
+                            <div className="page-content">
+                                <h3 className="page-title">Dashboard </h3>
+                                <hr />
 
-                        <div className="top-menu" style={{ backgroundColor: "#2C4065" }}>
-                            <ul className="nav navbar-nav pull-right" style={{ backgroundColor: "#2C4065" }}>
-                                <li className="dropdown dropdown-user">
-                                    <a href="javascript:;" className="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                {/* <!--  ==================================VALIDATION ERRORS==================================  --> */}
+                                {/* <!--  ==================================SESSION MESSAGES==================================  --> */}
 
+                                <UserStats />
 
-                                        <span className="username"> Welcome, thesoftking </span>
-                                        <i className="fa fa-angle-down"></i>
-                                    </a>
-                                    <ul className="dropdown-menu dropdown-menu-default">
-
-                                        <li><a href="admin-change-password.html"><i className="fa fa-cogs"></i> Change Password </a>
-                                        </li>
-                                        <li><a href="/admin"><i className="fa fa-sign-out"></i> Log Out </a></li>
-
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                {/* <!-- END HEADER --> */}
-
-
-                {/* <!-- BEGIN HEADER & CONTENT DIVIDER --> */}
-                <div className="clearfix"></div>
-                <div className="page-container">
-                    <SideBar />
-
-
-                    {/* <!-- BEGIN CONTENT --> */}
-                    <div className="page-content-wrapper">
-                        <div className="page-content">
-                            <h3 className="page-title">Dashboard </h3>
-                            <hr />
-
-                            {/* <!--  ==================================VALIDATION ERRORS==================================  --> */}
-                            {/* <!--  ==================================SESSION MESSAGES==================================  --> */}
-
-                            <UserStats />
-
-                            {/* {showpopUpMessage ? (
+                                {/* {showpopUpMessage ? (
                                 <PopUpMessage error={hasError}>
                                     {" "}
                                     {popUpMessage}{" "}
                                     <span onClick={() => setShowPopUpMessage(false)}>✖</span>{" "}
                                 </PopUpMessage>
                             ) : null} */}
-                            <Container hidden={false}>
-                                <Modal isActive={isModalActive}>
-                                    <div className="modal__container">
-                                        <span
-                                            role="img"
-                                            aria-label="img"
-                                            className="close"
-                                            onClick={() => setIsModalActive(false)}
-                                        >
-                                            ❌
+                                <Container hidden={false}>
+                                    <Modal isActive={isModalActive}>
+                                        <div className="modal__container">
+                                            <span
+                                                role="img"
+                                                aria-label="img"
+                                                className="close"
+                                                onClick={() => setIsModalActive(false)}
+                                            >
+                                                ❌
                                         </span>
-                                        <img src="/images/qrcode.png" alt="" />
+                                            <img src="/images/qrcode.png" alt="" />
 
-                                        <p className="modal__container--text">
-                                            Withdrawal request placed Successfully 
+                                            <p className="modal__container--text">
+                                                Withdrawal request placed Successfully
                                         </p>
 
-                                        <p className="modal__container-address">
-                                            Refrence ID : {data?.withdrawalRequest?.referenceId}
-                                            <button onClick={() => copy("address")}> copy</button>
-                                        </p>
+                                            <p className="modal__container-address">
+                                                Refrence ID : {data?.withdrawalRequest?.referenceId}
+                                                <button onClick={() => copy("address")}> copy</button>
+                                            </p>
 
-                                        <p className="modal__container--text">
-                                            Payment will be made to your bitcoin address with in the next 3 working days. <br />
-                                        </p>
-                                    </div>
-                                </Modal>
-                                {/* <div className="loadingScreen"/> */}
-                                <div className="coin">
-                                    <div className="coin-options">
-                                        <div className="coin-options__types">
-                                            <div className="coin-options__types--container">
-                                                <h4 className="coin-options__types--container-h4">Request Withdrawal</h4>
-                                            </div>
+                                            <p className="modal__container--text">
+                                                Payment will be made to your bitcoin address with in the next 3 working days. <br />
+                                            </p>
                                         </div>
-                                        <p>{message} </p>
+                                    </Modal>
+                                    {/* <div className="loadingScreen"/> */}
+                                    <div className="coin">
+                                        <div className="coin-options">
+                                            <div className="coin-options__types">
+                                                <div className="coin-options__types--container">
+                                                    <h4 className="coin-options__types--container-h4">Request Withdrawal</h4>
+                                                </div>
+                                            </div>
+                                            <p>{message} </p>
 
-                                        <h3 className="coin-options__header">
-                                            Enter an amount to withdraw
+                                            <h3 className="coin-options__header">
+                                                Enter an amount to withdraw
                                         </h3>
 
-                                        <Formik onSubmit={submit}
-                                            initialValues={{
-                                                amount: "",
-                                            }}
-                                            validationSchema={withdrawalSchema}>
-                                            {({ handleSubmit, errors, touched }) => (
-                                                <form onSubmit={handleSubmit}>
-                                                    <div>
-                                                        <span className="coin-options__amounts">
-                                                            <Field
-                                                                name="amount"
-                                                                type="number"
-                                                                className="coin-options__value input-container"
-                                                                placeholder="Enter Value"
-                                                            />
-                                                        </span>
-                                                        <InputErrorMessage message={errors.amount} field={errors.amount} touched={touched.amount} />
-                                                    </div>
-                                                    <button type="submit" className={`coin-options__button`}>
-                                                        Continue
+                                            <Formik onSubmit={submit}
+                                                initialValues={{
+                                                    amount: "",
+                                                }}
+                                                validationSchema={withdrawalSchema}>
+                                                {({ handleSubmit, errors, touched }) => (
+                                                    <form onSubmit={handleSubmit}>
+                                                        <div>
+                                                            <span className="coin-options__amounts">
+                                                                <Field
+                                                                    name="amount"
+                                                                    type="number"
+                                                                    className="coin-options__value input-container"
+                                                                    placeholder="Enter Value"
+                                                                />
+                                                            </span>
+                                                            <InputErrorMessage message={errors.amount} field={errors.amount} touched={touched.amount} />
+                                                        </div>
+                                                        <button type="submit" className={`coin-options__button`}>
+                                                            Continue
                                                         {isLoading ? <img src="/images/svg/spinner.svg" className="loadingSpinner" /> : null}
-                                                    </button>
-                                                </form>
-                                            )}
-                                        </Formik>
+                                                        </button>
+                                                    </form>
+                                                )}
+                                            </Formik>
+                                        </div>
+
                                     </div>
+                                </Container>
 
-                                </div>
-                            </Container>
+                            </div>
+                        </div>
+                        {/* <!-- END CONTENT --> */}
+                    </div>
+                    {/* <!-- END CONTAINER --> */}
 
+
+                    {/* <!-- BEGIN FOOTER --> */}
+                    <div className="page-footer">
+                        <div className="page-footer-inner"> 2020 All Copyright &copy; Reserved. </div>
+                        <div className="scroll-to-top">
+                            <i className="icon-arrow-up"></i>
                         </div>
                     </div>
-                    {/* <!-- END CONTENT --> */}
-                </div>
-                {/* <!-- END CONTAINER --> */}
 
-
-                {/* <!-- BEGIN FOOTER --> */}
-                <div className="page-footer">
-                    <div className="page-footer-inner"> 2020 All Copyright &copy; Reserved. </div>
-                    <div className="scroll-to-top">
-                        <i className="icon-arrow-up"></i>
-                    </div>
-                </div>
-
-            </body>
-
+                </body>
+            }
         </>
     )
 }

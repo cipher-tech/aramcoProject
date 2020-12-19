@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import React from 'react'
 import theme from '../../styles/theme'
 
@@ -16,7 +15,7 @@ const ImageInfo = (props) => {
                     margin: 0rem 0;
                     align-self: stretch;
                     justify-items: flex-end;
-                    background-image: url(${props.bgImage});
+                    background-image: url('/images/moreInfo.jpg');
                     background-repeat: no-repeat;
                     background-size: cover;
                     &:nth-child(2){
@@ -32,9 +31,6 @@ const ImageInfo = (props) => {
                         flex-direction: column;
                         justify-content: center;
                         font-weight: 100;
-                        @media only screen and (max-width: ${theme.breakPoints.bpSmall}) {
-                            grid-column: 1/-1;
-                        } 
                         &__subHead{
                             padding: 1rem 0rem;
                         }
@@ -76,9 +72,6 @@ const ImageInfo = (props) => {
                     }
                     .imageInfo-container{
                         grid-column: 1;
-                        @media only screen and (max-width: ${theme.breakPoints.bpSmall}) {
-                            grid-column: 1/-1;
-                        } 
                     }
                 }
             `}</style>
@@ -86,22 +79,9 @@ const ImageInfo = (props) => {
                 <div className="imageInfo-container">
                     {props.subHead && <h3 className="imageInfo-container__subHead">{props.subHead}</h3>}
                     {props.title && <h2 className="imageInfo-container__title"> {props.title} </h2>}
-                    {props.text && <p className="imageInfo-container__text">{props.text}</p>}
-                    {props.btnLight &&
-                        <Link href={props.download ? "/pdf/aramcoPdf.pdf" : (props.link || "/overview")}>
-                            <a download={props.download ? true : false} className="imageInfo-container__button btn-light">
-                            {props.btnLight}
-                        </a>
-                        </Link>
-                        // <Link href={props.link || "/plans/products"}>
-                        //     <button >  </button>
-                        // </Link>
-                    }
-                    {props.btn &&
-                        <Link href={props.download ? "/pdf/aramcoPdf.pdf" : (props.link || "/overview")}>
-                            <a download={props.download ? true : false} className="imageInfo-container__button">{props.btn}</a>
-                        </Link>
-                    }
+                    {props.text &&<p className="imageInfo-container__text">{props.text}</p>}
+                    {props.btnLight && <button className="imageInfo-container__button btn-light"> {props.btnLight} </button>}
+                    {props.btn && <button className="imageInfo-container__button"> {props.btn} </button>}
                 </div>
             </div>
 
