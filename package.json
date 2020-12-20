@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build && next export",
-    "start": "next start",
+    "build": "next build",
+    "preexport": "npm run build",
     "export": "next export",
+    "prestart": "npm run export",
+    "start": "serve out",
+    "dev": "next dev",
     "generateGraphql": "graphql-codegen --config codegen.yml"
   },
   "dependencies": {

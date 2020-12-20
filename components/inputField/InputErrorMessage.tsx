@@ -2,9 +2,9 @@ import { type } from 'os'
 import React from 'react'
 
 type Props = {
-    message: string,
-    field: string,
-    touched: boolean
+    message: any,
+    field: any,
+    touched: any
 }
 
 const InputError = ({ message, field, touched }: Props) => {

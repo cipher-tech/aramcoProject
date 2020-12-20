@@ -8,7 +8,6 @@ const ImageCard = (props) => {
             <style jsx>{`
                 .imageInfo{
                     grid-column: 1/-1;
-                    height: 49rem;
                     max-width: 100%;
                     width: 100%;
                     display: flex;
@@ -25,6 +24,10 @@ const ImageCard = (props) => {
                         max-height: 45rem;
                         max-width: 45rem;
                         width: 50%;
+                        @media only screen and (max-width: ${theme.breakPoints.bpLarge}) {
+                            width: 100%;
+
+                    }
                     }
                     &-container{
                         grid-column: 2;
@@ -79,6 +82,9 @@ const ImageCard = (props) => {
                     justify-items: flex-end;
                     &:nth-child(1){
                         justify-items: flex-start;
+                    }
+                    @media only screen and (max-width: ${theme.breakPoints.bpLarge}) {
+                        flex-direction: column;
                     }
                     .imageInfo-container{
                         grid-column: 1;

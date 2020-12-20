@@ -77,7 +77,10 @@ const Container = styled.div`
     .plan-info{
         display: flex;
         flex-direction: column;
-        font-size: ${theme.font.xsmall}
+        font-size: ${theme.font.xsmall};
+        @media only screen and (max-width: ${(theme.breakPoints.bpSmall)}) {
+            font-size: ${theme.font.xxxsmall};
+        }
     }
     .loadingSpinner{
         justify-self: center;
@@ -124,6 +127,9 @@ const Container = styled.div`
             overflow-x: scroll;
             width: 100%;
             overflow: hidden;
+            @media only screen and (max-width: ${(theme.breakPoints.bpSmall)}) {
+                font-size: ${theme.font.xxxsmall};
+            }
         }
     }
     .coin{
@@ -190,6 +196,9 @@ const Container = styled.div`
                         place-self: center;
                         font-size: ${theme.font.medium};
                         margin-bottom: 0;
+                        @media only screen and (max-width: ${(theme.breakPoints.bpSmall)}) {
+                            font-size: ${theme.font.xxxsmall};
+                        }
                     }
                     .active{
                         background:  ${theme.colorSecondary};
@@ -210,6 +219,9 @@ const Container = styled.div`
                         font-size: ${theme.font.xsmall};
                         border-radius: 1.5rem;
                         transition: all .2s ease-in-out;
+                        @media only screen and (max-width: ${(theme.breakPoints.bpSmall)}) {
+                            font-size: ${theme.font.xxxsmall};
+                        }
                         &:hover{
                         background:  ${theme.colorSecondary};
                         color: ${theme.colorLight};
@@ -235,7 +247,10 @@ const Container = styled.div`
                                 margin: 1rem 0;
                                 font-size: ${theme.font.medium};
                                 font-weight: 500;
-                                color: ${theme.colorSecondary}
+                                color: ${theme.colorSecondary};
+                                @media only screen and (max-width: ${(theme.breakPoints.bpSmall)}) {
+                                font-size: ${theme.font.xxxsmall};
+                            }
                             }
                         }
                     }
@@ -291,7 +306,10 @@ const Container = styled.div`
                             margin: 1rem 0;
                             font-size: ${theme.font.small};
                             font-weight: 500;
-                            color: ${theme.colorSecondary}
+                            color: ${theme.colorSecondary};
+                            @media only screen and (max-width: ${(theme.breakPoints.bpSmall)}) {
+                            font-size: ${theme.font.xxxsmall};
+                        }
                         }
                     }
                 }
@@ -309,6 +327,9 @@ const Container = styled.div`
                 transition: all .5s ease;
                 display: flex;
                 color: ${theme.colorPrimary};
+                @media only screen and (max-width: ${(theme.breakPoints.bpSmall)}) {
+                    font-size: ${theme.font.xxxsmall};
+                }
                 &--item{
                     padding: .5rem 2rem;
                     font-weight: 500;
@@ -328,7 +349,10 @@ const Container = styled.div`
                 /* font-weight: 600; */
                 /* margin-top: 1rem; */
                 transition: all .5s ease;
-                color: ${theme.colorPrimary}
+                color: ${theme.colorPrimary};
+                @media only screen and (max-width: ${(theme.breakPoints.bpSmall)}) {
+                    font-size: ${theme.font.xxxsmall};
+                }
             }
 
             &__amounts{
@@ -355,7 +379,9 @@ const Container = styled.div`
                 /* margin-top: 1rem; */
                 transition: all .5s ease;
                 color: ${theme.colorSecondary};
-
+                @media only screen and (max-width: ${(theme.breakPoints.bpSmall)}) {
+                font-size: ${theme.font.xxxsmall};
+            }
                 &--icon{
                     height: 2rem;
                     width: 2rem;
@@ -402,6 +428,9 @@ const Container = styled.div`
                 font-size: ${theme.font.medium};
                 opacity: .8;
                 border-radius: .5rem;
+                @media only screen and (max-width: ${(theme.breakPoints.bpSmall)}) {
+                font-size: ${theme.font.xxxsmall};
+            }
             }
             .input-container{
                 margin: .2rem 0 ;
@@ -411,6 +440,9 @@ const Container = styled.div`
                 opacity: .8;
                 border: solid 1px ${theme.colorPrimary};
                 border-radius: .5rem;
+                @media only screen and (max-width: ${(theme.breakPoints.bpSmall)}) {
+                font-size: ${theme.font.xxxsmall};
+            }
 
                 &::before{
                     content: "$";
@@ -431,6 +463,9 @@ const Container = styled.div`
                 border: none;  
                 font-size: ${theme.font.xsmall};
                 color: ${theme.colorSecondary};
+                @media only screen and (max-width: ${(theme.breakPoints.bpSmall)}) {
+                font-size: ${theme.font.xxxsmall};
+            }
                 /* &:hover{
                 } */
                 &:focus{
@@ -441,6 +476,9 @@ const Container = styled.div`
             &__acceptedPaymentMethods{
                 font-size: ${theme.font.xsmall};
                 color: red;
+                @media only screen and (max-width: ${(theme.breakPoints.bpSmall)}) {
+                font-size: ${theme.font.xxxsmall};
+            }
             }
             &__button{
                 display: flex;
@@ -450,6 +488,9 @@ const Container = styled.div`
                 background: ${theme.colorPrimary};
                 border: none;
                 font-size: ${theme.font.medium};
+                @media only screen and (max-width: ${(theme.breakPoints.bpSmall)}) {
+                font-size: ${theme.font.xxxsmall};
+            }
                 &:active{
                     box-shadow: -0.2rem -0.4rem 20px rgba(255,255,255, .3),
                         .2rem .4rem 10px rgba(0,0,0, .3);

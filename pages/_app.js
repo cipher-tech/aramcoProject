@@ -8,7 +8,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <link rel="stylesheet" href="/assets/css/style.css" />
+        {/* <link rel="stylesheet" href="/assets/css/style.css" /> */}
       </Head>  
       <Layout>
         {/* <AddAdminHeader> */}

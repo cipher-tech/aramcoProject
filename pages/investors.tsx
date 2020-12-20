@@ -22,7 +22,7 @@ const Investors = () => {
                             display: grid;
                             width: 100%;
                             justify-content: space-between;
-                            grid-template-columns:  repeat(auto-fit, minmax(38rem, 1fr));
+                            grid-template-columns:  repeat(auto-fit, minmax(28rem, 1fr));
                         }
                         
                     }

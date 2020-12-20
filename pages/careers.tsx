@@ -8,7 +8,7 @@ import { withApollo } from '../lib/apolloClient';
 const Careers: React.FC = () => {
 
     return (
-        <CustomFontSize>
+        <CustomFontSize> 
             <style jsx>{`
             .main{
                 grid-column: 1/-1;
