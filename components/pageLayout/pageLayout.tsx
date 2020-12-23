@@ -1,7 +1,9 @@
 import Head from 'next/head'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import postscribe from 'postscribe';
 
-const PageLayout: React.FC = (props) => {
+const PageLayout = (props) => {
+  // const [showPostscribe, setShowPostscribe] = useState(false)
   return (
     <div className="page-layout">
       <Head>
@@ -10,7 +12,7 @@ const PageLayout: React.FC = (props) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link href="/admin/assets/admin/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
         {/* <!-- Favicon --> */}
-        <link href="/assets/images/favicon.png" rel="icon" type="image/png" />
+        <link href="logo.png" rel="icon" type="image/png" />
 
         {/* <!-- CSS  */}
         {/* ================================================== --> */}
@@ -29,6 +31,21 @@ const PageLayout: React.FC = (props) => {
         }       
         `}</style>
       {props.children}
+
+      <Head>
+        <script dangerouslySetInnerHTML={{
+          __html: `
+var Tawk_API=Tawk_API||{ }, Tawk_LoadStart=new Date();
+  (function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/5fe20f2fdf060f156a8f5ca3/1eq5gmkhn';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+  })();
+` }} />
+      </Head>
     </div>
   )
 }

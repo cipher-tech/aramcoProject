@@ -35,9 +35,15 @@ const LoginPage = () => {
             },
         })
         if (error) return setMessage('Something went wrong, please try again or contact admin')
-        console.log(inputs, data, response);
+        // console.log(inputs, data, response);
         setMessage('login successful.')
-        router.push("/admin")
+        console.log("login>>>>> ",response);
+
+        if (response.data.login.role === "admin") {
+            router.push("/masterAdmin")   
+        } else {
+            router.push("/admin")   
+        }
 
     }
     // if (!ShowContent) return <p>Loading</p>
@@ -85,6 +91,7 @@ const LoginPage = () => {
                     align-items: center;
                     display: flex;
                     background: #edeff0;
+                    justify-content: center;
                     &-container{
                         max-width: 100%;
                         background: white;
@@ -135,6 +142,13 @@ const LoginPage = () => {
                                         display: block;
                                         font-weight: 600;
                                     }
+                                }
+                                .button{
+                                    padding: 1rem 1rem;
+                                    background:#3e416d;
+                                    border: none;
+                                    border-radius: .5rem;
+                                    color: white;
                                 }
                             }
                         }

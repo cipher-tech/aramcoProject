@@ -158,6 +158,7 @@ export type Mutation = {
   withdrawalRequest: Response;
   activateWithdrawal: Response;
   deleteWithdrawalRequest: Response;
+  deleteUser: Response;
   logout?: Maybe<Scalars['Boolean']>;
 };
 
@@ -288,6 +289,20 @@ export type DeleteWithdrawalRequestMutation = (
     & Pick<Response, 'message' | 'status'>
   ) }
 );
+
+export type DeleteUserMutationVariables = Exact<{
+  input?: Maybe<Id>;
+}>;
+
+
+export type DeleteUserMutation = (
+  { __typename?: 'Mutation' }
+  & { deleteUser: (
+    { __typename?: 'Response' }
+    & Pick<Response, 'message' | 'status'>
+  ) }
+);
+
 
 export type GetAdminDepositsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -488,6 +503,40 @@ export type GetUserWithdrawalsQuery = (
     & Pick<DepositAttributes, 'id' | 'userId' | 'slug' | 'status' | 'amount' | 'plan' | 'createdAt'>
   )>> }
 );
+
+export const DeleteUserDocument = gql`
+    mutation deleteUser($input: Id) {
+  deleteUser(input: $input) {
+    message
+    status
+  }
+}
+    `;
+export type DeleteUserMutationFn = Apollo.MutationFunction<DeleteUserMutation, DeleteUserMutationVariables>;
+
+/**
+ * __useDeleteUserMutation__
+ *
+ * To run a mutation, you first call `useDeleteUserMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteUserMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteUserMutation, { data, loading, error }] = useDeleteUserMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useDeleteUserMutation(baseOptions?: Apollo.MutationHookOptions<DeleteUserMutation, DeleteUserMutationVariables>) {
+        return Apollo.useMutation<DeleteUserMutation, DeleteUserMutationVariables>(DeleteUserDocument, baseOptions);
+      }
+export type DeleteUserMutationHookResult = ReturnType<typeof useDeleteUserMutation>;
+export type DeleteUserMutationResult = Apollo.MutationResult<DeleteUserMutation>;
+export type DeleteUserMutationOptions = Apollo.BaseMutationOptions<DeleteUserMutation, DeleteUserMutationVariables>;
 
 
 export const ActivateDepositDocument = gql`

@@ -95,6 +95,11 @@ const Footer = () => {
                                     <img src="/images/mail.png" alt="next" />
                                 </a>
                             </Link>
+                            <Link href="tel:+1(214) 612-0420">
+                                <a>
+                                    <img src="/images/phone.png" alt="next" />
+                                </a>
+                            </Link>
 
                         </li>
                     </ul>

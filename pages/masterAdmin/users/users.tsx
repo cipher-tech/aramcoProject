@@ -3,13 +3,15 @@ import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react'
 
 import { MasterAdminSidenav, MasterAdminStatsCard, TableComponent, UserAdminHeader } from "../../../components"
-import { useGetUsersQuery } from '../../../generated/apolloComponent';
+import { useDeleteUserMutation, useGetUsersQuery } from '../../../generated/apolloComponent';
 import { withApollo } from '../../../lib/apolloClient';
 
 const Users = () => {
     const [message, setMessage] = useState("")
 
-    const { data, loading: IsLoading, error: HasError } = useGetUsersQuery()
+    const { data, loading: IsLoading, error: HasError , refetch: RefetchUsers} = useGetUsersQuery() 
+    const [deleteUser, { data: deleteUserData, loading: deleteUserLoading, error: deleteUserError }] = useDeleteUserMutation()
+    
     const router = useRouter()
     if (IsLoading) return <p>loading ...</p>
 
@@ -20,8 +22,18 @@ const Users = () => {
             query: { payload: JSON.stringify(payload) }
         })
     }
-    const blockUser = () => {
-
+    const blockUser = async (payload) => {
+        await setMessage('')
+        await deleteUser({
+            variables: {
+                input: {
+                    id: payload.id
+                }
+            }
+        })
+        await setMessage(deleteUserError ? "Could not delete User" : "User deleted.")
+        await RefetchUsers()
+        // console.log("pending");
     }
     return (
         <>
@@ -106,7 +118,7 @@ const Users = () => {
                                         keys={["id", "first_name", "email", "phone_no", "plan"]}
                                         nestedKeys={['email']}
                                         buttonAction={[viewUser, blockUser]}
-                                        buttonText={["View", "Block"]}
+                                        buttonText={["View", "Delete"]}
                                     />
                                 }
                             </div>

@@ -99,20 +99,20 @@ const Table = ({ headers, body, buttonAction, title, nestedKeys, keys, buttonTex
                                         <li className="disabled"><span>&laquo;</span></li>
 
                                         <li className="active"><span>1</span></li>
-                                        <li><a href="https://coinforest.net/admin/manage-user?page=2">2</a></li>
-                                        <li><a href="https://coinforest.net/admin/manage-user?page=3">3</a></li>
-                                        <li><a href="https://coinforest.net/admin/manage-user?page=4">4</a></li>
-                                        <li><a href="https://coinforest.net/admin/manage-user?page=5">5</a></li>
-                                        <li><a href="https://coinforest.net/admin/manage-user?page=6">6</a></li>
-                                        <li><a href="https://coinforest.net/admin/manage-user?page=7">7</a></li>
-                                        <li><a href="https://coinforest.net/admin/manage-user?page=8">8</a></li>
+                                        <li><a href="#">2</a></li>
+                                        <li><a href="#">3</a></li>
+                                        <li><a href="#">4</a></li>
+                                        {/* <li><a href="#">5</a></li>
+                                        <li><a href="#">6</a></li>
+                                        <li><a href="#">7</a></li>
+                                        <li><a href="#">8</a></li> */}
 
                                         <li className="disabled"><span>...</span></li>
 
-                                        <li><a href="https://coinforest.net/admin/manage-user?page=41">41</a></li>
-                                        <li><a href="https://coinforest.net/admin/manage-user?page=42">42</a></li>
+                                        <li><a href="#">5</a></li>
+                                        <li><a href="#">6</a></li>
 
-                                        <li><a href="https://coinforest.net/admin/manage-user?page=2" rel="next">&raquo;</a></li>
+                                        <li><a href="#" rel="next">&raquo;</a></li>
                                     </ul>
 
                                 </div>

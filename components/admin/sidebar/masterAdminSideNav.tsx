@@ -238,7 +238,7 @@ const UserAdminNavbarComponent = (props) => {
         },
         {
             route: "/admin/deposits",
-            name: "Deposits"
+            name: "Request Deposits"
         },
         {
             route: "/admin/pending_deposits",

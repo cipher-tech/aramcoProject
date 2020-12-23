@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 // import { Helmet } from "react-helmet";
 import { MasterAdminSidenav, MasterAdminStatsCard, Plan, SideBar, StockPlan, TableComponent, UserAdminHeader } from "../../components/index"
-import { DepositAttributes, useActivateDepositMutation, useGetPendingDepositsQuery, useGetUserQuery } from '../../generated/apolloComponent';
+import { DepositAttributes, useActivateDepositMutation, useDeleteDepositRequestMutation, useGetPendingDepositsQuery, useGetUserQuery } from '../../generated/apolloComponent';
 import { withApollo } from '../../lib/apolloClient';
 import 'jquery';
 
@@ -14,6 +14,8 @@ const index = () => {
     const [ActivateDepositMutation, { data: ActivateDepositMutationData,
         loading: ActivateDepositMutationLoading,
         error: ActivateDepositMutationError }] = useActivateDepositMutation()
+    const [deleteDepositRequestMutation, { data: deleteDepositData, loading: deleteDepositLoading, error: deleteDepositError }] = useDeleteDepositRequestMutation()
+
     // useEffect(() => {
     //     console.log(pendingDeposits);
 
@@ -22,7 +24,7 @@ const index = () => {
     const activateDeposit = async (payload: DepositAttributes) => {
         // console.log(payload);
         await setMessage('')
-        await ActivateDepositMutation({
+        const response = await ActivateDepositMutation({
             variables: {
                 input: {
                     id: payload.id
@@ -30,13 +32,27 @@ const index = () => {
             }
         })
 
+        if(!response.data.activateDeposit.status){
+            return setMessage("Could not activate deposit user already on a plan")
+        }
         setMessage(ActivateDepositMutationError ? "Could not activate deposit" : "Deposit Activated. Plan started")
         await refetchPendingDeposits()
         console.log("pending");
 
     }
-    const deleteDeposit = (id) => {
 
+    const deleteDeposit = async (payload) => {
+        await setMessage('')
+        await deleteDepositRequestMutation({
+            variables: {
+                input: {
+                    id: payload.id
+                }
+            }
+        })
+        await setMessage(deleteDepositError ? "Could not delete deposit" : "Deposit deleted.")
+        await refetchPendingDeposits()
+        console.log("pending");
     }
     if (error || ActivateDepositMutationError || userHasError || userIsLoading || depositsIsLoading || ActivateDepositMutationLoading) {
         return "loading"

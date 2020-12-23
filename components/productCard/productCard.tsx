@@ -10,7 +10,7 @@ interface IProps {
     download?: boolean
     collapsible?: boolean
 }
-const ProductCard = ({ image, text, link, download, title,collapsible }: IProps) => {
+const ProductCard = ({ image, text, link, download, title, collapsible }: IProps) => {
     const [expand, setExpand] = useState(false)
     return (
         <>
@@ -38,6 +38,7 @@ const ProductCard = ({ image, text, link, download, title,collapsible }: IProps)
                     &-title{
                         position: absolute;
                         place-self: center;
+                        text-align: center;
                         font-size: ${theme.font.medium};
                         color: ${theme.colorWhite};
                         text-transform: capitalize;
@@ -83,7 +84,7 @@ const ProductCard = ({ image, text, link, download, title,collapsible }: IProps)
                     <img src={image} alt="product img" className="" />
                 </div>
                 <p className="item__text">
-                    {expand? text : text.substr(0,90)}
+                    {expand ? text : text.substr(0, 90)}
                 </p>
                 {/* <Link  > */}
                 {
@@ -94,7 +95,7 @@ const ProductCard = ({ image, text, link, download, title,collapsible }: IProps)
                             href={download ? "/pdf/aramcoPdf.pdf" : (link || "/overview")} className="item__btn">Read More</a>
                 }
                 {/* </Link> */}
-
+                
             </div>
         </>
     )

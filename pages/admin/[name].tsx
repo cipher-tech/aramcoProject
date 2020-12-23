@@ -135,7 +135,7 @@ const Container = styled.div`
     .coin{
         grid-column: 1/-1;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(38rem, 1fr));
+        /* grid-template-columns: repeat(auto-fit, minmax(38rem, 1fr)); */
         width: 100%;
         /* padding: 3rem; */
         align-items: flex-start;
@@ -777,9 +777,9 @@ const Request_Deposit = (props) => {
                                                         {SelectedPlan.name ?
                                                             <p className="plan-info">
                                                                 <span>Name: {SelectedPlan?.name}</span>
-                                                                <span>Price Range: {SelectedPlan?.range[0]} - {SelectedPlan?.range[1]}</span>
-                                                                <span>Rate: {SelectedPlan?.rate}</span>
-                                                                <span>Duration: {SelectedPlan?.duration}</span>
+                                                                <span>Price Range: {SelectedPlan?.range[0].toLocaleString()} - {SelectedPlan?.range[1].toLocaleString()}</span>
+                                                                <span>Rate: {SelectedPlan?.rate}%</span>
+                                                                <span>Duration: {SelectedPlan?.duration} days</span>
                                                             </p>
                                                             : null
                                                         }

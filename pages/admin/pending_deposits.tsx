@@ -4,11 +4,11 @@ import Head from 'next/head';
 import { SideBar, TableComponent, UserAdminHeader, UserStats } from "../../components/index"
 import theme from '../../styles/theme';
 import { withApollo } from '../../lib/apolloClient';
-import { useGetPendingDepositsQuery } from '../../generated/apolloComponent';
+import { useGetUserPendingDepositsQuery } from '../../generated/apolloComponent';
 // import { ReactComponent as Spinner } from "/images/svg/spinner.svg";
 
 const Pending_Deposit = (props) => {
-    const { data, loading, error } = useGetPendingDepositsQuery()
+    const { data, loading, error } = useGetUserPendingDepositsQuery()
     const [showContent, setShowContent] = useState(false)
     useEffect(() => {
         // console.log(data, "network stats>>>", networkStatus);
@@ -95,7 +95,7 @@ const Pending_Deposit = (props) => {
                                         :
                                         <TableComponent title="Pending Deposit Request"
                                             headers={["userId", "email", "slug", " status ", "amount", "plan", "createdAt"]}
-                                            body={data.getPendingDeposits || [{}]}
+                                            body={data.getUserPendingDeposits || [{}]}
                                             keys={["userId", "users", "slug", "status", "amount", "plan", "createdAt",]}
                                             nestedKeys={['email']}
                                         />
