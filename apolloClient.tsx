@@ -34,7 +34,7 @@ export default function createApolloClient(initialState, ctx) {
     return new ApolloClient({
         ssrMode: Boolean(ctx),
         link: errorLink.concat(new HttpLink({
-            uri: 'https://api.sabic-aramco.com/graphql', // "http://localhost:8000/graphql", //'https://api.sabic-aramco.com/graphql', // Server URL (must be absolute)
+            uri: 'http://localhost:8000/graphql', // "http://localhost:8000/graphql", //'https://api.sabic-aramco.com/graphql', // Server URL (must be absolute)
             credentials: 'include', // Additional fetch() options like `credentials` or `headers`
             fetch,
         })),  

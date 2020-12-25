@@ -12,6 +12,11 @@ export interface ITableProps {
 const Table = ({ headers, body, buttonAction, title, nestedKeys, keys, buttonText }: ITableProps) => {
     return (
         <>
+        <style jsx>{`
+            #table{
+                overflow-x: scroll;
+            }
+        `}</style>
             {/* <!-- BEGIN CONTENT --> */}
             <div className="page-content-wrapper">
                 {/* <div className="page-content"> */}
@@ -25,7 +30,7 @@ const Table = ({ headers, body, buttonAction, title, nestedKeys, keys, buttonTex
                     <div className="col-md-12">
 
 
-                        <div className="portlet light bordered">
+                        <div id="table" className="portlet light bordered">
                             <div className="portlet-title">
                                 <div className="caption font-dark">
                                 </div>

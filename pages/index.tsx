@@ -182,7 +182,7 @@ const Home: React.FC = () => {
                link={"/images/pdfImage.jpg"}
                 text={`People are our priority. We are securing the health and safety of our workforce and communities and ensuring
                     the continuity of an energy supply upon which the world relies.`}
-                btnLight="FIND OUT MORE" bgImage="/images/moreInfo-2.jpg"
+                btnLight="FIND OUT MORE" bgImage="/images/oil.jpg"
             />
 
             <Foot />
