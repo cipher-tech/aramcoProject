@@ -60,6 +60,10 @@ const Container = styled.div`
             padding: 2rem;
             position: relative;
             font-family: ProximaNovaSoftW03-Regular;
+            display: flex;
+            justify-items: center;
+            flex-direction: column;
+            justify-content: center;
             /* background-image: url($);
             background-repeat: no-repeat;
             background-position: 104px right; */
@@ -98,6 +102,7 @@ const Container = styled.div`
                 display: flex;
                 text-align: center;
                 justify-content: center;
+                align-self: center;
                 align-self: center;
                 line-height: 2;
                 color: ${theme.colorLight};
@@ -301,7 +306,7 @@ const LoginPage = (props) => {
                 <div className="login__side-left">
                     <div className="circle" />
                     <div className="circle2" />
-                    <p className="login__side-left-title">Welcome Back</p>
+                    {/* <p className="login__side-left-title">Welcome Back</p> */}
                     <p className="login__side-left-text">
                         Fill in your details to continue
                         </p>

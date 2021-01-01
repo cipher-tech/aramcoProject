@@ -528,6 +528,35 @@ const Container = styled.div`
             }
         }
     }
+    .bankOptions{
+        font-size: ${theme.font.xxsmall};
+        color: ${theme.colorPrimary};
+        display: flex;
+        flex-direction: column;
+        span{
+            font-size: ${theme.font.xxxsmall};
+            padding: 1rem 0;
+        }
+        span:nth-child(2){
+            color: ${theme.colorDark};
+        }
+        span:nth-child(3){
+            display: flex;
+            color: ${theme.colorDark}; 
+        }
+        input{
+            color: ${theme.colorDark};
+            padding: .6re, ;
+        }
+        button{
+            color: ${theme.colorWhite};
+            background-color: ${theme.colorPrimary};
+            padding: .5rem .5rem;
+            border: none;
+
+        }
+
+    }
 `;
 interface IQuery {
     name: string
@@ -537,6 +566,7 @@ const Request_Deposit = (props) => {
     const [isLoading, setIsLoading] = useState(false);
     const [isModalActive, setIsModalActive] = useState(false);
     const [message, setMessage] = useState('')
+    const [bankOption, setBankOption] = useState('')
     const [, setIsCopied] = useState(false)
     const [showContent, setShowContent] = useState(false)
     useEffect(() => {
@@ -567,6 +597,10 @@ const Request_Deposit = (props) => {
             return
         }
         await navigator.clipboard.writeText("1AVqE3MqZSDbrdihXtX9Ny5DAeWD329fQ8")
+        setIsCopied(true)
+    }
+    async function bankCopy(type) {
+        await navigator.clipboard.writeText("ARAMSADHXYZ")
         setIsCopied(true)
     }
 
@@ -701,25 +735,40 @@ const Request_Deposit = (props) => {
                                             >
                                                 ❌
                                         </span>
-                                            <img src="/images/qrcode.jpeg" alt="" />
-
-                                            <p className="modal__container--text">
-                                                please pay exactly the amount specified into this bitcoin address
-                                        </p>
-
-                                            <p className="modal__container-address">
-                                                {"1AVqE3MqZSDbrdihXtX9Ny5DAeWD329fQ8"}
-                                                <button onClick={() => copy("")}> copy</button>
+                                            {bankOption === "Bank" ? <p className="bankOptions">
+                                                ARAMSADHXYZ
+                                                <span>
+                                                    Sabic-Aramco BIC/ swift code
+                                                </span>
+                                                <span>
+                                                    Saudi, North Park 3, BLDG 3302 FLOOR CENTRAL AREA
+                                                </span>
+                                                <span>
+                                                    <input type="text" value="ARAMSADHXYZ" /> <button onClick={bankCopy}>Copy</button>
+                                                </span>
                                             </p>
-                                            
+                                                : <>
+                                                    <img src="/images/qrcode.jpeg" alt="" />
 
-                                            <p className="modal__container--text">
-                                            After successful payment contact customer care via the live chat with proof of payment. <br />
-                                            {/* <span className="modal__container-address">
+                                                    <p className="modal__container--text">
+                                                        please pay exactly the amount specified into this bitcoin address
+                                                    </p>
+
+                                                    <p className="modal__container-address">
+                                                        {"1AVqE3MqZSDbrdihXtX9Ny5DAeWD329fQ8"}
+                                                        <button onClick={() => copy("")}> copy</button>
+                                                    </p>
+
+
+                                                    <p className="modal__container--text">
+                                                        After successful payment contact customer care via the live chat with proof of payment. <br />
+                                                        {/* <span className="modal__container-address">
                                                 {"refrenceId"}
                                                 <button onClick={() => copy("refId")}> copy</button>
                                             </span> */}
-                                        </p>
+                                                    </p>
+
+                                                </>}
                                         </div>
                                     </Modal>
                                     {/* <div className="loadingScreen"/> */}
@@ -753,10 +802,9 @@ const Request_Deposit = (props) => {
                                                 Select a payment option
                                         </h3>
 
-
                                             <h3 className="coin-options__header">
                                                 and enter an amount to deposit
-                                        </h3>
+                                            </h3>
 
                                             <Formik onSubmit={submit}
                                                 initialValues={{
@@ -765,9 +813,10 @@ const Request_Deposit = (props) => {
                                                     // plan: "",
                                                 }}
                                                 validationSchema={DepositSchema}>
-                                                {({ handleSubmit, errors, touched }) => (
+                                                {({ handleSubmit, errors, touched, handleChange }) => (
                                                     <form onSubmit={handleSubmit}>
-                                                        <Field as="select" className="coin-options-paymentOptions" name="paymentOpts">
+                                                        <Field as="select" className="coin-options-paymentOptions" onChange={(e) => { setBankOption(e.target.value); return handleChange(e) }}
+                                                            name="paymentOpts">
                                                             <option value="">Select Payment Option</option>
                                                             <option value="Bitcoin">Bitcoin</option>
                                                             <option value="Bank">Bank</option>

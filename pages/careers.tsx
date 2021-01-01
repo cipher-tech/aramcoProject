@@ -242,7 +242,7 @@ const Careers: React.FC = () => {
                 challenging projects with dynamic, talented people in a world-class environment.
                 Select your region below, and explore the benefits and available opportunities."
                 btnLight="VIEW ALL PUBLICATIONS"
-                /* btn="VIEW ALL PUBLICATIONS" */ bgImage="/images/moreInfo-2.jpg"
+                /* btn="VIEW ALL PUBLICATIONS" */ bgImage="/images/cardimg1.jpg"
                /*  btn2="VIEW ALL PUBLICATIONS" */
             />
 
@@ -250,7 +250,7 @@ const Careers: React.FC = () => {
                 link="/plans/products"
                 text={`People are our priority. We are securing the health and safety of our workforce and communities and ensuring
                     the continuity of an energy supply upon which the world relies.`}
-                btnLight="FIND OUT MORE" bgImage="/images/moreInfo-2.jpg"
+                btnLight="FIND OUT MORE" bgImage="/images/cardimg2.png"
             />
 
             <Foot />

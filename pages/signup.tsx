@@ -47,6 +47,10 @@ const Container = styled.div`
             padding: 2rem;
             position: relative;
             font-family: ProximaNovaSoftW03-Regular;
+            display: flex;
+            justify-items: center;
+            flex-direction: column;
+            justify-content: center;
             /* background-image: url($);
             background-repeat: no-repeat;
             background-position: 104px right; */
@@ -300,7 +304,7 @@ const SignUpPage = (props) => {
                     <div className="login__side-left">
                         <div className="circle" />
                         <div className="circle2" />
-                        <p className="login__side-left-title">Welcome</p>
+                        {/* <p className="login__side-left-title">Welcome</p> */}
                         <p className="login__side-left-text">
                             Complete the form to sign up.
                             <br/>
@@ -363,13 +367,13 @@ const SignUpPage = (props) => {
 
                                     </div>
                                     <p className="login__side-right-isSugnedIn">
-                                        {/* Don't have an account?
+                                        Already have an account?
                                         <span className="login__side-right-isSugnedIn-action">
-                                            <Link href="/signup">
-                                                <a> Sign Up </a>
+                                            <Link href="/Login">
+                                                <a> Login </a>
                                             </Link>
                                         </span>
-                                        <br /> */}
+                                        <br />
                                         {/* Forgot password?
                                         <span className="login__side-right-isSugnedIn-action"> Reset</span> */}
                                         <button className="login__side-right-summit grey" type="submit">
